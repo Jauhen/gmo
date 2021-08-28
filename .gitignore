@@ -1,0 +1,14 @@
+*.aux
+*.fls
+*.log
+*.nav
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.snm
+*.toc
+*.ilg
+*.xdv
+.DS_Store
+settings.json
+

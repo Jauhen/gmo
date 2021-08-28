@@ -1,0 +1,59 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usetheme{graham}
+
+\title{Modular Arithmetic}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Modular Arithmetic}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{Modular arithmetic} is a system of arithmetic for integers, which considers the remainder. In modular arithmetic, numbers "wrap around" upon reaching a given fixed quantity (this given quantity is known as the \emph{modulus}) to leave a remainder.\medskip
+
+      An intuitive usage of modular arithmetic is with a 12-hour clock. If it is 10:00 now, then in 5 hours the clock will show 3:00 instead of 15:00. 3 is the remainder of 15 with a modulus of~12.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      A number $x\bmod N$ is the equivalent of asking for the remainder of $x$ when divided by~$N$. Two integers $a$ and $b$ are said to be congruent (or in the same equivalence class) modulo~$N$ if they have the same remainder upon division by $N$. In such a case, we say that \[a \equiv b\pmod N.\]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Addition Theorem for Modular Arithmetic}  
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{theorem}
+        If $a + b = c$, then \[a\Mod{N} + b\Mod{N} \equiv c\Mod{N}.\]
+      \end{theorem}
+      
+      In other words, to find the remainder of the sum of two (or more) integers, we can instead sum the remainders of the individual integers.  You might never have considered if this is true, but it has to be because $a/N + b/N = (a + b)/N$.
+      
+      \subsection{Divisibility Rules for Powers of 2}
+
+      In elementary school you learned that all even numbers are divisible by 2.  So you only need to know the last digit of a number to know if it is divisible by 2.  We can prove that’s true.  Let $a$, $b$, $c$, $d$, $e$ be the digits of a 5-digit number.
+      \[
+        \overline{abcde} = a \times 10^4 + b \times 10^3 + c \times 10^2+ d \times 10^1+ e \times 10^0.
+      \]
+      
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      With the exception of the units digit term, each term in this sum must have a value of zero $\Mod{2}$ because all multiples of 10 are divisible by 2. By the addition theorem of modular arithmetic
+      \[
+        \overline{abcde}\Mod{2} \equiv \overline{abcd0}\Mod{2} + e\Mod{2} \equiv e\Mod{2} 
+      \]
+      note also that
+      \[
+        \overline{abcde}\Mod{5} \equiv \overline{abcd0}\Mod{5} + e\Mod{5} \equiv e\Mod{5}  
+      \]  
+      since all powers of 10 are divisible by 5.
+      
+      What about divisibility by 4?  Ten is not divisible by 4, but every power of 10 greater than 100 is, so all multiples of 100 have a value of $0\Mod{4}$.  Hence, the value of any number greater than $100\Mod{4}$ is equal to the value $\Mod{4}$ of its last 2 digits.  This gives us the divisibility rule for 4: a number is divisible by 4 if the number formed by its last two digits is divisible by 4. In fact, the remainder of any number divided by 4 is the remainder of the number formed by its last two digits.  Going to the next power of 2, $100 (mod8) = 4$, but 1000 (mod8) = 0, so the divisibility rule for 8 requires us to check if the last 3 digits of a number are divisible by 8.  In fact, 10n= 5n2n, so 10nis always evenly divisible by 2n, and never evenly divisible by 2n+1.  To the find the remainder of any number when it is divided by 2n, we only have tolook at the last n digits.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

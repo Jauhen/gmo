@@ -1,0 +1,49 @@
+\pgfdeclareimage[width=\paperwidth]{titleBackground}{images/title.jpg}
+
+\defbeamertemplate*{title page}{graham}
+{ 
+  \begin{picture}(0,0)
+
+    \put(-29, -240){%
+        \pgfuseimage{titleBackground}
+    }
+  \end{picture}
+
+  \vfill
+  \vskip1cm%
+  {\centering
+    {\HUGE\usebeamercolor[fg]{title}\inserttitle}
+    \par
+  }
+  \vskip0.5cm%
+  {\centering
+    \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle
+    \par
+  }
+  \vfill
+
+}
+
+\setbeamertemplate{theorem begin}
+{
+    \normalfont% ignore body font
+    \vskip0.5ex
+    \nointerlineskip
+    \usebeamerfont{block body example}
+    \begin{beamercolorbox}[dp        = 1 ex,
+                           wd        = {\dimexpr\textwidth+2ex\relax},
+                           leftskip  = 1 ex,
+                           rightskip = 1 ex,
+                           vmode]
+                          {block body}
+        \vspace*{1ex}
+}
+
+\setbeamertemplate{theorem end}
+{
+    \vskip0pt
+    \end{beamercolorbox}
+    \vskip0.5ex
+}
+
+\beamer@centeredfalse

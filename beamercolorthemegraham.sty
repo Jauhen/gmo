@@ -1,0 +1,40 @@
+\definecolor{gray}{RGB}{90, 90, 90}
+\definecolor{darkOrange}{HTML}{e69138}
+\definecolor{orange}{HTML}{f6b26b}
+\definecolor{backgroundOrange}{HTML}{fce5cd}
+\definecolor{backgroundGrey}{HTML}{efefef}
+\definecolor{backgroundBlue}{HTML}{cfe2f3}
+\definecolor{mathBlue}{HTML}{1155cc}
+\definecolor{textinmath}{HTML}{999999}
+\definecolor{textBlue}{HTML}{4a86e8}
+
+\setbeamercolor*{background canvas}{bg=white}
+
+\setbeamercolor*{title}{fg=darkOrange}
+\setbeamercolor*{subtitle}{fg=black}
+\setbeamerfont{title}{size=\Huge, series=\bfseries}
+
+\setbeamerfont{subtitle}{size=\huge, series=\mdseries}
+
+\setbeamercolor{frametitle-left}{fg=orange}
+\setbeamercolor{frametitle}{fg=orange}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\small, series=\mdseries}
+
+\setbeamercolor{frametitle-left}{fg=orange}
+\setbeamercolor{frametitle}{fg=orange}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\small, series=\mdseries}
+
+\setbeamercolor{block body} {bg = backgroundOrange}
+\AtBeginEnvironment{problem}{%
+  \setbeamercolor{block body}{bg=backgroundGrey}
+}
+\AtBeginEnvironment{example}{%
+  \setbeamercolor{block body}{bg=backgroundBlue}
+}
+
+\setbeamercolor{math text}{fg=mathBlue}
+\setbeamercolor{math text displayed}{fg=textinmath}
+
+\setbeamercolor{enumerate item}{fg=darkOrange}

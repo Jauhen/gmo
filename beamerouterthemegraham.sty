@@ -1,0 +1,95 @@
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{unicode-math}
+\RequirePackage{ragged2e}
+\RequirePackage{calc}
+\RequirePackage{wrapfig}
+\RequirePackage{xcolor}
+\RequirePackage{color}
+\RequirePackage{soul}
+
+\usefonttheme{serif}
+\setmainfont{Arial}
+\setmathfont[Color=1155cc]{STIXTwoMath-Regular.otf}[Scale=MatchLowercase]
+\newfontfamily\HUGE[SizeFeatures={Size=30}]{Arial Bold}
+
+\newlength{\marginedPaperWidth}{\paperwidth - 0.2cm}
+
+\appto\normalsize{%
+  \abovedisplayskip=0.5ex
+  \belowdisplayskip=0.5ex
+  \abovedisplayshortskip=0.25ex
+  \belowdisplayshortskip=0.25ex
+}
+\appto\small{%
+  \abovedisplayskip=0.5ex
+  \belowdisplayskip=0.5ex
+  \abovedisplayshortskip=0.25ex
+  \belowdisplayshortskip=0.25ex
+}
+
+\newenvironment{nscenter}{%
+  \setlength\topsep{0pt}
+  \setlength\parskip{0pt}
+  \begin{center}
+}{%
+  \end{center}
+}
+
+\newenvironment{nsenumerate}{
+\begin{enumerate}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\topsep}{0pt}
+}{\end{enumerate}}
+
+\makeatletter
+\let\HL\hl
+\renewcommand\hl{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color
+  \HL}
+\makeatother
+\sethlcolor{backgroundOrange}
+\makeatletter
+\def\SOUL@hlpreamble{%
+    \setul{}{2.2ex}%
+    \let\SOUL@stcolor\SOUL@hlcolor
+    \dimen@\SOUL@ulthickness
+    \dimen@i=-.5ex % increased by -0.25ex
+    \advance\dimen@i-.5\dimen@
+    \edef\SOUL@uldepth{\the\dimen@i}%
+    \let\SOUL@ulcolor\SOUL@stcolor
+    \SOUL@ulpreamble
+}
+\makeatother
+
+\newcommand*{\highlightbox}[1]{{\hyphenchar\font=45\relax\hl{~#1~}}}
+
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\resetcounteronoverlays{saveenumi}
+
+\setbeamertemplate{navigation symbols}{}
+
+% Frame title
+\defbeamertemplate*{frametitle}{graham}[1][]{
+  \vskip1.2ex%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1em]{frametitle} 
+    \begin{tikzpicture}
+      \useasboundingbox(0,0) rectangle(\the\paperwidth, 1em);
+      {\usebeamercolor[fg]{frametitle-left}}
+      \fill[color=frametitle-left.fg] (0,0) rectangle(0.8in, 1em);
+      \ifx\insertframesubtitle\@empty%
+          {\node[anchor=west] at (0.85in,0.5em){\usebeamerfont{frametitle}\MakeUppercase{\insertframetitle}};}
+          \else%
+          {\node[anchor=west] at (0.85in,0.5em){\usebeamerfont{frametitle}\MakeUppercase{\insertframetitle}};%
+          \node[anchor=west] at (1in,-0.25em){\usebeamerfont{framesubtitle}\insertframesubtitle};}%
+          \fi
+    \end{tikzpicture}
+  \end{beamercolorbox}
+  \vspace{-1ex}
+}

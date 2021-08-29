@@ -28,17 +28,18 @@
 \setbeamercolor{block body} {bg = backgroundOrange}
 
 \setbeamercolor{math text}{fg=mathBlue}
-\setbeamercolor{math text displayed}{fg=textinmath}
+\setbeamercolor{normal text in math text}{fg=textinmath}
 
 \setbeamercolor{enumerate item}{fg=darkOrange}
 
 \AtBeginEnvironment{problem}{%
   \setbeamercolor{block body}{bg=backgroundGrey}
-  \setbeamercolor{math text displayed}{fg=mathBlue}
+  \setbeamercolor{normal text in math text}{fg=mathBlue}
 }
 \AtBeginEnvironment{example}{%
   \setbeamercolor{block body}{bg=backgroundBlue}
+  \setbeamercolor{normal text in math text}{fg=mathBlue}
 }
 \AtBeginEnvironment{definition}{%
-  \setbeamercolor{math text displayed}{fg=mathBlue}
+  \setbeamercolor{normal text in math text}{fg=mathBlue}
 }

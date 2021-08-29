@@ -12,21 +12,40 @@
 \begin{frame}{Probability}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \begin{problem}
-        You are throwing fair six-sided dice. What is the chance that your number of dots would be $5$?
-      \end{problem}
+      \begin{definition}
+        An \textbf{outcome} is a possible result of an experiment.
+      \end{definition}
 
-      There are $6$ possible outcomes and since they have equal chances to happen, that means that about once per every $6$ throws you will get $5$. So your chances to get $5$ dots would be $\frac{1}{6}$. We say that \emph{probability} of getting $5$ dots is $\frac{1}{6}$.
+      \begin{wrapfigure}[7]{r}{0.25\textwidth}%
+        \vspace{-1em}
+        \includegraphics[width=0.3\textwidth]{03 - Probability/dice-4.png}
+      \end{wrapfigure}
+      We say "the outcome of throwing the dice was $4$." The experiment was throwing the die and its result (outcome) was that the face with $4$ pips on it came up.\medskip
+  
+      Probability problems are either based on \emph{countable} outcomes or on outcomes that are not countable. The later case is called \emph{geometric probability} or \emph{continuous probability}.
 
       \begin{definition}
-        A \textbf{probability} is a number that represents the likelihood of an uncertain event. 
-        \[ P = \frac{\text{(number of successful attempts)}}{\text{(total number of events)}} \]
+        If the number of outcomes is countable and \emph{if all oucomes have the same probability}, then \mbox{the~\textbf{probability}} of desired oucome is:
+        \[ P = \frac{\text{(number of desired outcomes)}}{\text{(total number of events)}}. \]
         \vspace*{-1ex}
       \end{definition}
-      Probabilities are always between $0$ and $1$, inclusive. A probability $0$ means that something is impossible. A probability $1$ means that something always happens.
     \end{column}
     \begin{column}{0.5\textwidth}
+      \begin{problem}
+        {\color{textBlue} Example:} We write each of the names of all $30$ students in a math club on a card and we draw a card at random. If there are $14$ sixth-graders, $9$ seventh-graders, and $7$ eighth-graders in this club, what is the probability of the name on the card being that of a sixth-grader? 
+      \end{problem}
+      The total number of \emph{outcomes} is all students in the club. The desired \emph{outcomes} are all sixth-graders. So \emph{probability} is
+      \[
+        P = \frac{14}{30} = \frac{7}{15}.
+      \]
 
+      \begin{definition}
+        In the \emph{geometric case}, the \textbf{probability} of a desired outcome is calculated as the ratio:
+        \[ P = \frac{\text{(desired area)}}{\text{(total area)}}. \]
+        \vspace*{-1.5ex}
+      \end{definition}
+
+      Probabilities in any case are always between $0$ and $1$, inclusive.
     \end{column}
   \end{columns}
 \end{frame}
@@ -34,8 +53,38 @@
 \begin{frame}{Addition rule for probability}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      \begin{problem}
+        What is the probability of choosing \emph{an ace} \textbf{or} \emph{a king} from a full deck of $52$ cards?
+      \end{problem}
+      \begin{wrapfigure}[6]{r}{0.20\textwidth}%
+        \vspace{-1em}
+        \includegraphics[width=0.25\textwidth]{03 - Probability/king-clip-art.png}
+      \end{wrapfigure}
+      \mbox{A card that we got from the deck of cards} may not be both an ace and a king. So we have $4$ \emph{oucomes} of getting an ace and $4$ \emph{oucomes} of getting a king. The result number of \emph{desired oucomes} is $8$. The \emph{total number of possible outcomes} is $52$.
+      The total probability is
+      \[ P = \frac{4 + 4}{52} = \frac{8}{52} = \frac{2}{13}. \]
+      We also may count the probability in other way. The \emph{probability} of getting an ace is $4/52$ and the \emph{probability} of getting a king is also $4/52$. Since both cases are good for us, the total probability is
+      \[ P = \frac{4}{52} + \frac{4}{52} = \frac{1}{13} + \frac{1}{13} = \frac{2}{13}. \]
     \end{column}
     \begin{column}{0.5\textwidth}
+      \begin{definition}
+        If two events are \emph{oucomes} of one experiment and they \emph{may not happen together}, then \emph{probability} of any of this event is \textbf{sum of their probabilities}
+        \[ P(A\ \text{or}\ B) = P(A) + P(B). \]
+        \vspace*{-2.5ex}          
+      \end{definition}
+
+      \begin{problem}
+        What is the probability of choosing \emph{a multiple of $4$} or \emph{a multiple of $5$} from a numbers from $1$ to $100$?
+      \end{problem}
+      The probability of getting a multiple of $4$ is $25/100$, the probability of getting a multiple of $5$ is $20/100$. But there are multiples of $20$, which we counted twice. To make up for this case, we need to subtract the probability of getting a multiple of $20$, which is $5/100$. So total probability would be
+      \[
+        P = \frac{25}{100} + \frac{20}{100} - \frac{5}{100} = \frac{25 + 20 - 5}{100} = \frac{40}{100} = \frac{2}{5}.
+      \]
+      \begin{definition}
+        So the \emph{probability of two events} of one experiment
+        \[ P(A\ \text{or}\ B) = P(A) + P(B) - P(A\ \text{and}\ B). \]
+        \vspace*{-2.5ex}          
+      \end{definition}
     \end{column}
   \end{columns}
 \end{frame}
@@ -43,8 +92,41 @@
 \begin{frame}{Multiplication rule for probability}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      \begin{problem}
+        If the experiment \emph{"throw a die and toss a coin"} is performed, what is the probability of the event \emph{"a~$4$~and a tails"} to happen?
+      \end{problem}
+      \begin{wrapfigure}[4]{l}{0.2\textwidth}%
+        \vspace{-1.6em}
+        \includegraphics[width=0.23\textwidth]{03 - Probability/tail.png}
+      \end{wrapfigure}
+      Let's first throw a die. If $4$ didn’t happen, we don’t need to toss a coin, the desired event will not happen in any case. So we need to toss a~coin only when the die rolls~$4$. The $4$ has a probability of $1/6$ and, in this case only, we toss a coin and with a~probability of $1/2$ we will get tails. So the overall probability would be
+      \[ P = \frac{1}{6} \cdot \frac{1}{2} = \frac{1}{12}. \] 
+
+      \begin{definition}
+        If two events are \emph{independent} the \textbf{probability} of both of them happen is \emph{a multiple of their probabilities}
+        \[ P (A\ \text{and}\ B) = P (A) \cdot P (B). \] 
+        \vspace*{-2ex} 
+      \end{definition}
     \end{column}
     \begin{column}{0.5\textwidth}
+      \begin{definition}
+        The \textbf{conditional probability} of an event $E$ that depends on another event $F$ to happen is denoted 
+        \[ P(E \mid F) \]
+        and is probability of $E$ to happen if we know that $F$ has already happened.
+      \end{definition}
+      {\small We used that rule to solve the problem \emph{"throw a die and toss a coin"}.}
+      \begin{definition}
+        If two events are \emph{dependent} the \textbf{probability} of both of them happen is
+        \[ P (A\ \text{and}\ B) = P (A) \cdot P (B \mid A). \] 
+        \vspace*{-2.5ex} 
+      \end{definition}
+      {\small
+        \begin{problem}
+          What is the probability of choosing \emph{an ace} \textbf{and then} \emph{a~king} from a full deck of $52$ cards?
+        \end{problem}
+        The probability to choose an ace is $4/52$. Then we selecting a king from the deck without one card, so the probability to choose a king is $4/51$. The total probability~is
+        \[ P(A \text{ and then } K) = P(A) \cdot P(K \mid A) = \frac{4}{52} \cdot \frac{4}{51} = \frac{4}{663}. \]
+      }
     \end{column}
   \end{columns}
 \end{frame}

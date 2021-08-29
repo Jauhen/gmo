@@ -1,11 +1,10 @@
-\definecolor{gray}{RGB}{90, 90, 90}
 \definecolor{darkOrange}{HTML}{e69138}
 \definecolor{orange}{HTML}{f6b26b}
 \definecolor{backgroundOrange}{HTML}{fce5cd}
 \definecolor{backgroundGrey}{HTML}{efefef}
 \definecolor{backgroundBlue}{HTML}{cfe2f3}
 \definecolor{mathBlue}{HTML}{1155cc}
-\definecolor{textinmath}{HTML}{999999}
+\definecolor{textinmath}{HTML}{666666}
 \definecolor{textBlue}{HTML}{4a86e8}
 
 \setbeamercolor*{background canvas}{bg=white}
@@ -27,14 +26,19 @@
 \setbeamerfont{framesubtitle}{size=\small, series=\mdseries}
 
 \setbeamercolor{block body} {bg = backgroundOrange}
-\AtBeginEnvironment{problem}{%
-  \setbeamercolor{block body}{bg=backgroundGrey}
-}
-\AtBeginEnvironment{example}{%
-  \setbeamercolor{block body}{bg=backgroundBlue}
-}
 
 \setbeamercolor{math text}{fg=mathBlue}
 \setbeamercolor{math text displayed}{fg=textinmath}
 
 \setbeamercolor{enumerate item}{fg=darkOrange}
+
+\AtBeginEnvironment{problem}{%
+  \setbeamercolor{block body}{bg=backgroundGrey}
+  \setbeamercolor{math text displayed}{fg=mathBlue}
+}
+\AtBeginEnvironment{example}{%
+  \setbeamercolor{block body}{bg=backgroundBlue}
+}
+\AtBeginEnvironment{definition}{%
+  \setbeamercolor{math text displayed}{fg=mathBlue}
+}

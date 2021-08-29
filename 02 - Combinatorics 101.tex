@@ -2,6 +2,11 @@
 
 \usetheme{graham}
 
+\newcommand{\genstirlingII}[3]{%
+  \genfrac{\{}{\}}{0pt}{#1}{#2}{#3}%
+}
+\newcommand{\stirlingII}[2]{\genstirlingII{}{#1}{#2}}
+
 \title{Combinatorics 101}
 \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
 
@@ -15,7 +20,7 @@
       Consider following Kindergarten problem:
 
       \begin{problem}{}
-        There are two plates, one with $3$ apples and one with $2$ pears. You can take \emph{only one fruit}. How many options do you have?
+        There are two plates, one with $3$ apples and one with $2$ pears. You can take \emph{only one piece of fruit}. How many options do you have?
       \end{problem}
   
       \begin{nscenter}
@@ -35,7 +40,7 @@
 
       A solution is fairly simple. You can take one of $3$ apples or one of $2$ pears, so there are
       \[ 3 + 2 = 5 \]
-      different options for you to take one fruit.
+      different options for you to take one piece of fruit.
     \end{column}
     \begin{column}{0.5\textwidth}
       We have just used an operation called the \textbf{rule of sum} or \textbf{addition principle}. Stated simply, it is the intuitive idea that 
@@ -46,7 +51,7 @@
 
       Of couse this principle may be extended for many options, for example if you have $5$ plates with $10$ apples on each, there are 
       \[10+10+10+10+10 = 50\] 
-      options to pick an apple.
+      options to pick one apple.
     \end{column}
   \end{columns}
 \end{frame}
@@ -137,7 +142,7 @@
     \begin{column}{0.5\textwidth}
       In combinatorics, 
       \begin{definition}
-        a \textbf{permutation} is an ordering of a list of objects.
+        a \textbf{permutation} is an ordering of a list of objects. The \emph{permutation} of all objects in the list is also called \mbox{an \textbf{arrangement}}.
       \end{definition}
       To find a number of permutations of $n$ distinct objects (denoted as $P_n$), we need, according to the \emph{rule of product}, to multiply the following numbers: $n \times (n − 1) \times (n − 2) \times \ldots \times 2 \times 1$.
       This product is called the \textbf{factorial} and denoted by $n!$. So for any positive integer $n$,
@@ -181,18 +186,18 @@
       \[5 \times 4 \times 3 = 60\] 
       ways to pick $3$ fruits one by one. 
 
-      Another way to think about the solution, that considers all the way to pick two remaining fruits as one option. So we will get the same result by the following operation:
+      Another way to think about the solution, that considers all possible ways to pick two remaining fruits as one option. So we will get the same result by the following operation:
       \[
         \frac{5 \times 4 \times 3 \times 2 \times 1 \text{\ total number of ways}}{2 \times 1 \text{\  ways to get remainder}} = \frac{5!}{2!} = 60.
       \]
     \end{column}
     \begin{column}{0.5\textwidth}
-      The second approach use the \textbf{rule of division}:
+      The second approach uses the \textbf{rule of division}:
       \begin{definition}
         if \emph{some} options are considered the same, we can \textbf{divide} the \emph{total number} of options by the \emph{number of options} we considered the same.
       \end{definition}
 
-      So if we have $n$ objects and want to arrange $k$ of them in a row, there are $\frac{n!}{(n-k)!}$ ways to do this. This is also known as a $k$-permutation of $n$, and is denoted by $P_k^n$ or $P(n,\ k)$.\medskip
+      So if we have $n$ objects and want to arrange $k$ of them in a row, there are $\frac{n!}{(n-k)!}$ ways to do this. This is also known as a \hl{ $k$-permutation of $n$ }, and is denoted by $P_k^n$ or $P(n,\ k)$.\medskip
 
       The rule of division is also works in case when we need to put $5$ fruits not in a line, but in a circle. In this case this $5$ permutations are the same:
       \vspace*{-0.1cm}
@@ -349,7 +354,7 @@
 
       {\small
       Let’s write $60$ as a product of prime numbers:
-      \[ 60 = 2 \times 2 \times 3 \times 5 = 22 \times 31 \times 51.\]
+      \[ 60 = 2 \times 2 \times 3 \times 5 = 2^2 \times 3^1 \times 5^1.\]
       Any divisor of $60$ must be some combination of these prime numbers. Let’s count all combinations of prime factors of a divisor:
 
       The divisor may have $2$ in a power of $0$, $1$, or $2$ ($2$ to the power of $0$ is also counted, because divisor may be odd, like $15$, for example).
@@ -396,7 +401,7 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{definition}
-        A \textbf{combination} is a way of choosing elements from a set in which order does not matter.
+        A \textbf{combination} is a way of choosing elements from a set in which \emph{order does not matter}.
       \end{definition}
 
       To find a number of combinations of $k$ unordered elements from set of $n$ distinct objects (denoted as $C_k^n$ or $C(n,\ k)$), first we need to find $P_k^n$. Then, according the \emph{rule of division}, we need divide the number by number of ways to rearrange $k$ elements, which is $P_{\,k}$. Combining everything together we find, that
@@ -407,7 +412,7 @@
       \[
         C_k^n = \binom{n}{k}.
       \]
-      Reads: “\emph{$n$ choose $k$}”.
+      It reads: “\emph{$n$ choose $k$}”.
 
     \end{column}
   \end{columns}
@@ -455,10 +460,10 @@
       {\small
       Lets looks at the solutions:
       \begin{enumerate}[a)]
-        \item This problem may be solved using \highlightbox{permutations with identical elements} (every spoon may be put in $4$ different cups), so answer is $4^7 = 16,384$.
-        \item This problem may be solved using technique called \highlightbox{stars and bars}, (seen in a future lesson) calculated as $\binom{13}{3} = 286$.
+        \item This problem may be solved using \highlightbox{permutations with identical elements}, which we covered in this slides, (every spoon may be put in $4$ different cups), so answer is $4^7 = 16,384$.
+        \item This problem may be solved using technique called \highlightbox{stars and bars}, we will cover it in a future lesson, calculated as $\dbinom{13}{3} = 286$.
         \item To calculate the solution we need to use \highlightbox{Stirling numbers of the second kind} and the \emph{rule of sum}:
-        \[ {7\brace 1}+{7\brace 2}+{7\brace 3}+{7\brace 4}=1+63+301+350=715. \]\vspace*{-1ex}
+        \[ \stirlingII{7}{1}+\stirlingII{7}{2}+\stirlingII{7}{3}+\stirlingII{7}{4}=1+63+301+350=715. \]\vspace*{-1ex}
         \item Here is we need to calculate number of \highlightbox{Young tableaux} with $10$ cells and $4$ boxes, which is far beyond middle school math. For this particular problem it is easier to just do the \highlightbox{\emph{\textbf{case}}\ \ \emph{\textbf{bashing}}} (head down and write out all cases) to find out that answer is $23$.  We’ll practice case bashing in a future lesson as well.
       \end{enumerate}
       }
@@ -475,7 +480,7 @@
         \emph{Note that this is also can be proven logically, since if we are choosing $r$ out of $n$, we are equivalently not choosing $n-r$ out of $n$.}
         \item If $n = 100$, find the value of $\frac{(n−1)!}{(n+1)!}$.
         \item A yogurt shop has $4$ different flavours and $6$ different toppings. If a customer picks $1$ flavor and $2$ different toppings, how many different combinations are possible?
-        \item How many $3$-digit numbers are palindromes (read the same forward and backward)?
+        \item How many $3$-digit numbers are \emph{palindromes} (read the same forward and backward)?
         \item In base $7$, the possible digits are $0$-$6$. How many possible $4$-digit base $7$ numbers end in an odd digit?
         \seti
       \end{enumerate}
@@ -484,7 +489,7 @@
       \begin{enumerate}
         \conti
         \item A ferris wheel has $8$ identical chairs that hold $1$ rider each. How many different ways can $8$ riders be seated on the ride, if we can only distinguish the relative orientation of the riders while the wheel is spinning?
-        \item How many different $10$-letter code words can be made with the letters in Crittenden?
+        \item How many different $10$-letter code words can be made with the letters in \emph{Crittenden}?
         \item How many $4$ digit ATM passcodes can be made if the first digit cannot be $0$, and all $4$ digits cannot be same?
       \end{enumerate}
       \begin{flushright}

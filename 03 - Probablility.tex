@@ -173,13 +173,15 @@
       \begin{problem}
         How many people need to attend a party until there is a $50\%$ chance that at least two guests share a birthday?
       \end{problem}
-      It is easier to calculate the probability that no two people share a birthday. 
+      It is easier to calculate the probability that \emph{no two people share a birthday}. 
       
-      Les's start with the first guest. He don't share a birthday with anyone. So the probability is $365/365$.
+      Les's start with the first guest. He don't share a birthday with anyone. So the probability is $1$.
       
       The second guest may share a birthday with the first guest with probability $364/365$. 
       
-      The third one don't share a birthday with previous guests with probability $363/365$ and so on. For $n$ guests
+      The third one don't share a birthday with previous guests with probability $363/365$ and so on. 
+      
+      For $n$ guests
       \begin{multline*}
         P(\text{no shared birthday}) = \\
         = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \ldots \frac{365 - n + 1}{365} = \\ = \frac{365!}{(365-n)!} \cdot \frac{1}{365^n}.
@@ -188,11 +190,12 @@
     \begin{column}{0.5\textwidth}
       Using formula 
       \begin{multline*}
-         P(\text{have a shared birthday}) = \\ 
+         P(\text{there is a shared birthday}) = \\ 
          = 1 - P(\text{no shared birthday})
       \end{multline*}
       we can calculate, using computer, the probability for any number of guests
       \begin{center}
+        \vspace*{-1ex}   
         \includegraphics[width = 0.80\textwidth]{03 - Probability/Birthday_Paradox.pdf}
         \vspace*{-1ex}   
       \end{center} 

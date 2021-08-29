@@ -16,28 +16,28 @@
         An \textbf{outcome} is a possible result of an experiment.
       \end{definition}
 
-      \begin{wrapfigure}[7]{r}{0.25\textwidth}%
+      \begin{wrapfigure}[5]{r}{0.25\textwidth}%
         \vspace{-1em}
-        \includegraphics[width=0.3\textwidth]{03 - Probability/dice-4.png}
+        \includegraphics[width=0.25\textwidth]{03 - Probability/dice-4.png}
       \end{wrapfigure}
       We say "the outcome of throwing the dice was $4$." The experiment was throwing the die and its result (outcome) was that the face with $4$ pips on it came up.\medskip
   
-      Probability problems are either based on \emph{countable} outcomes or on outcomes that are not countable. The later case is called \emph{geometric probability} or \emph{continuous probability}.
-
-      \begin{definition}
-        If the number of outcomes is countable and \emph{if all oucomes have the same probability}, then \mbox{the~\textbf{probability}} of desired oucome is:
-        \[ P = \frac{\text{(number of desired outcomes)}}{\text{(total number of events)}}. \]
-        \vspace*{-1ex}
-      \end{definition}
-    \end{column}
-    \begin{column}{0.5\textwidth}
       \begin{problem}
-        {\color{textBlue} Example:} We write each of the names of all $30$ students in a math club on a card and we draw a card at random. If there are $14$ sixth-graders, $9$ seventh-graders, and $7$ eighth-graders in this club, what is the probability of the name on the card being that of a sixth-grader? 
+        We write each of the names of all $30$ students in a math club on a card and we draw a card at random. If there are $14$ sixth-graders, $9$ seventh-graders, and $7$ eighth-graders in this club, what is the probability of the name on the card being that of a sixth-grader? 
       \end{problem}
       The total number of \emph{outcomes} is all students in the club. The desired \emph{outcomes} are all sixth-graders. So \emph{probability} is
       \[
         P = \frac{14}{30} = \frac{7}{15}.
       \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        If the number of outcomes is countable and \emph{if all oucomes have the same probability}, then \mbox{the~\textbf{probability}} of desired oucome is:
+        \[ P = \frac{\text{(number of desired outcomes)}}{\text{(total number of events)}}. \]
+        \vspace*{-1ex}
+      \end{definition}
+
+      Probability problems are either based on \emph{countable} outcomes or on outcomes that are not countable. The later case is called \emph{geometric probability} or \emph{continuous probability}.
 
       \begin{definition}
         In the \emph{geometric case}, the \textbf{probability} of a desired outcome is calculated as the ratio:
@@ -46,6 +46,10 @@
       \end{definition}
 
       Probabilities in any case are always between $0$ and $1$, inclusive.
+
+      Probability is sometimes also given in percent:
+      \[ 𝑃(\text{in percent}) = 𝑃(\text{as a decimal or fraction}) \times 100\%. \]
+
     \end{column}
   \end{columns}
 \end{frame}
@@ -184,7 +188,7 @@
       For $n$ guests
       \begin{multline*}
         P(\text{no shared birthday}) = \\
-        = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \ldots \frac{365 - n + 1}{365} = \\ = \frac{365!}{(365-n)!} \cdot \frac{1}{365^n}.
+        = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \ldots \cdot \frac{365 - n + 1}{365} = \\ = \frac{365!}{(365-n)!} \cdot \frac{1}{365^n}.
       \end{multline*}
     \end{column}
     \begin{column}{0.5\textwidth}

@@ -199,7 +199,144 @@
         \includegraphics[width = 0.80\textwidth]{03 - Probability/Birthday_Paradox.pdf}
         \vspace*{-1ex}   
       \end{center} 
-      So we may see that group of $23$ people has probability of $50.7\%$ to have a shared birthday, and group of $70$ people has probability of $99.9\%$ to~share a birthday.
+      So we may see that group of $23$ people has the probability of $50.7\%$ to have a shared birthday, and group of $70$ people has probability of $99.9\%$ to~share a birthday.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Sample problem 1}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      {\small
+      \begin{problem}
+        Mala and Joslyn number the cards in a deck of playing cards from $1$ to $52$. Mala and Joslyn each draw a card and show them to each other. What is the probability that the sum of the numbers on the cards is \emph{odd}? Express your answer as a common fraction.
+      \end{problem}
+
+      {\color{textBlue} Solution 1:} There are two ways for the sum to be \emph{odd}:  Mala draws an odd card and Joslyn draws an even, or vice versa.  If the both draw even or odd cards, the resulting sum is even.
+
+      Using the \emph{addition rule for probability}, we add the probabilities from the two scenarios that lead to an odd sum.  Namely, 
+      \[ P(\text{odd sum}) = P\left(\text{\parbox{5.3em}{Mala odd\\Joslyn even}}\right) + P\left(\text{\parbox{4.8em}{Mala even\\Joslyn odd}}\right). \]
+      
+      Now we use the \emph{product rule} to find the probabilities for each of those scenarios occurring.  Note that after Mala draws her card, there are only $51$ cards remaining in the deck, and $26$ of them are the opposite flavor of even/odd
+      \[ P(\text{odd sum}) = \frac{1}{2} \cdot \frac{26}{51} + \frac{1}{2} \cdot \frac{26}{51} = \frac{26}{51}. \]
+      }
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      {\small
+      {\color{textBlue} Solution 2:} Use \emph{combinations}. The total number of ways to draw $2$ cards is $C_2^{52}$, which equals $\cfrac{52 \times 51}{2}$. The total number of combinations drawing $1$ even and $1$ odd is $\cfrac{52 \times 26}{2}$.  This is because we can select any card first, and then have $26$ cards remaining in the deck that make the sum odd.  We divide by $2$ because the order of drawing doesn’t matter in determining the number of combinations.\begin{multline*} 
+        P(\text{odd sum}) = \\ = \frac{\text{Total ways to draw $1$ even and $1$ odd}}{\text{Total ways to draw $2$ cards}} = \\ = \frac{52 \times 26}{52 \times 51} = \frac{26}{51}
+      \end{multline*}
+      }
+      \begin{example}
+        The initial intuition is that probability should be $1/2$. But this is not a case, because once you draw the first card, the probabilities to draw odd/even card has changed.  
+      \end{example}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Sample problem 2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        You have a bin containing $20$ \emph{red} socks and $40$ \emph{blue} socks.~You reach in and randomly pick out two socks. What is the probability, expressed as a~ratio~$a/b$, that you managed to pick out a matching pair (\emph{red/red} or \emph{blue/blue})?
+      \end{problem}
+      {\color{textBlue} Solution 1:} In this solution, we use the \emph{addition} and \emph{multiplication rules} for probability. Since there is no overlap between the \emph{red/red} and \emph{blue/blue} events, 
+      {\small
+      \[ P(\text{matching pair}) = P(\text{red/red}) + P(\text{blue/blue}).\] \vspace*{-1ex}}
+
+      We use the \emph{multiplication rule} next, multiplying the probability of pulling out the sock of the first color by the probability of next pulling out a sock of the same color.
+      {\small
+      \[
+        P(\text{red/red}) = \frac{20}{60} \cdot \frac{19}{59}, \qquad
+        P(\text{blue/blue}) = \frac{40}{60} \cdot \frac{39}{59},
+      \]
+      \vspace*{-1ex}
+      \begin{multline*}
+        P(\text{matching pair}) = \\ = \frac{20 \times 19 + 40 \times 39}{60 \times 59} = \frac{19 + 78}{3 \times 59} = \frac{97}{177}.
+      \end{multline*}
+      }
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      {\color{textBlue} Solution 2:} 
+
+      Use \emph{combinations}. There are $C_2^{20} = \frac{20 \times 19}{2}$ ways to pick $2$ \emph{red} socks out of $20$, and $C_2^{40} = \frac{40 \times 39}{2}$ ways to pick $2$ \emph{blue} socks out of $40$. The total number of ways to pick $2$ socks out of $60$ is $C_2^{60} = \frac{60 \times 59}{2}$.\vspace*{-1.5ex}
+      {\small\[ P(\text{red/red}) = \frac{C_2^{20}}{C_2^{60}}, \qquad P(\text{blue/blue}) = \frac{C_2^{40}}{C_2^{60}}. \]}
+      Since there is no overlap between \emph{red/red} and \emph{blue/blue} events, 
+      {\small \[ P(\text{matching}) = \frac{20 \times 19 + 40 \times 39}{60 \times 59} = \frac{97}{177}. \]}
+      \begin{wrapfigure}[5]{l}{0.35\textwidth}%
+        \vspace{-2em}
+        \includegraphics[width=0.35\textwidth]{03 - Probability/sock-drawer.png}
+      \end{wrapfigure}
+      
+      Armed~with~your~knowledge of probability,~you~will~never be frightened of~sock~drawer problems again.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item When a pair of $6$-sided dice are rolled, what is the probability that the numbers rolled sum to $7$?
+        \item What is the probability of being dealt a $5$-card poker hand that is a royal flush (\emph{10-Jack- Queen-King-Ace}) of the same suit?
+        \item In blackjack, you automatically win and get a larger payout if you are dealt two cards, one of which is an ace, and the other is a \emph{10, jack, queen, or king}.  What is the probability of being dealt such a two-card hand?
+        \item With the score tied, a player who makes $50\%$ of her free throws is fouled while attempting a $3$-point shot at the buzzer, and earns $3$ free throws.  If she makes at least one shot, her team will win in regulation time.  What is the probability that she makes at least one of her free throws?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item If you flip a fair coin $5$ times, what is the probability that you will flip a total of $3$ heads and $2$ tails?
+        \item I have $100$ marbles:  $20$ red, $40$ blue, $30$~green, $10$ black.  If I pick a marble, and then a second marble without replacing the first one, what is the probability that I will select a red marble and then a blue marble.
+        \item If I start with the same $100$ marbles as in question {\color{darkOrange} 6}, and keep picking until no marbles remain, what is the probability that the last marble chose will be blue?
+        \item If the missing digit $A$ in the number $579A6$ is chosen at random, what is the probability that the number is divisible by $3$?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      {\small
+      \begin{enumerate}
+        \item During the 2021 NBA playoffs, Giannis was a $50\%$ free throw shooter.  Bucking that trend, in the clinching game of the NBA finals, he made $17$ of his first $18$ free throws.  What is the probability that a $50\%$ shooter could accomplish this?  
+        
+        \emph{Note that this problem is equivalent to asking what is the probability of tossing heads $17$-of-$18$ times when flipping a fair coin.}
+        \item On the TV show “Let’s Make a Deal,” there were $3$ doors.  Behind one door was a new car.  Behind the other two doors there were goats.  The contestant initially picks a door.  The host, Monte Hall, knows where the car is, and following the contestant’s guess, he always opens a door the contestant didn’t pick, and that doesn’t have the car behind it, revealing a goat, and leaving two doors unopened.  At this point, he asks the contestant if they want to keep their original guess, or switch to the other door. 
+        
+        What is the probability of winning the car if you switch? 
+        What is the probability of winning if you keep your original guess? Should the contestant switch?
+        \seti
+      \end{enumerate}
+      }
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item A 3-legged creature has an unorganized sock drawer with $4$ red socks, $6$ blue socks and $8$ yellow socks.
+        \begin{center}
+          \vspace*{-1ex}   
+          \includegraphics[width = 0.80\textwidth]{03 - Probability/3-leg-creature.png}
+          \vspace*{-1ex}   
+        \end{center} 
+        The creature reaches into the sock drawer without looking and pulls out three random socks.  What is the probability that he pulls out a matching pair of $3$ socks?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Team attack problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item In one scenario in the board game risk, a~defender rolls a $6$-sided die, and the attacker rolls a pair of $6$-sided dice.  The higher attacking die is compared to the defending die, and the defender wins if its roll is greater than or equal to the higher attacking die.  What is the probability that the defender wins?
+        \item What is the probability that a positive integer less than $1000$ has units digit $4$ and is divisible by $7$?  Express your answer as a~common fraction.
+        
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
     \end{column}
   \end{columns}
 \end{frame}

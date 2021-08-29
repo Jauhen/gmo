@@ -134,8 +134,35 @@
 \begin{frame}{Using the negative case}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      All probable outcomes of one experiment is equal to all experiment. That mean that probability of all outcomes is 
+      \[ P(\text{All outcomes}) = 1. \]
+      \vspace*{-1em}
+      \begin{problem}
+        What is the probability if throwing the dice and not to get $4$. 
+      \end{problem}
+      There are $5$ outcomes that is desired: $1$, $2$, $3$, $5$, and $6$. So total probability would be 
+      \[ P(\text{not throwing $4$}) = 5 \cdot \frac{1}{6} = \frac{5}{6}. \]
+      From other hand there is only one event that is not desired, so we can calculate the same probability as
+      \begin{multline*} 
+        P(\text{not throwing $4$}) = \\
+        = P(\text{all possible results}) - P(\text{throwing $4$}) = \\
+        = 1 - \frac{1}{6} = \frac{5}{6}.
+      \end{multline*}
     \end{column}
     \begin{column}{0.5\textwidth}
+      \begin{definition}
+        The \textbf{complement event} of a \emph{desired event $E$}, denoted as $\overline{E}$, is the event that $E$ does not occur. Since for any event we know whether it is desired or not
+        \[ P(\overline{E}) = 1 - P(E). \]
+        \vspace*{-2.5ex} 
+      \end{definition}
+      Sometimes that simplifies the solution.
+      \begin{problem}
+        We are draw $4$ cards from a full deck of cards. What is the probability to get \emph{at least one ace}?
+      \end{problem}
+      If we try to solve the problem using the \emph{conditional probability} we find out that number of cases is pretty big. But we may count the probability to \emph{not get any ace}.
+      \[ P (\text{no ace}) = \frac{48}{52} \cdot \frac{47}{51} \cdot \frac{46}{50} \cdot \frac{45}{49} = \frac{38916}{54145} \approx 72\%.\]\\[-1ex]
+      And probability to get \emph{an ace with $4$ cards} is
+      \[ P (\text{at least one ace}) = 1 - \frac{38916}{54145} = \frac{15229}{54145} \approx 28 \%. \]
     \end{column}
   \end{columns}
 \end{frame}
@@ -143,8 +170,33 @@
 \begin{frame}{The birthday problem}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      \begin{problem}
+        How many people need to attend a party until there is a $50\%$ chance that at least two guests share a birthday?
+      \end{problem}
+      It is easier to calculate the probability that no two people share a birthday. 
+      
+      Les's start with the first guest. He don't share a birthday with anyone. So the probability is $365/365$.
+      
+      The second guest may share a birthday with the first guest with probability $364/365$. 
+      
+      The third one don't share a birthday with previous guests with probability $363/365$ and so on. For $n$ guests
+      \begin{multline*}
+        P(\text{no shared birthday}) = \\
+        = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \ldots \frac{365 - n + 1}{365} = \\ = \frac{365!}{(365-n)!} \cdot \frac{1}{365^n}.
+      \end{multline*}
     \end{column}
     \begin{column}{0.5\textwidth}
+      Using formula 
+      \begin{multline*}
+         P(\text{have a shared birthday}) = \\ 
+         = 1 - P(\text{no shared birthday})
+      \end{multline*}
+      we can calculate, using computer, the probability for any number of guests
+      \begin{center}
+        \includegraphics[width = 0.80\textwidth]{03 - Probability/Birthday_Paradox.pdf}
+        \vspace*{-1ex}   
+      \end{center} 
+      So we may see that group of $23$ people has probability of $50.7\%$ to have a shared birthday, and group of $70$ people has probability of $99.9\%$ to~share a birthday.
     \end{column}
   \end{columns}
 \end{frame}

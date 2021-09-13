@@ -236,11 +236,11 @@
       For examle to check if number is divisible by $6$ we may check if it divisible by $2$ and $3$. This will works when the divisor may be split in product of 
       \begin{wrapfigure}{l}{0.4\textwidth}
         \vspace*{-0.8em}
-        \hspace*{-1.6em}
-        \includegraphics[width=0.5\textwidth]{01 - Modular arithmetic/collab.png}
+        \includegraphics[width=0.43\textwidth]{01 - Modular arithmetic/collab.png}
       \end{wrapfigure}
-      \textbf{coprime} (\emph{coprime numbers are numbers that don't have common divisors}) factors. 
+      \textbf{coprime}\footnote{\emph{coprime numbers are numbers that don't have common divisors.}} factors. 
       But the rule will not work for example for $27 = 9 \times 3$, since testing for~$9$ we already testing for $3$.
+      \vspace*{1.7em}
     \end{column}
   \end{columns}
 \end{frame}
@@ -248,18 +248,41 @@
 \begin{frame}{Summary of the divisibility rules}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      An integer number $n$ is divisible by
+      \begin{enumerate}
+        \item[\textbf{2.}] if the \emph{last digit of $n$ is divisble by $2$}, e.g. is equal to $0$, $2$, $4$, $6$, or $8$;
+        \item[\textbf{3.}] if the \emph{sum of digits of $n$ is divisible by $3$};
+        \item[4.] if the \emph{last two digits of $n$ is divisible by $4$}.\item[\textbf{5.}] if the \emph{last digit of $n$ is divisble by $5$}, e.g. is equal to $0$ or $5$;
+        \item[6.] if $n$ is divisible by both $2$ and $3$;
+        \item[\textbf{7.}] if \emph{subtracting twice the last digit of $n$ from the remaining digits} gives a multiple of $7$;
+        \item[8.] if the \emph{last three digits of $n$ is divisible by $8$};
+        \item[9.] if the \emph{sum of digits of $n$ is divisible by $9$};
+        \item[10.] if $n$ is divisible by both $2$ and $5$;
+        \item[\textbf{11.}] if the \emph{difference of the alternating sum of digits of $n$} is a multiple of $11$;
+        \item[12.] if $n$ is divisible by both $3$ and $4$.
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      {\small
+      You might notice the strange divisibility rule for $7$. The proof of this rule is not straightforward as for all other. Let's write $n = a\cdot 10 + b$, where $b$ is the last digit and $a$ is the number build with remaining digits. Then suppose $n$ is divisible by $7$
+      \begin{align*}
+        a \cdot 10 + b &\equiv 0 \pmod{7}, \text{ multiply all by $2$}\\
+        a \cdot 20 + b \cdot 2 &\equiv 0 \pmod{7}, \text{ substract $21a$}\\
+        a \cdot (-1) + b \cdot 2 &\equiv 0 \pmod{7}, \text{ multiply by $-1$}\\
+        a - b \cdot 2 &\equiv 0 \pmod{7}.
+      \end{align*}
+      Doing the same operations in reverse order, we can get the divisibility rule for $7$. This is possible because $2$ and $-1$ are \emph{coprime} with $7$. 
       
-    \end{column}
-    \begin{column}{0.5\textwidth}
-    \end{column}
-  \end{columns}
-\end{frame}
+      The rule may be repeated several times to get a number small enough for the direct check.
 
-\begin{frame}{And beyond}
-  \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-    \end{column}
-    \begin{column}{0.5\textwidth}
+      Similar divisibility rules may be obtained for other primes}
+
+      \begin{enumerate}
+        \item[\textbf{13.}] if \emph{adding $4$ times the last digit of $n$ to the remaining digits} gives a multiple of $13$;
+        \item[\textbf{17.}] if \emph{subtracting $5$ times the last digit of $n$ from the remaining digits} gives a multiple of $17$.
+      \end{enumerate}
+
+      {\small But these rules aren't simpler than divide by the number.}
     \end{column}
   \end{columns}
 \end{frame}

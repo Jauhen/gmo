@@ -119,7 +119,7 @@
       \end{problem}
       $8$ is $2 \times 2 \times 2$. That means that we can multiply it by $5 \times 5 \times 5$ and get $10 \times 10 \times 10$, so $1,000$ must be divisible by $8$.
 
-      Lets write down $721{,}456$ as $721{,}000 + 456$, as we know from the \emph{addition theorem} the remainder of the division of $721{,}456$ is equal to the sum of remainders of each of summants. Since $21{,}000$ is multiple of $1{,}000$ it remainder modulo $8$ is $0$. So 
+      Lets write down $721{,}456$ as $721{,}000 + 456$, as we know from the \emph{addition theorem} the remainder of the division of $721{,}456$ is equal to the sum of remainders of each of summands. Since $21{,}000$ is multiple of $1{,}000$ it remainder modulo $8$ is $0$. So 
       \[ 721{,}456 \equiv 456 \pmod{8}. \]
       That means to check whether $721{,}456$ divisible by $8$, we need to check, whether $456$ is divisible by $8$. Indeed $456 = 8 \times 57$, so $721{,}456$ is also divisible by $8$.\medskip
       
@@ -233,7 +233,7 @@
 
       The combinations of the divisibility rules may also create addition divisibility rules. 
 
-      For examle to check if number is divisible by $6$ we may check if it divisible by $2$ and $3$. This will works when the divisor may be split in product of 
+      For example to check if number is divisible by $6$ we may check if it divisible by $2$ and $3$. This will works when the divisor may be split in product of 
       \begin{wrapfigure}{l}{0.4\textwidth}
         \vspace*{-0.8em}
         \includegraphics[width=0.43\textwidth]{01 - Modular arithmetic/collab.png}
@@ -250,9 +250,9 @@
     \begin{column}{0.5\textwidth}
       An integer number $n$ is divisible by
       \begin{enumerate}
-        \item[\textbf{2.}] if the \emph{last digit of $n$ is divisble by $2$}, e.g. is equal to $0$, $2$, $4$, $6$, or $8$;
+        \item[\textbf{2.}] if the \emph{last digit of $n$ is divisible by $2$}, e.g. is equal to $0$, $2$, $4$, $6$, or $8$;
         \item[\textbf{3.}] if the \emph{sum of digits of $n$ is divisible by $3$};
-        \item[4.] if the \emph{last two digits of $n$ is divisible by $4$}.\item[\textbf{5.}] if the \emph{last digit of $n$ is divisble by $5$}, e.g. is equal to $0$ or $5$;
+        \item[4.] if the \emph{last two digits of $n$ is divisible by $4$}.\item[\textbf{5.}] if the \emph{last digit of $n$ is divisible by $5$}, e.g. is equal to $0$ or $5$;
         \item[6.] if $n$ is divisible by both $2$ and $3$;
         \item[\textbf{7.}] if \emph{subtracting twice the last digit of $n$ from the remaining digits} gives a multiple of $7$;
         \item[8.] if the \emph{last three digits of $n$ is divisible by $8$};
@@ -264,10 +264,12 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       {\small
-      You might notice the strange divisibility rule for $7$. The proof of this rule is not straightforward as for all other. Let's write $n = a\cdot 10 + b$, where $b$ is the last digit and $a$ is the number build with remaining digits. Then suppose $n$ is divisible by $7$
+      You might notice the strange divisibility rule for $7$. The proof of this rule is not straightforward as for all other. 
+      
+      Let's write $n = a\cdot 10 + b$, where $b$ is the last digit and $a$ is the number build with remaining digits. Then suppose $n$ is divisible by $7$
       \begin{align*}
         a \cdot 10 + b &\equiv 0 \pmod{7}, \text{ multiply all by $2$}\\
-        a \cdot 20 + b \cdot 2 &\equiv 0 \pmod{7}, \text{ substract $21a$}\\
+        a \cdot 20 + b \cdot 2 &\equiv 0 \pmod{7}, \text{ subtract $21a$}\\
         a \cdot (-1) + b \cdot 2 &\equiv 0 \pmod{7}, \text{ multiply by $-1$}\\
         a - b \cdot 2 &\equiv 0 \pmod{7}.
       \end{align*}

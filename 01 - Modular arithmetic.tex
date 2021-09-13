@@ -1,11 +1,15 @@
 \documentclass[9pt,aspectratio=169]{beamer}
 
+\usepackage{scalerel}
+
 \usetheme{graham}
 
 \title{Modular Arithmetic}
 \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
 
+\setcounter{MaxMatrixCols}{20}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
 
 \begin{document}
 \maketitle
@@ -110,28 +114,177 @@
 \begin{frame}{Divisibility rules for powers of 2 and 5}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      In elementary school you learned that all even numbers are divisible by 2.  So you only need to know the last digit of a number to know if it is divisible by 2.  We can prove that’s true.  Let $a$, $b$, $c$, $d$, $e$ be the digits of a 5-digit number.
-      \[
-        \overline{abcde} = a \times 10^4 + b \times 10^3 + c \times 10^2+ d \times 10^1+ e \times 10^0.
-      \]
+      \begin{problem}
+        Is $721{,}456$ divisible by $8$?
+      \end{problem}
+      $8$ is $2 \times 2 \times 2$. That means that we can multiply it by $5 \times 5 \times 5$ and get $10 \times 10 \times 10$, so $1,000$ must be divisible by $8$.
+
+      Lets write down $721{,}456$ as $721{,}000 + 456$, as we know from the \emph{addition theorem} the remainder of the division of $721{,}456$ is equal to the sum of remainders of each of summants. Since $21{,}000$ is multiple of $1{,}000$ it remainder modulo $8$ is $0$. So 
+      \[ 721{,}456 \equiv 456 \pmod{8}. \]
+      That means to check whether $721{,}456$ divisible by $8$, we need to check, whether $456$ is divisible by $8$. Indeed $456 = 8 \times 57$, so $721{,}456$ is also divisible by $8$.\medskip
       
+      \begin{definition}
+        To know whether a number is divisible by $2^n$, we need to check whether the \textbf{last $n$ digits} of the number is divisible by $2^n$.
+      \end{definition}
     \end{column}
     \begin{column}{0.5\textwidth}
-      With the exception of the units digit term, each term in this sum must have a value of zero $\Mod{2}$ because all multiples of 10 are divisible by 2. By the addition theorem of modular arithmetic
-      \[
-        \overline{abcde}\Mod{2} \equiv \overline{abcd0}\Mod{2} + e\Mod{2} \equiv e\Mod{2} 
-      \]
-      note also that
-      \[
-        \overline{abcde}\Mod{5} \equiv \overline{abcd0}\Mod{5} + e\Mod{5} \equiv e\Mod{5}  
-      \]  
-      since all powers of 10 are divisible by 5.
-      
-      What about divisibility by 4?  Ten is not divisible by 4, but every power of 10 greater than 100 is, so all multiples of 100 have a value of $0\Mod{4}$.  Hence, the value of any number greater than $100\Mod{4}$ is equal to the value $\Mod{4}$ of its last 2 digits.  This gives us the divisibility rule for 4: a number is divisible by 4 if the number formed by its last two digits is divisible by 4. In fact, the remainder of any number divided by 4 is the remainder of the number formed by its last two digits.  Going to the next power of 2, $100 (mod8) = 4$, but 1000 (mod8) = 0, so the divisibility rule for 8 requires us to check if the last 3 digits of a number are divisible by 8.  In fact, 10n= 5n2n, so 10nis always evenly divisible by 2n, and never evenly divisible by 2n+1.  To the find the remainder of any number when it is divided by 2n, we only have tolook at the last n digits.
+      \begin{problem}
+        Is $6385$ divisible by $25$?
+      \end{problem}
+      $25$ is $5 \times 5$, so multiplying it by $2 \times 2$ we will get that $25$ is multiple of $100$.
+      Doing the same stuff as with divisibility by $2$, we write $6385$ as $6300 + 85$. $6300$ is a multiple of $100$ thereof it is also multiple of $25$. That means we only need to check whether $85$ is divisible by $25$. $85 = 75 + 10$, so $6385$ is not divisible by $25$.
+      \begin{definition}
+        To know whether a number is divisible by $5^n$, we need to check whether the \textbf{last $n$ digits} of the number is divisible by $5^n$.
+      \end{definition}
+      Both rules are true, because $10^n$ is divisible by
+      \begin{wrapfigure}{r}{0.42\textwidth}
+        \vspace*{-0.8em}
+        \hspace*{-1.5em}
+        \includegraphics[width=0.55\textwidth]{01 - Modular arithmetic/10-power.png}
+      \end{wrapfigure}
+      $2^n$~and~$5^n$.~Using~this~facts allows us~to exclude from consideration~all numbers bigger than $10^n$ and that left us with the last $n$ digits of a number.
     \end{column}
   \end{columns}
 \end{frame}
 
+\begin{frame}{Divisibility rules for 3 and 9}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Is $5479$ divisible by $9$?
+      \end{problem}
+      Let's write a number 5479 as a sum
+      \[ 5472 = 5 \cdot 1000 + 4 \cdot 100 + 7 \cdot 10 + 2. \]
+      And then write $1000$ as a sum $999 + 1$, $100 = 99 + 1$ and $10 = 9 + 1$. So 
+      \begin{multline*}
+        5472 = 5 \cdot (999 + 1) + 4 \cdot (99 + 1) + 7 \cdot (9 + 1) + 9 = \\
+        = 5 \cdot 999 + 5 + 4 \cdot 99 + 4 + 7 \cdot 9 + 7 + 2.
+      \end{multline*}
+      And finally we can realize that $999$, $99$, and $9$ are divisible by $9$. That means that divisibility of $5479$ by $9$ depends on divisibility of sum $5 + 4 + 7 + 2$.
+      \begin{definition}
+        A number is divisible by $9$, if the \textbf{sum of its digits} is divisible by $9$.
+      \end{definition}
+      And since $9$, $99$, $999$, $9999$ and so on is also divisible by $3$, we get
+      \begin{definition}
+        A number is divisible by $3$, if the \textbf{sum of its digits} is divisible by $3$.
+      \end{definition}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+
+      \begin{example}
+        $\overline{abcd}$ is a mathematical notation that a number is written with digits $a$, $b$, $c$, and $d$. So
+        \[ \overline{abcd} = a \cdot 10^3 + b \cdot 10^2 + c \cdot 10 + d. \]
+        This allows us to write the rules as
+        \[
+           \overline{abcd} \equiv a + b + c + d \pmod{9 \text{ or } 3}. 
+        \]
+        \vspace*{-1em}
+      \end{example}\medskip
+
+      The divisibility rule by $9$ allows us quickly check if our arithmetic operations are correct.
+      \[
+        \begin{array}{c}
+        \phantom{\times99}384\\
+        \underline{\times\phantom{999}56}\\
+        \phantom{\times9}2304\\
+        \underline{\phantom\times1820\phantom9}\\
+        \phantom\times20504
+        \end{array}
+      \]
+      Lets see remainders of factors and product
+      \begin{gather*}
+        384 \equiv 6 \Mod{9}, \quad
+        56 \equiv 2 \Mod{9}, \\
+        20504 \equiv 2 \Mod{9}.
+      \end{gather*}
+      But $6 \times 2 \not\equiv 2 \Mod{9}$, so there is an error.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Divisibility rules for 11}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      The divisibility rules for $9$ and $3$ works because $10$, $100$, $1{,}000$, and so on are all divisible by $9$ with remainder $1$. But what about $11$?
+      \[ 1\underbrace{00\ldots 0}_\text{even zeros} - 1 = \underbrace{99 \ldots 9}_\text{even nines} \]
+      is divisible by $11$ because it is sum of
+      \[ 99\ 99\ \ldots 99 = 99\cdot 10^n + \ldots + 99 \] which all are divisible by $11$.
+
+      From other hand
+      \[ 1\underbrace{00\ldots 0}_\text{odd zeros} + 1 = \underbrace{99\ldots 9}_\text{even nines}0 + 11 \]
+      is also divisible by $11$.
+
+      \begin{problem}
+        Is $3432$ divisible by $11$?
+      \end{problem}
+      \vspace*{-1em}
+      \begin{multline*}
+        3432 = 3 \cdot 1000 + 4 \cdot 100 + 3 \cdot 10 + 2 = \\
+        = 3 \cdot (1001 - 1) + 4 \cdot (99 + 1) + 3 \cdot (11 - 1) + 2 \equiv \\
+        \text{when we get rid of all multiples of 11} \\
+        \equiv -3 + 4 - 3 + 2 = 0 \Mod{11}.
+      \end{multline*}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      As we see our final computation is the digits of the number with alternate signs.
+      \begin{definition}
+        A number is divisible by $11$ if the \textbf{difference} between the \textbf{sum of the odd-place digits} and the \textbf{sum of the even-place digits} is $0$ or a multiple~of~$11$.
+      \end{definition}\medskip
+
+      The combinations of the divisibility rules may also create addition divisibility rules. 
+
+      For examle to check if number is divisible by $6$ we may check if it divisible by $2$ and $3$. This will works when the divisor may be split in product of 
+      \begin{wrapfigure}{l}{0.4\textwidth}
+        \vspace*{-0.8em}
+        \hspace*{-1.6em}
+        \includegraphics[width=0.5\textwidth]{01 - Modular arithmetic/collab.png}
+      \end{wrapfigure}
+      \textbf{coprime} (\emph{coprime numbers are numbers that don't have common divisors}) factors. 
+      But the rule will not work for example for $27 = 9 \times 3$, since testing for~$9$ we already testing for $3$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Summary of the divisibility rules}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{And beyond}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises\hspace*{0.35\textwidth}Challenge Problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item What is the largest integer less than $100$ which is congruent to $3 \Mod{5}$?
+        \item How many integers are there between $50$ and $250$ inclusive which are congruent to $1\Mod{7}$?
+        \item Find the value of the digit represented by $A$ in the $5$-digit number $12A3B$ if that number is divisible by both $4$ and $9$ and $A$ does not equal $B$.
+        \item In how many ways can a debt of $\$69$ be paid exactly using only $\$5$ and $\$2$ bills?
+        \item When $n$ is divided by $5$ the remainder is $1$. What is the remainder when $3n$ is divided by~$5$?
+        \item The $4$-digit number $4\_89$ is divisible by $11$. What digit goes in the blank?
+        \item If the $5$-digit number $3367\_$ is divisible by $15$, what digit must go in the blank?
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item The Fibonacci sequence is the sequence $1$, $1$, $2$, $3$, $5$, $8$, $13$, $\dots$, where every term after the second is equal to the sum of the two preceding terms.  Using the addition theorem for modular arithmetic, what is the remainder when the 100\textsuperscript{th} term of the Fibonacci sequence is divided by $8$?  (Hint: \emph{look for a repeating  pattern}).
+        \item Prove that the square of any integer is congruent to either $0$, $1$, or $4\Mod{8}$.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 % \begin{frame}{Title}
 %   \begin{columns}[T]

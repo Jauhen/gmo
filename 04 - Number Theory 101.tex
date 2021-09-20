@@ -23,7 +23,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 \begin{frame}{Number Theory definitions}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \textbf{Counting Numbers} = $\{1,\ 2,\ 3,\ \ldots\}$ is the numbers we use for counting. 
+      \textbf{Counting Numbers} = $\{1,\ 2,\ 3,\ \ldots\}$ are the numbers we use for counting. 
       
       (Yes, this is the definition.)
 
@@ -68,7 +68,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 \begin{frame}{Prime Factorization}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      All counting numbers may be presented as a~product of prime numbers. The existence and uniqueness of this presentation are proven by the \textbf{fundamental theorem of arithmetics}.
+      All counting numbers may be presented as a~product of prime numbers. The existence and uniqueness of this presentation are proven by the \textbf{fundamental theorem of arithmetic}.
 
       The process of presenting a number as a product of prime numbers is called \textbf{prime factorization}.
       \begin{problem}
@@ -86,7 +86,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 
       $715$ is no longer divisible by $2$. Let's try whether it is divisible by $3$. No luck, since $7+1+5=13$, which isn't divisible by $3$. 
 
-      Let’s try whether it is divisible by $5$: $715 \div 5 = 143$. 
+      It ends in 5, so it is divisible by $5$: $715 \div 5 = 143$. 
       Then check whether it is divisible by $7$, the remainder is $3$. 
       
       Then check it is divisible by $11$: $143 \div 11 = 13$, which is already a prime number. So}
@@ -95,10 +95,10 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       {\color{textBlue} Tips and tricks:}
       {\small
-      It is easy to find the prime factors when factors are $2$, $3$, $5$, or $11$. But what if you've already extracted them but are still not sure whether a~remainder number is prime or composite?
+      It is easy to find the prime factors when factors are $2$, $3$, $5$, or $11$. But what if you've already extracted them, but are still not sure whether a~\emph{remainder number} is prime or composite?
       \begin{enumerate}
-        \item Check the last digit if it is even or $5$. Check a~sum and an alternating sum of numbers, probably it is still divisible by $3$ or $11$.
-        \item Then try to divide it by the successive primes: $7$, $13$, $17$, $19$, $23$, $29$, etc. If the last prime you've been attempting to divide by being squared is is bigger than your number, your number is a prime. That means you don't need to try primes bigger than $7$ for numbers less than $100$ since $11 \times 11 > 100$ already.
+        \item Check the \emph{last digit} if it is even or $5$. Check a~\emph{sum} and an \emph{alternating sum} of numbers, probably it is still divisible by $3$ or $11$.
+        \item Then try to divide it by the successive primes: $7$, $13$, $17$, $19$, $23$, $29$, etc. If the last prime you've been attempting to divide by being squared is bigger than your number, your number is a prime. That means you don't need to try primes bigger than $7$ for numbers less than $100$ since $11 \times 11 > 100$ already.
         \item Organize your calculations into something like this:
       \end{enumerate}\vspace*{-0.5ex}
       \[
@@ -131,16 +131,15 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{problem}
-        Coach Barak wants to set up Teamattack teams, But he doesn't know how many students will attend class: $24$ or $30$. What is the greatest number of teams he should arrange, so each team has equal numbers of participants?
+        Coach Barak wants to set up Teamattack teams, But he doesn't know how many students will attend class: $24$ or $30$. What is the \textbf{greatest} number of teams he should arrange, so each team has equal numbers of participants?
       \end{problem}
-      If he knows for sure there will be $24$ students, he may arrange $1$, $2$, $3$, $4$, $6$, $8$, $12$, and $24$ teams.\smallskip
+      If he knows for sure there will be $24$ students, he may arrange $1$, $2$, $3$, $4$, $6$, $8$, $12$, and $24$ student teams.
       
-      If it would be $30$ students, $1$, $2$, $3$, $5$, $6$, $10$, $15$ and $30$ teams are possible.
-      \smallskip
+      If it would be $30$ students, $1$, $2$, $3$, $5$, $6$, $10$, $15$ and $30$ student teams are possible.
       
       The greatest number present in both lists is $6$, so coach Barak should arrange $6$ teams.
       \begin{center}
-        \includegraphics[width=0.6\textwidth]{04 - Number Theory 101/barak.jpg}
+        \includegraphics[width=0.55\textwidth]{04 - Number Theory 101/barak.jpg}
       \end{center}
     \end{column}
     \begin{column}{0.5\textwidth}
@@ -182,11 +181,10 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
       A prime factorization of huge numbers is a super hard problem. In fact, modern computer security is based that no one can factor huge numbers in a~reasonable time.
     \end{column}
     \begin{column}{0.5\textwidth}
-      But sometimes, the prime factorization itself is a~problem. In this case, the \textbf{Euclidean algorithm} will help. It is based on the fact that 
-      
-      {\centering
-      if $a > b$, then $\gcd(a,\ b) = \gcd(a − k \cdot b, b)$.}
-
+      But sometimes, the prime factorization itself is a~problem. In this case, the \textbf{Euclidean algorithm} will help. It is based on the fact that     
+      \[
+        \text{if }a > b\text{, then }\gcd(a,\ b) = \gcd(a − k \cdot b, b).
+      \]\vspace*{-0.9\baselineskip}
       \begin{problem}
         What is the GCD of $833$ and $221$?        
       \end{problem}
@@ -208,7 +206,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{problem}
-        Alice has invited friends to a party and wants to buy cookies for everyone. She knows there will be $24$ or $30$ guests, so she wants that everybody gets an equal amount of cookies. What is the \textbf{minimum} amount of cookies should she buy?
+        Alice has invited friends to a party and wants to buy cookies for everyone. She knows there will be $24$ or $30$ guests, so she wants that everybody to get an equal amount of cookies. What is the \textbf{minimum} amount of cookies should she buy?
       \end{problem}
       \begin{wrapfigure}[8]{r}{0.34\textwidth}
         \vspace*{-2em}\hspace*{-3em}
@@ -222,13 +220,13 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
       Therefore, we may see, the minimum amount of cookies she should buy is $120$.
 
       \begin{definition}
-        The \textbf{Least Common Multiple (LCM)} of two counting numbers is the smallest counting number that each of the given numbers divides.  
+        The \textbf{Least Common Multiple (LCM)} of two counting numbers is the smallest counting number that each of the given numbers divides evenly.  
       \end{definition}
     \end{column}
     \begin{column}{0.5\textwidth}
       The LCM of two numbers is often denoted as $\lcm(a,\ b)$ or simply (in some context) $[a,\ b]$. 
 
-      To find the LCM of two numbers performing a \textbf{prime factorization} of the numbers is also helpful. The LCM of two numbers is the product of all primes in \emph{their maximal power} in the factorization of each number.
+      To find the LCM of two numbers, it is also helpful to perform a \textbf{prime factorization} of the numbers. The LCM of two numbers is the product of all primes in \emph{their maximal power} in the factorization of each number.
       
       \begin{definition}
         What is the LCM of $144$ and $900$?        
@@ -294,7 +292,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 
 \begin{frame}{Exercises\hspace*{0.35\textwidth}Challenge Problems}
   \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.52\textwidth}
       \begin{enumerate}
         \item What is the only whole number that is not included in the set of counting numbers?
         \item What is the prime factorization of $144$?
@@ -302,17 +300,19 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
         \item What is the $\gcd(5040,\ 6125)$?
         \item What is the $\lcm(484,\ 330)$?
         \item Larry goes shopping every $3$ days, Moe goes shopping every $4$ days, and Curly goes shopping every $5$ days.  If they all go shopping together on a Sunday, what is the first day of the week they could go shopping together again?
-        \item In a video game, red aliens are worth $7$ points and blue aliens are worth $9$ points.  What is the highest score that can’t be obtained by capturing only red or blue aliens.
-        \item What is the product when the $\lcm (a,\ b)$ is multiplied by the $\gcd (a,\ b)$?
+        \item In a video game, red aliens are worth $7$ points and blue aliens are worth $9$ points.  What is the highest score that can’t be obtained by capturing only red or blue aliens?
+        \item What are the GCD and LCM of $1183$ and $3458$? \emph{The Euclidean Algorithm may be useful here.}
       \end{enumerate}
     \end{column}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.48\textwidth}
       \begin{enumerate}
         \item What is the largest integer that can’t be expressed as the sum of integer multiples of $5$, $7$, $8$?
 
-        \item Find the smallest positive integer which\\ when divided by $12$ leaves a remainder of $11$, when divided by $11$ leaves a remainder of $10$, when divided by $10$ leaves a remainder of $9$, etc. down to where, when divided by $2$, it leaves a remainder of $1$.
+        \item Find the smallest positive integer which when divided by $12$ leaves a remainder of $11$, when divided by $11$ leaves a remainder of $10$, when divided by $10$ leaves a~remainder of $9$, etc. down to where, when divided by $2$, it leaves a remainder of $1$.
 
         \item Find the smallest positive integer greater than $1$ which yields a remainder of $1$ when divided by any single digit positive integer greater than $1$.
+        
+        \item Prove that $\gcd(a,\ b) \times \lcm(a,\ b) = a \times b$.
       \end{enumerate}
     \end{column}
   \end{columns}

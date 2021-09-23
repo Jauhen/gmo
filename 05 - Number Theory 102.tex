@@ -1,0 +1,290 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{scalerel}
+
+\usetheme{graham}
+
+\title{Number Theory 102}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\newcommand\Mydiv[2]{%
+$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+        \overline{\enspace\strut#2}$}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Terminal zeroes}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{example}
+        The \textbf{factorial} $n!$ is the product of all positive integers less than or equal to $n$.
+      \end{example}
+      \begin{problem}
+        Count the number of trailing zeros in $7!$.
+      \end{problem}
+      We may count $7!$ as 
+      \[ 7! = 7 \times 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 5{,}040. \]
+      So the number of trailing zeros of $7!$ is $1$.\smallskip
+
+      But what to do for numbers much bigger?
+      \begin{problem}
+        Count the number of trailing zeros in $78!$.
+      \end{problem}
+      Even the computer will have trouble counting $78!$, but we don't need the whole number. Instead, we need only trailing zeros. How do they appear? 
+
+      Let's look from another side. What does it mean a~number has $n$ trailing zeros? We may think of that as the number is $n$ times divisible by $10$. So the number is divisible by $10^n$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        A number is divisible by $10$ if its prime factorization has $2$ and $5$.
+      \end{definition}
+      And to be divisible by $10^n$ it needs to have $n$ times factors $2$ and $5$. So, let's count how many $2$ has prime factorization of $78!$. Every even number in $78!$ give at least one $2$, so we already have $78 \div 2 = 39$ twos. Also, every multiple of $4$ gives us an additional $2$, so we will have additional $19$ twos. Multiples of $8$: $9$ twos, multiples of $16$: $4$ twos, and multiples of $32$ and $64$: $2$ and $1$ twos.
+      \[ 39 + 19 + 9 + 4 + 2 + 1 = 74 \]
+      And this means $78!$ is divisible by $2^{74}$.
+      
+      What about $5^n$. $78!$ has $15$ multiples of $5$ and $3$ multiples of $25$. So $78!$ is divisible by $5^{18}$. As we see, the power of $5$ is much \emph{smaller} then the power of $2$.
+      \begin{definition}
+        $n!$ factorial has the same number of trailing zeroes as \textbf{maximal power} of $5$ it is \emph{divisible}.
+      \end{definition}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Bases}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        What is $6547$ on \emph{Planet 51}? 
+      \end{problem}
+
+      We, earthlings, use the positional numeral system, which was invented between the 1st and 4th centuries by Indian mathematicians. 
+      \begin{wrapfigure}[20]{r}{0.2\textwidth}
+        \vspace*{-1.5em}
+        \hspace*{-1.5em}
+        \includegraphics[width=0.37\textwidth]{05 - Number Theory 102/alien.png}
+      \end{wrapfigure}
+      In English, we read $6547$ as \emph{six thousand five hundred forty-seven}, or
+      \[ 6547 = 6 \times 1000 + 5 \times 100 + 4 \times 10 + 7, \]
+      in short writing:
+      \[  6547 = 6 \times 10^3 + 5 \times 10^2 + 4 \times 10 + 7. \]
+      There $10$ is the essential piece of how we understand our numbers. We called our system the \textbf{base-ten positional numeral system} or short \textbf{decimal}.
+      
+      Moreover we have just $10$~\emph{digits}: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, and $9$.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      But $10$ is just the number of fingers on our hands, some random result of evolution on the Earth. Does it mean that an alien from \emph{Planet 51}, who has $8$ fingers on their hands, can't count? But if they also use the positional system, aliens may use only $8$ digits. We will translate them into our spelling as $0$, $1$, $2$, $3$, $4$, $5$, $6$, and $7$. As a result, they may treat the number like this:
+      \[ 6547 \text{ (on Planet 51)} = 6 \times 8^3 + 5 \times 8^2 + 4 \times 8 + 7. \]
+      Which in our world would mean:
+      \begin{multline*}
+         6547 \text{ (on Planet 51)} = \\ =6 \times 512 + 5 \times 64 + 4 \times 8 + 7 = 3431.
+      \end{multline*}
+      To distinguish "our" numbers from "their," we will use subscript with the base of the system, so
+      \[ 6547_{8} = 3431_{10}. \]
+      And now we can communicate with aliens without misunderstanding.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Base 2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      However, we don't need to fly to a faraway planet to find aliens using non $10$ based numeral systems. Other creatures around us use another numeral system. We call them \emph{computers}, and since they only can distinguish the presence of electricity or its absence, they may use only $2$~digits - $0$ and $1$, where $0$ - no electricity and $1$ - there is electricity.
+      \begin{definition}
+        We call the numeral system with base $2$ \textbf{binary}.
+      \end{definition}
+      \begin{problem}
+        Present $6547_{10}$ in the binary system? 
+      \end{problem}
+      Let's write down the first powers of $2$:
+      $1$, $2$, $4$, $8$, $16$, $32$, $64$, $128$, $256$, $512$, $1024$, $2048$, $4096$ and so on.
+      Since digits can be only $0$ and $1$, the number would be sum of some powers of $2$:
+      \begin{multline*}
+        6547_{10} = 4096 + 2048 + 256 + 128 + 16 + 2 + 1 = \\ 
+        = 2^{12} + 22^{11} + 2^8 + 2^7 + 2^4 + 2^1 + 2^0 = \\ = 1100110010011_2
+      \end{multline*}
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Instead of $4$ digits, the binary system uses $12$ to represent $6547$, but they can sum and multiply numbers much faster. The reason is the binary addition and multiplication tables.
+      \[
+        \begin{array}{c|cc}
+          + & 0 & 1 \\ \hline
+          0 & 0 & 1 \\ 
+          1 & 1 & 10
+        \end{array}
+        \qquad 
+        \qquad 
+        \begin{array}{c|cc}
+          $\times$ & 0 & 1 \\ \hline
+          0 & 0 & 0 \\ 
+          1 & 0 & 1
+        \end{array}
+      \]
+      For example:
+      \[
+        \begin{array}{r}
+          1\;0\;0\;1\;1 \\
+         +\;1\;0\;1\;0 \\ \hline
+          1\;1\;1\;0\;1
+        \end{array}
+        \qquad 
+        \qquad 
+        \begin{array}{r}
+          1\;0\;1\;1 \\
+          $\times$\;1\;0\;1 \\ \hline
+          1\;0\;1\;1 \\
+          1\;0\;1\;1\phantom{\;0\;0} \\ \hline
+          1\;1\;0\;1\;1\;1
+        \end{array}
+      \]
+      In programming, we often use the \textbf{hexadecimal system} (base~$16$). Since we use only $10$ digits, and base $16$ system need $16$, we use letters as digits $10 = A$, $11 = B$, $12 = C$, $13 = D$, $14 = E$, $15 = F$. For example 
+      \[ 7A_{16} = 7 \times 16 + 10 = 122_{10} \].
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Converting between bases}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Convert $6547_{10}$ to $9$-base numeral system?
+      \end{problem}
+
+      The natural approach is to find out all needed powers of $9$: 
+      $9$, $81$, $729$, $6561$, and so on. Then find the biggest power of $9$ lower than our number and divide it with reminder:
+      \begin{align*}
+        6547 &= \mathbf{8} \times 729 + 715, \\
+        715 &= \mathbf{8} \times 81 + 67, \\
+        67 &= \mathbf{7} \times 9 + 4, \\
+        4 &= \mathbf{4} \times 1 + 0,
+      \end{align*}
+      and we get 
+      $ 6547 = 8 \times 9^3 + 8 \times 9^2 + 7 \times 9 + 4. $
+      So \[6547_{10} = 8874_{9}\] \vspace*{-0.8\baselineskip}
+      \begin{problem}
+        Convert $6547_{9}$ to \emph{decimal} numeral system?
+      \end{problem} \vspace*{-1\baselineskip}
+      \begin{multline*}
+         6547_{9} = 6 \times 9^3 + 5 \times 9^2 + 4 \times 9 + 7 = \\
+         = 6 \times 729 + 5 \times 81 + 4 \times 9 + 7 = 4822. 
+      \end{multline*}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      But there is another approach:
+      lets rewrite
+      \[ 6547_{10} = 8 \times 9^3 + 8 \times 9^2 + 7 \times 9 + 4. \]
+      as
+      \[ 6547_{10} = \left( \left(8 \times 9 + 8 \right) \times 9 + 7 \right) \times 9 + 4. \]
+      and it gives us second method:
+      \begin{align*}
+        6547 &= 727 * 9 + \mathbf{4}, \\
+        727 &= 80 * 9 + \mathbf{7}, \\
+        80 &= 8 * 9 + \mathbf{8}, \\
+        8 &= \mathbf{8}.         
+      \end{align*}
+      and we get our number in reverse order. 
+      
+      It also may be written this way (from bottom to top)
+      \[
+        \setlength\arraycolsep{0.6ex}
+        \begin{array}{rl}
+          0 & \text{R}\ \ \mathbf{8} \\
+          $\Mydiv{9}{\ 8}$ & \text{R}\ \ \mathbf{8} \\
+          $\Mydiv{9}{\ 8\;0}$ & \text{R}\ \ \mathbf{7} \\
+          $\Mydiv{9}{\ 7\;2\;7}$ & \text{R}\ \ \mathbf{4} \\
+          $\Mydiv{9}{\ 6\;5\;4\;7}$ &
+        \end{array}
+      \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The last digit}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Find the last digit of $743 + 24$?        
+      \end{problem}
+      Let's write our numbers as $74 \times 10 + 3$ and $2 \times 10 + 4$ and find the sum:
+      \[ 74\mathbf{3} + 2\mathbf{4} = (74 \times 10 + \mathbf{3}) + (2 \times 10 + \mathbf{4}) = (76 \times 10) + \mathbf{7}.\]
+      As we see, every multiple of $10$ does not contribute to the last digit because all they can apply is tenth and higher.\smallskip
+
+      The same is true for multiplication.
+      \begin{problem}
+        Find the last digit of $743 \times 24$?
+      \end{problem}\vspace*{-1.2\baselineskip}
+      \begin{multline*}
+        74\mathbf{3} \times 2\mathbf{4} = (74 \times 10 + \mathbf{3}) (2 \times 10 + \mathbf{4}) = \\ 
+        = 74 \times 2 \times 100 + 74 \times 4 \times 10 + {} \\
+         + 3 \times 2 \times 10 + \mathbf{3} \times \mathbf{4} = \\
+        = \text{something} \times 10 + \mathbf{12} = (\text{something} + 1) \times 10 + \mathbf{2}.
+      \end{multline*}\vspace*{-0.8\baselineskip}
+      \begin{definition}
+        The \textbf{last digit} of a sum, difference, or product \emph{depends only} on the \textbf{last digit} of terms.
+      \end{definition}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Find the last digit of $7^{42}$?
+      \end{problem}
+      \begin{example}
+        \emph{As usual for the problems with big numbers, it is sometimes fruitful to start with small numbers and look for a pattern.}
+      \end{example}
+
+      $7^1 = 7$, $7^2 = ...9$, $7^3 = ...3$, $7^4 = ...1$, $7^5 = ...7$, $7^6 = ...9$, $7^7 = ...3$.
+      And the last digits start repeating. Indeed, as soon as we get a digit we already met, the next digit would be produced by the same operation since we always multiply by~$7$.
+      \begin{wrapfigure}[11]{l}{0.33\textwidth}
+        \vspace*{-0.5em}
+        \hspace*{-1.3em}
+        \includegraphics[width=0.4\textwidth]{05 - Number Theory 102/the-last-one-leaf.png}
+      \end{wrapfigure}
+      As~a~result,~the~numbers~will form~a~repeated~pattern~with period $4$. 
+
+      To find the last digit of $7^{42}$, we need to find a reminder of $42$ divided by 4. $42 = 10 \times 4 + 2$, so the last digit of $7^{42}$ will be the same as of $7^2$. That means that the last digit of $7^{42}$ is $9$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises\hspace*{0.35\textwidth}Challenge Problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item What is the last digit in $5432 \times 234 \times 747$?
+        \item What is the last digit in $7^{49}$?
+        \item Write $2021$ in base $7$ notation.
+        \item What is base $10$ representation of $2021_8$?
+        \item In base $6$ notation, what is the sum of $2021_6 + 2022_6 +  2023_6$?
+        \item A binary number consists of $5$ digits, all of which are ones.  When that number is doubled, how many digits in the resulting number are now $1$’s?
+        \item What is the largest base $10$ number that can be expressed as a $2$-digit base $5$ number?
+        \item How would you represent $531{,}441$ in base $9$?
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Find the units digit of $3^{1986} - 2^{1986}$.
+        \item In base $16$ (also known as \emph{hexadecimal} notation), the digits for $10-15$ are given by the letters $A-F$ respectively.  What is the base $10$ value of the number $ACED_{16}$?
+        \item How many terminal zeros are there when $24^6 \times 9^3$ is written in base $6$ notation?
+        \item[4*.] When the number $n$ is written in base $b$ its representation is the two-digit number $AB$ where $A = b-2$ and $B = 2$.  What is the representation of $n$ in base $(b-1)$?
+      \end{enumerate}
+      \vspace*{5\baselineskip}
+      \hspace{2em}\rule{0.3\textwidth}{0.2pt}
+
+      \hspace{2.5em}{\footnotesize * very hard}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

@@ -16,43 +16,6 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 \begin{document}
 \maketitle
 
-\begin{frame}{Terminal zeroes}
-  \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-      \begin{example}
-        The \textbf{factorial} $n!$ is the product of all positive integers less than or equal to $n$.
-      \end{example}
-      \begin{problem}
-        Count the number of trailing zeros in $7!$.
-      \end{problem}
-      We may count $7!$ as 
-      \[ 7! = 7 \times 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 5{,}040. \]
-      So the number of trailing zeros of $7!$ is $1$.\smallskip
-
-      But what to do for numbers much bigger?
-      \begin{problem}
-        Count the number of trailing zeros in $78!$.
-      \end{problem}
-      Even the computer will have trouble counting $78!$, but we don't need the whole number. Instead, we need only trailing zeros. How do they appear? 
-
-      Let's look from another side. What does it mean a~number has $n$ trailing zeros? We may think of that as the number is $n$ times divisible by $10$. So the number is divisible by $10^n$.
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{definition}
-        A number is divisible by $10$ if its prime factorization has $2$ and $5$.
-      \end{definition}
-      And to be divisible by $10^n$ it needs to have $n$ times factors $2$ and $5$. So, let's count how many $2$ has prime factorization of $78!$. Every even number in $78!$ give at least one $2$, so we already have $78 \div 2 = 39$ twos. Also, every multiple of $4$ gives us an additional $2$, so we will have additional $19$ twos. Multiples of $8$: $9$ twos, multiples of $16$: $4$ twos, and multiples of $32$ and $64$: $2$ and $1$ twos.
-      \[ 39 + 19 + 9 + 4 + 2 + 1 = 74 \]
-      And this means $78!$ is divisible by $2^{74}$.
-      
-      What about $5^n$. $78!$ has $15$ multiples of $5$ and $3$ multiples of $25$. So $78!$ is divisible by $5^{18}$. As we see, the power of $5$ is much \emph{smaller} then the power of $2$.
-      \begin{definition}
-        $n!$ factorial has the same number of trailing zeroes as \textbf{maximal power} of $5$ it is \emph{divisible}.
-      \end{definition}
-    \end{column}
-  \end{columns}
-\end{frame}
-
 \begin{frame}{Bases}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
@@ -245,6 +208,43 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
       As~a~result,~the~numbers~will form~a~repeated~pattern~with period $4$. 
 
       To find the last digit of $7^{42}$, we need to find a reminder of $42$ divided by 4. $42 = 10 \times 4 + 2$, so the last digit of $7^{42}$ will be the same as of $7^2$. That means that the last digit of $7^{42}$ is $9$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Terminal zeroes}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{example}
+        The \textbf{factorial} $n!$ is the product of all positive integers less than or equal to $n$.
+      \end{example}
+      \begin{problem}
+        Count the number of trailing zeros in $7!$.
+      \end{problem}
+      We may count $7!$ as 
+      \[ 7! = 7 \times 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 5{,}040. \]
+      So the number of trailing zeros of $7!$ is $1$.\smallskip
+
+      But what to do for numbers much bigger?
+      \begin{problem}
+        Count the number of trailing zeros in $78!$.
+      \end{problem}
+      Even the computer will have trouble counting $78!$, but we don't need the whole number. Instead, we need only trailing zeros. How do they appear? 
+
+      Let's look from another side. What does it mean a~number has $n$ trailing zeros? We may think of that as the number is $n$ times divisible by $10$. So the number is divisible by $10^n$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        A number is divisible by $10$ if its prime factorization has $2$ and $5$.
+      \end{definition}
+      And to be divisible by $10^n$ it needs to have $n$ times factors $2$ and $5$. So, let's count how many $2$ has prime factorization of $78!$. Every even number in $78!$ give at least one $2$, so we already have $78 \div 2 = 39$ twos. Also, every multiple of $4$ gives us an additional $2$, so we will have additional $19$ twos. Multiples of $8$: $9$ twos, multiples of $16$: $4$ twos, and multiples of $32$ and $64$: $2$ and $1$ twos.
+      \[ 39 + 19 + 9 + 4 + 2 + 1 = 74 \]
+      And this means $78!$ is divisible by $2^{74}$.
+      
+      What about $5^n$. $78!$ has $15$ multiples of $5$ and $3$ multiples of $25$. So $78!$ is divisible by $5^{18}$. As we see, the power of $5$ is much \emph{smaller} then the power of $2$.
+      \begin{definition}
+        $n!$ factorial has the same number of trailing zeroes as \textbf{maximal power} of $5$ it is \emph{divisible}.
+      \end{definition}
     \end{column}
   \end{columns}
 \end{frame}

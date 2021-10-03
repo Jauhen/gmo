@@ -226,21 +226,24 @@
       \end{multline*}
     \end{column}
     \begin{column}{0.5\textwidth}
-      As we see our final computation is the digits of the number with alternate signs.
+      As we see, our final computation is the digits of the number with alternate signs.
       \begin{definition}
         A number is divisible by $11$ if the \textbf{difference} between the \textbf{sum of the odd-place digits} and the \textbf{sum of the even-place digits} is $0$ or a multiple~of~$11$.
       \end{definition}\medskip
 
-      The combinations of the divisibility rules may also create addition divisibility rules. 
+      The combinations of the divisibility rules may also create additional divisibility rules. 
 
       For example to check if number is divisible by $6$ we may check if it divisible by $2$ and $3$. This will works when the divisor may be split in product of 
       \begin{wrapfigure}{l}{0.4\textwidth}
         \vspace*{-0.8em}
         \includegraphics[width=0.43\textwidth]{01 - Modular arithmetic/collab.png}
       \end{wrapfigure}
-      \textbf{coprime}\footnote{\emph{coprime numbers are numbers that don't have common divisors.}} factors. 
+      \textbf{coprime}\footnotemark\ factors. 
       But the rule will not work for example for $27 = 9 \times 3$, since testing for~$9$ we already testing for $3$.
-      \vspace*{1.7em}
+      \vspace*{2.5em}
+      \hrule
+      \vspace*{2pt}
+      {\footnotesize \textsuperscript{1}\emph{coprime numbers are numbers without common divisors.}}
     \end{column}
   \end{columns}
 \end{frame}

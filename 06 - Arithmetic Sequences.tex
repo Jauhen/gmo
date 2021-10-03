@@ -172,6 +172,31 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Repeating geometric pattern}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      A popular variety of question in middle school math contests involves series of geometric patterns.  Consider this question from MOEMS in December 2020:
+      \begin{problem}
+        \includegraphics[width=\textwidth]{06 - Arithmetic Sequences/moems.png}
+        Each figure in the sequence shown is composed entirely of $1 \times 1$ shaded squares.  If the pattern is continued, how many $1 \times 1$ shaded squares will there be altogether in the first $21$ figures?
+      \end{problem}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      There are $4$ squares in the first figure, $8$ squares in the second figure, $12$ squares in the third figure and so on.
+
+      With each successive figure, they are adding one square to each side, and there are $4$ sides, so the number of squares for the $n$\textsuperscript{th} figure in the series is $4n$.  So we have figured out the pattern, and now have the general expression for the value of any term in this arithmetic series.
+
+      The total number of squares in the first $21$ figures
+      \[ 4 + 8 + 12 + \ldots + 84 = 4 \left(1 + 2 + 3 + \ldots + 21\right). \]
+      Using Gauss' rule for summing integers from $1$ 
+      to~$n$, the sum of the integers $1$ to $21$ is:
+      \[ \frac{22 \times 21}{2} = 231. \]
+      The total number of squares is $4 \times 231 = 924.$
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Arithmetic series shortcuts}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}

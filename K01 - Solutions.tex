@@ -1,0 +1,485 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage[all]{xy}
+\usepackage{luamplib}
+\everymplib{input mpcolornames; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems, September 2021}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 1}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \small
+        A cubic fridge was brought to the warehouse, the floor of which looks like a rectangle of $3 \times 7$ cells, and the fridge occupies one cell.
+
+        The refrigerator can be rolled over the rib, laying on its side, but not turned upside down.
+
+        Draw an example of a path along which you can roll the refrigerator from the lower-left cell to the right-top so that both at the beginning and the end it stood upside up if initially
+
+        a) the warehouse is empty (pic. 1);
+        \begin{center}
+          \vspace*{-0.5em}
+          \hspace*{-2em}
+          \begin{mplibcode}
+            u=0.45cm;
+            path p[][];
+            for i=0 upto 6:
+              for j=0 upto 2:
+                p[i][j]:=(i*u, j*u)--(i*u, j*u+u)--(i*u +u, j*u + u)--(i*u + u, j*u)--cycle; 
+                fill p[i][j] withcolor white;
+                draw p[i][j];
+              endfor
+            endfor
+            fill p[0][0] withcolor Brown1;
+            draw p[0][0];
+            fill p[6][2] withcolor Chartreuse1;
+            draw p[6][2];
+            label.(btex {\tiny Start} etex, (0.5u, 0.5u));
+            label.(btex {\tiny Finish} etex, (6.5u, 2.5u));
+          \end{mplibcode}  
+
+          Pic. 1 
+          \vspace*{-0.5em}         
+        \end{center}
+
+        b) two cells are already occupied (pic. 2).
+        \begin{center}
+          \vspace*{-0.5em}
+          \hspace*{-2em}
+          \begin{mplibcode}
+            u=0.45cm;
+            path p[][];
+            for i=0 upto 6:
+              for j=0 upto 2:
+                p[i][j]:=(i*u, j*u)--(i*u, j*u+u)--(i*u +u, j*u + u)--(i*u + u, j*u)--cycle; 
+                fill p[i][j] withcolor white;
+                draw p[i][j];
+              endfor
+            endfor
+            fill p[0][0] withcolor Brown1;
+            draw p[0][0];
+            fill p[6][2] withcolor Chartreuse1;
+            draw p[6][2];
+            fill p[1][0] withcolor Grey;
+            draw p[1][0];
+            fill p[4][1] withcolor Grey;
+            draw p[4][1];
+            label.(btex {\tiny Start} etex, (0.5u, 0.5u));
+            label.(btex {\tiny Finish} etex, (6.5u, 2.5u));
+          \end{mplibcode}  
+
+          Pic. 2          
+        \end{center}
+        \vspace*{-0.8em}
+      \end{problem}
+      \normalsize
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      The problem is a typical puzzle problem. A simple try-and-error approach may solve it. The path maybe something like that, where blue squares are where the fridge stood upside up. 
+      \begin{center}
+        \hspace*{1em}
+        \vspace*{-0.5em}
+        \begin{mplibcode}
+          u=0.8cm;
+          path p[][];
+          fill (0u,0u)--(0u, 3u)--(7u, 3u)--(7u, 0u)--cycle withcolor white;
+
+          fill (2u, 0u)--(2.7u, 0u)--(2.7u, 0.7u)--(2u, 0.7u)--cycle withcolor DeepSkyBlue1;
+          fill (2.3u, 1.3u)--(3u, 1.3u)--(3u, 2u)--(2.3u, 2u)--cycle withcolor DeepSkyBlue1;
+          fill (6u, 1u)--(6.7u, 1u)--(6.7u, 1.7u)--(6u, 1.7u)--cycle withcolor DeepSkyBlue1;
+
+          for i=0 upto 6:
+            for j=0 upto 2:
+              p[i][j]:=(i*u, j*u)--(i*u, j*u+u)--(i*u +u, j*u + u)--(i*u + u, j*u)--cycle; 
+              draw p[i][j];
+            endfor
+          endfor
+          fill p[0][0] withcolor Brown1;
+          draw p[0][0];
+          fill p[6][2] withcolor Chartreuse1;
+          draw p[6][2];
+          fill p[1][0] withcolor Grey;
+          draw p[1][0];
+          fill p[4][1] withcolor Grey;
+          draw p[4][1];
+
+          label.(btex {\tiny Start} etex, (0.5u, 0.5u));
+          label.(btex {\tiny Finish} etex, (6.5u, 2.5u));
+
+          
+          drawarrow (0.5u, 0.7u)--(0.5u, 1.4u) withpen pencircle scaled 1.25;
+          drawarrow (0.6u, 1.5u)--(1.4u, 1.5u) withpen pencircle scaled 1.25;
+          drawarrow (1.6u, 1.5u)--(2.2u, 1.5u) withpen pencircle scaled 1.25;
+          drawarrow (2.3u, 1.4u)--(2.3u, 0.4u) withpen pencircle scaled 1.25;
+          drawarrow (2.4u, 0.3u)--(3.5u, 0.3u) withpen pencircle scaled 1.25;
+          drawarrow (3.5u, 0.7u)--(3.5u, 1.4u) withpen pencircle scaled 1.25;
+          drawarrow (3.4u, 1.5u)--(2.8u, 1.5u) withpen pencircle scaled 1.25;
+          drawarrow (2.7u, 1.4u)--(2.7u, 0.6u) withpen pencircle scaled 1.25;
+          drawarrow (2.8u, 0.5u)--(4.4u, 0.5u) withpen pencircle scaled 1.25;
+          drawarrow (4.6u, 0.5u)--(5.4u, 0.5u) withpen pencircle scaled 1.25;
+          drawarrow (5.6u, 0.5u)--(6.4u, 0.5u) withpen pencircle scaled 1.25;
+          drawarrow (6.5u, 0.6u)--(6.5u, 1.4u) withpen pencircle scaled 1.25;
+          drawarrow (6.4u, 1.5u)--(5.6u, 1.5u) withpen pencircle scaled 1.25;
+          drawarrow (5.5u, 1.6u)--(5.5u, 2.4u) withpen pencircle scaled 1.25;
+          drawarrow (5.6u, 2.5u)--(6.2u, 2.5u) withpen pencircle scaled 1.25;
+        \end{mplibcode}        
+      \end{center}
+
+      The solution for section \textbf{b} also works as a solution for section \textbf{a}.
+      
+      The correct solution is a proper example (it may be a different one). Some explanation that helps verify the example is a nice addition. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \emph{Polina}, \emph{Lena}, and \emph{Irina} came to the club for the first time and decided to meet.\smallskip
+
+        "My name is \emph{Lena}," one of them said.\smallskip
+
+        "And my name is \emph{Irina}," said the second.\smallskip
+
+        The third girl said nothing.\smallskip
+
+        It is known that \emph{Polina} always speaks the truth, \emph{Lena} always lies, and \emph{Irina} sometimes speaks the truth and sometimes lies. How is each of the girls actually called?
+      \end{problem}
+
+      This problem is an example of the "Knights and Knaves" type of problem. We may solve it by eliminating other variants.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      The first girl can't be Lena since Lena will never say she is Lena. She also can't be Polina because Polina will say she is Polina. So the only option for the first girl is Irina.\medskip
+
+      The second girl can't be Polina because Polina will say she is Polina. So the only option for the second girl is Lena.\medskip
+
+      The third girl has only one option, so it is Polina.\medskip
+
+      The answer is 
+
+      \emph{The first girl is Irina, the second girl is Lena, and the third girl is Polina.}\medskip
+
+      A correct solution should have a proper answer and specify why other answers are impossible.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 3}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        a) Is it possible to cut a rectangle into several isosceles right-angled triangles, among which there are no identical ones?\smallskip
+
+        b) Is it possible to cut a square like this?
+      \end{problem}
+
+      The problem has only two possible answers: yes and no. But for the negative answer, we need to prove why it is impossible to cut a rectangle like that. For the positive answer, we only need to provide a proper example how to cut a rectangle or a square. \medskip
+
+      The best way to solve the problem is to start constructing an example using the "try-and-error" approach. If an example is not possible to construct, try to figure out a reason why. This reason may be used to prove impossibility or give a hint on how to construct an example.\medskip
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      To solve this particular problem, it is helpful to try a backward approach - to start construction from a triangle and build it up to a rectangle or a~square. A grid ruled paper may be useful here.
+
+      \begin{mplibcode}
+        u=0.45cm;
+        for i=0 upto 15:
+          draw (i*u, 0u)--(i*u, 6u) withpen pencircle scaled 0.3 withcolor Honeydew3;
+          if i < 7:
+            draw (0u, i*u)--(15u, i*u) withpen pencircle scaled 0.3 withcolor Honeydew3;
+          fi
+        endfor
+
+        draw (1u, 4u)--(2u,4u)--(2u,5u)--cycle withpen pencircle scaled 1.25;
+
+        drawarrow (1.5u, 3.5u)--(1.5u, 3u);
+
+        draw (1u, 1u)--(2u,1u)--(2u,2u)--cycle withpen pencircle scaled 1.25;
+        draw (1u, 1u)--(2u,2u)--(1u,3u)--cycle withpen pencircle scaled 1.25;
+
+        drawarrow (2.5u, 2u)--(3u, 2u);
+
+        draw (5u, 1u)--(6u,1u)--(6u,2u)--cycle withpen pencircle scaled 1.25;
+        draw (5u, 1u)--(6u,2u)--(5u,3u)--cycle withpen pencircle scaled 1.25;
+        draw (3u, 1u)--(5u,1u)--(5u,3u)--cycle withpen pencircle scaled 1.25;
+
+        drawarrow (6u, 3u)--(6.5u, 3u);
+
+        draw (9u, 1u)--(10u,1u)--(10u,2u)--cycle withpen pencircle scaled 1.25;
+        draw (9u, 1u)--(10u,2u)--(9u,3u)--cycle withpen pencircle scaled 1.25;
+        draw (7u, 1u)--(9u,1u)--(9u,3u)--cycle withpen pencircle scaled 1.25;
+        draw (7u, 1u)--(9u,3u)--(7u,5u)--cycle withpen pencircle scaled 1.25;
+
+        drawarrow (10u, 3u)--(10.5u, 3u);
+
+        draw (13u, 1u)--(14u,1u)--(14u,2u)--cycle withpen pencircle scaled 1.25;
+        draw (13u, 1u)--(14u,2u)--(13u,3u)--cycle withpen pencircle scaled 1.25;
+        draw (11u, 1u)--(13u,1u)--(13u,3u)--cycle withpen pencircle scaled 1.25;
+        draw (11u, 1u)--(13u,3u)--(11u,5u)--cycle withpen pencircle scaled 1.25;
+        draw (11u, 5u)--(14u,5u)--(14u,2u)--cycle withpen pencircle scaled 1.25;
+      \end{mplibcode}
+      \begin{wrapfigure}{r}{0.5\textwidth}
+        \vspace*{-1em}
+        \begin{mplibcode}
+          u=0.45cm;
+          for i=0 upto 7:
+            draw (i*u, 0u)--(i*u, 7u) withpen pencircle scaled 0.3 withcolor Honeydew3;
+            draw (0u, i*u)--(7u, i*u) withpen pencircle scaled 0.3 withcolor Honeydew3;
+          endfor
+
+          draw (0u, 0u)--(7u,7u)--(0u,7u)--cycle withpen pencircle scaled 1.25;
+          draw (0u, 0u)--(4u,0u)--(4u,4u)--cycle withpen pencircle scaled 1.25;
+          draw (4u, 4u)--(7u,7u)--(7u,1u)--cycle withpen pencircle scaled 1.25;
+          draw (4u, 0u)--(4u,4u)--(6u,2u)--cycle withpen pencircle scaled 1.25;
+          draw (4u, 0u)--(6u,0u)--(6u,2u)--cycle withpen pencircle scaled 1.25;
+          draw (6u, 0u)--(6u,2u)--(7u,1u)--cycle withpen pencircle scaled 1.25;
+          draw (6u, 0u)--(7u,0u)--(7u,1u)--cycle withpen pencircle scaled 1.25;
+        \end{mplibcode}
+      \end{wrapfigure}
+      The last two triangles are not equal because last one has side $3$ and the previous has side $2\sqrt{2}$.\medskip
+      
+      If we continue a little more, we can build a square.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Put different positive integer numbers, each of which has only digits $1$ and $2$, in the cells of a $3 \times 3$ square, so that the sum of the numbers in each row and column is the same.
+      \end{problem}
+
+      Since the problem asks us to construct an example, we may start with the "try-and-error" approach. After the first several tries, we may notice that all numbers should have the same length. This allows us to view each decimal place as a separate problem. 
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Let's take a look at how we can distribute $1$s and $2$s in different cells, so that the sum of the numbers in each row and column is the same.\medskip
+
+      \begin{columns}[totalwidth=\textwidth]
+        \begin{column}{0.25\textwidth}
+          \begin{mplibcode}
+            u=0.5cm;
+            for i=0 upto 3:
+              draw (i*u, 0u)--(i*u, 3u) withcolor Gray;
+              draw (0u, i*u)--(3u, i*u) withcolor Gray;
+            endfor            
+            label.(btex $2$ etex, (0.5u, 0.5u));
+            label.(btex $1$ etex, (0.5u, 1.5u));
+            label.(btex $1$ etex, (0.5u, 2.5u));
+            label.(btex $1$ etex, (1.5u, 0.5u));
+            label.(btex $1$ etex, (1.5u, 1.5u));
+            label.(btex $2$ etex, (1.5u, 2.5u));
+            label.(btex $1$ etex, (2.5u, 0.5u));
+            label.(btex $2$ etex, (2.5u, 1.5u));
+            label.(btex $1$ etex, (2.5u, 2.5u));
+
+          \end{mplibcode}
+        \end{column}
+        \begin{column}{0.25\textwidth}
+          \begin{mplibcode}
+            u=0.5cm;
+            for i=0 upto 3:
+              draw (i*u, 0u)--(i*u, 3u) withcolor Gray;
+              draw (0u, i*u)--(3u, i*u) withcolor Gray;
+            endfor
+
+            label.(btex $1$ etex, (0.5u, 0.5u));
+            label.(btex $1$ etex, (0.5u, 1.5u));
+            label.(btex $2$ etex, (0.5u, 2.5u));
+            label.(btex $2$ etex, (1.5u, 0.5u));
+            label.(btex $1$ etex, (1.5u, 1.5u));
+            label.(btex $1$ etex, (1.5u, 2.5u));
+            label.(btex $1$ etex, (2.5u, 0.5u));
+            label.(btex $2$ etex, (2.5u, 1.5u));
+            label.(btex $1$ etex, (2.5u, 2.5u));
+          \end{mplibcode}
+        \end{column}
+        \begin{column}{0.25\textwidth}
+          \begin{mplibcode}
+            u=0.5cm;
+            for i=0 upto 3:
+              draw (i*u, 0u)--(i*u, 3u) withcolor Gray;
+              draw (0u, i*u)--(3u, i*u) withcolor Gray;
+            endfor
+            
+            label.(btex $1$ etex, (0.5u, 0.5u));
+            label.(btex $2$ etex, (0.5u, 1.5u));
+            label.(btex $1$ etex, (0.5u, 2.5u));
+            label.(btex $2$ etex, (1.5u, 0.5u));
+            label.(btex $1$ etex, (1.5u, 1.5u));
+            label.(btex $1$ etex, (1.5u, 2.5u));
+            label.(btex $1$ etex, (2.5u, 0.5u));
+            label.(btex $1$ etex, (2.5u, 1.5u));
+            label.(btex $2$ etex, (2.5u, 2.5u));
+          \end{mplibcode}
+        \end{column}
+        \begin{column}{0.25\textwidth}
+          \begin{mplibcode}
+            u=0.5cm;
+            for i=0 upto 3:
+              draw (i*u, 0u)--(i*u, 3u) withcolor Gray;
+              draw (0u, i*u)--(3u, i*u) withcolor Gray;
+            endfor
+
+            label.(btex $1$ etex, (0.5u, 0.5u));
+            label.(btex $2$ etex, (0.5u, 1.5u));
+            label.(btex $1$ etex, (0.5u, 2.5u));
+            label.(btex $1$ etex, (1.5u, 0.5u));
+            label.(btex $1$ etex, (1.5u, 1.5u));
+            label.(btex $2$ etex, (1.5u, 2.5u));
+            label.(btex $2$ etex, (2.5u, 0.5u));
+            label.(btex $1$ etex, (2.5u, 1.5u));
+            label.(btex $1$ etex, (2.5u, 2.5u));
+          \end{mplibcode}
+        \end{column}
+      \end{columns}
+      \begin{columns}[T, totalwidth=\textwidth]
+        \begin{column}{0.25\textwidth}
+          \begin{mplibcode}
+            u=0.5cm;
+            for i=0 upto 3:
+              draw (i*u, 0u)--(i*u, 3u) withcolor Gray;
+              draw (0u, i*u)--(3u, i*u) withcolor Gray;
+            endfor
+
+            label.(btex $2$ etex, (0.5u, 0.5u));
+            label.(btex $1$ etex, (0.5u, 1.5u));
+            label.(btex $1$ etex, (0.5u, 2.5u));
+            label.(btex $1$ etex, (1.5u, 0.5u));
+            label.(btex $2$ etex, (1.5u, 1.5u));
+            label.(btex $1$ etex, (1.5u, 2.5u));
+            label.(btex $1$ etex, (2.5u, 0.5u));
+            label.(btex $1$ etex, (2.5u, 1.5u));
+            label.(btex $2$ etex, (2.5u, 2.5u));
+          \end{mplibcode}
+        \end{column}
+        \begin{column}{0.25\textwidth}
+          \begin{mplibcode}
+            u=0.5cm;
+            for i=0 upto 3:
+              draw (i*u, 0u)--(i*u, 3u) withcolor Gray;
+              draw (0u, i*u)--(3u, i*u) withcolor Gray;
+            endfor
+            label.(btex $1$ etex, (0.5u, 0.5u));
+            label.(btex $1$ etex, (0.5u, 1.5u));
+            label.(btex $2$ etex, (0.5u, 2.5u));
+            label.(btex $1$ etex, (1.5u, 0.5u));
+            label.(btex $2$ etex, (1.5u, 1.5u));
+            label.(btex $1$ etex, (1.5u, 2.5u));
+            label.(btex $2$ etex, (2.5u, 0.5u));
+            label.(btex $1$ etex, (2.5u, 1.5u));
+            label.(btex $1$ etex, (2.5u, 2.5u));
+          \end{mplibcode}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+          We may obtain other variants by replacing $2$s with $1$s and vice versa.
+        \end{column}
+      \end{columns}
+      \begin{wrapfigure}{r}{.5\textwidth}
+        \vspace*{-1.5em}
+        \begin{mplibcode}
+          u=0.9cm;
+          for i=0 upto 3:
+            draw (i*u, 0u)--(i*u, 3u);
+            draw (0u, i*u)--(3u, i*u);
+          endfor
+
+          label.(btex $2112$ etex, (0.5u, 0.5u));
+          label.(btex $1121$ etex, (0.5u, 1.5u));
+          label.(btex $1211$ etex, (0.5u, 2.5u));
+          label.(btex $1221$ etex, (1.5u, 0.5u));
+          label.(btex $1112$ etex, (1.5u, 1.5u));
+          label.(btex $2111$ etex, (1.5u, 2.5u));
+          label.(btex $1111$ etex, (2.5u, 0.5u));
+          label.(btex $2211$ etex, (2.5u, 1.5u));
+          label.(btex $1122$ etex, (2.5u, 2.5u));
+        \end{mplibcode}
+      \end{wrapfigure}
+      \medskip
+      We may find one of the solutions by combining the first, the second, the third, and the fifth variants.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 5}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        There is a wire frame of a rectangular box and a~rope. It is allowed to select any multiple points on the frame, connect them consecutively with the rope and measure a total length from the first point to the last. Suggest a way for two such measurements to find the total area of all six sides of the box.
+      \end{problem}
+
+      Let's side of the rectangular box would be $a$, $b$, and $c$. We need to find $2ab + 2bc + 2ca$.\medskip
+
+      But we may recognize that $2ab + 2bc + 2ca$ looks like the part of algebra formula
+      \[
+        (a + b + c)^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ca.
+      \]
+      If we can find $(a + b + c)^2$ and $a^2 + b^2 + c^2$ we will solve the problem.\medskip
+
+      To find $(a + b + c)^2$ we can find just what is $a + b + c$. It looks relatively simple.
+       
+      To find $a^2 + b^2 + c^2$ we need something more. 
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Using the \emph{Pythagorean theorem}, we know that a diagonal of the rectangle $ABCD$ is $\sqrt{a^2 + b^2}$, and applying the same theorem to the rectangle $BFHD$ we find out that $BH$ is 
+      \[
+        \sqrt{ \left(\sqrt{a^2 + b^2}\right)^2 + c^2 } = \sqrt{a^2 + b^2 + c^2}. 
+      \]
+      The two needed measurements are shown in the diagram. The red one gives us $a+ b + c$, the green one gives us $\sqrt{a^2 + b^2 + c^2}$.
+      \hspace*{3em}
+      \begin{mplibcode}
+        u=0.45cm;
+        pair a, b, c, d, e, f, g, h;
+        a = (0u, 0u);
+        b = (0u, 3u);
+        c = (6u, 3u);
+        d = (6u, 0u);
+        e = (2.5u, 1.5u);
+        f = (2.5u, 4.5u);
+        g = (8.5u, 4.5u);
+        h = (8.5u, 1.5u);
+        draw a--e--f dashed evenly;
+        draw e--h dashed evenly;
+        draw b--h dashed evenly withpen pencircle scaled 1.25 withcolor Green3;
+        draw a--b--c--d--cycle;
+        draw b--f--g--c;
+        draw g--h--d;
+        dotlabel.llft(btex $A$ etex, a);
+        dotlabel.ulft(btex $B$ etex, b);
+        dotlabel.ulft(btex $C$ etex, c);
+        dotlabel.bot(btex $D$ etex, d);
+        dotlabel.lrt(btex $E$ etex, e);
+        dotlabel.ulft(btex $F$ etex, f);
+        dotlabel.urt(btex $G$ etex, g);
+        dotlabel.lrt(btex $H$ etex, h);
+
+        label.lft(btex $a$ etex, .5[a, b]);
+        label.bot(btex $b$ etex, .5[a, d]);
+        label.lrt(btex $c$ etex, .5[d, h]);
+        draw a--d--c--g withpen pencircle scaled 1.25 withcolor Firebrick3;
+      \end{mplibcode}
+
+      The squared red measurement minus the squared green measurement gives us the total area of all six sizes.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

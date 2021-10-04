@@ -177,7 +177,41 @@
     \begin{column}{0.5\textwidth}
       A popular variety of question in middle school math contests involves series of geometric patterns.  Consider this question from MOEMS in December 2020:
       \begin{problem}
-        \includegraphics[width=\textwidth]{06 - Arithmetic Sequences/moems.png}
+        \centering
+        \begin{mplibcode}
+          u=0.25cm;
+          s=0.63cm;
+          numeric shift;
+          path v;
+          path h;      
+          shift:=0;    
+          for i = 1 upto 4:
+            shift:=shift + s + i*u;
+            %fill (u + shift, 0)--(u + u*i + shift, 0)--(u + u*i + shift, -1*u)--(u + shift, -1*u)--(u + shift, 0);
+            v := (u + shift, 0)--(u + u*i + shift, 0)--(u + u*i + shift, -1*(2+i)*u)--(u+shift, -1*(2+i)*u)--cycle;
+            h := (shift, -u)--(shift + (2+i)*u, -u)--(shift + (2+i)*u, -1*(1+i)*u)--(shift, -1*(1+i)*u)--cycle;
+            fill v withcolor 0.78;
+            fill h withcolor 0.78;
+            fill (u + shift, -1*u)--((1+i)*u + shift, -1*u)--((1+i)*u + shift, -1*(1 +i)*u)--(u+shift, -1*(1+i)*u)--cycle withcolor 0.96;
+            draw v;
+            draw h;
+            for j = 1 upto i-1:
+              draw (j * u + u + shift, 0)--(j * u + u + shift, -u);
+              draw (j * u + u + shift, -1*(1 +i)*u)--(j * u + u + shift, -1*(2 +i)*u);
+              draw (shift, -1* j * u - u)--(shift + u, -1* j * u - u);
+              draw ((1+i)*u + shift, -1* j * u - u)--((2+i)*u + shift, -1* j * u - u);
+            endfor
+          endfor
+          pickup pencircle scaled 3pt;
+          shift:=shift + s + 5*u;
+          drawdot (shift, -3*u);
+          shift:=shift + u/1.5;
+          drawdot (shift, -3*u);
+          shift:=shift + u/1.5;
+          drawdot (shift, -3*u);
+
+        \end{mplibcode}
+
         Each figure in the sequence shown is composed entirely of $1 \times 1$ shaded squares.  If the pattern is continued, how many $1 \times 1$ shaded squares will there be altogether in the first $21$ figures?
       \end{problem}
     \end{column}
@@ -200,7 +234,7 @@
 \begin{frame}{Arithmetic series shortcuts}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      You don’t always need to use formula to calculate the sum of arithmetic series.
+      You don't always need to use a formula to calculate the sum of arithmetic series.
       \begin{problem}
         Find the sum of the sequence: $7 + 8 + \ldots + 106$?
       \end{problem}

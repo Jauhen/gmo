@@ -344,17 +344,17 @@
 \begin{frame}{Stars and bars}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      Going through the casework for the simple case of $4$ balls and $3$ urns was time-consuming, and would become impossible to do without a computer as the numbers grow larger.  There is, however, a technique that can be used to solve such problems.  We will represent each ball by a~star $\star$, and the boundary between urns by a~vertical bar $|$.  Any star to the left of the first bar is in urn $A$, any star between the pair of bars is in urn $B$, and any stars to the right of second bar is in urn $C$.  So \fbox{$\star | \star\star | \star$} can be read as $1$ ball in urn~$A$, $2$ balls in urn $B$ and $1$ ball in urn $C$.  The $15$ arrangements from the $4$ cases on the previous slide are:
-      \footnotesize
+      Going through the casework for the simple case of $4$ balls and $3$ urns was time-consuming, and would become impossible to do without a computer as the numbers grow larger.  There is, however, a technique that can be used to solve such problems.  We will represent each ball by a~star $\star$, and the boundary between urns by a~vertical bar $\mid$.  Any star to the left of the first bar is in urn $A$, any star between the pair of bars is in urn $B$, and any stars to the right of second bar is in urn $C$.  So \small{\fbox{$\star\mid\star\,\star\mid\star$}} can be read as $1$ ball in urn~$A$, $2$ balls in urn $B$ and $1$ ball in urn $C$.  The $15$ arrangements from the $4$ cases on the previous slide are:
+      \small
       \begin{example}
-        Case 1: \fbox{$\star\star\star\star| |$}, \fbox{$|\star\star\star\star|$}, \fbox{$| |\star\star\star\star$}.
+        Case 1: \fbox{$\star\star\star\,\star\mid\,\mid$}, \fbox{$\mid\star\star\star\,\star\mid$}, \fbox{$\mid\,\mid\star\star\star\,\star$}.
         
-        Case 2: \fbox{$\star\star\star|\star|$}, \fbox{$\star\star\star | | \star$}, \fbox{$\star |\star\star\star|$},\\
-        \hphantom{Case 2:} \fbox{$|\star\star\star | \star$}, \fbox{$\star||\star\star\star$}, \fbox{$|\star|\star\star\star$}.
+        Case 2: \fbox{$\star\star\star\mid\star\mid$}, \fbox{$\star\star\star\mid\,\mid\star$}, \fbox{$\star \mid\star\star\star\mid$},\\
+        \hphantom{Case 2:} \fbox{$\mid\star\star\star\mid\star$}, \fbox{$\star\mid\,\mid\star\star\star$}, \fbox{$\mid\star\mid\star\star\star$}.
         
-        Case 3: \fbox{$\star\star | \star\star|$}, \fbox{$\star\star| |\star\star$}, \fbox{$|\star\star |\star\star$}.
+        Case 3: \fbox{$\star\,\star\mid\star\,\star\mid$}, \fbox{$\star\,\star\mid\,\mid\star\,\star$}, \fbox{$\mid\star\,\star\mid\star\,\star$}.
 
-        Case 4: \fbox{$\star\star | \star | \star$}, \fbox{$\star |\star\star |\star$}, \fbox{$\star |\star |\star\star$}.
+        Case 4: \fbox{$\star\,\star\mid\star\mid\star$}, \fbox{$\star\mid\star\,\star\mid\star$}, \fbox{$\star\mid\star\mid\star\,\star$}.
       \end{example}
     \end{column}
     \begin{column}{0.5\textwidth}

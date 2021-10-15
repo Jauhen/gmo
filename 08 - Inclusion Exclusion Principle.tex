@@ -66,9 +66,9 @@
           fill b withcolor 0.7[rgb_yellow, white];
           fill ab withcolor 0.5[0.5[rgb_yellow, red], white];
           fill c withcolor 0.8[green, white];
-          draw a;
-          draw b;
-          draw c;
+          draw a withcolor Gray;
+          draw b withcolor Gray;
+          draw c withcolor Gray;
           label.(btex $1$ etex, (0u, -0.85u));
           label.(btex $2$ etex, (-0.7u, 0.4u));
           label.(btex $3$ etex, (2.4u, 0.8u));
@@ -133,8 +133,8 @@
               path a, b;
               a = fullcircle scaled 3u;
               b = a shifted (1.85u, 0);
-              draw a;
-              draw b;
+              draw a withcolor Gray;
+              draw b withcolor Gray;
               label.(btex $1$ etex, (-0.5u, 0u));
               label.(btex $1$ etex, (2.35u, 0u));
               label.(btex $2$ etex, (0.925u, 0u));
@@ -152,8 +152,8 @@
               path a, b;
               a = fullcircle scaled 3u;
               b = a shifted (1.85u, 0);
-              draw a;
-              draw b;
+              draw a withcolor Gray;
+              draw b withcolor Gray;
               label.(btex $1$ etex, (-0.5u, 0u));
               label.(btex $1$ etex, (2.35u, 0u));
               label.(btex $1$ etex, (0.925u, 0u));
@@ -201,9 +201,9 @@
               a = fullcircle scaled 3u;
               b = a shifted (1.85u, 0);
               c = a shifted (0.925u, -1.6u);
-              draw a;
-              draw b;
-              draw c;
+              draw a withcolor Gray;
+              draw b withcolor Gray;
+              draw c withcolor Gray;
               label.(btex $1$ etex, (-0.5u, 0.3u));
               label.(btex $1$ etex, (2.35u, 0.3u));
               label.(btex $1$ etex, (0.925u, -2.1u));
@@ -213,7 +213,7 @@
               label.(btex $3$ etex, (0.925u, -0.55u));
               label.(btex $A$ etex, (-1.7u, 1.1u));
               label.(btex $B$ etex, (3.55u, 1.1u));
-              label.(btex $C$ etex, (2.55u, -3u));
+              label.(btex $C$ etex, (2.4u, -3u));
             \end{mplibcode}
             \begin{multline*}
               |A| + |B| + |C|
@@ -229,9 +229,9 @@
               a = fullcircle scaled 3u;
               b = a shifted (1.85u, 0);
               c = a shifted (0.925u, -1.6u);
-              draw a;
-              draw b;
-              draw c;
+              draw a withcolor Gray;
+              draw b withcolor Gray;
+              draw c withcolor Gray;
               label.(btex $1$ etex, (-0.5u, 0.3u));
               label.(btex $1$ etex, (2.35u, 0.3u));
               label.(btex $1$ etex, (0.925u, -2.1u));
@@ -241,7 +241,7 @@
               label.(btex $0$ etex, (0.925u, -0.55u));
               label.(btex $A$ etex, (-1.7u, 1.1u));
               label.(btex $B$ etex, (3.55u, 1.1u));
-              label.(btex $C$ etex, (2.55u, -3u));
+              label.(btex $C$ etex, (2.4u, -3u));
             \end{mplibcode}
             \begin{multline*}
               |A| + |B| + |C| - {}\\
@@ -259,9 +259,9 @@
               a = fullcircle scaled 3u;
               b = a shifted (1.85u, 0);
               c = a shifted (0.925u, -1.6u);
-              draw a;
-              draw b;
-              draw c;
+              draw a withcolor Gray;
+              draw b withcolor Gray;
+              draw c withcolor Gray;
               label.(btex $1$ etex, (-0.5u, 0.3u));
               label.(btex $1$ etex, (2.35u, 0.3u));
               label.(btex $1$ etex, (0.925u, -2.1u));
@@ -271,7 +271,7 @@
               label.(btex $1$ etex, (0.925u, -0.55u));
               label.(btex $A$ etex, (-1.7u, 1.1u));
               label.(btex $B$ etex, (3.55u, 1.1u));
-              label.(btex $C$ etex, (2.55u, -3u));
+              label.(btex $C$ etex, (2.4u, -3u));
             \end{mplibcode}
             \begin{multline*}
               |A| + |B| + |C| - {}\\
@@ -314,7 +314,7 @@
       \end{definition}
       \small
       \begin{problem}
-        How many pairs of positive integers $(x, y)$ satisfy the equation $x^4 + y < 70$?
+        How many pairs of positive integers $(x,\ y)$ satisfy the equation $x^4 + y < 70$?
       \end{problem}
       \textbf{Case 1}: $x = 1$.  $1 + y < 70$.  So $0 < y < 69$, and there are $68$ possible pairs $(1,\ 1)$, $(1,\ 2)$, $\ldots$, $(1,\ 68)$.
       
@@ -349,8 +349,8 @@
       \begin{example}
         Case 1: \fbox{$\star\star\star\,\star\mid\,\mid$}, \fbox{$\mid\star\star\star\,\star\mid$}, \fbox{$\mid\,\mid\star\star\star\,\star$}.
         
-        Case 2: \fbox{$\star\star\star\mid\star\mid$}, \fbox{$\star\star\star\mid\,\mid\star$}, \fbox{$\star \mid\star\star\star\mid$},\\
-        \hphantom{Case 2:} \fbox{$\mid\star\star\star\mid\star$}, \fbox{$\star\mid\,\mid\star\star\star$}, \fbox{$\mid\star\mid\star\star\star$}.
+        Case 2: \fbox{$\star\star\star\mid\star\mid$}, \fbox{$\star\star\star\mid\,\mid\star$}, \fbox{$\mid\star\star\star\mid\star$},\\
+        \hphantom{Case 2:} \fbox{$\star \mid\star\star\star\mid$}, \fbox{$\star\mid\,\mid\star\star\star$}, \fbox{$\mid\star\mid\star\star\star$}.
         
         Case 3: \fbox{$\star\,\star\mid\star\,\star\mid$}, \fbox{$\star\,\star\mid\,\mid\star\,\star$}, \fbox{$\mid\star\,\star\mid\star\,\star$}.
 
@@ -409,7 +409,7 @@
         \item What is median of the following data set:\\ $2$, $3$, $3$, $4$, $4$, $4$?
         \item In school's band string section, $28$ students play the violin, $18$ students play the viola, and $12$ students play both.  How many students are in the string section?
         \item There are $25$ students in a class. $12$ of them are on a football team and $14$ are on a soccer team. If $3$ students are on neither of these teams, how many students are on both the football and soccer teams?
-        \item How many integer pair $(x, y)$ solutions are there to $x^2 + y^2 < 10$?
+        \item How many integer pair $(x,\ y)$ solutions are there to $x^2 + y^2 < 10$?
         \item If there are breakout rooms to work on $4$ different types of math problems, how many ways are there to split $20$ students into the breakout rooms, if each breakout room must contain at least $3$ students?
       \end{enumerate}
     \end{column}
@@ -422,7 +422,7 @@
       \begin{enumerate}
         \item The Girl Scouts sold boxes of cookies outside of the school one morning.  If they sold $252$ boxes of cookies to $100$ customers (and every customer bought at least one box of cookies), what is the maximum possible median number of boxes of cookies bought that morning?
         \item In Graham Middle School's woodwind section, $21$ students play clarinet, $16$ students play oboe, $13$ students play saxophone, $6$ students play clarinet and oboe, $5$ students play clarinet and saxophone, $4$ students play oboe and saxophone.  If there are $37$ students total in the woodwind section, how many play all $3$ instruments?
-        \item How many distinct positive integer triplets $(x, y, z)$ are solutions to $x + y + z = 12$?
+        \item How many distinct positive integer triplets $(x,\ y,\ z)$ are solutions to $x + y + z = 12$?
         \seti
       \end{enumerate}
     \end{column}

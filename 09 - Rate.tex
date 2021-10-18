@@ -63,7 +63,7 @@
 
       $1$ m/s (meter per second) $= 3{.}6$ km/hr;
 
-      $1$ km/hr $\approx 0{.}62$ mps (miles per hour).
+      $1$ km/hr $\approx 0{.}62$ mph (miles per hour).
     \end{column}
   \end{columns}
 \end{frame}
@@ -296,12 +296,12 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item Consider a road $80$ ft. wide that is $1$ mile ($5{,}280$ ft) long.  Two runners are going to run from the start to the end of the road, but one runner is faster than the other and gives the slower run the following offer:  You can run in straight line down the center of the road (shown in yellow), while I will run along the semi-circular arcs whose diameter is equal to the road width, as shown in black in the diagram.  If the slow runner goes at a speed of $5$ mph, how fast must the other runner run in order to win the race (give your answer in terms of $\pi$)
+        \item Consider a road $80$ ft. wide that is $1$ mile ($5{,}280$ ft) long.  Two runners are going to run from the start to the end of the road, but one runner is faster than the other and gives the slower run the following offer:  You can run in straight line down the center of the road (shown in yellow), while I will run along the semi-circular arcs whose diameter is equal to the road width, as shown in black in the diagram.  If the slow runner goes at a speed of $5$ mph, how fast must the other runner run in order to win the race (give your answer in terms of $\pi$)\smallskip
         
         \begin{center}
           \leavevmode
           \begin{mplibcode}
-            u = 0.41cm;
+            u = 0.43cm;
             fill (0, -1u)--(6u, -1u)--(6u, 1u)--(0, 1u)--cycle withcolor AntiqueWhite3;
             draw (0, 0){down}..(u, -1u){right}..(2u, 0){up}..(3u, 1u){right}..(4u, 0){down}..(5u, -1u){right}..(6u, 0){up} withpen pencircle scaled 1.5;
             draw (0, 0)--(6u, 0) withcolor Yellow withpen pencircle scaled 1.5;
@@ -309,8 +309,8 @@
             fill (shift , -1u)--(shift + 6u, -1u)--(shift + 6u, 1u)--(shift, 1u)--cycle withcolor AntiqueWhite3;
             draw (shift, 0){down}..(shift + u, -1u){right}..(shift + 2u, 0){up}..(shift + 3u, 1u){right}..(shift + 4u, 0){down}..(shift + 5u, -1u){right}..(shift + 6u, 0){up} withpen pencircle scaled 1.5;
             draw (shift, 0)--(shift + 6u, 0) withcolor Yellow withpen pencircle scaled 1.5;
-            label.top(btex $\text{start}$ etex, (0, 1u));
-            label.top(btex $\text{finish}$ etex, (shift + 6u, 1u));
+            label.urt(btex $\text{start}$ etex, (-0.5u, 1u));
+            label.ulft(btex $\text{finish}$ etex, (shift + 6.5u, 1u));
             pickup pencircle scaled 1.5;
             drawdot (0.25[shift, 6u], 0);
             drawdot (0.5[shift, 6u], 0);
@@ -338,7 +338,7 @@
         \conti
         \item A current is moving at a speed of $1$ km/h to the right in the diagram.  If you can swim at a~speed of $2$ km/h in still water,\\
         a)  at what angle $\theta$ relative to straight across must you swim in order to reach your friends directly across the river from you? \\
-        b)  By swimming at this angle, how much longer will it take you to swim across a $100$ m wide river than it would if there were no current and you could swim straight across?
+        b)  By swimming at this angle, how much longer will it take you to swim across a $100$ m wide river than it would if there were no current and you could swim straight across?\smallskip
 
         \begin{center}
           \leavevmode
@@ -356,7 +356,7 @@
               endgroup
             enddef;
             u = 0.75cm;
-            fill (0, -1u)--(8u, -1u)--(8u, 1u)--(0, 1u)--cycle withcolor LightBlue2;
+            fill (0, -1u)--(8u, -1u)--(8u, 1u)--(0, 1u)--cycle withcolor LightBlue1;
             drawarrow (5.5u,-0.7u)--(7.5u,-0.7u) withcolor Gray;
             drawarrow (5.5u,0)--(7.5u,0) withcolor Gray;
             drawarrow (5.5u,0.7u)--(7.5u,0.7u) withcolor Gray;

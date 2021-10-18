@@ -352,7 +352,7 @@
               p = unitvector(a-b){(a-b)rotated 90}..unitvector(c-b);
               s = .9marksize/length(point 1 of p - point 0 of p);
               if s < angle_radius: s:=angle_radius; fi
-              draw p scaled s shifted b withpen pencircle scaled 0.75 withcolor Gray;
+              draw p scaled s shifted b withpen pencircle scaled 0.5 withcolor Gray;
               endgroup
             enddef;
             u = 0.75cm;
@@ -365,11 +365,11 @@
             pair a, b;
             a = (3.5u, 1u);
             b = (3.5u, -1u);
-            draw a--b;
             pair c;
             c = (b + 1.5u*dir 140);
-            drawarrow b--c;
             mark_angle(a, b, c);
+            draw a--b;
+            drawarrow b--c;
             pickup pencircle scaled 3;
             drawdot a;
             drawdot b;

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- Created by MetaPost 2.01 on 2021.10.19:1803 -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="59.473694" height="59.473694" viewBox="0 0 59.473694 59.473694">
+<!-- Original BoundingBox: -2.155792 -2.155792 57.317902 57.317902 -->
+  <g>
+    <defs>
+      <clipPath id="CLIP1">
+        <path d="M-26.346451 85.346451L-26.346451 -84.732254L143.732254 -84.732254L143.732254 85.346451Z" style="fill: black; stroke: none;"></path>
+      </clipPath>
+    </defs>
+    <g clip-path="url(#CLIP1);">
+      <path d="M2.000000 57.000000L2.000000 0.307098" style="stroke:rgb(0.000000%,0.000000%,0.000000%); stroke-width: 1.250000;stroke-linecap: round;stroke-linejoin: round;stroke-miterlimit: 10.000000;fill: none;"></path>
+      <path d="M3.530792 4.002670L2.000000 0.307098L0.469208 4.002670L2.000000 2.307144Z" style="stroke:rgb(0.000000%,0.000000%,0.000000%); stroke-width: 1.250000;fill: rgb(0.000000%,0.000000%,0.000000%);"></path>
+      <path d="M2.000000 57.000000L58.692902 57.000000" style="stroke:rgb(0.000000%,0.000000%,0.000000%); stroke-width: 1.250000;stroke-linecap: round;stroke-linejoin: round;stroke-miterlimit: 10.000000;fill: none;"></path>
+      <path d="M54.997330 58.530792L58.692902 57.000000L54.997330 55.469208L56.692856 57.000000Z" style="stroke:rgb(0.000000%,0.000000%,0.000000%); stroke-width: 1.250000;fill: rgb(0.000000%,0.000000%,0.000000%);"></path>
+      <path d="M2.000000 57.000000L10.504028 57.000000L10.504028 48.495972L2.000000 48.495972Z" style="stroke:rgb(0.000000%,0.000000%,0.000000%); stroke-width: 0.500000;stroke-linecap: round;stroke-linejoin: round;stroke-miterlimit: 10.000000;fill: none;"></path>
+      <path d="M2.000000 57.000000l0 0" style="stroke:rgb(0.000000%,0.000000%,0.000000%); stroke-width: 2.500000;stroke-linecap: round;stroke-linejoin: round;stroke-miterlimit: 10.000000;fill: none;"></path>
+    </g>
+  </g>
+</svg>

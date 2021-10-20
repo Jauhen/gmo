@@ -12,4 +12,6 @@
 *.tmp
 .DS_Store
 settings.json
+*.mps
+*.mpx
 

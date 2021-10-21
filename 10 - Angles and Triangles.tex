@@ -17,7 +17,7 @@
 \begin{frame}{Types of angles and their measures}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      We typically measure angles in degrees (symbol~$°$), with an entire circle having a measure of $360°$.  A pair of rays intersecting to form a~straight line therefore form a 180° angle. The number $360$ is somewhat arbitrary.  It was developed in ancient Babylonia where they used a sexigesimal (base $60$) number system and had a $360$ day calendar.
+      We typically measure angles in degrees (symbol~$°$), with an entire circle having a measure of $360°$.  A pair of rays intersecting to form a~straight line therefore form a $180°$ angle. The number $360$ is somewhat arbitrary.  It was developed in ancient Babylonia where they used a sexigesimal (base $60$) number system and had a $360$ day calendar.
 
       \begin{example}
         Angles are sometimes also measured in radians, where $2\pi$ radians is equal to $360$ degrees.
@@ -123,7 +123,7 @@
             pair A, B;
             A := l intersectionpoint n;
             B := m intersectionpoint n;
-            label.lrt(btex $\theta$ etex, A);
+            % label.lrt(btex $\theta$ etex, A);
             label.llft(btex $\beta$ etex, A + 0.5 * dir(180));
             label.llft(btex $\gamma$ etex, B + 0.3 * dir(180));
             label.urt(btex $\alpha$ etex, B + 0.5 * dir(0));
@@ -251,87 +251,511 @@
   \end{columns}
 \end{frame}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{Exterior angle theorem}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      If we extend a side of triangle past vertex (as shown in the diagram below) we form an \textbf{exterior angle} $\theta$.  The interior angles of the triangle that are not next to $\theta$ are called \textbf{remote interior angles} (in this case $\alpha$, $\gamma$).
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.7cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,8,u,-1,6,u);
+            pair A, B, C;
+            A := origin;
+            B := 3 * dir(45);
+            C := (5, 0);
+            draw (5, 0)--(8, 0) withpen pencircle scaled 1.25;
+            draw triangle(A, B, C) withpen pencircle scaled 1.25;
+            nomme.llft(A, btex $A$ etex);
+            nomme.top(B, btex $C$ etex);
+            nomme.bot(C, btex $B$ etex);
+            label.bot(btex $\gamma$ etex, B + 0.2 * dir(-90));
+            label.urt(btex $\beta$ etex, A + 0.6 * dir(0));
+            label.ulft(btex $\alpha$ etex, C + 0.6 * dir(180));
+            label.urt(btex $\theta$ etex, C);
+          fin;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        Exterior Angle Theorem:  
+        
+        The measure of an exterior angle in any triangle is equal to the sum of the two remote interior angles.    
+      \end{definition}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+      Proof: The proof is quite straightforward.  The sum of the $3$ interior angles $\gamma + \alpha + \beta = 180°$.  The exterior angle $\theta$ and the adjacent interior angle $\beta$ are angles that form a straight line so $\theta + \beta = 180°$.  Therefore $\theta$ must equal the sum of the two remote interior angles $\gamma + \alpha$.  Q.E.D.    
+    \end{column}
+  \end{columns}
+\end{frame}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{Interior angles of an $n$-sized polygon}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Now that we have found that the sum of the interior angles of a triangle is $180°$, we can consider $n$-sided polygons.
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+      As illustrated below, an $n$-sided polygon can always be divided into $n - 2$ triangles.
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.37cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,8,u,-1,6,u);
+            pair A, B, C, D;
+            A := origin;
+            B := (4, 0);
+            C := (4, 4);
+            D := (0, 4);
+            draw A--B--C--D--A withpen pencircle scaled 1.25;
+            draw B--D withpen pencircle scaled 1.25;
+            nomme.llft(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.lrt(C, btex $$ etex);
+            nomme.lrt(D, btex $$ etex);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.33cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-3,8,u,-1,6,u);
+            pair A, B, C, D, E;
+            A := origin;
+            B := 3.5 * dir(180 * 3 / 5);
+            C := B + 3.5 * dir(180 / 5);
+            D := C + 3.5 * dir(-180 / 5);
+            E := D + 3.5 * dir(-180 * 3 / 5);
+            draw A--B--C--D--E--A withpen pencircle scaled 1.25;
+            draw B--D--A withpen pencircle scaled 1.25;
+            nomme.llft(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.lrt(C, btex $$ etex);
+            nomme.lrt(D, btex $$ etex);
+            nomme.lrt(E, btex $$ etex);
+          fin;        
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.33cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-3,8,u,-1,7,u);
+            pair A, B, C, D, E, F;
+            A := origin;
+            B := 3 * dir(180 * 2 / 3);
+            C := B + 3 * dir(180 / 3);
+            D := C + 3 * dir(0);
+            E := D + 3 * dir(-180 / 3);
+            F := E + 3 * dir(-180 * 2 / 3);
+            draw A--B--C--D--E--F--A withpen pencircle scaled 1.25;
+            draw C--A--D--F withpen pencircle scaled 1.25;
+            nomme.llft(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.lrt(C, btex $$ etex);
+            nomme.lrt(D, btex $$ etex);
+            nomme.lrt(E, btex $$ etex);
+            nomme.lrt(F, btex $$ etex);
+          fin;
+        \end{mplibcode}
+      \end{tabularx}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+      \begin{definition}
+        The sum of the interior angles in an $n$-sided polygon is $180(n - 2)$.
+      \end{definition}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        How many sides does a regular polygon have, if each interior angle is $162°$ (a regular polygon has all of its angles equal to one another)?
+      \end{problem}
+      Let $n =$ number of sides.  Since each interior angle is $162°$, 
+      \begin{align*}
+        162 n &= 180(n-2) \\
+        162n - 180n &= -360 \\                                          
+        (162-180)n  &= -360 \\
+        -18n &= -360 \\
+        n &= 20 \text{ sides}
+      \end{align*}
+    \end{column}
+  \end{columns}
+\end{frame}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{Similar triangles}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Two triangles are said to be \textbf{congruent} ($\cong$) if all of their angles and sides are identical.  
+      \begin{definition}
+        Two triangles are said to be \textbf{similar} ($\sim$)  if all of their angles are equal and all of their sides are in the same proportion.
+      \end{definition}
+      In the drawing below, this means: 
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+      Angles: $\alpha = \alpha'$, $\beta = \beta'$, $\gamma = \gamma'$ and
 
+      Lengths: $\dfrac{x}{x'} = \dfrac{y}{y'} = \dfrac{z}{z'}.$
+
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.45cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,16,u,-1,6,u);
+            pair A, B, C;
+            A := origin;
+            B := 5 * dir(45);
+            C := (25/3, 0);
+            pair A', B', C';
+            A' := A shifted (9.5, 0);
+            B' := A' + 3 * dir(45);
+            C' := A' shifted (15/3, 0);
+            draw triangle(A, B, C) withpen pencircle scaled 1.25;
+            draw triangle(A', B', C') withpen pencircle scaled 1.25;
+            nomme.llft(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.lrt(C, btex $$ etex);
+            nomme.llft(A', btex $$ etex);
+            nomme.top(B', btex $$ etex);
+            nomme.lrt(C', btex $$ etex);
+            label.bot(btex $\beta$ etex, B + 0.2 * dir(-90));
+            label.urt(btex $\alpha$ etex, A + 0.4 * dir(0));
+            label.ulft(btex $\gamma$ etex, C + 0.8 * dir(180));
+            label.bot(btex $\beta'$ etex, B' + 0.2 * dir(-90));
+            label.urt(btex $\alpha'$ etex, A' + 0.4 * dir(0));
+            label.ulft(btex $\gamma'$ etex, C' + 0.9 * dir(180));
+            label.ulft(btex $x$ etex, 0.5[A, B]);
+            label.urt(btex $z$ etex, 0.5[B, C]);
+            label.bot(btex $y$ etex, 0.5[A, C]);
+            label.ulft(btex $x'$ etex, 0.5[A', B']);
+            label.urt(btex $z'$ etex, 0.5[B', C']);
+            label.bot(btex $y'$ etex, 0.5[A', C']);
+            label.(btex $\sim$ etex, (8.75, 1));
+          fin;
+        \end{mplibcode}
+      \end{center}
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      The 3 ways to prove triangles are similar: Angle/Angle (AA), Side/Angle/Side (SAS) or Side/Side/Side (SSS)
+
+      \small
+      (AA) If two angle pairs are the same, then the third pair must also be equal since the sum of the angles is $180°$. When all corresponding angles are all equal, the three pairs of sides must also be in proportion. Picture three angles of a triangle floating around. If they are the vertices of a triangle, they don't determine the size of the triangle by themselves, because they can move farther away or closer to each other. But when they move, the triangle they create always retains its shape. Thus, they always form similar triangles.
+
+      (SAS) Any time two sides of a triangle and their included angle are fixed, then all three vertices of that triangle are fixed. With all three vertices fixed and two of the pairs of sides proportional, the third pair of sides must also be proportional.
+
+      (SSS) If the measures of corresponding sides are known, then their proportionality can be calculated. If all three pairs are in proportion, then the triangles are similar.
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Similar triangles example}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Find the unknown side length.
+      \end{problem}
+      \begin{center}
+        \vspace*{-0.4em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.45cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,15,u,-1,6,u);
+            pair A, B, C;
+            A := origin;
+            B := 2.5 * dir(10);
+            path a, b;
+            a := cercle(A, 2.5);
+            b := cercle(B, 1.5);
+            C := a intersectionpoint b;
+            draw triangle(A, B, C) withpen pencircle scaled 1.25;
+            nomme.llft(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.lrt(C, btex $$ etex);
+            draw marqueangle(B, A, C, 1);
+            label.lrt(btex $5$ etex, 0.5[A, B]);
+            label.urt(btex $3$ etex, 0.5[B, C]);
+            label.ulft(btex $5$ etex, 0.5[A, C]);
+
+            pair A', B', C';
+            A' := 2A shifted (3.5, 0);
+            B' := 2B shifted (3.5, 0);
+            C' := 2C shifted (3.5, 0);
+            draw C'--A'--B' withpen pencircle scaled 1.25;
+            draw C'--B' dashed evenly;
+            nomme.llft(A', btex $$ etex);
+            nomme.top(B', btex $$ etex);
+            nomme.lrt(C', btex $$ etex);
+            draw marqueangle(B', A', C', 1);
+            label.lrt(btex $10$ etex, 0.5[A', B']);
+            label.urt(btex $?$ etex, 0.5[B', C']);
+            label.ulft(btex $10$ etex, 0.5[A', C']);
+
+            pair A'', B'', C'';
+            A'' := A' shifted (6, 0);
+            B'' := B' shifted (6, 0);
+            C'' := C' shifted (6, 0);
+            draw triangle(A'', B'', C'') withpen pencircle scaled 1.25;
+            nomme.llft(A'', btex $$ etex);
+            nomme.top(B'', btex $$ etex);
+            nomme.lrt(C'', btex $$ etex);
+            draw marqueangle(B'', A'', C'', 1);
+            label.lrt(btex $10$ etex, 0.5[A'', B'']);
+            label.urt(btex $6$ etex, 0.5[B'', C'']);
+            label.ulft(btex $10$ etex, 0.5[A'', C'']);
+            label.(btex $\Longleftrightarrow$ etex, (9.25, 2));
+          fin;
+        \end{mplibcode}
+        \vspace*{-0.4em}
+      \end{center}
+      From the information given in the diagram, the two triangles are similar by SAS, and the proportionality ratio is $1:2$.  Therefore the unknown side length is $6$.
+      \vspace*{-1em}
+      \begin{columns}[t, totalwidth=\textwidth]
+        \begin{column}{0.4\linewidth}
+          \begin{center}
+            \leavevmode
+            \begin{mplibcode}
+              u = 0.3cm;
+              taille_marque_s := 0.15cm;
+              angle_marque_s := 90;
+              repere(-2,15,u,-2,6,u);
+                pair A, B, C, D, E;
+                A := origin;
+                B := (3.5, 3.5);
+                C := (6, 0);
+                D := 0.5B;
+                E := 0.5C; 
+                draw triangle(A, B, C) withpen pencircle scaled 1.25;
+                draw D--E withpen pencircle scaled 1.25;
+                nomme.bot(A, btex $A$ etex);
+                nomme.top(B, btex $B$ etex);
+                nomme.bot(C, btex $C$ etex);
+                nomme.ulft(D, btex $D$ etex);
+                nomme.bot(E, btex $E$ etex);
+              fin;
+            \end{mplibcode}
+          \end{center}
+        \end{column}
+        \begin{column}{0.6\linewidth}
+          \begin{problem}
+            Variations of the problem to the left are very common in olympiads.  If $DE \parallel BC$, then $\triangle ADE \sim \triangle ABC$ and the converse is true.
+          \end{problem}
+        \end{column}
+      \end{columns}
+      If $DE \parallel BF$, we have corresponding angles $\angle ADE = \angle ABC$, $\angle AED = \angle ACB$.  Hence $\triangle ADE \sim \triangle ABC$ by angle-angle.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        What if they didn’t tell us the lines were parallel, but instead that $AD = 5$, $AB = 10$, $AE = 6$, and $AC = 12$.  
+      \end{problem}
+      The pair of triangles share $\angle DAE$, and the lengths of the sides including that angle have the same ratio, so $\triangle ADE \sim \triangle ABC$ by SAS, and because we know all of the corresponding angles of the triangles are equal, $DE$ must be parallel to $BC$ by the corresponding angle theorem.
+
+      \begin{definition}
+        Transitive Property of Similarity.  
+        
+        If triangle $A$ is similar to triangle $B$, and triangle $B$ is similar to triangle $C$, then triangle $A$ is similar to triangle $C$.
+      \end{definition}
+
+      This is obviously true by AA similarity.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item In $\triangle ABC$, $\alpha$, $\beta$, $\gamma$ are the exterior angles to interior angles $A$, $B$, and $C$.  What is the sum of $\alpha + \beta + \gamma$?
+        \item How many radians are there in a right angle?
+        \item A nonagon is a 9-sided polygon.  How many degrees are there in each interior angle of a regular nonagon?
+        \item In the diagram below lines $l$ and $m$ are parallel. if $\alpha = 40°$ what are the measures of angles $\gamma$, $\beta$, $\theta$?
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.4cm;
+            repere(-5,5,u,-5,5,u);
+              path l, m, n;
+              l := (-5, 1.5)--(5, 1.5);
+              m := (-5, -1.5)--(5, -1.5);
+              n := (2.2, 3.2)--(-2.2, -3.2);
+              draw l withpen pencircle scaled 1.25;
+              draw m withpen pencircle scaled 1.25;
+              draw n withpen pencircle scaled 1.25;
+              label.top(btex $l$ etex, point 0.05 of l);
+              label.top(btex $m$ etex, point 0.05 of m);
+              label.lrt(btex $n$ etex, point 0.05 of n);
+              pair A, B;
+              A := l intersectionpoint n;
+              B := m intersectionpoint n;
+              label.lrt(btex $\theta$ etex, A);
+              label.llft(btex $\beta$ etex, A + 0.5 * dir(180));
+              label.llft(btex $\gamma$ etex, B + 0.3 * dir(180));
+              label.urt(btex $\alpha$ etex, B + 0.5 * dir(0));
+            fin;
+          \end{mplibcode}
+        \end{center}
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item How many possible combinations (order does not matter) of three integer side lengths can form a scalene triangle with perimeter less than $13$?
+        \item A $6$ ft. tall man and his $4$ ft. tall son standing some distance in front of him notice the low evening sun behind them is casting a shadow such that the top of the man’s $12$-ft. long shadow lines up with the top of the son’s shadow.  How far in front of the man is the son standing.
+        \item The sides of a triangle form a sequence of consecutive integers.  What is the smallest possible perimeter for the triangle?
+        \item The sides of a triangle form a geometric sequence of integers.  What is the smallest possible perimeter of the triangle?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item The diagram shows regular pentagon $ABCDE$ and square $ABFG$.  Find the measure of angle FAD in degrees.
+        \begin{center}
+          \vspace*{-0.2em}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.40cm;
+            taille_marque_s := 0.15cm;
+            angle_marque_s := 90;
+            repere(-3,8,u,-1,8,u);
+              pair A, B, C, D, E, F, G;
+              A := origin;
+              B := 3.5 * dir(180 * 3 / 5);
+              C := B + 3.5 * dir(180 / 5);
+              D := C + 3.5 * dir(-180 / 5);
+              E := D + 3.5 * dir(-180 * 3 / 5);
+              F := (3.5, 3.5);
+              G := (0, 3.5);
+              draw A--B--C--D--E--A withpen pencircle scaled 1.25;
+              draw A--G--F--E withpen pencircle scaled 1.25;
+              draw C--A--F withpen pencircle scaled 1.25 withcolor vertfonce;
+              nomme.llft(A, btex $A$ etex);
+              nomme.lft(B, btex $E$ etex);
+              nomme.top(C, btex $D$ etex);
+              nomme.rt(D, btex $C$ etex);
+              nomme.lrt(E, btex $B$ etex);
+              nomme.llft(G, btex $G$ etex);
+              nomme.lrt(F, btex $F$ etex);
+            fin;
+          \end{mplibcode}
+          \vspace*{-0.2em}
+        \end{center}
+        \item As shown, distinct points $A$, $B$, $C$, $D$, $E$ and $F$ all lie along line $AF$, while distinct points $G$, $H$, $I$, $J$ and $K$ lie along a different line $GK$.  How many distinct triangles can be formed with these 11 points as their vertices?
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.48cm;
+            taille_marque_s := 0.15cm;
+            angle_marque_s := 90;
+            repere(-5,10,u,-5,6,u);
+              pair A, F, G, K;
+              A := origin;
+              F := (8, 0);
+              draw A--F withpen pencircle scaled 1.25;
+              nomme.top(A, btex $A$ etex);
+              nomme.top(F, btex $F$ etex);
+              nomme.top(0.15[A,F], btex $B$ etex);
+              nomme.top(0.45[A,F], btex $C$ etex);
+              nomme.top(0.6[A,F], btex $D$ etex);
+              nomme.top(0.8[A,F], btex $E$ etex);
+              G := (1, -1.2);
+              K := (6, -1.5);
+              draw G--K withpen pencircle scaled 1.25;
+              nomme.bot(G, btex $G$ etex);
+              nomme.bot(K, btex $K$ etex);
+              nomme.bot(0.4[G,K], btex $H$ etex);
+              nomme.bot(0.6[G,K], btex $I$ etex);
+              nomme.bot(0.75[G,K], btex $J$ etex);
+            fin;
+          \end{mplibcode}
+        \end{center}
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item In the figure, $AB$ is parallel to $CD$ and to $EF$.  If $AB = 4$ and $EF = 3$, what is $CD$?
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.45cm;
+            taille_marque_s := 0.15cm;
+            angle_marque_s := 90;
+            repere(-5,10,u,-5,6,u);
+              pair A, B, C, D, E, F;
+              B := origin;
+              A := 4*dir(70);
+              F := (8, 0);
+              E := F + 3 * dir(70);
+              C := whatever[A, F]=whatever[B, E];
+              D := whatever[B, F]=whatever[C, C+dir(250)];
+              draw A--F--E--B--A withpen pencircle scaled 1.25;
+              draw C--D withpen pencircle scaled 1.25;
+              draw B--F withpen pencircle scaled 1.25;
+              nomme.ulft(A, btex $A$ etex);
+              nomme.llft(B, btex $B$ etex);
+              nomme.top(C, btex $C$ etex);
+              nomme.bot(D, btex $D$ etex);
+              nomme.urt(E, btex $E$ etex);
+              nomme.lrt(F, btex $F$ etex);
+              label.lft(btex $x$ etex, 0.5[A, B]);
+              label.rt(btex $y$ etex, 0.5[E, F]);
+              label.lft(btex $z$ etex, 0.5[C, D]);
+            fin;
+          \end{mplibcode}
+        \end{center}
+        \seti
+      \end{enumerate}
+      \begin{columns}[T, totalwidth=\textwidth]
+        \begin{column}{0.5\linewidth}
+          \begin{enumerate}
+            \conti
+            \item In the figure on the right, side $BC$ of $\triangle ABC$ is extended to point $P$, so that $\triangle PAB \sim \triangle PCA$.  What is the length of~$PC$?            
+          \end{enumerate}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+          \vspace*{0.7em}
+          \begin{mplibcode}
+            u = 0.28cm;
+            taille_marque_s := 0.15cm;
+            angle_marque_s := 90;
+            repere(-5,15,u,-5,15,u);
+              pair A, B, C, P;
+              A := origin;
+              B := (8,0);
+              path a, b;
+              a := cercle(A, 6);
+              b := cercle(B, 7);
+              C := a intersectionpoint b;
+              a := cercle(A, 12);
+              b := cercle(C, 9);
+              P := b intersectionpoint a;
+              draw C--P--A withpen pencircle scaled 1.25;
+              draw triangle(A, B, C) withpen pencircle scaled 1.25;
+              nomme.llft(A, btex $A$ etex);
+              nomme.lrt(B, btex $B$ etex);
+              nomme.urt(C, btex $C$ etex);
+              nomme.urt(P, btex $P$ etex);
+              label.lrt(btex $8$ etex, 0.5[A, B]);
+              label.urt(btex $7$ etex, 0.5[B, C]);
+              label.ulft(btex $6$ etex, 0.5[A, C]);
+            fin;
+          \end{mplibcode}
+        \end{column}
+      \end{columns}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 % \begin{frame}{Title}
 %   \begin{columns}[T]

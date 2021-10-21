@@ -1,5 +1,7 @@
 \documentclass[9pt,aspectratio=169]{beamer}
 
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
 \usepackage{luamplib}
 \everymplib{input mpcolornames; input repere; beginfig(1);}
 \everyendmplib{endfig;}
@@ -12,32 +14,242 @@
 \begin{document}
 \maketitle
 
-\begin{frame}{Title}
+\begin{frame}{Types of angles and their measures}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      We typically measure angles in degrees (symbol~$°$), with an entire circle having a measure of $360°$.  A pair of rays intersecting to form a~straight line therefore form a 180° angle. The number $360$ is somewhat arbitrary.  It was developed in ancient Babylonia where they used a sexigesimal (base $60$) number system and had a $360$ day calendar.
+
+      \begin{example}
+        Angles are sometimes also measured in radians, where $2\pi$ radians is equal to $360$ degrees.
+      \end{example}
     \end{column}
     \begin{column}{0.5\textwidth}
+      Angles are classified as acute, right, or obtuse depending on whether they measure less than, equal to, or greater than $90°$ respectively.\medskip
+
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-1,5,u,-1,5,u);
+            drawarrow (0, 0)--(2 * dir(40)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(2, 0) withpen pencircle scaled 1.25;
+            pickup pencircle scaled 2.5;
+            drawdot (0, 0);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-1,5,u,-1,5,u);
+            drawarrow (0, 0)--(2 * dir(90)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(2, 0) withpen pencircle scaled 1.25;
+            draw marqueangledroit((2, 0), (0, 0), (0, 2));
+            pickup pencircle scaled 2.5;
+            drawdot (0, 0);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-1,5,u,-1,5,u);
+            drawarrow (0, 0)--(2 * dir(120)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(2, 0) withpen pencircle scaled 1.25;
+            pickup pencircle scaled 2.5;
+            drawdot (0, 0);
+          fin;
+        \end{mplibcode} \\
+        Acute & Right & Obtuse
+      \end{tabularx}
+      \begin{definition}
+        Pairs of angles whose measures sum to $90°$ are called \textbf{complementary} angles.  
+        
+        Pairs of angles that sum to $180°$ are called \textbf{supplementary}.
+      \end{definition}
     \end{column}
   \end{columns}
 \end{frame}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{Vertical angles and angles formed by parallel lines}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C, D;
+            O := (0, 0);
+            A := (2 * dir(25));
+            B := (2 * dir(-25));
+            C := (-2 * dir(25));
+            D := (-2 * dir(-25));
+            drawarrow O--A withpen pencircle scaled 1.25;
+            drawarrow O--B withpen pencircle scaled 1.25;
+            drawarrow O--C withpen pencircle scaled 1.25;
+            drawarrow O--D withpen pencircle scaled 1.25;
+            pickup pencircle scaled 2.5;
+            drawdot O;
+            nomme(B, O, A, btex $\phi$ etex);
+            nomme(D, O, C, btex $\phi'$ etex);
+            label.top(btex $\theta$ etex, O + 0.15 * dir(90));
+            label.bot(btex $\theta'$ etex, O + 0.15 * dir(-90));
+          fin;
+        \end{mplibcode}
+      \end{center}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+      Two pairs of vertical angles ($\theta$ and $\theta'$, $\phi$ and $\phi'$) are formed by intersecting lines.  Since they are angles that make a line, $\theta$ and $\phi$ sum to $180°$.  Likewise, $\theta'$ and $\phi$ sum to $180°$.  Therefore $\theta = \theta'$ and the angles are said to be congruent.  Since $\phi$ and $\phi'$ both form lines when combined with $\theta$, we also see that $\phi = \phi'$.
+
+      \begin{definition}
+        Intersecting lines form two pairs of congruent \textbf{vertical} angles.
+      \end{definition}
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      In the figure below, $l$ and $m$ are parallel lines and line $n$ is called a \textbf{transversal}.  
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.4cm;
+          repere(-5,5,u,-5,5,u);
+            path l, m, n;
+            l := (-5, 1.5)--(5, 1.5);
+            m := (-5, -1.5)--(5, -1.5);
+            n := (2, 4)--(-2, -4);
+            draw l withpen pencircle scaled 1.25;
+            draw m withpen pencircle scaled 1.25;
+            draw n withpen pencircle scaled 1.25;
+            label.top(btex $l$ etex, point 0.05 of l);
+            label.top(btex $m$ etex, point 0.05 of m);
+            label.lrt(btex $n$ etex, point 0.05 of n);
+            pair A, B;
+            A := l intersectionpoint n;
+            B := m intersectionpoint n;
+            label.lrt(btex $\theta$ etex, A);
+            label.llft(btex $\beta$ etex, A + 0.5 * dir(180));
+            label.llft(btex $\gamma$ etex, B + 0.3 * dir(180));
+            label.urt(btex $\alpha$ etex, B + 0.5 * dir(0));
+          fin;
+        \end{mplibcode}
+      \end{center}
+      
+      \begin{definition}
+        Angles $\alpha$ and $\beta$ are called \textbf{alternate interior angles} and they are congruent. 
+        
+        Angles in same relative locations to lines $l$ and $m$ respectively are \textbf{corresponding angles}, such as $\gamma$ and $\beta$, and they are also congruent.  
+      \end{definition}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Types of triangles}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Any $3$ points that \emph{don’t lie on the same line} can be vertices of a triangle.  
+      
+      The length of any side in a triangle must be \textbf{less than the sum of the lengths of the other two sides}.
+      \begin{definition}
+        Triangles can be classified by the number of sides of equal length.
+      \end{definition}
+
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.5cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,5,u,-1,5,u);
+            pair A, B, C;
+            A := origin;
+            B := 4 * dir(60);
+            C := 4 * dir(0);
+            draw triangle(A, B, C) withpen pencircle scaled 1.25;
+            nomme.top(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.top(C, btex $$ etex);
+            draw marquesegment(A, B, 1);
+            draw marquesegment(A, C, 1);
+            draw marquesegment(C, B, 1);
+            draw marqueangle(A, B, C, 1);
+            draw marqueangle(B, C, A, 1);
+            draw marqueangle(C, A, B, 1);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.5cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,5,u,-1,5,u);
+            pair A, B, C;
+            A := origin;
+            B := 4.2 * dir(65);
+            C := B + 4.2 * dir(-65);
+            draw triangle(A, B, C) withpen pencircle scaled 1.25;
+            nomme.top(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.top(C, btex $$ etex);
+            draw marquesegment(A, B, 1);
+            draw marquesegment(C, B, 1);
+            draw marqueangle(B, C, A, 1);
+            draw marqueangle(C, A, B, 1);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.5cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,5,u,-1,5,u);
+            pair A, B, C;
+            A := origin;
+            B := 4.2 * dir(65);
+            C := (3, 0);
+            draw triangle(A, B, C) withpen pencircle scaled 1.25;
+            nomme.top(A, btex $$ etex);
+            nomme.top(B, btex $$ etex);
+            nomme.top(C, btex $$ etex);
+          fin;
+        \end{mplibcode} \\
+        Equilateral Triangle & Isosceles Triangle & Scalene \\
+        All sides and angles are equal & One pair of sides and angles equal & No sides or angles equal
+      \end{tabularx}
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        The sum of the angles in a triangle is always $180°$. 
+      \end{definition}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.8cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-1,6,u,-1,6,u);
+            pair A, B, C, D, E;
+            A := origin;
+            B := 3 * dir(45);
+            C := (5, 0);
+            E := B + 2 * dir(180);
+            D := B + 2 * dir(0);
+            draw (0, ypart B)--(5, ypart B) withpen pencircle scaled 1.25 withcolor vertfonce;
+            draw triangle(A, B, C) withpen pencircle scaled 1.25;
+            nomme.llft(A, btex $A$ etex);
+            nomme.top(B, btex $B$ etex);
+            nomme.lrt(C, btex $C$ etex);
+            nomme.top(E, btex $D$ etex);
+            nomme.top(D, btex $E$ etex);
+            label.bot(btex $\gamma$ etex, B + 0.2 * dir(-90));
+            label.llft(btex $\alpha$ etex, B + 0.5 * dir(180));
+            label.lrt(btex $\beta$ etex, B + 0.8 * dir(0));
+            label.urt(btex $\beta$ etex, A + 0.6 * dir(0));
+            label.ulft(btex $\alpha$ etex, C + 0.6 * dir(180));
+          fin;
+        \end{mplibcode}
+      \end{center}
+
+      Proof: Draw a line parallel to side $AB$ of triangle $ABC$ passing through point $C$.  As alternate interior angles, we have the pairs of angles labeled $\alpha$ and $\beta$ in the figure equal.  Since they form a line $ED$, $\angle ACB + \angle ECA + \angle BCD = 180°$.  This means $\gamma + \alpha + \beta = 180°$.  Q.E.D.
+    \end{column}
+  \end{columns}
+\end{frame}
 
 % \begin{frame}{Title}
 %   \begin{columns}[T]

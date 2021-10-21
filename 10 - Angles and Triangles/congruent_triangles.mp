@@ -1,0 +1,45 @@
+prologues:=3;
+outputformat:="svg";
+outputtemplate:=("%j_%c" & "." & outputformat);
+
+input latexmp;
+setupLaTeXMP(packages="amssymb");
+input repere;
+
+beginfig(0);
+  u = 0.6cm;
+  taille_marque_s := 0.15cm;
+  angle_marque_s := 90;
+  repere(-1,15,u,-1,6,u);
+    pair A, B, C;
+    A := origin;
+    B := 5 * dir(45);
+    C := (25/3, 0);
+    pair A', B', C';
+    A' := A shifted (10, 0);
+    B' := A' + 3 * dir(45);
+    C' := A' shifted (15/3, 0);
+    draw triangle(A, B, C) withpen pencircle scaled 1.25;
+    draw triangle(A', B', C') withpen pencircle scaled 1.25;
+    nomme.llft(A, btex $$ etex);
+    nomme.top(B, btex $$ etex);
+    nomme.lrt(C, btex $$ etex);
+    nomme.llft(A', btex $$ etex);
+    nomme.top(B', btex $$ etex);
+    nomme.lrt(C', btex $$ etex);
+    label.bot(btex $\beta$ etex, B + 0.2 * dir(-90));
+    label.urt(btex $\alpha$ etex, A + 0.4 * dir(0));
+    label.ulft(btex $\gamma$ etex, C + 0.8 * dir(180));
+    label.bot(btex $\beta'$ etex, B' + 0.2 * dir(-90));
+    label.urt(btex $\alpha'$ etex, A' + 0.4 * dir(0));
+    label.ulft(btex $\gamma'$ etex, C' + 0.9 * dir(180));
+    label.ulft(btex $x$ etex, 0.5[A, B]);
+    label.urt(btex $z$ etex, 0.5[B, C]);
+    label.bot(btex $y$ etex, 0.5[A, C]);
+    label.ulft(btex $x'$ etex, 0.5[A', B']);
+    label.urt(btex $z'$ etex, 0.5[B', C']);
+    label.bot(btex $y'$ etex, 0.5[A', C']);
+    label.(btex $\sim$ etex, (9, 1));
+  fin;
+endfig;
+end

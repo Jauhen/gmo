@@ -112,11 +112,13 @@
         \begin{mplibcode}
           u = 0.6cm;
           repere(-5,5,u,-1,5,u);
-            draw marqueangle(dir(70), (0, 0), (-2,0), 1);
-            draw marqueangle((2,0), (0, 0), dir(70), 2);
-            drawarrow (0, 0)--(2 * dir(70)) withpen pencircle scaled 1.25;
-            drawarrow (0, 0)--(-2, 0) withpen pencircle scaled 1.25;
+            draw marqueangle(dir(40), (0, 0), (0,2), 1);
+            draw marqueangle((2,0), (0, 0), dir(40), 2);
+            drawarrow (0, 0)--(2 * dir(40)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(2 * dir(90)) withpen pencircle scaled 1.25;
             drawarrow (0, 0)--(2, 0) withpen pencircle scaled 1.25;
+            draw marqueangledroit((0, 2), (0, 0), (-2, 0));
+            draw (0, 0)--(-2, 0);
             pickup pencircle scaled 2.5;
             drawdot (0, 0);
           fin;
@@ -125,13 +127,11 @@
         \begin{mplibcode}
           u = 0.6cm;
           repere(-5,5,u,-1,5,u);
-            draw marqueangle(dir(40), (0, 0), (0,2), 1);
-            draw marqueangle((2,0), (0, 0), dir(40), 2);
-            drawarrow (0, 0)--(2 * dir(40)) withpen pencircle scaled 1.25;
-            drawarrow (0, 0)--(2 * dir(90)) withpen pencircle scaled 1.25;
+            draw marqueangle(dir(70), (0, 0), (-2,0), 1);
+            draw marqueangle((2,0), (0, 0), dir(70), 2);
+            drawarrow (0, 0)--(2 * dir(70)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(-2, 0) withpen pencircle scaled 1.25;
             drawarrow (0, 0)--(2, 0) withpen pencircle scaled 1.25;
-            draw marqueangledroit((0, 2), (0, 0), (-2, 0));
-            draw (0, 0)--(-2, 0);
             pickup pencircle scaled 2.5;
             drawdot (0, 0);
           fin;

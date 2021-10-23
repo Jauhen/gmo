@@ -14,6 +14,47 @@
 \begin{document}
 \maketitle
 
+\begin{frame}{Elements}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{wrapfigure}[8]{r}{0.23\textwidth}
+        \vspace*{-1.2\baselineskip}
+        \hspace*{-1em}
+        \includegraphics[width=0.28\textwidth]{10 - Angles and Triangles/euclid.jpg}
+      \end{wrapfigure}
+      2320~years~ago,~Greek~mathematician \emph{Euclid of Alexandria} published \textbf{Elements}, the most influential non-religion book in history. In his book was about geometry Euclid split statements into \emph{definitions}, \emph{axioms}, and \emph{propositions}. This approach influenced almost any aspect of our life: from law to logic and modern science. Euclid started from definitions of the simplest figures: 
+      \begin{definition}
+        a \textbf{point} (is that which has position but not dimensions), 
+        
+        a \textbf{line} (is length without breadth), and 
+        
+        a \textbf{plane} (is that which has length and breadth).
+      \end{definition}
+      Then he gave some axioms and postulates, statements that we accept without proof.
+
+      After that he gave \textbf{mathematical proofs} of the propositions.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Some of the axioms reformulated by \textbf{Hilbert} (who helped Einstein with relativity theory equations):
+      \begin{definition}
+        \emph{For every \textbf{two points}, there exists exactly \textbf{one line} that contains them both.} 
+        
+        \emph{There exist at least \textbf{two} points on a \textbf{line}. There exist at least \textbf{three} points that do \textbf{not} lie on a line.}
+        
+        \emph{There exists at least \textbf{one} point between \textbf{two points} of a line.}
+
+        And the most famous (the fifth postulate of Euclid):
+
+        \emph{For a line and a point not on a line, there is exactly \textbf{one line} in the plane that passes through the point and does \textbf{not intersect} given line} (a parallel line).
+      \end{definition}
+      Most of the other axioms are about a plane and how to \emph{measure segments} and \emph{angles}.
+      \begin{example}
+        The irony is that modern geometry doesn't define points, lines, and planes. So points, lines, and planes now are anything that satisfies the set of axioms.
+      \end{example}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Types of angles and their measures}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
@@ -22,6 +63,8 @@
       \begin{example}
         Angles are sometimes also measured in radians, where $2\pi$ radians is equal to $360$ degrees.
       \end{example}
+
+      Angles are usually denoted with small greek letters. The most commonly used letters for angles are $\alpha$ (alpha), $\beta$ (beta), $\gamma$ (gamma), $\theta$~(theta), $\phi$ (phi), and $\psi$ (psi). Also, the letter $\pi$ (pi) is used to denote an angle $180°$.
     \end{column}
     \begin{column}{0.5\textwidth}
       Angles are classified as acute, right, or obtuse depending on whether they measure less than, equal to, or greater than $90°$ respectively.\medskip
@@ -63,7 +106,39 @@
         Pairs of angles whose measures sum to $90°$ are called \textbf{complementary} angles.  
         
         Pairs of angles that sum to $180°$ are called \textbf{supplementary}.
-      \end{definition}
+      \end{definition}\medskip
+
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-5,5,u,-1,5,u);
+            draw marqueangle(dir(70), (0, 0), (-2,0), 1);
+            draw marqueangle((2,0), (0, 0), dir(70), 2);
+            drawarrow (0, 0)--(2 * dir(70)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(-2, 0) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(2, 0) withpen pencircle scaled 1.25;
+            pickup pencircle scaled 2.5;
+            drawdot (0, 0);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-5,5,u,-1,5,u);
+            draw marqueangle(dir(40), (0, 0), (0,2), 1);
+            draw marqueangle((2,0), (0, 0), dir(40), 2);
+            drawarrow (0, 0)--(2 * dir(40)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(2 * dir(90)) withpen pencircle scaled 1.25;
+            drawarrow (0, 0)--(2, 0) withpen pencircle scaled 1.25;
+            draw marqueangledroit((0, 2), (0, 0), (-2, 0));
+            draw (0, 0)--(-2, 0);
+            pickup pencircle scaled 2.5;
+            drawdot (0, 0);
+          fin;
+        \end{mplibcode} \\
+        Complementary & Supplementary 
+      \end{tabularx}
+
     \end{column}
   \end{columns}
 \end{frame}

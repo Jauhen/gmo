@@ -1,0 +1,369 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\usepackage{luamplib}
+\everymplib{input mpcolornames; input repere; input fiziko; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{MOEMS Contests}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Contest overview}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        Unlike many of our contests, time should not be a factor for MOEMS.  You have $30$ minutes for $5$ problems.
+        
+        \textbf{Please take this time to check your work.}
+      \end{definition}
+
+      In general, the problems are arranged with the easiest first, and the harder ones at the end of the contest.  Be sure to read the question carefully to insure that you actually are answering the question that is being asked.  Solving for the area of a square when they ask for a side length is a frustrating (and avoidable) way to miss a question.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      For individual and school awards, what matters is your cumulative score for the $5$ contests.  This has several important implications:
+      \begin{itemize}
+        \item If you know that you will be absent the day a contest is given, let the coaches know -- it might be possible to change the contest date if it works for the team.
+        \item If a particular contest is not going well for you, don’t be discouraged.  That extra question you solve could be an important point in your cumulative score.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Balance question}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Although this is more of a physics question, MOEMS often asks questions about balancing weights on two sides of a pivot point.
+      \[ M_1 \times a = M_2 \times b \]
+      \vspace*{-2\baselineskip}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          numeric mpos, npos, cpos;
+          color mathBlue;
+          mathBlue := (17/256, 85/256, 204/256);
+          mpos = 0.6u;
+          npos = 6.3u;
+          cpos = 4.52u;
+          draw woodBlock(7u, 0.15u);
+          draw weight.s(1u) shifted (mpos, 0.15u);
+          draw weight.s(1.3u) shifted (npos, 0.15u);
+          path p;
+          p := (0u, 0u)--(-0.35u, -0.7u)--(0.35u, -0.7u)--cycle;
+          draw woodenThing(p, 0) shifted (cpos, 0);
+          picture m, n;
+          m = thelabel.top(btex $M_1$ etex, (mpos, 0.25u));
+          n = thelabel.top(btex $M_2$ etex, (npos, 0.35u));
+          fill bbox m withcolor white;
+          draw m;
+          fill bbox n withcolor white;
+          draw n;
+          draw (mpos, 0u)--(mpos, -1u) withcolor mathBlue;
+          draw (npos, 0u)--(npos, -1u) withcolor mathBlue;
+          draw (cpos, 0u)--(cpos, -1u) withcolor mathBlue;
+          drawdblarrow (mpos, -0.9u)--(cpos, -0.9u) withcolor mathBlue;
+          drawdblarrow (npos, -0.9u)--(cpos, -0.9u) withcolor mathBlue;
+          label.top(btex $a$ etex, (0.5[mpos, cpos], -0.9u));
+          label.top(btex $b$ etex, (0.5[npos, cpos], -0.9u));
+          pickup pencircle scaled 3;
+          drawdot (mpos, 0u) withcolor mathBlue;
+          drawdot (cpos, 0u) withcolor mathBlue;
+          drawdot (npos, 0u) withcolor mathBlue;
+        \end{mplibcode}
+      \end{center}
+      The tip of the triangle represents the \textbf{pivot point} or \textbf{fulcrum}.  The beam or board the weights rest on is called the \textbf{lever arm}.  Unless told otherwise, ignore the mass of the lever arms themselves in these problems.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        The system is \textbf{balanced} when the \emph{product of the mass times the distance} from the fulcrum on one side is \textbf{equal} to the \emph{product of the mass and the distance} from the fulcrum on the other side.  
+        
+        As shown in the illustration on the right, this occurs when $M_1 \cdot a = M_2 \cdot b$. 
+      \end{definition}
+
+      Even though the blocks $M_1$ and $M_2$  have some width, the problems assume the mass is distributed uniformly, so we can simplify the problem so that the mass is acting as if it were all concentrated at this center point of the block.
+
+      \begin{example}
+        If there are \textbf{multiple} masses on a side, to find the total torque for all masses we sum the products of $M_i\, r_{\,i}$ where $M_i$ are the individual masses and $r_{\,i}$ are their corresponding distances to the fulcrum.
+      \end{example}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Cryptarithm}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      A cryptarithm is a popular type of mathematical logic problem, where each digit now corresponds to a number.  Read the rules for a particular cryptarithm carefully.  Typically a letter can represent only one digit, and every instance of a~digit always corresponds to the same letter.  In other words, if $d$ corresponds to $7$, it cannot also represent $8$, and $7$ cannot be represented by any letter other than $d$.  If a number has $4$ digits, the \textbf{leading digit cannot be zero} (it would be a $3$-digit number then.  Don’t forget that zero could appear elsewhere.  Ignoring the possibility of zero is often disastrous if the problem is asking something like, “find the smallest possible value for the codeword.”
+
+      Don’t be shy to try using some trial and error techniques to crack the puzzle -- you do have $30$ minutes after all. 
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        $AB$, $CD$, $EF$, $GH$, and $JK$ are five $2$-digit numbers.  Different letters represent different digits.  Find the greatest possible value for the fraction
+        \[ \frac{AB + CD + EF}{GH - JK}. \]
+        \vspace*{-0.5em}
+      \end{problem}
+
+      The smallest denominator is $1$, which can be obtained using $20-19$, $30-29$, $40-39$, etc.  To maximize the numerator, we should choose $20-19$.  The remaining digits are $3$ through $8$.  To make the numerand as large as possible, use $8$, $7$, $6$ for the tens digits (order doesn’t matter), and $3$, $4$, $5$ for the ones digits (again, in any order).  The greatest possible value is $222$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \setlength{\leftmargini}{0.3cm}
+      \begin{enumerate}
+        \justifying
+        \setlength{\itemsep}{0pt}
+        \item $AB$, $CD$, $EF$, $GH$, and $JK$ are five $2$-digit numbers.  Different letters represent different digits.  Find the smallest possible value for the fraction:
+        \[ (AB + CD + EF)/(GH - JK). \]\vspace*{-1\baselineskip}
+        \item Both $P$ and $(98-P)$ are prime numbers.  What is the least possible value for $P$?
+        \item Line segment $AB$ has endpoints $A (-5,\ 4)$ and $B(7,\ 13)$.  Point $C$ lies on $AB$ and is two-thirds of the way from point $A$ to point $B$.  Find the coordinates $(x,\ y)$ of point $C$.
+        \item In the diagram below, the $10$ kg weights are at a~distance of $x$ and $2x$ from the fulcrum.  The weight on the right side is also a distance $x$ from the fulcrum.  What is the mass on the right side of the balance when the system is in equilibrium?
+        \vspace*{-0.1\baselineskip}
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.8cm;
+            numeric mpos, npos, lpos, cpos;
+            color mathBlue;
+            mathBlue := (17/256, 85/256, 204/256);
+            mpos = 0.6u;
+            lpos = 2.83u;
+            npos = 7.3u;
+            cpos = 5.07u;
+            draw woodBlock(8u, 0.15u);
+            draw weight.s(1u) shifted (mpos, 0.15u);
+            draw weight.s(1u) shifted (lpos, 0.15u);
+            draw weight.s(1.1u) shifted (npos, 0.15u);
+            path p;
+            p := (0u, 0u)--(-0.25u, -0.5u)--(0.25u, -0.5u)--cycle;
+            draw woodenThing(p, 0) shifted (cpos, 0);
+            picture m, n, l;
+            m = thelabel.top(btex $\scriptstyle 10\text{kg}$ etex, (mpos, 0.25u));
+            l = thelabel.top(btex $\scriptstyle 10\text{kg}$ etex, (lpos, 0.25u));
+            n = thelabel.top(btex $\scriptstyle m\text{ kg}$ etex, (npos, 0.3u));
+            fill bbox m withcolor white;
+            draw m;
+            fill bbox l withcolor white;
+            draw l;
+            fill bbox n withcolor white;
+            draw n;
+            draw (mpos, 0u)--(mpos, -0.8u) withcolor mathBlue;
+            draw (npos, 0u)--(npos, -0.8u) withcolor mathBlue;
+            draw (lpos, 0u)--(lpos, -0.8u) withcolor mathBlue;
+            draw (cpos, 0u)--(cpos, -0.8u) withcolor mathBlue;
+            drawdblarrow (mpos, -0.7u)--(lpos, -0.7u) withcolor mathBlue;
+            drawdblarrow (lpos, -0.7u)--(cpos, -0.7u) withcolor mathBlue;
+            drawdblarrow (npos, -0.7u)--(cpos, -0.7u) withcolor mathBlue;
+            label.top(btex $x$ etex, (0.5[mpos, lpos], -0.7u));
+            label.top(btex $x$ etex, (0.5[cpos, lpos], -0.7u));
+            label.top(btex $x$ etex, (0.5[npos, cpos], -0.7u));
+            pickup pencircle scaled 3;
+            drawdot (mpos, 0u) withcolor mathBlue;
+            drawdot (cpos, 0u) withcolor mathBlue;
+            drawdot (npos, 0u) withcolor mathBlue;
+            drawdot (lpos, 0u) withcolor mathBlue;
+          \end{mplibcode}
+        \end{center}
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \setlength{\leftmargini}{0.3cm}
+      \begin{enumerate}
+        \justifying
+        \setlength{\itemsep}{0pt}
+        \conti
+        \item The arithmetic mean of five positive integers is $30$.  What is the greatest possible value of their median?
+        \item Find the least value of the fraction $a/b$ such $a/b$ is an improper fraction in lowest terms; and if $a/b$ is divided by either $6/25$ or $8/15$, the quotient is a whole number.
+        \item Find the greatest prime factor of the sum $5! + 7!$.
+        \item $A$, $B$, and $C$ represent weights in the $3$ balanced scales shown below, with lever arms of equal lengths on both sides. Find $C$.
+      \end{enumerate}
+      \begin{tabularx}{\textwidth}{YY}
+        \begin{mplibcode}
+          u = 0.8cm;
+          numeric mpos, npos, cpos;
+          color mathBlue;
+          mathBlue := (17/256, 85/256, 204/256);
+          mpos = 0.6u;
+          npos = 3.6u;
+          cpos = 2.1u;
+          draw woodBlock(4u, 0.15u);
+          draw weight.s(0.6u) shifted (mpos-0.28u, 0.15u);
+          draw weight.s(0.6u) shifted (mpos+0.28u, 0.15u);
+          draw weight.s(0.6u) shifted (mpos, 0.75u);
+          draw weight.s(1u) shifted (npos, 0.15u);
+          path p;
+          p := (0u, 0u)--(-0.2u, -0.4u)--(0.2u, -0.4u)--cycle;
+          draw woodenThing(p, 0) shifted (cpos, 0);
+          picture ma, mb, mc, n;
+          ma = thelabel.top(btex $\scriptstyle A$ etex, (mpos-0.28u, 0.12u));
+          mb = thelabel.top(btex $\scriptstyle A$ etex, (mpos+0.28u, 0.12u));
+          mc = thelabel.top(btex $\scriptstyle B$ etex, (mpos, 0.72u));
+          n = thelabel.top(btex $17$ etex, (npos, 0.2u));
+          fill bbox ma withcolor white;
+          draw ma;
+          fill bbox mb withcolor white;
+          draw mb;
+          fill bbox mc withcolor white;
+          draw mc;
+          fill bbox n withcolor white;
+          draw n;
+          draw (mpos, 0u)--(mpos, -0.6u) withcolor mathBlue;
+          draw (npos, 0u)--(npos, -0.6u) withcolor mathBlue;
+          draw (cpos, 0u)--(cpos, -0.6u) withcolor mathBlue;
+          drawdblarrow (mpos, -0.55u)--(cpos, -0.55u) withcolor mathBlue;
+          drawdblarrow (npos, -0.55u)--(cpos, -0.55u) withcolor mathBlue;
+          label.top(btex $\scriptstyle d$ etex, (0.5[mpos, cpos], -0.55u));
+          label.top(btex $\scriptstyle d$ etex, (0.5[npos, cpos], -0.55u));
+          pickup pencircle scaled 3;
+          drawdot (mpos, 0u) withcolor mathBlue;
+          drawdot (cpos, 0u) withcolor mathBlue;
+          drawdot (npos, 0u) withcolor mathBlue;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.8cm;
+          numeric mpos, npos, cpos;
+          color mathBlue;
+          mathBlue := (17/256, 85/256, 204/256);
+          mpos = 0.6u;
+          npos = 3.6u;
+          cpos = 2.1u;
+          draw woodBlock(4u, 0.15u);
+          draw weight.s(0.6u) shifted (mpos-0.28u, 0.15u);
+          draw weight.s(0.6u) shifted (mpos+0.28u, 0.15u);
+          draw weight.s(0.6u) shifted (mpos, 0.75u);
+          draw weight.s(0.9u) shifted (npos, 0.15u);
+          path p;
+          p := (0u, 0u)--(-0.2u, -0.4u)--(0.2u, -0.4u)--cycle;
+          draw woodenThing(p, 0) shifted (cpos, 0);
+          picture ma, mb, mc, n;
+          ma = thelabel.top(btex $\scriptstyle B$ etex, (mpos-0.28u, 0.12u));
+          mb = thelabel.top(btex $\scriptstyle B$ etex, (mpos+0.28u, 0.12u));
+          mc = thelabel.top(btex $\scriptstyle A$ etex, (mpos, 0.72u));
+          n = thelabel.top(btex $13$ etex, (npos, 0.18u));
+          fill bbox ma withcolor white;
+          draw ma;
+          fill bbox mb withcolor white;
+          draw mb;
+          fill bbox mc withcolor white;
+          draw mc;
+          fill bbox n withcolor white;
+          draw n;
+          draw (mpos, 0u)--(mpos, -0.6u) withcolor mathBlue;
+          draw (npos, 0u)--(npos, -0.6u) withcolor mathBlue;
+          draw (cpos, 0u)--(cpos, -0.6u) withcolor mathBlue;
+          drawdblarrow (mpos, -0.55u)--(cpos, -0.55u) withcolor mathBlue;
+          drawdblarrow (npos, -0.55u)--(cpos, -0.55u) withcolor mathBlue;
+          label.top(btex $\scriptstyle d$ etex, (0.5[mpos, cpos], -0.55u));
+          label.top(btex $\scriptstyle d$ etex, (0.5[npos, cpos], -0.55u));
+          pickup pencircle scaled 3;
+          drawdot (mpos, 0u) withcolor mathBlue;
+          drawdot (cpos, 0u) withcolor mathBlue;
+          drawdot (npos, 0u) withcolor mathBlue;
+        \end{mplibcode}
+      \end{tabularx}\vspace*{-0.5em}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.8cm;
+          numeric mpos, npos, cpos;
+          color mathBlue;
+          mathBlue := (17/256, 85/256, 204/256);
+          mpos = 0.6u;
+          npos = 3.6u;
+          cpos = 2.1u;
+          draw woodBlock(4u, 0.15u);
+          draw weight.s(0.6u) shifted (mpos, 0.15u);
+          draw weight.s(0.6u) shifted (mpos, 0.75u);
+          draw weight.s(0.85u) shifted (npos, 0.15u);
+          path p;
+          p := (0u, 0u)--(-0.2u, -0.4u)--(0.2u, -0.4u)--cycle;
+          draw woodenThing(p, 0) shifted (cpos, 0);
+          picture ma, mc, n;
+          ma = thelabel.top(btex $\scriptstyle B$ etex, (mpos, 0.12u));
+          mc = thelabel.top(btex $\scriptstyle A$ etex, (mpos, 0.72u));
+          n = thelabel.top(btex $C$ etex, (npos, 0.15u));
+          fill bbox ma withcolor white;
+          draw ma;
+          fill bbox mc withcolor white;
+          draw mc;
+          fill bbox n withcolor white;
+          draw n;
+          draw (mpos, 0u)--(mpos, -0.6u) withcolor mathBlue;
+          draw (npos, 0u)--(npos, -0.6u) withcolor mathBlue;
+          draw (cpos, 0u)--(cpos, -0.6u) withcolor mathBlue;
+          drawdblarrow (mpos, -0.55u)--(cpos, -0.55u) withcolor mathBlue;
+          drawdblarrow (npos, -0.55u)--(cpos, -0.55u) withcolor mathBlue;
+          label.top(btex $\scriptstyle d$ etex, (0.5[mpos, cpos], -0.55u));
+          label.top(btex $\scriptstyle d$ etex, (0.5[npos, cpos], -0.55u));
+          pickup pencircle scaled 3;
+          drawdot (mpos, 0u) withcolor mathBlue;
+          drawdot (cpos, 0u) withcolor mathBlue;
+          drawdot (npos, 0u) withcolor mathBlue;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Six girls of differing heights are arranged in $2$ rows of $3$ girls each.  Each girl is taller than the girl in front of her and also taller than the girl to her right.  How many distinct arrangements of the six girls are possible?
+
+        \item What is the probability that a fraction chosen at random from the list of $49$ fractions below will terminate?
+        \[ \frac{1}{2},\ \frac{1}{3},\ \frac{1}{4},\ \ldots,\ \frac{1}{48},\ \frac{1}{49},\ \frac{1}{50} \]
+        
+        \item $480$ identical cubes are placed in the corner of a room and arranged in a rectangular solid that is $6 \times 8 \times 10$ cubes and bounded by the floor and $2$ walls.  How many of the those cubes have at least one face visible to an observer in the room?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item In the aluminum can shown below, the height is $8$ cm and the circumference is $12$ cm.  Points $A$ and $B$ lie “opposite” each other on the two rims (they would be connected by a diameter if $B$ were translated vertically to the upper rim).  Find the \textbf{shortest distance along the surface of the can} from $A$ to $B$.
+        
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.7cm;
+            path a, b, c;
+            a := fullcircle scaled 0.5u xscaled 4;
+            b := a shifted (0, 2.5u);
+            draw b;
+            draw subpath(0, 4) of a dashed evenly;
+            draw subpath(4, 8) of a;
+            draw (-u, 0)--(-u, 2.5u);
+            draw (u, 0)--(u, 2.5u);
+            pickup pencircle scaled 3;
+            dotlabel.urt(btex $A$ etex, (u, 2.5u));
+            dotlabel.llft(btex $B$ etex, (-u, 0));
+          \end{mplibcode}
+        \end{center}
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

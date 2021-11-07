@@ -1,0 +1,303 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage[all]{xy}
+\usepackage{luamplib}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ October 2021}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 6}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Seats in a plane cabin are arranged in $30$ rows. The distance between rows is the same. The distance between seat backs one after the other is $80$~cm. To increase profit, an airline wants to add more rows, so the space between seats will be reduced by $5$~cm. How many rows now fit into the plane cabin?
+      \end{problem}
+
+      The total length of the plane is 
+      \[ 30 \text{ rows} \times 80 \text{ cm} = 2400 \text{ cm}.\] 
+      The new sit distance between sits is 
+      \[ 80 \text{ cm} - 5 \text{ cm} = 75 \text{ cm}.\] 
+      The total amount of new rows is 
+      \[ 2400 \text{ cm} \div 75 \text{ cm} = 32 \text{ rows}. \]
+      So now $32$ rows fits into the plane cabin.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 7}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Two equilateral triangles with two times smaller sides than a square have been constructed to the outer side of the square (see the picture). What is the size of the angle marked with the question mark?
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u = 1.75cm;
+            taille_marque_s := 0.15cm;
+            angle_marque_s := 90;
+            repere(-5,5,u,-5,5,u);
+              pair A, B, C, D, E, F, G, H;
+              A := (0, 0);
+              B := (2, 0);
+              C := (2, 2);
+              D := (0, 2);
+              E := dir(210) shifted D;
+              F := (0, 1);
+              G := dir(30) shifted B;
+              H := (2, 1);
+              draw A--B--C--D--cycle withpen pencircle scaled 1.25;
+              draw D--E--F withpen pencircle scaled 1.25;
+              draw B--G--H withpen pencircle scaled 1.25;
+              draw marquesegment(A,F,1);
+              draw marquesegment(D,F,1);
+              draw marquesegment(E,F,1);
+              draw marquesegment(D,E,1);
+              draw marquesegment(B,H,1);
+              draw marquesegment(C,H,1);
+              draw marqueangle(G, E, D, 1) withcolor bleu;
+              nomme(G, E, D, btex $?$ etex);
+              draw E--G withpen pencircle scaled 1.25 withcolor rouge;
+            fin;
+          \end{mplibcode}
+        \end{center}
+      \end{problem}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Let's mark vertices with letters and draw auxillary line (green)
+      \begin{center}
+        \vspace*{-1em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1.5cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-5,5,u,-5,5,u);
+            pair A, B, C, D, E, F, G, H, O;
+            A := (0, 0);
+            B := (2, 0);
+            C := (2, 2);
+            D := (0, 2);
+            E := dir(210) shifted D;
+            F := (0, 1);
+            G := dir(30) shifted B;
+            H := (2, 1);
+            O := (1, 1);
+            draw A--B--C--D--cycle withpen pencircle scaled 1.25;
+            draw D--E--F withpen pencircle scaled 1.25;
+            draw B--G--H withpen pencircle scaled 1.25;
+            draw marquesegment(A,F,1);
+            draw marquesegment(D,F,1);
+            draw marquesegment(E,F,1);
+            draw marquesegment(D,E,1);
+            draw marquesegment(B,H,1);
+            draw marquesegment(C,H,1);
+            draw E--G withpen pencircle scaled 1.25 withcolor rouge;
+            draw F--H withpen pencircle scaled 1.25 withcolor vertfonce;
+            label.top(btex $A$ etex, D);
+            label.lft(btex $B$ etex, E);
+            label.llft(btex $C$ etex, F);
+            label.urt(btex $D$ etex, H);
+            label.llft(btex $O$ etex, O);
+          fin;
+        \end{mplibcode}
+      \end{center}
+      Since the picture is symmetrical around the center, red and green lines intersect at the center of the square, so $CO = CA = BC$. That means $\triangle BCO$ is isosceles, which means $\angle CBO = \angle COB$ and because of 
+      \begin{align*}
+        \angle BCO &= \angle BCA + \angle OCA = 60° + 90° = 150°, \\
+        \angle CBO &= (180° - 150°) / 2 = 15°, \\
+        \angle ABO &= \angle CBA - \angle CBO = 60° - 15° = \mathbf{45°}.
+      \end{align*} 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Several introverts and extroverts want to form four teams. Everyone in a row chooses a team, but introverts choose a team with the smallest number of members at the time of choice, and extroverts choose a team with the largest number of members. Is it possible that all teams will have different sizes?
+      \end{problem}
+      Let's take a look at \textbf{the difference} between the \emph{2nd largest} team and the \emph{smallest} team. 
+      
+      Initially, it is $0$.\medskip
+
+      When we add an \emph{extrovert}, \textbf{the difference} will \emph{not change} since he will join the largest team (case, where several teams have the same largest amount of players, is also covered here, since the only one team will change its size, and an unchanged team becomes the 2nd largest).
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      When we add an \emph{introvert}, the two cases are possible: 
+
+      \begin{description}[wide]
+        \item[\textbf{the difference} is $0$:] In this case, \textbf{the difference} may become $1$ (when the largest team is bigger than the 2nd largest) or \emph{remain the same} (when all teams are equal in size, in this case, an introvert will join the largest team.
+
+        \item[\textbf{the difference} is not $0$:] In this case \textbf{the difference} may be \emph{reduced by} $1$ (when the only one the smallest team) or \emph{remain the same} (when there are several teams with the smallest number of players).
+      \end{description}
+
+
+      As we see, \textbf{the difference} may only be $0$ or $1$. But for three teams to be different in size, the difference should be at least $2$. 
+      
+      Otherwise, by \emph{the pigeonhole principle}, \textbf{at least two teams should be the same in size.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 9}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        There is a regular hexagon $ABCDEF$. Any three vertexes form a triangle, a total of $20$ triangles. Kvantik wants marks as lowest points as possible inside the hexagon, so any of these $20$ triangles has at least one marked point. Please give an example of marked points, so the condition is met and prove that a lower number of points can't be marked.
+      \end{problem}
+      4 point may be put like this
+      \begin{center}
+        \vspace*{-0.5em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.85cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-5,5,u,-5,5,u);
+            pair O, a[], b[];
+            O := origin;
+            for i=1 upto 6:
+              a[i] := 2 * dir(60 * i);
+            endfor;
+            draw a1--a2--a3--a4--a5--a6--cycle withpen pencircle scaled 1.25;
+            draw a1--a3; draw a1--a4; draw a1--a5;
+            draw a2--a4; draw a2--a5; draw a2--a6;
+            draw a3--a5; draw a3--a6;
+            draw a4--a6;
+            a7 := whatever[a2,a4] = whatever[a1,a3];
+            b1 := incenter(a2, a3, a7);
+            a8 := whatever[a3,a5] = whatever[a4,a6];
+            b2 := incenter(a4, a5, a8);
+            a9 := whatever[a1,a3] = whatever[a2,a6];
+            a10 := whatever[a1,a4] = whatever[a2,a6];
+            b3 := incenter(a1, a9, a10);
+            a11 := whatever[a6,a3] = whatever[a1,a5];
+            a12 := whatever[a6,a4] = whatever[a1,a5];
+            b4 := incenter(a6, a11, a12);     
+            pickup pencircle scaled 5pt;
+            drawdot b1*u withcolor pourpre;
+            drawdot b2*u withcolor pourpre;
+            drawdot b3*u withcolor pourpre;
+            drawdot b4*u withcolor pourpre;            
+          fin;
+        \end{mplibcode}
+        \vspace*{-0.5em}
+      \end{center}
+      Iteration over all of the possible $20$ triangles shows that any triangle has a point inside.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Less than 4 points are not enough. Let's split the hexagon into 4 triangles. 
+      \begin{center}
+        \vspace*{-0.5em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.85cm;
+          taille_marque_s := 0.15cm;
+          angle_marque_s := 90;
+          repere(-5,5,u,-5,5,u);
+            pair O, a[], b[];
+            O := origin;
+            for i=1 upto 6:
+              a[i] := 2 * dir(60 * i);
+            endfor;
+            draw a1--a2--a3--a4--a5--a6--cycle withpen pencircle scaled 1.25 withcolor rouge;
+            draw a1--a3 withpen pencircle scaled 1.5 withcolor rouge; 
+            draw a1--a4; 
+            draw a1--a5 withpen pencircle scaled 1.5 withcolor rouge;
+            draw a2--a4; draw a2--a5; draw a2--a6;
+            draw a3--a5 withpen pencircle scaled 1.5 withcolor rouge; 
+            draw a3--a6;
+            draw a4--a6;
+          fin;
+        \end{mplibcode}
+        \vspace*{-0.5em}
+      \end{center}
+      Since these triangles don't overlap, every triangle should have a~dedicated point. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 10}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        A class had an armwrestling tournament. Everyone played with everyone exactly once (there are no draws in armwrestling). In the end, every boy had twice more wins than loses, and every girl had half as many wins as losses.
+        \vspace*{-0.7ex}
+        \begin{enumerate}
+          \setlength{\itemsep}{0pt}
+          \item[a)] Give an example of how this can happen.
+
+          \item[b)] Is it necessary that some girl won against some boy?
+        \end{enumerate}
+        \vspace*{-0.7ex}
+      \end{problem}
+      a) Let's consider this tournament with $2$ boys ($b_1$~and $b_2$) and $2$ girls ($g_1$ and $g_2$):
+      \begin{center}
+        \vspace*{-0.5ex}
+        \begin{tabular}{|l||c|c|c|c||c|c|}
+          \hline 
+          & $b_1$ & $b_2$ & $g_1$ & $g_2$ & won & lost \\\hline\hline
+          $b_1$\vphantom{$b_1^1$} &  & 1 & 0 & 1 & 2 & 1 \\\hline 
+          $b_2$\vphantom{$b_1^1$} & 0 &  & 0 & 1 & 2 & 1 \\\hline 
+          $g_1$\vphantom{$b_1^1$} & 1 & 0 &  & 1 & 1 & 2 \\\hline 
+          $g_2$\vphantom{$b_1^1$} & 0 & 1 & 0 &  & 1 & 2 \\\hline
+        \end{tabular}
+        \vspace*{-0.5ex}
+      \end{center}
+      Each row shows how this student plays with each student at the top of a column. 
+      
+      $1$ means a win, and $0$ means a loss.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \small
+      b) Few observations first:
+
+      Since all students have played the same amount of games, all boys have the same number of wins, and it is equal to the number of losses for girls. The same is true for the number of losses for boys and wins for girls.
+      \smallskip
+      
+      Since the total number of wins equals the total number of losses, the number of boys has to be equal to the number of girls.
+
+      Let's denote the number of girls as $x$.
+      \medskip
+
+      Let's \emph{suppose} none of the girls won a match against a~boy. 
+      
+      Then the total number of games won by all girls is equal to the number of games between girls, which is $\dfrac{x (x -1)}{2}$, and since they all won an equal amount of games, each of they is won $\dfrac{x-1}{2}$ games. But the total number of games played by a girl is $2x - 1$ ($x$ vs boys and $x-1$ vs girls). So we have $\dfrac{2x -1}{3} = \dfrac{x -1}{2}$. Solving for $x$ we get $4 x - 2 = 3x -3$ or $x = -1$. 
+      
+      We get a \emph{contradiction}, the number of girls should be counting number. That means our assumption is incorrect, and \textbf{some girl has to win against some boy.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

@@ -1,0 +1,670 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Angles in Circles}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Central Angles}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      In a circle, a \textbf{central angle} is an angle whose vertex is the center of the circle, and the rays intersect at the center are both radii of the circle.  The measure of the central angle is often denoted by the Greek letter theta ($\theta$).
+      
+      There are $360°$ in a full circle, so the diameter of the circle is a central angle whose measure is~$180°$.  A quarter of a circle corresponds to a~central angle of $90°$.
+      \begin{wrapfigure}{l}{0.55\textwidth}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.8cm;
+          repere(-5,5,u,-5,5,u);
+            path a;
+            pair O, A, B;
+            O := origin;
+            A := 2*dir(130);
+            B := 2*dir(50);
+            a := cercle(O, A);
+            draw a withpen pencircle scaled 1.25;
+            draw A--O--B withpen pencircle scaled 1.25;
+            nomme.llft(O, btex $O$ etex);
+            nomme.ulft(A, btex $A$ etex);
+            nomme.urt(B, btex $B$ etex);
+            label.llft(btex $r_1$ etex, .5[A, O]);
+            label.lrt(btex $r_2$ etex, .5[B, O]);
+            taille_marque_a := 0.2cm;
+            nomme(B,O,A, btex $\theta$ etex);
+          fin;
+        \end{mplibcode}
+      \end{wrapfigure}
+      As shown in the diagram, a central angle $\theta$ is created by two radii.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      It’s easy to convert between the central angle and the corresponding arc length. In the diagram to the left, the length of the arc connecting points $A$ and $B$ can be found by considering the ratios:
+      \begin{align*}
+        \frac{\theta}{360} &= \frac{\text{arclength}}{\text{circumference}} \\[1ex]
+        \frac{\theta}{360} &= \frac{\text{arclength}}{2 \pi r}.                
+      \end{align*}
+      In other words, the ratio of the central angle to $360°$ is the same as the ratio of the arclength corresponding to that central angle divided by the circumference of the entire circle.
+
+      \begin{problem}
+        If the arclength $AB$ is $3\pi$ and the radius of the circle is $6$, what is the central angle created by the radii to points $A$ and $B$?
+      \end{problem}
+      \[
+        \theta = \frac{3 \pi}{12 \pi} \cdot 360° = 90°.
+      \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Clockface problem}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      In a clock with $12$ digits, the central angle corresponding to $1$ hour equals $\nicefrac{360°}{12}$ which is~$30°$.  So at $3$ o’clock, for example, the hands of the clock form a central angle of $90°$.
+
+      Note that in clockface problems, \emph{you should assume that the hour hand moves continuously as the minute hand moves}.  
+      \begin{wrapfigure}{l}{0.55\textwidth}
+        \leavevmode
+        \begin{mplibcode}
+          r := 1.75cm; len := 5bp; min_thickness := 1.75bp; hour_thickness := 4bp;
+          path cadran; cadran = fullcircle scaled (2r); 
+          fill cadran scaled 1.04; fill cadran withcolor .75[rgb_orange, white]; 
+          % Graduation marks and labels
+          for i = 1 upto 60:
+            if i mod 5 = 0: 
+              j := i div 5; angl := 90-30j; 
+              freelabel("\large\sffamily\bfseries" & decimal j, (r-len)*dir angl, r*dir angl);
+              draw ((r, 0) -- (r - len, 0)) rotated angl withpen pencircle scaled min_thickness;
+            else:
+              angl := 90 - 6i;
+              draw ((r, 0) -- (r - .5len, 0)) rotated angl;
+            fi
+          endfor
+          % Needles
+          minute := 30;
+          hour := 3;
+          pickup pencircle scaled min_thickness;
+          drawarrow origin -- r*dir(90-minute*6) cutends (0, 3.3len);
+          pickup pencircle scaled hour_thickness;
+          drawarrow origin -- r*dir (90-(hour+minute/60)*30) cutends(0, 5len);
+          fill fullcircle scaled 2len;
+        \end{mplibcode}
+      \end{wrapfigure}
+      So at $3{:}30$, the minute hand is pointing down at $6$, while the hour hand is exactly midway between $3$ and $4$.  
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        What angle is formed by the hour and minute hands when a clock reads $3{:}30$?
+      \end{problem}
+      Each hour of separation between the hands is~$30°$, so at $3{:}30$, the hands form an angle of $75°$ $(30° + 30° + 15°)$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Clockface problems to the minute}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      In one minute, the minute hand moves $\nicefrac{1}{60}$ of the way around the circle, which is $6°$.  The hour hand moves $\nicefrac{1}{60}$ of $\nicefrac{1}{12}$ of the way around the circle in one minute, which is $0.5°$.
+      
+      Computing the position of the minute hand at a given time is straightforward.  The angle formed by the minute hand and a line pointing straight up to $12$ is $6°$ times the number of minutes past the hour.  The angle formed by the hour hand and its position at the top of the hour (i.e. at zero minutes past the hour) is $30°$ times the fraction of the hour that has past, which is $0.5°$ for every minute past the hour.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        What angle is formed by the hour and minute hands when a clock reads $3{:}42$? 
+      \end{problem}
+
+      \begin{wrapfigure}{l}{0.5\textwidth}
+        \vspace*{-0.7em}
+        \leavevmode
+        \begin{mplibcode}
+          r := 1.7cm; len := 5bp; min_thickness := 1.75bp; hour_thickness := 3bp;
+          path cadran; cadran = fullcircle scaled (2r); 
+          fill cadran scaled 1.04; fill cadran withcolor .75[rgb_orange, white]; 
+          % Graduation marks and labels
+          for i = 1 upto 60:
+            if i mod 5 = 0: 
+              j := i div 5; angl := 90-30j; 
+              freelabel("\sffamily\bfseries" & decimal j, (r-len)*dir angl, r*dir angl);
+              draw ((r, 0) -- (r - len, 0)) rotated angl withpen pencircle scaled min_thickness;
+            else:
+              angl := 90 - 6i;
+              draw ((r, 0) -- (r - .5len, 0)) rotated angl;
+            fi
+          endfor
+          % Needles
+          minute := 42;
+          hour := 3;
+          pickup pencircle scaled min_thickness;
+          drawarrow origin -- r*dir(90-minute*6) cutends (0, 3.3len);
+          pickup pencircle scaled hour_thickness;
+          drawarrow origin -- r*dir (90-(hour+minute/60)*30) cutends(0, 5len);
+          fill fullcircle scaled 2len;
+        \end{mplibcode}
+      \end{wrapfigure}
+      The minute hand is at \[\dfrac{42}{60} \times 360°\] with respect to vertical, which is~$252°$.  The hour hand is at $90°$ (where it was at $3$ o’clock) plus \[\dfrac{42}{60} \times 30°\] with respect to vertical, which is $111°$.  The angle formed by these two arms is simply the difference between these two angles, which is $141°$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Inscribed angle theorem}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        An angle is said to be \textbf{inscribed} in a circle if the vertex of the angle lies on the circumference of the circle, and both rays extending from that vertex intersect the circle.
+      \end{definition}
+
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C;
+            O := origin;
+            A := 2 * dir(-90);
+            B := 2 * dir(90);
+            C := 2 * dir(40);
+            draw cercle(O, A) withpen pencircle scaled 1.25;
+            draw B--A--C withcolor Cyan4 withpen pencircle scaled 1.25;
+            draw B--O--C withcolor DarkOrchid4 withpen pencircle scaled 1.25;
+            nomme.top(O, "");
+            nomme.top(A, "");
+            nomme.top(B, "");
+            nomme.top(C, "");
+            taille_marque_a := 0.15cm;
+            nomme(C,O,B, btex $\scriptstyle \theta$ etex);
+            taille_marque_a := 0.3cm;
+            nomme(C,A,B, btex $\scriptstyle \psi$ etex);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C;
+            O := origin;
+            A := 2 * dir(-90);
+            B := 2 * dir(160);
+            C := 2 * dir(40);
+            draw cercle(O, A) withpen pencircle scaled 1.25;
+            draw B--A--C withcolor Cyan4 withpen pencircle scaled 1.25;
+            draw B--O--C withcolor DarkOrchid4 withpen pencircle scaled 1.25;
+            nomme.top(O, "");
+            nomme.top(A, "");
+            nomme.top(B, "");
+            nomme.top(C, "");
+            taille_marque_a := 0.05cm;
+            nomme(C,O,B, btex $\scriptstyle \theta$ etex);
+            taille_marque_a := 0.1cm;
+            nomme(C,A,B, btex $\scriptstyle \psi$ etex);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C;
+            O := origin;
+            A := 2 * dir(-90);
+            B := 2 * dir(80);
+            C := 2 * dir(40);
+            draw cercle(O, A) withpen pencircle scaled 1.25;
+            draw B--A--C withcolor Cyan4 withpen pencircle scaled 1.25;
+            draw B--O--C withcolor DarkOrchid4 withpen pencircle scaled 1.25;
+            nomme.top(O, "");
+            nomme.top(A, "");
+            nomme.top(B, "");
+            nomme.top(C, "");
+            taille_marque_a := 0.25cm;
+            nomme(C,O,B, btex $\scriptstyle \theta$ etex);
+            taille_marque_a := 0.4cm;
+            nomme(C,A,B, btex $\scriptstyle \psi$ etex);
+          fin;    
+        \end{mplibcode} \\
+        Case A & Case B & Case C
+      \end{tabularx}
+      \begin{definition}
+        Theorem:
+
+        For any given arc on a circle, the measure of the central angle of that arc is \textbf{twice} the measure of any inscribed angle to that same arc, no matter where the vertex of that inscribed angle is.
+      \end{definition}
+      For all three cases illustrated above, the central angle $\theta$ is twice the inscribed angle $\psi$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      To prove the theorem, we need to show the relation holds for all three cases shown at the left: one ray from the vertex to the arc passes through the circle’s center (Case A); the two rays from the vertex to the arc pass on either side of the center (Case B), and the two rays from the vertex to the arc pass the center on the same side (Case C).       
+
+      Below is the proof for Case A.  Proving the other cases is left as an exercise.
+      \begin{wrapfigure}[5]{l}{0.25\textwidth}
+        \vspace*{-\intextsep}
+        \vspace*{-0.4em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C;
+            O := origin;
+            A := 2 * dir(-90);
+            B := 2 * dir(90);
+            C := 2 * dir(40);
+            draw cercle(O, A) withpen pencircle scaled 1.25;
+            draw B--A--C withcolor Cyan4 withpen pencircle scaled 1.25;
+            draw B--O--C withcolor DarkOrchid4 withpen pencircle scaled 1.25;
+            nomme.top(O, "");
+            nomme.top(A, "");
+            nomme.top(B, "");
+            nomme.top(C, "");
+            taille_marque_a := 0.15cm;
+            nomme(C,O,B, btex $\scriptstyle \theta$ etex);
+            taille_marque_a := 0.3cm;
+            nomme(C,A,B, btex $\scriptstyle \psi$ etex);
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+        \vspace*{-0.3em}
+      \end{wrapfigure}
+      Since $OA$ and $OB$ are both radii, $\triangle AOB$ is isosceles, and its base angles are both equal to $\psi$.
+
+      Since the sum of the angles in that triangle is $180°$, $\angle AOB + 2\psi = 180°$.  As they lie on the same line, $\angle AOB + \theta = 180°$.   Hence $\theta = 2\psi$. \hfill Q.E.D. 
+
+      \begin{definition}
+        Corollary:  Any two angles inscribed to the same arc on a circle must be congruent. 
+        
+        (Reason:  Their measures are both equal to half the central angle to that arc.)
+      \end{definition}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Right triangles inscribed in circles}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Triangle $\triangle ABC$ is inscribed inside a circle centered at point $O$ with radius $6.5$.  Side $AC$ passes through point $O$.  If $AB$ is $5$, what is the length of side $BC$?
+      \end{problem}
+      \begin{wrapfigure}[8]{l}{0.43\textwidth}
+        \vspace*{-\intextsep}
+        \hspace*{-0.5em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.65cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C;
+            O := origin;
+            A := 2 * dir(180);
+            B := 2 * dir(240);
+            C := 2 * dir(0);
+            draw cercle(O, A);
+            draw B--A--C--cycle withpen pencircle scaled 1.25;
+            nomme.top(O);
+            nomme.lft(A);
+            nomme.llft(B);
+            nomme.rt(C);
+            label.top(btex $6.5$ etex, 0.5[A, O]);
+            label.rt(btex $5$ etex, 0.5[A, B]);
+            label.lrt(btex $?$ etex, 0.5[B, C]);
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      Side $AC$ is a diameter, so arc $AC$ is $180°$ and by the inscribed angle theorem, angle $\angle ABC$ is a right angle.  They hypotenuse $AC$ is $13$, and leg $AB$ is $5$, so we immediately recognize the $5{-}12{-}13$ Pythagorean Triple. Hence $BC$ is $12$.
+
+      This problem illustrates that 
+      \begin{definition}
+        any triangle inscribed in a circle with a side passing through the center of the circle must be a right triangle,
+      \end{definition}
+       and the side that passes through the center is the hypotenuse of that right triangle.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{wrapfigure}[7]{l}{0.65\textwidth}
+        \vspace*{-\intextsep}
+        \vspace*{-0.5em}
+        \hspace*{1em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.8cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C;
+            O := origin;
+            A := 2 * dir(180);
+            B := 2 * dir(240);
+            C := 2 * dir(0);
+            draw cercle(O, A);
+            draw B--A--C--cycle withpen pencircle scaled 1.25;
+            draw O--B;
+            draw marqueangledroit(C,B,A);
+            nomme.top(O);
+            nomme.lft(A);
+            nomme.llft(B);
+            nomme.rt(C);
+            label.top(btex $r$ etex, 0.5[A, O]);
+            label.top(btex $r$ etex, 0.5[O, C]);
+            label.lft(btex $r$ etex, 0.5[B, O]);
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      In a triangle, a median from a vertex to the opposite side bisects (evenly divides) that side.  
+      \vspace*{1.5\baselineskip}
+
+      It is easy to prove that 
+      \begin{definition}
+        the median to the hypotenuse of a right triangle is equal to half the length of the hypotenuse.
+      \end{definition}  
+      As we see illustrated above, we take advantage of the fact that any right triangle can be inscribed into a circle where the diameter is the hypotenuse.  That median is also a radius of the circle, which is, of course, equal to half the length of the diameter of the circle, which is the hypotenuse of the triangle.  So in the illustration on the left, $OB$ is also $6.5$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The power of a point theorem}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      The following theorem is very useful in math contests, but usually shows up more in high school level contests.  At the middle school level, the AlphaStar Fermat and Purple Comet contests often have questions based on this theorem.
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C, D, P;
+            O := origin;
+            A := 2 * dir(110);
+            B := 2 * dir(200);
+            C := 2 * dir(70);
+            D := 2 * dir(-60);
+            P := whatever[A,D]=whatever[B, C];
+            draw cercle(O, A);
+            draw A--D withpen pencircle scaled 1.25;
+            draw B--C withpen pencircle scaled 1.25;
+            draw A--B;
+            draw C--D;
+            nomme.ulft(A);
+            nomme.llft(B);
+            nomme.urt(C);
+            nomme.lrt(D);
+            nomme.bot(P, "");
+            label.bot(btex $P$ etex, P shifted (-0.05, -0.2));
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C, D, P;
+            O := origin;
+            A := 2 * dir(110);
+            D := 2 * dir(190);
+            C := 2 * dir(70);
+            B := 2 * dir(-40);
+            P := whatever[A,D]=whatever[B, C];
+            draw cercle(O, A);
+            draw P--D withpen pencircle scaled 1.25;
+            draw B--P withpen pencircle scaled 1.25;
+            draw A--B;
+            draw C--D;
+            nomme.ulft(A);
+            nomme.lrt(B);
+            nomme.urt(C);
+            nomme.llft(D);
+            nomme.rt(P);
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, A, B, C, D, P;
+            O := origin;
+            A := 2 * dir(120);
+            D := 2 * dir(120);
+            C := 2 * dir(70);
+            B := 2 * dir(-40);
+            P = whatever[C,B];
+            (P - A) dotprod (A-B) = 0;
+            draw cercle(O, A);
+            draw P--D withpen pencircle scaled 1.25;
+            draw B--P withpen pencircle scaled 1.25;
+            draw A--B;
+            draw C--D;
+            nomme.ulft(A, "");
+            label.ulft(btex $A (D)$ etex, A);
+            nomme.lrt(B);
+            nomme.urt(C);
+            nomme.top(P);
+          fin;
+        \end{mplibcode} \\
+        Case 1 & Case 2 & Case 3
+      \end{tabularx}
+      \begin{definition}
+        Given a point $P$ and a circle, pass two lines through $P$ that intersect the circle in points $A$ and $D$ and, respectively $B$ and $C$, then 
+        \[ AP \times DP = BP \times CP. \]
+        \vspace*{-\intextsep}
+      \end{definition}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Below we prove Case 1.  
+      
+      The proofs for the other cases are left as exercises for the reader.
+
+      $\angle ABC = \angle BCD$ (both are inscribed into arc $AC$)
+
+      $\angle BAP = \angle DCP$ (both are inscribed into arc $BD$)
+
+      $\angle APB = \angle CPD$ (they are vertical angles).
+
+      Therefore $\triangle APB$ and $\triangle CPD$ are similar by \textbf{AA}.
+      $\dfrac{AP}{CP} = \dfrac{BP}{PD}$, so $AP \times DP = BP \times CP$.
+
+      \begin{minipage}[t]{0.45\textwidth}
+        \vspace*{1ex}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-5,5,u,-5,5,u);
+            pair O, B, C, D, E;
+            O := origin;
+            B := 2 * dir(110);
+            C := 2 * dir(60);
+            D := 2 * dir(30);
+            E := whatever[B, D]=whatever[O, C];
+            draw cercle(O, B);
+            draw B--D withpen pencircle scaled 1.25;
+            draw O--C withpen pencircle scaled 1.25;;
+            nomme.lrt(O);
+            nomme.ulft(B);
+            nomme.urt(C);
+            nomme.rt(D);
+            nomme.lft(E, "");
+            label.lft(btex $E$ etex, E shifted (-0.2, -0.13));
+          fin;
+        \end{mplibcode}
+      \end{minipage}
+      \begin{minipage}[t]{0.5\textwidth}
+        \begin{problem}
+          $DEB$ is a chord of a circle such that $BE = 5$ and $ED = 3$.  If $EC = 1$, find the radius of the circle.
+        \end{problem}
+        Using Case 1, 
+        \[ 3 \times 5 = EC \times (EO+r),\]
+        so $EO + r = 15$.  
+        
+        $EO + 1 = r$. 
+        Hence, 
+
+        $EO + EO + 1 = 15.$
+
+        $EO = 7$,
+        $r = 8$
+      \end{minipage}      
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item What is the angle (less than $180°$) formed by the hands of a clock when the time is $10{:}16$?
+
+        \item At noon, the minute and hour hands are both pointing directly up to $12$.  If the hour hand moves continuously, at what time will the minute and hour hands next form a $181.5°$ angle?
+
+        \item A triangle inscribed inside of a circle divides the circle into $3$ arcs whose lengths are in a $3{:}4{:}5$ ratio.  What is the measure of the largest angle of the triangle in degrees?
+
+        \item At some military bases (and the majority of the World), the time is measured on clocks with $24$ hours on the face of a clock rather than $12$ hours.  So $10$~pm is $22$.  What angle less than $180°$ is formed by the hour and minute hands at $22{:}30$ hours (half past $22$.)
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{columns}[T, totalwidth=\textwidth]
+        \begin{column}{0.6\linewidth}
+          \setlength{\leftmargini}{0.2cm}
+          \begin{enumerate}
+            \conti
+            \item In the figure, if the exact length of radius $PB$ is $15$, what is arc length $AB$ in terms of $\pi$?\vspace*{2\baselineskip}
+    
+            \item In the figure, quadrilateral $ABCD$ is inscribed in circle $P$ with radius $5$.  What is the arc length $BCD$ in terms of~$\pi$? 
+            \seti
+          \end{enumerate}
+        \end{column}
+        \begin{column}{0.4\linewidth}
+          \vspace*{-1em}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.55cm;
+            repere(-5,5,u,-5,5,u);
+              pair P, A, B;
+              P := origin;
+              A := 2 * dir(185);
+              B := 2 * dir(-80);
+              draw cercle(P, B);
+              draw A--B--P--cycle withpen pencircle scaled 1.25;
+              nomme.urt(P);
+              nomme.lft(A);
+              nomme.lrt(B);
+              label.rt(btex $\scriptstyle15$ etex, 0.5[P, B]);
+              draw marqueangle(B, A, P, 1);
+              nomme[0](B, A, P, "$\scriptstyle 38°$");
+            fin;
+          \end{mplibcode}
+          \vspace*{0.7em}
+
+          \begin{mplibcode}
+            u = 0.55cm;
+            repere(-5,5,u,-5,5,u);
+              pair P, A, B, C, D;
+              P := origin;
+              A := 2 * dir(175);
+              B := 2 * dir(150);
+              C := 2 * dir(5);
+              D := 2 * dir(-100);
+              draw cercle(P, B);
+              draw A--B--C--D--cycle withpen pencircle scaled 1.25;
+              nomme.llft(P);
+              nomme.ulft(B);
+              nomme.rt(C);
+              nomme.bot(D);
+              nomme.lft(A);
+              label.(btex $\scriptstyle 51°$ etex, C shifted 0.7dir(195));
+            fin;
+          \end{mplibcode}
+        \end{column}
+      \end{columns}
+      \setlength{\leftmargini}{0.2cm}
+      \begin{enumerate}
+        \conti
+        \item Point $A$ is drawn outside circle $O$ so that $AP$ is tangent to the circle.  We extend chord $CB$ outside to point $A$, so that $CB = AB$, and $AP = 3 \sqrt{2}$.  What is the length of $AC$?
+
+        \item Diameter $AB$ of a circle has length $25$.  Point $C$ is chosen along the circumference such that $AC$ has length $7$.  What is the length of $BC$?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item In the figure at the right, the small circle has its center at $P$, while the big circle has its center at $C$.  If $PA = 3$, $BC = 4$ and $PC = 6$, what is the length of $AB$?  Figure is not necessary drawn to scale.
+
+        \item $\angle CBD$ and $\angle BCA$ are inscribed in circle $P$ whose radius is $5$.  The arc lengths $BA$ and $CD$ are $\pi$ and $3\pi$ as shown in the figure.  What is the measure of $\angle AED$ in degrees?  Recall that the ratio of arc length to circumference equals the ratio of the central angle associated with that arc to $360°$. 
+        \seti
+      \end{enumerate}
+      \begin{center}
+        \vspace*{-0.5ex}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.65cm;
+          repere(-5,10,u,-5,5,u);
+            pair A, B, C, P, D, E;
+            P := origin;
+            A := 2 * dir(190);
+            B := 2 * dir(154);
+            C := 2 * dir(38);
+            D := 2 * dir(-70);
+            draw cercle(P, A);
+            E := whatever[A, C]=whatever[B, D];
+            nomme.lft(A);
+            nomme.lft(B);
+            nomme.urt(C);
+            nomme.lrt(D);
+            nomme.lrt(P);
+            nomme.bot(E);
+            draw A--C--B--D withpen pencircle scaled 1.25;
+          fin;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+
+      \begin{center}
+        \vspace*{-\intextsep}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.35cm;
+          repere(-5,10,u,-5,5,u);
+            pair A, B, C, P, Q;
+            C := (4, 0);
+            P := (-2, 0);
+            path a, b, c;
+            a := cercle(P, 3);
+            b := cercle(C, 4);
+            A := a intersectionpoint b;
+            Q := P - 3* (P - A);
+            c := A--Q;
+            B := b intersectionpoint c;
+            nomme.lft(A);
+            nomme.top(B);
+            nomme.lrt(C);
+            nomme.lft(P);
+            draw a;
+            draw b;
+            draw P--B--C--cycle withpen pencircle scaled 1.25;
+          fin;
+        \end{mplibcode}
+      \end{center}
+
+      \begin{enumerate}
+        \conti
+        \item Prove the Inscribed Angle Theorem for Case~B as shown on slide \#5 (Inscribed angle theorem).  Hint, use the proven result for Case~A as a starting point in your proof.
+
+        \item Prove the Power of the Point Theorem for Case~2 as shown on Slide \#7 (The Power of a Point theorem).
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

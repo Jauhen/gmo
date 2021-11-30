@@ -242,10 +242,8 @@
     \begin{column}{0.5\textwidth}
       To prove the theorem, we need to show the relation holds for all three cases shown at the left: one ray from the vertex to the arc passes through the circle’s center (Case A); the two rays from the vertex to the arc pass on either side of the center (Case B), and the two rays from the vertex to the arc pass the center on the same side (Case C).       
 
-      Below is the proof for Case A.  Proving the other cases is left as an exercise.
-      \begin{wrapfigure}[5]{l}{0.25\textwidth}
+      \begin{wrapfigure}[7]{l}{0.25\textwidth}
         \vspace*{-\intextsep}
-        \vspace*{-0.4em}
         \leavevmode
         \begin{mplibcode}
           u = 0.45cm;
@@ -253,28 +251,32 @@
             pair O, A, B, C;
             O := origin;
             A := 2 * dir(-90);
-            B := 2 * dir(90);
-            C := 2 * dir(40);
+            C := 2 * dir(90);
+            B := 2 * dir(40);
             draw cercle(O, A) withpen pencircle scaled 1.25;
-            draw B--A--C withcolor Cyan4 withpen pencircle scaled 1.25;
+            draw C--A--B withcolor Cyan4 withpen pencircle scaled 1.25;
             draw B--O--C withcolor DarkOrchid4 withpen pencircle scaled 1.25;
-            nomme.top(O, "");
-            nomme.top(A, "");
-            nomme.top(B, "");
+            nomme.lft(O, btex $\scriptstyle 0$ etex);
+            nomme.bot(A, btex $\scriptstyle A$ etex);
+            nomme.urt(B, btex $\scriptstyle B$ etex);
             nomme.top(C, "");
             taille_marque_a := 0.15cm;
-            nomme(C,O,B, btex $\scriptstyle \theta$ etex);
+            nomme(B,O,C, btex $\scriptstyle \theta$ etex);
             taille_marque_a := 0.3cm;
-            nomme(C,A,B, btex $\scriptstyle \psi$ etex);
+            nomme(B,A,C, btex $\scriptstyle \psi$ etex);
           fin;
         \end{mplibcode}
         \vspace*{-\intextsep}
         \vspace*{-0.3em}
       \end{wrapfigure}
+      \small Below is the proof for Case A.  Proving the other cases is left as an exercise.
+
       Since $OA$ and $OB$ are both radii, $\triangle AOB$ is isosceles, and its base angles are both equal to $\psi$.
 
-      Since the sum of the angles in that triangle is $180°$, $\angle AOB + 2\psi = 180°$.  As they lie on the same line, $\angle AOB + \theta = 180°$.   Hence $\theta = 2\psi$. \hfill Q.E.D. 
-
+      Since the sum of the angles in that triangle is $180°$, $\angle AOB + 2\psi = 180°$.  As they lie on the same line, $\angle AOB + \theta = 180°$.   
+      
+      Hence $\theta = 2\psi$. \hfill Q.E.D. 
+      \normalsize
       \begin{definition}
         Corollary:  Any two angles inscribed to the same arc on a circle must be congruent. 
         
@@ -615,6 +617,8 @@
             nomme.lrt(P);
             nomme.bot(E);
             draw A--C--B--D withpen pencircle scaled 1.25;
+            label.lft(btex $\pi$ etex, 0.5[A, B] shifted (-0.07, 0));
+            label.rt(btex $3\pi$ etex, 0.5[C, D] shifted (0.75, 0));
           fin;
         \end{mplibcode}
       \end{center}

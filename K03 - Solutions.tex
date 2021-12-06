@@ -1,0 +1,455 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ October 2021}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 11 \hspace*{5cm} Problem 12}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Baron Münchhausen insists that he wrote a fraction $\dfrac{A}{B}$ where $A$ and $B$ are different counting numbers. Then he crossed out a digit in the numerator and a~digit denominator, so as a result, the new fraction becomes equal to a fraction $\dfrac{B}{A}$. Is this possible?
+      \end{problem}
+
+      The initial fraction may be $\dfrac{14}{28}$ which is equal to $\dfrac{1}{2}$. By crossing $1$ and $8$ we will get $\dfrac{4}{2}$ which is equal to $\dfrac{2}{1}$.
+      \[ \frac{1}{2} = \frac{14}{28} \to \frac{\not{1}\, 4}{2\, \not{8}} = \frac{4}{2} = \frac{2}{1}. \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Kvantik and Noteik walk their dogs not further away than 100 meters from their houses (that means that any distance to the closest point of the house isn't larger than 100 m). The shapes and sizes of their homes are displayed in the picture. The houses stay far away from each other, and the surrounding doesn't have anything that interferes with a walk. Who has the largest territory to walk their dog?
+      \end{problem}
+      
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u=0.45cm;
+          repere(-10,10,u,-10,10,u);
+            pair a, b, c, d, e, f;
+            a := (0, 0);
+            b := (6, 0);
+            c := (6, -6);
+            d := (5, -6);
+            e := (5, -1);
+            f := (0, -1);
+            draw a--b--c--d--e--f--cycle withpen pencircle scaled 1.25;
+            label.top("$\scriptstyle 120$", 0.5[a, b]);
+            label.rt("$\scriptstyle 120$", 0.5[b, c]);
+            label.bot("$\scriptstyle 20$", 0.5[c, d]);
+            label.lft("$\scriptstyle 100$", 0.5[d, e]);
+            label.bot("$\scriptstyle 100$", 0.5[e, f]);
+            label.lft("$\scriptstyle 20$", 0.5[f, a]);
+            taille_marque_ad := 0.3u;
+            draw marqueangledroit(f, a, b);
+            draw marqueangledroit(b, c, d);
+            draw marqueangledroit(c, d, e);
+            draw marqueangledroit(f, e, d);
+            draw marqueangledroit(e, f, a);
+
+
+            pair x, y, z, v;
+            x := (-2, -7.5);
+            y := (9, -7.5);
+            z := (9, -8.5);
+            v := (-2, -8.5);
+            draw x--y--z--v--cycle withpen pencircle scaled 1.25; 
+            label.top("$\scriptstyle 220$", 0.5[x, y]);
+            label.lft("$\scriptstyle 20$", 0.5[v, x]);
+            draw marqueangledroit(x, y, z);
+            draw marqueangledroit(y, z, v);
+            draw marqueangledroit(z, v, x);
+            draw marqueangledroit(v, x, y);
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 12 (solution)}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Let's draw an area for Kvantik
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u=0.2cm;
+          repere(-10,15,u,-15,10,u);
+            pair a, b, c, d, e, f;
+            a := (0, 0);
+            b := (6, 0);
+            c := (6, -6);
+            d := (5, -6);
+            e := (5, -1);
+            f := (0, -1);
+            path quarterdisk; quarterdisk := quartercircle--origin--cycle;
+            fill quarterdisk scaled 10 rotated 90 withcolor LightPink1;
+            fill quarterdisk scaled 10 shifted b withcolor LightPink1;
+            fill quarterdisk scaled 10 rotated -90 shifted c withcolor LightPink1;
+            fill quarterdisk scaled 10 rotated 180 shifted d withcolor LightPink1;
+            fill quarterdisk scaled 10 rotated 180 shifted f withcolor LightPink1;
+            fill unitsquare xscaled 6 yscaled 5 shifted a withcolor CadetBlue1;
+            fill unitsquare xscaled 5 yscaled 6 shifted c withcolor CadetBlue1;
+            fill unitsquare xscaled 1 yscaled -5 shifted d withcolor CadetBlue1;
+            fill unitsquare xscaled 5 yscaled -5 shifted f withcolor CadetBlue1;
+            fill unitsquare xscaled -5 yscaled 1 shifted f withcolor CadetBlue1;
+            draw a--b--c--d--e--f--cycle withpen pencircle scaled 1.25;
+            label.top("$\scriptstyle 120$", 0.5[a, b]);
+            label.rt("$\scriptstyle 120$", 0.5[b, c]);
+            label.bot("$\scriptstyle 20$", 0.5[c, d]);
+            label.lft("$\scriptstyle 100$", 0.5[d, e]);
+            label.bot("$\scriptstyle 100$", 0.5[e, f]);
+            label.lft("$\scriptstyle 20$", 0.5[f, a]);
+            taille_marque_ad := 0.3u;
+            draw marqueangledroit(f, a, b);
+            draw marqueangledroit(b, c, d);
+            draw marqueangledroit(c, d, e);
+            draw marqueangledroit(f, e, d);
+            draw marqueangledroit(e, f, a);
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{center}
+      Pink area is
+      \[ 5 \times \text{quarter circle} = 5 \times \frac{100^2 \pi}{4} = 12{,}500 \pi \text{ m}^2.\]
+      Blue area is
+      \begin{multline*} 
+        100 \times (120 + 120 + 20 + 100 + 20) = \\ = 100 \times 380 = 38{,}000 \text{ m}^2.
+      \end{multline*}
+      And total area is
+      \[ 12{,}500 \pi + 38{,}000 \text{ m}^2.\]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Let's draw an area for Noteik
+      \begin{center}
+        \vspace*{-0.3em}
+        \leavevmode
+        \begin{mplibcode}
+          u=0.2cm;
+          repere(-10,20,u,-15,10,u);
+            pair a, b, c, d;
+            a := (0, 0);
+            b := (11, 0);
+            c := (11, -1);
+            d := (0, -1);
+            path quarterdisk; quarterdisk := quartercircle--origin--cycle;
+            fill quarterdisk scaled 10 rotated 90 withcolor LightPink1;
+            fill quarterdisk scaled 10 shifted b withcolor LightPink1;
+            fill quarterdisk scaled 10 rotated -90 shifted c withcolor LightPink1;
+            fill quarterdisk scaled 10 rotated 180 shifted d withcolor LightPink1;
+            fill unitsquare xscaled 11 yscaled 5 shifted a withcolor CadetBlue1;
+            fill unitsquare xscaled 5 yscaled 1 shifted c withcolor CadetBlue1;
+            fill unitsquare xscaled 11 yscaled -5 shifted d withcolor CadetBlue1;
+            fill unitsquare xscaled -5 yscaled 1 shifted d withcolor CadetBlue1;
+            draw a--b--c--d--cycle withpen pencircle scaled 1.25;
+            label.top("$\scriptstyle 220$", 0.5[a, b]);
+            label.rt("$\scriptstyle 20$", 0.5[b, c]);
+            label.bot("$\scriptstyle 220$", 0.5[c, d]);
+            label.lft("$\scriptstyle 20$", 0.5[d, a]);
+            taille_marque_ad := 0.3u;
+            draw marqueangledroit(d, a, b);
+            draw marqueangledroit(b, c, d);
+            draw marqueangledroit(c, d, a);
+            draw marqueangledroit(d, a, b);
+          fin;
+        \end{mplibcode}
+        \vspace*{-1\intextsep}
+      \end{center}
+      Pink area is
+      \[ 4 \times \text{quarter circle} = 5 \times \frac{100^2 \pi}{4} = 10{,}000 \pi \text{ m}^2.\]
+      Blue area is
+      \[ 100 \times (220 + 220 + 20 + 20) = 100 \times 480 = 48{,}000 \text{ m}^2. \]
+      And total area is $ 10{,}000 \pi + 48{,}000 \text{ m}^2$.
+
+      Comparing 
+      \begin{align*}
+        \text{Kvantik's area} &\text{ and } \text{Noteik's area} \\
+        12{,}500 \pi + 38{,}000 &\text{ and }  10{,}000 \pi + 48{,}000 \\
+        2{,}500 \pi &\text{ and } 10{,}000 \\
+        \pi &\;\,<\;\; 4 
+      \end{align*}
+      We got that Noteik's area is bigger.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 13}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        In table $10 \times 10$, half of the cells are red, and half are blue. Let's name a column or a row pure if all cells in it are of the same color. What is the maximum number of rows and columns combined that may be pure, and why?
+      \end{problem}
+
+      The maximum amount of pure columns and rows is $10$. 
+
+      $10$ pure rows may be achieved for example via this coloring:
+      \begin{center}
+        \vspace*{-0.2em}
+        \leavevmode
+        \begin{mplibcode}
+          u=0.35cm;
+          tableau(10, 10, u);
+            for i:=1 upto 10:
+              for j:=1 upto 5:
+                draw case(i, j) couleur rouge;
+              endfor;
+              for j:=6 upto 10:
+                draw case(i, j) withcolor bleu;
+              endfor;
+            endfor;
+          fin;
+        \end{mplibcode}
+        \vspace*{-1\intextsep}
+      \end{center}
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+
+
+      To get $11$ pure rows and column, we need that some rows AND some columns to be pure. But if we have a pure column of red color, that means that any pure row also should be of the red color and \emph{vice versa} (Latin phrase for "the other way around"). 
+      
+      So to get $11$ pure rows and columns, all of them should be of the same color. But if we already have $5$ pure columns, we don't have more read cells to complete rows. 
+      
+      So we can't get more than $10$ pure rows or columns.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 14}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        A part of a large grid built from regular hexagons whose sides and interior angles are all equal is shown in this picture. All vertices of hexagons have been colored black or white. Prove that there are three vertices of the same color that form an equilateral triangle.
+      \end{problem}
+      
+      \begin{wrapfigure}{l}{0.35\textwidth}
+        \vspace*{-1\intextsep}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.35cm; n=4;
+          path tri; tri = for t=0 step 120 until 359: origin -- (u,0) rotated t -- endfor cycle;
+
+          % save the pattern as a picture centered on the origin
+          picture grid; grid = image(
+            for i=-n upto n:
+              for j=-n upto n: 
+                draw tri shifted (i*3/2u,j*u*sqrt(3)) if (i mod 2)=1: shifted (0,u/2*sqrt(3)) fi ; 
+              endfor
+            endfor);
+          
+          % clip the pattern as required (to get rid of the rough edges...)
+          clip grid to fullcircle xscaled 7u yscaled 5u shifted (0.5u, u);
+          
+          % draw as needed
+          draw grid rotated 30 withcolor .67white; 
+          pickup pencircle scaled 6pt;
+          pair a[];
+          a0 := origin;
+          a1 := a0 + u*dir(150);
+          a2 := a0 + u*dir(30);
+          a3 := a0 + 2*u*dir(90);
+          drawdot(a1) withcolor vertfonce;
+          drawdot(a2) withcolor vertfonce;
+          drawdot(a3) withcolor vertfonce;
+        \end{mplibcode}
+        \vspace*{-1\intextsep}
+      \end{wrapfigure}
+      Let's \textbf{assume} there is a configuration when there is no an equilateral triangle with vertices of the same color.
+
+      Let's take a look at this $3$ green vertices. 
+
+      \begin{wrapfigure}{r}{0.35\textwidth}
+        \vspace*{-1\intextsep}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.35cm; n=4;
+          path tri; tri = for t=0 step 120 until 359: origin -- (u,0) rotated t -- endfor cycle;
+
+          % save the pattern as a picture centered on the origin
+          picture grid; grid = image(
+            for i=-n upto n:
+              for j=-n upto n: 
+                draw tri shifted (i*3/2u,j*u*sqrt(3)) if (i mod 2)=1: shifted (0,u/2*sqrt(3)) fi ; 
+              endfor
+            endfor);
+          
+          % clip the pattern as required (to get rid of the rough edges...)
+          clip grid to fullcircle xscaled 7u yscaled 5u shifted (0.5u, u);
+          
+          % draw as needed
+          draw grid rotated 30 withcolor .67white; 
+          pickup pencircle scaled 6pt;
+          pair a[];
+          a0 := origin;
+          a1 := a0 + u*dir(150);
+          a2 := a0 + u*dir(30);
+          a3 := a0 + 2*u*dir(90);
+          drawdot(a1) withcolor black;
+          drawdot(a2) withcolor black;
+          drawdot(a3) withcolor black;
+          pickup pencircle scaled 5pt;
+          drawdot(a2) withcolor white;
+          drawdot(a1) withcolor white;
+          label.urt("$\scriptstyle a$", a1);
+          label.urt("$\scriptstyle b$", a2);
+          label.urt("$\scriptstyle c$", a3);
+        \end{mplibcode}
+        \vspace*{-1\intextsep}
+      \end{wrapfigure}
+      Since by our \emph{assumption} all of them can't be of the same color, \emph{without lost of generality} we can say that the two bottom dots are white and the top dot is black.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{wrapfigure}{r}{0.25\textwidth}
+        \vspace*{-1\intextsep}
+        \leavevmode
+        \hspace*{-1.7em}
+        \begin{mplibcode}
+          u = 0.35cm; n=4;
+          path tri; tri = for t=0 step 120 until 359: origin -- (u,0) rotated t -- endfor cycle;
+
+          % save the pattern as a picture centered on the origin
+          picture grid; grid = image(
+            for i=-n upto n:
+              for j=-n upto n: 
+                draw tri shifted (i*3/2u,j*u*sqrt(3)) if (i mod 2)=1: shifted (0,u/2*sqrt(3)) fi ; 
+              endfor
+            endfor);
+          
+          % clip the pattern as required (to get rid of the rough edges...)
+          clip grid to fullcircle xscaled 7u yscaled 7u shifted (0.5u, 0);
+          
+          % draw as needed
+          draw grid rotated 30 withcolor .67white; 
+          pickup pencircle scaled 6pt;
+          pair a[];
+          a0 := origin;
+          a1 := a0 + u*dir(150);
+          a2 := a0 + u*dir(30);
+          a3 := a0 + 2*u*dir(90);
+          a4 := a0 + u*dir(270);
+          drawdot(a1) withcolor black;
+          drawdot(a2) withcolor black;
+          drawdot(a3) withcolor black;
+          drawdot(a4) withcolor black;
+          pickup pencircle scaled 5pt;
+          drawdot(a2) withcolor white;
+          drawdot(a1) withcolor white;
+          label.urt("$\scriptstyle a$", a1);
+          label.urt("$\scriptstyle b$", a2);
+          label.urt("$\scriptstyle c$", a3);
+          label.urt("$\scriptstyle 1$", a4);
+        \end{mplibcode}
+        \hspace*{-1.7em}
+        \begin{mplibcode}
+          u = 0.35cm; n=4;
+          path tri; tri = for t=0 step 120 until 359: origin -- (u,0) rotated t -- endfor cycle;
+
+          % save the pattern as a picture centered on the origin
+          picture grid; grid = image(
+            for i=-n upto n:
+              for j=-n upto n: 
+                draw tri shifted (i*3/2u,j*u*sqrt(3)) if (i mod 2)=1: shifted (0,u/2*sqrt(3)) fi ; 
+              endfor
+            endfor);
+          
+          % clip the pattern as required (to get rid of the rough edges...)
+          clip grid to fullcircle xscaled 7u yscaled 7u shifted (0.5u, 0);
+          
+          % draw as needed
+          draw grid rotated 30 withcolor .67white; 
+          pickup pencircle scaled 6pt;
+          pair a[];
+          a0 := origin;
+          a1 := a0 + u*dir(150);
+          a2 := a0 + u*dir(30);
+          a3 := a0 + 2*u*dir(90);
+          a4 := a0 + u*dir(270);
+          a5 := a2 + sqrt(3)*u*dir(0);
+          a6 := a4 + sqrt(3)*u*dir(0);
+          a7 := a2 + 3*u*dir(270);
+          drawdot(a1) withcolor black;
+          drawdot(a2) withcolor black;
+          drawdot(a3) withcolor black;
+          drawdot(a4) withcolor black;
+          drawdot(a5) withcolor black;
+          drawdot(a6) withcolor black;
+          drawdot(a7) withcolor black;
+          pickup pencircle scaled 5pt;
+          drawdot(a2) withcolor white;
+          drawdot(a1) withcolor white;
+          drawdot(a5) withcolor white;
+          drawdot(a7) withcolor white;
+          label.urt("$\scriptstyle a$", a1);
+          label.urt("$\scriptstyle b$", a2);
+          label.urt("$\scriptstyle c$", a3);
+          label.urt("$\scriptstyle 1$", a4);
+          label.urt("$\scriptstyle 2$", a5);
+          label.urt("$\scriptstyle 3$", a6);
+          label.urt("$\scriptstyle 4$", a7);
+        \end{mplibcode}
+        \vspace*{-1\intextsep}
+      \end{wrapfigure}
+      Now let's take a look at vertex $1$ below two white vertices $a$ and $b$. By our \emph{assumption} it must be black.
+
+      Continue to color vertices in order to keep our assumption true:
+      
+      The dot $2$ must be white because it forms an equilateral triangle with the two black dots $c$ and $1$.
+
+      The dot $3$ must be black because it forms an equilateral triangle with the two white dots $b$ and $2$. 
+      
+      And finally the dot $4$ must be white because it forms an equilateral triangle with the two black dots $1$ and $3$. 
+
+      But dots $a$, $2$, and $4$ forms an equilateral triangle, so that means that our \emph{assumption} is incorrect. Hence, there are no configuration where there are no an equilateral triangle with vertices of the same color.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 15}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Peter is writing $9$-digits numbers. He writes any digit from $1$ to $9$ in the first place (the leftmost), then he writes any digit from $1$ to $8$ in the second place, any digit from $1$ to $7$ in the third place, and so on. Finally, he writes the digit $1$ in the ninth place (the rightmost). How many multiples of $7$ can Peter obtain?
+      \end{problem}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      The number $1{,}000{,}000$ has reminder $1$ when divided by $7$. 
+
+      The digits $A$, $B$, \dots $H$ can be any allowed numbers. From numbers
+      \begin{align*}
+        &A\, B \, 1 \, C\, D\, E\, F\, G\, H\, \\
+        &A\, B \, 2 \, C\, D\, E\, F\, G\, H\, \\
+        &A\, B \, 3 \, C\, D\, E\, F\, G\, H\, \\
+        &A\, B \, 4 \, C\, D\, E\, F\, G\, H\, \\
+        &A\, B \, 5 \, C\, D\, E\, F\, G\, H\, \\
+        &A\, B \, 6 \, C\, D\, E\, F\, G\, H\, \\
+        &A\, B \, 7 \, C\, D\, E\, F\, G\, H\,
+      \end{align*} 
+      exactly one of them has reminder $0$ when divided by $7$.
+
+      Since $A$ can be any of $9$ digits, $B$ has $8$ options, $C$ has $6$ options and so on, there are 
+      \[ 9 \cdot 8 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 51{,}840 \] multiples of $7$ Peter can obtain.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

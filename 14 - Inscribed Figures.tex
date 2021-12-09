@@ -1,0 +1,520 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Tangent and Inscribed Figures}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{The shortest distance theorem}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        \textbf{Shortest Distance Theorem:}
+
+        The shortest distance between a line $AB$ and a point $P$ not on that line is along a second line that is perpendicular to line $AB$.
+      \end{definition}
+      \begin{wrapfigure}{l}{0.45\textwidth}
+        \begin{center}
+          \vspace*{-\intextsep}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.5cm;
+            repere(-5,10,u,-5,5,u);
+              pair P, A, B, C, D;
+              P := origin;
+              A := 4*dir(80);
+              B := A - 1*dir(-10);
+              C := A - 2.5*dir(-10);
+              D := A + 2.5*dir(-10);
+              drawdblarrow C--D withpen pencircle scaled 1.25;
+              draw B--P--A;
+              nomme.llft(P);
+              nomme.top(A);
+              nomme.top(B);
+              taille_marque_ad := 0.2cm;
+              draw marqueangledroit(D, A, P);
+            fin;
+          \end{mplibcode}
+          \vspace*{-\intextsep}
+        \end{center}
+      \end{wrapfigure}
+      Proof:
+
+      Let $P$ be chosen such that line $AP$ is perpendicular to line $AB$.  Let $B$ be any point on the line other than point $A$.  Since $AP$ is perpendicular to $AB$, line segments $AB$ and $AP$ form the legs of a right triangle whose hypotenuse is $PB$.  By the Pythagorean Theorem, $PB > AP$.  Since $PB$ is the distance from point $P$ to line $AB$, the shortest line connecting point $P$ to line $AB$ must be perpendicular to $AB$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Tangency:}
+      
+      A line is said to be \textbf{tangent} to a curve if it intersects that curve at only a single point.  When that curve is a circle, the tangent line lies outside of the circle, and touches the circle at only a single point of tangency. 
+ 
+      \begin{definition}
+        If a line is tangent to a circle, then the radius to the point of tangency is perpendicular to that line. 
+      \end{definition}
+      \begin{wrapfigure}{l}{0.5\textwidth}
+        \begin{center}
+          \vspace*{-\intextsep}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.5cm;
+            repere(-5,10,u,-5,5,u);
+              pair O, P, A, B;
+              O := origin;
+              P := 2.5*dir(80);
+              B := P + 3*dir(-10);
+              A := P - 2.5*dir(-10);
+              path c;
+              c := cercle(O, P);
+              draw c withpen pencircle scaled 1.25;
+              draw A--B withpen pencircle scaled 1.25;
+              draw P--O withpen pencircle scaled 1.25;
+              nomme.llft(O);
+              nomme.top(P);
+              nomme.top(A);
+              nomme.top(B);
+              taille_marque_ad := 0.2cm;
+              draw marqueangledroit(B, P, O);
+            fin;
+          \end{mplibcode}
+        \end{center}
+      \end{wrapfigure}
+      This theorem can most readily be proven with the shortest distance theorem, and the proof is assigned as homework.  In the drawing on the left line $AB$ is tangent to circle $O$ at point $P$. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Two tangents drawn from a point}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \vspace*{-\intextsep}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.5cm;
+            repere(-5,10,u,-5,5,u);
+              pair O, A, B, C;
+              O := origin;
+              B := (8, 0);
+              path c;
+              c := circle(O, 3);
+              A := support.top(c, B);
+              C := support.bot(c, B);
+              draw c withpen pencircle scaled 1.25;
+              draw A--B--C--O--A withpen pencircle scaled 1.25;
+              draw O--B;
+              nomme.lft(O);
+              nomme.lrt(C);
+              nomme.urt(A);
+              nomme.rt(B);
+              taille_marque_ad := 0.2cm;
+              draw marqueangledroit(B, A, O);
+              draw marqueangledroit(O, C, B);
+              angle_marque_s := 90;
+              taille_marque_s := 0.15cm;
+              draw marquesegment(A, O, 1);
+              draw marquesegment(C, O, 1);
+              draw marquesegment(A, B, 2);
+              draw marquesegment(C, B, 2);
+              nomme(C, O, B, "$\alpha$");
+              nomme(B, O, A, "$\alpha$");
+              draw marqueangle(C,O,B,1);
+              draw marqueangle(B,O,A,1);
+              taille_marque_a := 0.8cm;
+              nomme(O,B,C, "$\theta$");
+              nomme(A,B,O, "$\theta$");
+              draw marqueangle(O,B,C,2);
+              draw marqueangle(A,B,O,2);
+            fin;
+          \end{mplibcode}
+      \end{center}
+      In the diagram above, we have a pair to lines drawn from point $B$, that are tangent to circle $O$ at points $A$ and $C$ respectively.  $\triangle AOB$ is congruent to $\triangle COB$ since there is mirror symmetry in this problem across line segment $OB$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        In the figure on the left, lines $AB$ and $BC$ are both tangent to circle $O$.  If the radius is $3$ and the arclength going clockwise from $A$ to $C$ is $2 \pi$, what is the distance $AB$?
+      \end{problem}
+      The circumference of circle $O$ is $6 \pi$.  If arclength $AC$ is $2 \pi$, central angle $AOC$ is $120°$.  That means angle $AOB$ is $60°$, and $\triangle AOB$ is a $30-60-90$ triangle.  If $AO = 3$, $AB = 3 \sqrt{3}$.
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Circle inscribed inside a square and vica versa}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{wrapfigure}[5]{l}{0.5\textwidth}
+        \begin{center}
+          \vspace*{-\intextsep}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.5cm;
+            repere(-5,10,u,-5,5,u);
+              pair O;
+              O := origin;
+              path c;
+              c := cercle(O, 3);
+              draw c withpen pencircle scaled 1.25;
+              draw (3,3)--(3,-3)--(-3,-3)--(-3,3)--cycle withpen pencircle scaled 1.25;
+              draw (3,0)--(-3,0);
+              draw (0,3)--(0,-3);
+              label.bot("$r$", (1.5, 0));
+              nomme.top(O, "");
+            fin;
+          \end{mplibcode}
+          \vspace*{-\intextsep}
+        \end{center}
+        \vspace*{-2\intextsep}
+      \end{wrapfigure}
+      In the diagram on the left, a circle of radius $r$ is inscribed inside a square of side length $2r$.
+      \vspace*{5\baselineskip}
+
+      Area of the circle is $\pi r^2$
+
+      Area of the square is $4 r^2$
+
+      Ratio of the area of the square to the area of the circle is $\dfrac{4}{𝝅}$
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{wrapfigure}{l}{0.5\textwidth}
+        \begin{center}
+          \vspace*{-\intextsep}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.5cm;
+            repere(-5,10,u,-5,5,u);
+              pair O;
+              O := origin;
+              path c;
+              c := cercle(O, 3);
+              draw c withpen pencircle scaled 1.25;
+              draw (3,3)--(3,-3)--(-3,-3)--(-3,3)--cycle withpen pencircle scaled 1.25;
+              s := 3 / sqrt(2);
+              draw (s,s)--(s,-s)--(-s,-s)--(-s,s)--cycle withpen pencircle scaled 1.25;
+              draw (0,0)--(s,s);
+              label.ulft("$r$", 0.5[(0, 0), (s,s)]);
+              nomme.top(O, "");
+              draw (0,0)--(s, 0);
+              label.bot("$\frac{r}{\sqrt{2}}$", 0.5[(0, 0), (s,0)]);
+            fin;
+          \end{mplibcode}
+        \end{center}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      In the diagram on the left, a second square is inscribed inside of the circle of radius $r$, which is the distance from the center to the corner of the inner square.
+
+      The diagonal of the inner square has length $2r$.
+      We know that the diagonal of a square is $\sqrt{2}$  times the length of a side, so the side of the inner square has length $\dfrac{2r}{\sqrt{2}} = \sqrt{2} r$.
+      
+      The area of the inner square is therefore $2r^2$ which is $\nicefrac{1}{2}$ the area of the outer square. If we inscribed another circle inside this smaller square, its radius would be $\dfrac{r}{\sqrt{2}}$ and its area would be half the area of the larger circle.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Equilateral triangle inscribed inside a circle}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Let the radius of the circle $O$ equal $r$.  Let $s$ be the length of a side of equilateral triangle $ABC$.  Draw a radius from point $O$ to any triangle vertex.  By symmetry, we can see that radius bisects the vertex angle, so we create a $30-60-90$ triangle $ODC$.  Also by symmetry, we can see the line that bisects each angle, when extended, bisects the opposite side of the triangle.  Recall that a line from the vertex of a triangle that bisects the opposite side is known as a median, so $BD$ is the median of $AC$, and $AD = DC = \dfrac{s}{2}$.  The distance $OD$ is half of the hypotenuse in this $30-60-90$ triangle, so it is $\dfrac{r}{2}$.  Distance $DC = \sqrt{3} \times OD$, so  $DC = \dfrac{\sqrt{3}r}{2} = \dfrac{s}{2}$.  Therefore $s = \sqrt{3}r$.  Having found the relationship between $s$ and $r$, in the exercises you can calculate the area of the equilateral triangle.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \vspace*{-\intextsep}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B, C, D;
+            O := origin;
+            path c;
+            c := cercle(O, 5);
+            draw c withpen pencircle scaled 1.25;
+            A := 5*dir(210);
+            B := 5*dir(90);
+            C := 5*dir(-30);
+            D := 2.5*dir(-90);
+            draw A--B--C--cycle withpen pencircle scaled 1.25;
+            draw A--O--B;
+            draw C--O;
+            label.bot("$r$", (1.5, 0));
+            nomme.llft(A);
+            nomme.top(B);
+            nomme.lrt(C);
+            drawoptions(withcolor rouge);
+            draw O--D withpen pencircle scaled 1.25 withcolor rouge;
+            nomme.llft(D);
+            nomme.ulft(O);
+            label.lft("$\nicefrac{r}{2}$", 0.5[O, D]);
+            label.bot("$\nicefrac{\sqrt{3}r}{2}$", 0.6[C, D]);
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Equilateral triangle inscribed inside a circle part 2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      The point where the three \textbf{medians} intersect is known as the \textbf{centroid} of the triangle.  In this example, the centroid is also the center of the circle.  In this example, it should be clear that \emph{the \textbf{centroid} lies two-thirds of the way along the line from the vertex to the opposite side}.  We won’t prove it here, but this $\nicefrac{2}{3}$ rule for the centroid location holds for any triangle. 
+      
+      As shown in the diagram, we can inscribe a triangle $\triangle AEC$ inside the circle that is a mirror reflection (and therefore congruent) to $\triangle AOC$.  Due to the symmetry of the original equilateral triangle, in the diagram to the right three such green triangles could be inscribed inside of the circle, and the total area of those three triangles is equal to the area of $\triangle ABC$.    
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \vspace*{-\intextsep}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B, C, D, E;
+            O := origin;
+            path c;
+            c := cercle(O, 5);
+            draw c withpen pencircle scaled 1.25;
+            A := 5*dir(210);
+            B := 5*dir(90);
+            C := 5*dir(-30);
+            D := 2.5*dir(-90);
+            E := 5*dir(-90);
+            draw A--B--C--cycle withpen pencircle scaled 1.25;
+            draw A--O--B;
+            draw C--O;
+            label.bot("$r$", (1.5, 0));
+            nomme.top(B);
+            drawoptions(withcolor rouge);
+            draw O--D withpen pencircle scaled 1.25 withcolor rouge;
+            nomme.ulft(O);
+            label.lft("$\nicefrac{r}{2}$", 0.5[O, D]);
+            drawoptions(withcolor vertfonce);
+            nomme.llft(D);
+            nomme.llft(A);
+            nomme.lrt(C);
+            nomme.bot(E);
+            label.rt("$\nicefrac{r}{2}$", 0.6[E, D]);
+            draw A--E--C withpen pencircle scaled 1.25;
+            draw E--D withpen pencircle scaled 1.25;
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Circle inscribed inside a triangle}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Consider a circle inscribed inside a triangle whose sides have lengths $a$, $b$, $c$.  As shown to the right, draw radii to the points of tangency on the three sides of the triangle (blue).  Next draw lines from the center of the inscribed circle to the vertices of the triangle (green).  The green lines divide the triangle into $3$ smaller triangles.  Since the circle is inscribed inside the triangle, the sides are tangent to the circle, and the blue radii are perpendicular to the sides of the triangle making them the altitudes of the $3$ green triangles.  So we have the total area of the inscribed triangle is 
+      \[\dfrac{ra + rb + rc}{2} = \dfrac{pr}{2},\] 
+      where $p$ is the perimeter of the triangle.   
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \vspace*{-\intextsep}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B, C, a, b, c;
+            A := (6, 0);
+            B := (-3, -3);
+            C := (-4, 5);
+            draw A--B--C--cycle withpen pencircle scaled 1.25;
+            O := incenter(A, B, C);
+            path d;
+            d := incircle(A, B, C);
+            draw d;
+            a := altitude(C, O, B);
+            b := altitude(A, O, C);
+            c := altitude(A, O, B);
+            taille_marque_ad := 0.2cm;
+            draw marqueangledroit(B, a, O);
+            draw marqueangledroit(C, b, O);
+            draw marqueangledroit(O, c, A);
+            drawoptions(withcolor bleu);
+            draw a--O;
+            draw b--O;
+            draw c--O;
+            drawoptions(withcolor vertfonce);
+            draw A--O--B withpen pencircle scaled 1.25;
+            draw C--O withpen pencircle scaled 1.25;
+            label.lrt("$a$", 0.5[A, B]);
+            label.urt("$b$", 0.5[A, C]);
+            label.llft("$c$", 0.5[C, B]);
+            label.llft("$r$", 0.5[O, c]);
+            label.top("$r$", 0.5[O, a]);
+            label.lrt("$r$", 0.5[O, b]);
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item The figure below is used for exercises 1-4. 
+        
+        $3$ circles of radius $1$ cm are pairwise tangent to one another as shown in the figure.  What kind of triangle is created when the centers of the $3$ circles are joined?
+        \item What is the perimeter of the triangle?
+        \item What is the area of the triangle?
+        \item What is the area of the shaded region enclosed by the $3$ circles?
+        \seti
+      \end{enumerate}
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.27cm;
+          repere(-10,10,u,-10,10,u);
+            pair A, B, C;
+            A := 4/sqrt(3) * dir(90);
+            B := 4/sqrt(3) * dir(210);
+            C := 4/sqrt(3) * dir(-30);
+            fill A--B--C--cycle withcolor 0.5white;
+            fill circle(A, 2) withcolor white;
+            fill circle(B, 2) withcolor white;
+            fill circle(C, 2) withcolor white;
+            draw circle(A, 2);
+            draw circle(B, 2);
+            draw circle(C, 2);
+            draw A--B--C--cycle;
+            nomme.top(A, "");
+            nomme.top(B, "");
+            nomme.top(C, "");
+          fin;
+        \end{mplibcode}
+        &
+        \begin{mplibcode}
+          u = 0.38cm;
+          repere(-10,10,u,-10,10,u);
+            s = 4/sqrt(3);        
+            pair A, B, C;
+            A := s * dir(90);
+            B := s * dir(210);
+            C := s * dir(-30);
+            draw A--B--C--cycle;
+            draw cercle((0,0), A);
+            draw (s, s)--(s, -s)--(-s, -s)--(-s, s)--cycle;
+          fin;
+        \end{mplibcode}
+        &
+        \vspace*{-2em}
+        \begin{mplibcode}
+          u = 0.2cm;
+          repere(-10,10,u,-10,10,u);
+            numeric s;
+            s := 5;
+            path square;
+            square := (5, 5)--(5, -5)--(-5, -5)--(-5, 5)--cycle;
+            fill square withcolor DeepSkyBlue1;
+            fill fullcircle scaled 4 shifted (3,3) withcolor white;
+            fill unitsquare scaled 4 shifted (3,3) withcolor white;
+            draw square;
+            draw (5,3)--(3,3)--(3,5);
+            nomme.lft((5,3), "");
+            nomme.bot((3,3), "");
+            nomme.bot((3,5), "");
+            label.bot("$2$", (4, 3));
+          fin;
+        \end{mplibcode} \\
+        \# 1-4 & \# 5 & \# 8
+      \end{tabularx}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item As shown below, an equilateral triangle is inscribed in a circle while a square is circumscribed around that same circle.  What is the ratio of the area of the square to the area of the triangle?
+        \item An equilateral triangle is inscribed inside a~circle of radius $r$.  What is the area of the triangle in terms of $r$.
+        \item If an equilateral triangle is inscribed in a circle of radius $r$, what is the area inside of the circle but outside of the triangle.  Express your answer in terms of $r$.  Which is larger, the area of the triangle or the area outside of the triangle?
+        \item As shown in the figure, two sides of the square of side $10$ are tangent to a circle of radius $2$. What is the area of the shaded region (note the region between the circle and upper left corner is not shaded)?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Prove that if a line is tangent to a circle, then the radius to the point of tangency is perpendicular to that line.  You may use the shortest distance theorem in your proof.
+        \item As shown in the diagram, a triangle with side lengths $3$ and $4$ is inscribed inside of the outer circle.  The longest side of the triangle is a diameter of the outer circle.  A second circle is inscribed inside of the triangle.  What is the area of the shaded region in the figure (the area inside of the outer circle, but outside of the inner circle).
+        \seti
+      \end{enumerate}
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B, C;
+            O := origin;
+            path c, d;
+            c := cercle(O, 2.5);
+            fill c withcolor 0.7white;
+            draw c;
+            A := (-1.5,2);
+            B := (1.5, -2);
+            C := (-1.5, -2);
+            draw A--B--C--cycle;
+            d := incircle(A, B, C);
+            fill d withcolor white;
+            draw d;
+            label.bot("$3$", 0.5[B, C]);
+            label.lft("$4$", 0.5[A, C]);
+          fin;
+        \end{mplibcode}
+        &
+        \hspace*{1em}
+        \begin{mplibcode}
+          u = 0.35cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B, C;
+            A := (-4, 0);
+            B := (4, 0);
+            C := (0, 7.5);
+            draw A--B--C--cycle;
+            draw halfcircle scaled (15*4/sqrt(7.5*7.5 + 16));
+            draw C--origin;
+            label.bot("$16$", 0.5[A, B]);
+            label.rt("$15$", 0.75[C, origin]);
+          fin;
+        \end{mplibcode}
+      \end{tabularx}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item A square $2$ units on a side has a circle inscribed inside of it.  A second square is inscribed inside of the circle, which then has another circle inscribed inside it.  If we continue this pattern of alternately inscribing infinitely many circles and squares inside one another, what this sum of the areas of all of the squares in this series?
+        
+        \item As shown below, a semicircle is inscribed inside of an isosceles triangle. The triangle has base $16$ and height $15$ and the diameter of the semicircle is contained in the base of the triangle.  What is the radius of the semicircle?
+
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

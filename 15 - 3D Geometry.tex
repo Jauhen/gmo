@@ -1,0 +1,692 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{3-D Geometry Topics}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Dimensional scaling}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      One topic that comes up frequently in contests involves how changing one length changes a~quantity like area, surface area or volume.
+
+      Let's use the example of the circumference of a~circle, the area of a~circle, and the volume of a~sphere.
+
+      \begin{tabularx}{\textwidth}{YYY}
+        Circle & Sphere \\
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A;
+            O := origin;
+            path c;
+            c := cercle(O, 2.5);
+            draw c withcolor bleu pensemibold;
+            nomme.top(O, "");
+            A := 2.5*dir(60);
+            draw O--A;
+            picture p;
+            p := thelabel.("$r$", 0.5[O, A]);
+            unfill bbox p;
+            draw p;
+          fin;
+        \end{mplibcode}
+        &
+        \hspace*{1em}
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A;;
+            O := origin;
+            path c, d;
+            c := cercle(O, 2.5);
+            d := cercle(O, 2.5) yscaled 0.33;
+            draw c pensemibold;
+            nomme.top(O, "");
+            draw subpath(0, 4) of d dashed evenly;
+            draw subpath(4, 8) of d;
+            A := 2.5*dir(60);
+            draw O--A;
+            picture p;
+            p := thelabel.("$r$", 0.5[O, A]);
+            unfill bbox p;
+            draw p;
+            draw (-2.5, 0)--(2.5, 0);
+            picture q;
+            q := thelabel.("$d$", (-1, 0.1));
+            unfill bbox q;
+            draw q;
+          fin;
+        \end{mplibcode} \\
+        $\text{Circumference} = 2\pi r$ & $V = \cfrac{\,4\,}{3}\, \pi r^3$ \\
+        $\text{Area} = \pi r^2$ & $\text{Surface Area} = 4 \pi r^2$ 
+      \end{tabularx}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Circumference is a \textbf{1-dimensional} quantity and is therefore directly proportional to the radius.  If the radius doubles, so too does the circumference.\medskip
+
+      Area is a \textbf{2-dimensional} quantity, and the area of a circle is proportional to the square of the radius.  If the radius doubles, the area increases by a~factor of $4$.  In general,  if the radius changes by a~factor of $c$, the area changes by a~factor of $c^2$.  The same is true for the surface area of a sphere which is also proportional to the radius squared.\medskip
+
+      Volume is a \textbf{3-dimensional} quantity, and the volume of a sphere is proportional to the cube of the radius.  If the radius doubles, the volume increases by a factor of $8$.  In general, if the radius changes by a factor of $c$, the volume changes by a~factor of $c^3$.  The same is true for the volume of a~cube.  When the length of a side doubles, the volume of the cube increases $8$-fold.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Dimensional scaling of units}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      When doing units conversions, it is important to pay attention to the dimensionality of the problem.  You know that there are $12 \text{ inches}$ in $1 \text{ foot}$.  Note, though, that there are $12^2 = 144 \text{ square inches}$ in a square foot.  To visualize this, think of a~$1 \text{ foot} \times 1 \text{ foot tile}$.  We would need a grid of $144$ $1 \text{ inch} \times 1 \text{ inch}$ tiles to cover that single larger tile.  Extending this example to 3-dimensions, there are $12^3 = 1728 \text{ cubic inches}$ in a cubic foot.  To visualize this, imagine a cubic box $1 \text{ foot}$ on each side.  It would take $1728$ cubes $1 \text{ inch}$ on a side to fill the volume of that $1 \text{ cubic foot}$ box.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        The basketball court at the Mountain View Sports Complex is $92$ feet long and $48$ feet wide.  If the wooden parquet tiles you want to cover the court with are squares $4$ feet on a side, how many tiles are needed to cover the court?
+      \end{problem}
+
+      Both $92$ and $48$ are evenly divisible by $4$, so we don’t need to worry about fractional tiles.  You could first compute the total area of the court 
+      \[92 \times 48 = 4416 \text{ sq. ft.}\]
+      and then divide by the area of an individual tile ($16 \text{ sq. ft.}$).  Alternatively, you could think of this as a units problem with the conversion that $1 \text{ tile} = 4 \text{ feet}$, and realize that the court dimensions are 
+      \[ 23 \text{ tiles} \times 12 \text{ tiles} = 276 \text{ sq. tiles}.\]  
+      Computationally, it is probably faster to use the second method.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Volumes of 3-D shapes}
+  \begin{columns}[T]
+    \begin{column}{0.33\textwidth}
+      \[ \text{Cylinder} \quad V = \pi r^2 h \]
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A;
+            O := origin;
+            A := (0,4);
+            path c, d;
+            c := cercle(O, 2) yscaled 0.33;
+            d := cercle(O, 2) yscaled 0.33 shifted A;
+            draw d;
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;
+            draw (-2, 0)--(-2, 4);
+            draw (2, 0)--(2, 4);
+            draw O--(2,0);
+            picture p;
+            p := thelabel.("$r$", 0.5[O, (2,0)]);
+            unfill bbox p;
+            draw p;
+            draw A--O;
+            picture q;
+            q := thelabel.("$h$", 0.5[O, A]);
+            unfill bbox q;
+            draw q;
+            nomme.top(O, "");
+            nomme.top(A, "");
+            taille_marque_ad := 0.15cm;
+            draw marqueangledroit((2, 0), O, A) penhair;
+          fin;
+        \end{mplibcode}
+        &
+        \hspace*{1em}
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A;
+            O := origin;
+            A := (1,4);
+            path c, d;
+            c := cercle(O, 2) yscaled 0.33;
+            d := cercle(O, 2) yscaled 0.33 shifted A;
+            draw d;
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;
+            draw (-2, 0)--(-1, 4);
+            draw (2, 0)--(3, 4);
+            draw O--(2,0);
+            picture p;
+            p := thelabel.("$r$", 0.5[O, (2,0)]);
+            unfill bbox p;
+            draw p;
+            draw (-1,4)--(3, 4);
+            draw (0, 4)--O;
+            picture q;
+            q := thelabel.("$h$", 0.5[O, (0, 4)]);
+            unfill bbox q;
+            draw q;
+            nomme.top(O, "");
+            nomme.top(A, "");
+            taille_marque_ad := 0.15cm;
+            draw marqueangledroit((2, 0), O, (0,4)) penhair;
+            draw marqueangledroit((0, 0), (0,4), (2,4)) penhair;
+          fin;
+        \end{mplibcode}
+      \end{tabularx}
+      \bigskip
+      \[ \text{Cone} \quad V = \frac{\pi r^2 h}{3} \]
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A;
+            O := origin;
+            A := (0,4);
+            path c, d;
+            c := cercle(O, 2) yscaled 0.33;
+            draw (-2, 0)--A--(2, 0);
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;
+            draw O--(2,0);
+            picture p;
+            p := thelabel.("$r$", 0.5[O, (2,0)]);
+            unfill bbox p;
+            draw p;
+            draw A--O;
+            picture q;
+            q := thelabel.("$h$", 0.5[O, A]);
+            unfill bbox q;
+            draw q;
+            nomme.top(O, "");
+            taille_marque_ad := 0.15cm;
+            draw marqueangledroit((2, 0), O, A) penhair;;
+          fin;
+        \end{mplibcode}
+        &
+        \hspace*{1em}
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B, C;
+            O := origin;
+            A := (1,4);
+            path c, d;
+            c := cercle(O, 2) yscaled 0.33;
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;        
+            draw (-1.98,0.13)--A--(2,0);
+            draw (2, 0)--(-2,0);
+            picture p;
+            p := thelabel.("$r$", 0.5[O, (-2,0)]);
+            unfill bbox p;
+            draw p;
+            draw (0,4)--(1, 4);
+            picture q;
+            q := thelabel.("$h$", 0.4[(1, 0), (1, 4)]);
+            unfill bbox q;
+            draw q;
+            nomme.top(O, "");
+            taille_marque_ad := 0.15cm;
+            draw marqueangledroit((2, 0), (1, 0), (1,4)) penhair;
+          fin;
+        \end{mplibcode}
+      \end{tabularx}
+    \end{column}
+    \begin{column}{0.67\textwidth}
+      \[ \text{Pyramid} \quad V = \frac{\text{Base Area}\times h}{3} \]
+      \begin{center}
+        \begin{tabularx}{0.7\textwidth}{YYY}
+          \begin{mplibcode}
+            u = 0.45cm;
+            repere(-10,10,u,-10,10,u);
+              pair O, A, B[];
+              O := origin;
+              A := (0,4);
+              for i := 1 upto 5:
+                B[i] := 3*dir(72 * i - 36) yscaled 0.33;
+              endfor;
+              draw B1--B2--B3 dashed evenly;
+              draw B3--B4--B5--B1;
+              path c, d;
+              c := cercle(O, 2) yscaled 0.33;
+              draw A--O;
+              draw O--(1,0);
+              picture q;
+              q := thelabel.("$h$", 0.4[O, A]);
+              unfill bbox q;
+              draw q;
+              nomme.top(O, "");
+              taille_marque_ad := 0.15cm;
+              draw marqueangledroit((2, 0), O, A) penhair;
+              draw B1--A--B3;
+              draw B4--A--B5;
+              draw B2--A dashed evenly;
+            fin;
+          \end{mplibcode}
+          &
+          \hspace*{1em}
+          \begin{mplibcode}
+            u = 0.45cm;
+            repere(-10,10,u,-10,10,u);
+              pair O, A, B[];
+              O := origin;
+              A := (1,4);
+              for i := 1 upto 5:
+                B[i] := 3*dir(72 * i - 36) yscaled 0.33;
+              endfor;
+              draw B1--B2--B3 dashed evenly;
+              draw B3--B4--B5--B1;
+              path c, d;
+              c := cercle(O, 2) yscaled 0.33;
+              draw A--(1, 0);
+              draw (2,0)--(1,0);
+              picture q;
+              q := thelabel.("$h$", 0.4[(1, 0), (1, 4)]);
+              unfill bbox q;
+              draw q;
+              draw B1--A--B3;
+              draw B4--A--B5;
+              draw B2--A dashed evenly;
+              taille_marque_ad := 0.15cm;
+              draw marqueangledroit((2, 0), (1, 0), (1,4)) penhair;
+            fin;
+          \end{mplibcode}
+        \end{tabularx}
+      \end{center}
+
+      This page illustrates the formulae for cylinders, cones and pyramids.  The factor of $\nicefrac{1}{3}$ in the formulae for cones and pyramids is an interesting proof, but beyond the scope of this lesson.
+
+      For cylinders, cones, and pyramids, the height used in the formula is the length of the altitude drawn from the top perpendicular down to the base.  This is the case for both right and oblique shapes.  For an oblique cylinder, any plane parallel to the base intersects the cylinder in a circle congruent to the base circle.  Hence the volume is equal to the area of the base times length of the perpendicular altitude between the base and the top of the cylinder.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Unfolding a right circular cylinder}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      The vertical surface of a right circular cylinder can be “unrolled” as shown to the right into a rectangle  whose height is equal to the height of the cylinder and whose width has a length equal to the circumference of the base circle.  So the area of the vertical surface is $2\pi rh$.
+
+      The total surface area is the vertical surface area plus the area of the circular base and top, which is $2\pi r^2 + 2\pi rh$.  Interestingly, for a right circular cylinder of whose height is equal to its radius, the total surface area is equal to $4\pi r^2$, which is also the surface area of a sphere of radius $r$.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,20,u,-10,10,u);
+            pair O, A;
+            O := origin;
+            A := (0,3);
+            path c, d;
+            c := cercle(O, 2) yscaled 0.33;
+            d := cercle(O, 2) yscaled 0.33 shifted A;
+            draw d;
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;
+            draw (-2, 0)--(-2, 3);
+            draw (2, 0)--(2, 3);
+            draw O--(2,0);
+            picture p;
+            p := thelabel.("$r$", 0.5[O, (2,0)]);
+            unfill bbox p;
+            draw p;
+            draw A--O;
+            picture q;
+            q := thelabel.("$h$", 0.5[O, A]);
+            unfill bbox q;
+            draw q;
+            nomme.top(O, "");
+            nomme.top(A, "");
+          fin;
+        \end{mplibcode}
+      \end{center} 
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,20,u,-10,10,u);
+            pair A, B;
+            draw (0, 0)--(2*3.14*2, 0)--(2*3.14*2, 3)--(0, 3)--cycle;
+            A := (2*3.14, -2);
+            B := (2*3.14, 5);
+            draw cercle(A, 2);
+            draw cercle(B, 2);
+            label.rt("$h$", (0, 1.5));
+            label.top("$2\pi r$", (2*3.14, 0));
+            draw A--2*dir(50) shifted A;
+            draw B--2*dir(50) shifted B;
+            picture p;
+            p := thelabel.("$r$", 0.5[A, 2*dir(50) shifted A]);
+            unfill bbox p;
+            draw p;
+            p := thelabel.("$r$", 0.5[B, 2*dir(50) shifted B]);
+            unfill bbox p;
+            draw p;
+            nomme.top(A, "");
+            nomme.top(B, "");
+          fin;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Unfolding a right circular cone}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      We can also "unroll" the curved surface of the cone.  We do this by cutting along a slant height such as $AB$.  Since the distance from the vertex $A$ to any point on the boundary of the circular base is a constant distance equal to the slant height $\ell$, the curve $BB'$ is a circular arc centered at $A$ with radius $\ell$.  The length of the arc is the circumference of the cone, $2\pi r$.  If you don't see this, I encourage you cut out a circular wedge of paper and see how it folds into a cone.
+      \small
+
+      \begin{problem}
+        What is the lateral surface area (which means the base area is excluded) of a right circular cone with radius $r$ and slant height $\ell$?
+      \end{problem}
+      
+      After we unfold the cone surface into a circular wedge, we just need to find the area of that wedge, which is the area of the full circle ($\pi \ell^2$) times the fraction of circle covered by that wedge.  That fraction is the arclength of the wedge ($2\pi r$) divided by the circumference of the full circle ($2\pi\ell$).  The wedge area is 
+      \normalsize
+      \[\pi \ell^2 \dfrac{r}{l} = \pi \ell r.\]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A;
+            O := origin;
+            A := (0,4);
+            path c, d;
+            c := cercle(O, 2) yscaled 0.33;
+            draw (-2, 0)--A--(2, 0);
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;
+            draw O--(2,0);
+            picture p;
+            p := thelabel.("$r$", 0.5[O, (2,0)]);
+            unfill bbox p;
+            draw p;
+            draw A--O;
+            picture q;
+            q := thelabel.("$h$", 0.4[O, A]);
+            unfill bbox q;
+            draw q;
+            q := thelabel.("$\ell$", 0.5[(2, 0), A]);
+            unfill bbox q;
+            draw q;
+            nomme.top(O, "");
+            label.ulft("$A$", A);
+            label.rt("$B\;(B')$", (2, 0));
+            taille_marque_ad := 0.15cm;
+            draw marqueangledroit((2, 0), O, A) penhair;;
+          fin;
+        \end{mplibcode}
+      \end{center}
+      \vspace{1em}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A;
+            O := origin;
+            A := origin;
+            path c, d;
+            l = sqrt(13);
+            c := cercle(O, l);
+            n = 8*2/l;
+            draw O--subpath(4-(n-4)/2, 8+(n-4)/2) of c--O;
+            nomme.top(A);
+            label.ulft("$B'$", point 4-(n-4)/2 of c);
+            label.urt("$B$", point 8+(n-4)/2 of c);
+            picture q;
+            q := thelabel.("$\ell$", 0.5[point 8+(n-4)/2 of c, A]);
+            unfill bbox q;
+            draw q;
+          fin;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The conical frustum}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \small
+      A frustum is created when a plane parallel to the base intersects with a pyramid or cone and the smaller cone or pyramid above that plane is removed from the structure.  In order to calculate the volume of a frustum, you subtract the volume of the “missing” top section from the volume of the full cone or pyramid.  Since the top is missing, it is not easy to know the volume of the original cone, so below we derive the volume of the frustum given its height and the dimensions of its top and base.
+
+      The volume of the full cone is: $\pi R^2 (H + h)/3$.
+
+      The volume of the cone that is cut off is:  $\pi r^2 h/3$.
+
+      Taking their difference, the volume of the frustum, $V$, is
+      \[ V = \pi R^2(H + h)/3 - \pi r^2 h/3 \]
+      The triangles $OBC$ and $PQC$ are similar (by \textbf{AA}) and thus, 
+      \begin{align*}
+        (H + h)/h &= R/r  \\
+        H + h &= Rh/r 
+      \end{align*}
+      Substituting this into our formula for $V$, we get
+      \begin{align*}
+        V &= \pi R^2 \cdot \frac{Rh}{3r} - \frac{\pi r^2 h}{3} \\
+        V &= \frac{\pi h}{3} \cdot \frac{R^3 - r^3}{r}
+      \end{align*}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \vspace*{-2.5em}
+      \begin{tabularx}{\textwidth}{YYY}
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B;
+            O := origin;
+            A := (0,5);
+            path c, d, e;
+            c := cercle(O, 2) yscaled 0.33;
+            draw (-2, 0)--A--(2, 0);
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;
+            B := (0, 5-5*1.1/2);
+            e := cercle(O, 1.1) yscaled 0.33 shifted B;
+            draw subpath(0, 4) of e dashed evenly;
+            draw subpath(4, 8) of e;
+            draw O--(2,0);
+            draw B--(1.1, ypart B);
+            picture p;
+            p := thelabel.("$\scriptstyle R$", 0.5[O, (2,0)]);
+            unfill bbox p;
+            draw p;
+            p := thelabel.("$\scriptstyle r$", 0.5[B, (1.1, ypart B)]);
+            unfill bbox p;
+            draw p;
+            draw A--O;
+            picture q;
+            q := thelabel.("$\scriptstyle H$", 0.5[O, B]);
+            unfill bbox q;
+            draw q;
+            q := thelabel.("$\scriptstyle h$", 0.5[B, A]);
+            unfill bbox q;
+            draw q;
+            nomme.llft(O);
+            nomme.lft(A, "$C$");
+            nomme.lft(B, "$P$");
+            nomme.rt((2, 0), "$B$");
+            nomme.rt((1.1, ypart B), "$Q$");
+            taille_marque_ad := 0.15cm;
+            draw marqueangledroit((2, 0), O, A) penhair;;
+          fin;
+        \end{mplibcode}
+        &
+        \hspace*{1em}
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,10,u,-10,10,u);
+            pair O, A, B;
+            O := origin;
+            A := (0,8);
+            path c, d, e;
+            c := cercle(O, 2) yscaled 0.33;
+            draw subpath(0, 4) of c dashed evenly;
+            draw subpath(4, 8) of c;
+            B := (0, 8-8*1.3/2);
+            e := cercle(O, 1.3) yscaled 0.33 shifted B;
+            draw e;
+            draw O--(2,0);
+            draw B--(1.3, ypart B);
+            draw (-2, 0)--(-1.3, ypart B);
+            draw (2, 0)--(1.3, ypart B);
+            picture p;
+            p := thelabel.("$\scriptstyle R$", 0.5[O, (2,0)]);
+            unfill bbox p;
+            draw p;
+            p := thelabel.("$\scriptstyle r$", 0.5[B, (1.1, ypart B)]);
+            unfill bbox p;
+            draw p;
+            draw B--O;
+            picture q;
+            q := thelabel.("$\scriptstyle H$", 0.5[O, B]);
+            unfill bbox q;
+            draw q;
+          fin;
+        \end{mplibcode}
+      \end{tabularx}
+      \small
+      \[ V = \frac{\pi h}{3} \left(\frac{R^3 - r^3}{r}\right) \quad \text{or}\quad V = \frac{\pi H}{3} (R^2 + Rr + r^2) \]
+      It is sometimes helpful to write this formula in another form. $a^3 - b^3 = (a - b) (a^2 + ab + b^2).$ By applying this formula to $R^3 - r^3$,
+      \begin{align*}
+        V &= \frac{π}{3} \cdot \frac{Hr}{R - r} \cdot \frac{(R - r)(R^2 + Rr + r^2)}{r} \\
+        V &= \frac{πH}{3} \cdot (R^2 + Rr + r^2) \\
+        V &= \frac{H}{3} \cdot (S_1 + S_2 + \pi Rr)           
+      \end{align*}
+      where $S_1$ and $S_2$ are the areas of the top and base of the frustum respectively.
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Pyramidal frustums}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      We saw for a conical frustum that the volume of the frustum could be expressed as:
+      \[ V = \frac{H}{3} (S_1 + S_2 + \pi Rr).\]  
+      Note that $\pi Rr$ could be expressed instead as $\sqrt{S_1 S_2}$. The proof we used for conical frustums can be generalized to show that for any frustum:
+      \[ V = \frac{H}{3} (S_1 + S_2 + \sqrt{S_1 S_2}).\]
+      Does the square root term look familiar?  We last saw it in the right triangle unit.  It is the geometric mean of the areas of the base and the top.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,13,u,-10,13,u);
+            pair O, A, B[], C[], D;
+            O := origin;
+            A := (0,8);
+            D := (0, 4);
+            for i := 1 upto 5:
+              B[i] := 3*dir(72 * i - 36) yscaled 0.33;
+              C[i] := 1.5*dir(72 * i - 36) yscaled 0.33 shifted D;
+            endfor;
+            fill B1--B2--B3--B4--B5--cycle withcolor Azure1;
+            fill C1--C2--C3--C4--C5--cycle withcolor LightBlue1;
+            draw B1--B2--B3 dashed evenly;
+            draw B3--B4--B5--B1;
+            draw C1--C2--C3--C4--C5--cycle;
+            draw D--O;
+            draw O--(0.5,0);
+            picture q;
+            q := thelabel.("$H$", 0.4[O, D]);
+            unfill bbox q;
+            draw q;
+            label.("$S_1$", (0.5, 4));
+            label.("$S_2$", (1.2, -0.2));
+            nomme.top(O, "");
+            nomme.top(D, "");
+            taille_marque_ad := 0.15cm;
+            draw marqueangledroit((2, 0), O, A) penhair;
+            draw B1--C1;
+            draw B3--C3;
+            draw B5--C5;
+            draw B4--C4;
+            draw B2--C2 dashed evenly;
+            draw C1--A--C2 dashed withdots;
+            draw C3--A--C4 dashed withdots;
+            draw C5--A dashed withdots;
+          fin;
+        \end{mplibcode}
+      \end{center}
+      \[ V = \frac{H}{3} (S_1 + S_2 + \sqrt{S_1 S_2}) \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \small
+      \begin{enumerate}
+        \item The circumference of a circular track is $400$ yards.  What is the area enclosed by the track measured in square feet?
+        \item A large cubic block is constructed from $125$ smaller cubic blocks $2$ cm on a side.  All $6$ of the outside faces of the block are painted.  How many of the $125$ blocks are unpainted?  If we had used $1$ cm cubic blocks instead, how many of the $1000$ blocks used would have been unpainted?
+        \item A sphere of radius $5$ cm is inscribed inside of a~cube $10$ cm per edge.  What is the volume inside of the cube but outside of the sphere as measured in cubic mm? (pay attention to the units)
+        \item A pair of identical right circular cones are arranged inside of a right circular cylinder whose base and top are also the bases of the cones.  The height of each cone is half the cylinder height, so the tips of the cones are just touching.  If the diameter of the base of the cones is $5$ cm and distance from the tip of one cone to its base along the sloped wall of the pyramid is $6.5$ cm, what is volume contained inside of the cylinder but outside of the cones?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \small
+      \begin{enumerate}
+        \conti
+        \item For a right circular cone with radius, $r = 3$ and height, $h = 4$, what is the ratio of the area of the circular base to the surface area of the entire cone (lateral surface plus base)? 
+        \item A right, pyramidal frustum with height $18$ has a base that is a regular pentagon with an area of $400$ square cm.  If the sides of the top surface pentagon are a factor of $\sqrt{2}$ smaller than the sides of the base, what is the volume of the frustum?
+        \item The paper cups at the office water cooler are in the shape of right circular cones.  The radius at the top of the cup is $5$ cm, and the height of the cup is $15$ cm.  What is the distance (in cm) from the bottom tip of the cone to the water surface, when the cup is filled to half of its maximum capacity?
+        \item The amount of polymer a 3-d printer uses to make an object is proportional to that object's volume.  If 3-d printer uses $100$ ml of polymer to make an action figure, how much polymer will be needed to make that figure if we scale up all of its dimensions by a factor of $3$?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item What is the ratio of the volume of sphere to the volume of the smallest right circular cylinder that can contain it? 
+        \item As shown in the diagram below, the red triangle is formed by connecting the vertices of the cube.  If the cube has a volume of $64$~cm\textsuperscript{3}, what is the area of the red triangle?
+        \seti
+      \end{enumerate}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          repere(-10,13,u,-10,13,u);
+            draw (0, 0)--(6,1)--(2, 5)--cycle pensemibold withcolor rouge;
+            draw (0, 0)--(4, 0)--(6, 1); 
+            draw (6, 1)--(2,1)--(0, 0) dashed evenly;
+            draw (0, 4)--(4, 4)--(6, 5)--(2,5)--cycle;
+            draw (0, 0)--(0, 4);
+            draw (4, 0)--(4, 4);
+            draw (6, 1)--(6, 5);
+            draw (2, 1)--(2, 5) dashed evenly;
+          fin;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item The base of a tetrahedron (a 4-sided right pyramid) is a triangle whose sides have lengths $10$, $24$, and $26$.  The altitude of the tetrahedron is $20$.  Find the area of a cross section whose distance from the base is $15$.
+        \item Starting with a circular piece of paper, you cut away an $n°$ sector of the circle and discard it.  Using the leftover sector of the circle, you tape the radii together to form the lateral surface of a cone.  If the cone has a height of $4$ inches and a radius of $3$ inches, what was the value of $n$?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

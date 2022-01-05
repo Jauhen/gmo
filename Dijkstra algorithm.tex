@@ -1,0 +1,229 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage {tikz}
+\usetikzlibrary {positioning}
+
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+
+
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ December 2021}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+
+\begin{frame}{Dijkstra algorithm}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{example}
+        \begin{enumerate}
+          \item Mark all nodes unvisited.
+          \item Set \emph{tentative distance} for all nodes.
+            \begin{enumerate}
+              \item $0$ for initial node.
+              \item $\infty$ for all other nodes.
+            \end{enumerate}
+          \item \label{itm:select} \textbf{Select node with lowest \emph{tentative distance}}.
+          \item If it target node, we are done!
+          \item For every node connected to this node:
+            \begin{enumerate}
+              \item \textbf{Calculate new \emph{tentative distance}}:
+                    {\large \hspace*{-2em}$\text{Current node's distance} + \text{path distance}.$}
+              \item Set if it lower then current \emph{tentative distance}.
+            \end{enumerate}
+          \item Mark selected node as visited.
+          \item Go to step \ref{itm:select}.
+        \end{enumerate}
+      \end{example}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Step 1: set initial \emph{tentative distance} for all nodes.
+      \begin {center}
+        \begin {tikzpicture}[-latex,auto,node distance =2 cm and 2.5cm ,on grid ,
+        semithick ,
+        unvisited/.style ={circle,top color =white, bottom color = processblue!20 ,
+        draw,processblue, text=blue, minimum width =0.5 cm},
+        current/.style ={circle,top color =white, bottom color = red!20 ,
+        draw,red, text=blue, minimum width =0.5 cm},
+        visited/.style ={circle,top color =white, bottom color = black!20 ,
+        draw,black, text=blue, minimum width =0.5 cm}]
+          \node[unvisited, label={[xshift=1em, yshift=-0.5em]\large $0$}] (T) {$T$};
+          \node[unvisited, label={[xshift=1em, yshift=-0.5em]\large $\infty$}] (S) [below=of T] {$S$};
+          \node[unvisited, label={[xshift=-1.25em, yshift=-0.5em]\large $\infty$}] (N) [left=of S] {$N$};
+          \node[unvisited, label={[xshift=1em, yshift=-0.5em]\large $\infty$}] (O) [right=of S] {$O$};
+          \node[unvisited, label={[xshift=1em, yshift=-3em]\large $\infty$}] (W) [below=of S] {$W$};
+          \path[-] (T) edge node[sloped] {$\scriptstyle 4.20$} (S);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 6.35$} (T);
+          \path[-] (T) edge node[sloped] {$\scriptstyle 7.50$} (O);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 7.50$} (W);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 1.75$} (S);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 2.50$} (O);
+          \path[-] (W) edge node[sloped] {$\scriptstyle 4.25$} (N);
+          \path[-] (O) edge node[sloped] {$\scriptstyle 3.75$} (W);
+        \end{tikzpicture}
+      \end{center}
+      
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Dijkstra algorithm}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Step 2: select node with lowest \emph{tentative distance} ($T$) and update all connected nodes.
+
+      For $S$: $0 + 4.20 = 4.20 < \infty$ - update
+
+      For $N$: $0 + 6.35 = 6.35 < \infty$ - update
+ 
+      For $O$: $0 + 7.50 = 7.50 < \infty$ - update
+      \begin {center}
+        \vspace*{-0.5em}
+        \begin {tikzpicture}[-latex,auto,node distance =2 cm and 2.5cm ,on grid ,
+        semithick ,
+        unvisited/.style ={circle,top color =white, bottom color = processblue!20 ,
+        draw,processblue, text=blue, minimum width =0.5 cm},
+        current/.style ={circle,top color =white, bottom color = red!20 ,
+        draw,red, text=blue, minimum width =0.5 cm},
+        visited/.style ={circle,top color =white, bottom color = black!20 ,
+        draw,black, text=blue, minimum width =0.5 cm}]
+          \node[current, label={[xshift=1em, yshift=-0.5em]\large $0$}] (T) {$T$};
+          \node[unvisited, label={[xshift=1.5em, yshift=-0.5em]\large \fbox{$4.20$}}] (S) [below=of T] {$S$};
+          \node[unvisited, label={[xshift=-1.25em, yshift=-0.5em]\large \fbox{$6.35$}}] (N) [left=of S] {$N$};
+          \node[unvisited, label={[xshift=1em, yshift=-0.5em]\large \fbox{$7.50$}}] (O) [right=of S] {$O$};
+          \node[unvisited, label={[xshift=1em, yshift=-3em]\large $\infty$}] (W) [below=of S] {$W$};
+          \path[-] (T) edge node[sloped] {$\scriptstyle 4.20$} (S);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 6.35$} (T);
+          \path[-] (T) edge node[sloped] {$\scriptstyle 7.50$} (O);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 7.50$} (W);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 1.75$} (S);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 2.50$} (O);
+          \path[-] (W) edge node[sloped] {$\scriptstyle 4.25$} (N);
+          \path[-] (O) edge node[sloped] {$\scriptstyle 3.75$} (W);
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Step 3: Mark current node ($T$) as visited, select node with lowest \emph{tentative distance} ($S$) and update all connected nodes.
+
+      For $N$: $4.20 + 1.75 = 5.95 < 6.35$ - update
+
+      For $O$: $4.20 + 2.50 = 6.70 < 7.50$ - update
+      
+      For $W$: $4.20 + 7.50 = 11.70 < \infty$ - update
+
+      \begin {center}
+        \vspace*{-0.5em}
+        \begin {tikzpicture}[-latex,auto,node distance =2 cm and 2.5cm ,on grid ,
+        semithick ,
+        unvisited/.style ={circle,top color =white, bottom color = processblue!20 ,
+        draw,processblue, text=blue, minimum width =0.5 cm},
+        current/.style ={circle,top color =white, bottom color = red!20 ,
+        draw,red, text=blue, minimum width =0.5 cm},
+        visited/.style ={circle,top color =white, bottom color = black!20 ,
+        draw,black, text=blue, minimum width =0.5 cm}]
+          \node[visited, label={[xshift=1em, yshift=-0.5em]\large $0$}] (T) {$T$};
+          \node[current, label={[xshift=1.5em, yshift=-0.5em]\large $4.20$}] (S) [below=of T] {$S$};
+          \node[unvisited, label={[xshift=-1.25em, yshift=-0.5em]\large \fbox{$5.95$}}] (N) [left=of S] {$N$};
+          \node[unvisited, label={[xshift=1em, yshift=-0.5em]\large \fbox{$6.70$}}] (O) [right=of S] {$O$};
+          \node[unvisited, label={[xshift=1em, yshift=-4em]\large \fbox{$11.70$}}] (W) [below=of S] {$W$};
+          \path[-] (T) edge node[sloped] {$\scriptstyle 4.20$} (S);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 6.35$} (T);
+          \path[-] (T) edge node[sloped] {$\scriptstyle 7.50$} (O);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 7.50$} (W);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 1.75$} (S);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 2.50$} (O);
+          \path[-] (W) edge node[sloped] {$\scriptstyle 4.25$} (N);
+          \path[-] (O) edge node[sloped] {$\scriptstyle 3.75$} (W);
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Dijkstra algorithm}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      Step 4: Mark current node ($S$) as visited, select node with lowest \emph{tentative distance} ($N$) and update all connected nodes.
+
+      For $W$: $5.95 + 4.25 = 10.20 < 11.70$ - update
+      \begin {center}
+        \vspace*{-0.5em}
+        \begin {tikzpicture}[-latex,auto,node distance =2 cm and 2.5cm ,on grid ,
+        semithick ,
+        unvisited/.style ={circle,top color =white, bottom color = processblue!20 ,
+        draw,processblue, text=blue, minimum width =0.5 cm},
+        current/.style ={circle,top color =white, bottom color = red!20 ,
+        draw,red, text=blue, minimum width =0.5 cm},
+        visited/.style ={circle,top color =white, bottom color = black!20 ,
+        draw,black, text=blue, minimum width =0.5 cm}]
+          \node[visited, label={[xshift=1em, yshift=-0.5em]\large $0$}] (T) {$T$};
+          \node[visited, label={[xshift=1.5em, yshift=-0.5em]\large $4.20$}] (S) [below=of T] {$S$};
+          \node[current, label={[xshift=-1.25em, yshift=-0.5em]\large $5.95$}] (N) [left=of S] {$N$};
+          \node[unvisited, label={[xshift=1em, yshift=-0.5em]\large $6.70$}] (O) [right=of S] {$O$};
+          \node[unvisited, label={[xshift=1em, yshift=-4em]\large \fbox{$10.20$}}] (W) [below=of S] {$W$};
+          \path[-] (T) edge node[sloped] {$\scriptstyle 4.20$} (S);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 6.35$} (T);
+          \path[-] (T) edge node[sloped] {$\scriptstyle 7.50$} (O);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 7.50$} (W);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 1.75$} (S);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 2.50$} (O);
+          \path[-] (W) edge node[sloped] {$\scriptstyle 4.25$} (N);
+          \path[-] (O) edge node[sloped] {$\scriptstyle 3.75$} (W);
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      Step 5: Mark current node ($N$) as visited, select node with lowest \emph{tentative distance} ($O$) and update all connected nodes.
+
+      For $W$: $6.70 + 3.75 = 10.45 > 10.20$ - \textbf{DON'T update}
+      \begin {center}
+        \vspace*{-0.5em}
+        \begin {tikzpicture}[-latex,auto,node distance =2 cm and 2.5cm ,on grid ,
+        semithick ,
+        unvisited/.style ={circle,top color =white, bottom color = processblue!20 ,
+        draw,processblue, text=blue, minimum width =0.5 cm},
+        current/.style ={circle,top color =white, bottom color = red!20 ,
+        draw,red, text=blue, minimum width =0.5 cm},
+        visited/.style ={circle,top color =white, bottom color = black!20 ,
+        draw,black, text=blue, minimum width =0.5 cm}]
+          \node[visited, label={[xshift=1em, yshift=-0.5em]\large $0$}] (T) {$T$};
+          \node[visited, label={[xshift=1.5em, yshift=-0.5em]\large $4.20$}] (S) [below=of T] {$S$};
+          \node[visited, label={[xshift=-1.25em, yshift=-0.5em]\large $5.95$}] (N) [left=of S] {$N$};
+          \node[current, label={[xshift=1em, yshift=-0.5em]\large $6.70$}] (O) [right=of S] {$O$};
+          \node[unvisited, label={[xshift=1em, yshift=-4em]\large \fbox{$10.20$}}] (W) [below=of S] {$W$};
+          \path[-] (T) edge node[sloped] {$\scriptstyle 4.20$} (S);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 6.35$} (T);
+          \path[-] (T) edge node[sloped] {$\scriptstyle 7.50$} (O);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 7.50$} (W);
+          \path[-] (N) edge node[sloped] {$\scriptstyle 1.75$} (S);
+          \path[-] (S) edge node[sloped] {$\scriptstyle 2.50$} (O);
+          \path[-] (W) edge node[sloped] {$\scriptstyle 4.25$} (N);
+          \path[-] (O) edge node[sloped] {$\scriptstyle 3.75$} (W);
+        \end{tikzpicture}
+        \vspace*{-0.5em}
+      \end{center}
+
+      Step 6: Final node become current, end of algorithm.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

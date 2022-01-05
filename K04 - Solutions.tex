@@ -1,0 +1,398 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ December 2021}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 16 \hspace*{5cm} Problem 17}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        On an island, every person is either a knight (always tells the truth) or a liar (always lies). Person $A$ told the story:
+
+        "I met $B$ and $C$. The first one said: 
+
+        'We are both liars.' 
+
+        And the second nods: 'This is true.'"
+
+        For whom from $A$, $B$, and $C$ can you tell for sure whether he is a knight of a liar? 
+      \end{problem}
+
+      Suppose $A$ is a knight. 
+      
+      Then the first from $B$ and $C$ should be a liar since a knight can't say he is a liar. But that means that the second one should be a knight; otherwise, the first one told the truth. But a knight can't agree with 'We are both liars.'
+
+      We got a contradiction. So \textbf{$A$ is a liar}. And since he is a liar, we \textbf{can't tell for sure anything about $B$ and $C$}.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Solve a cryptarithm:
+        \[ OAK + OAK + OAK + OAK + OAK = SOAK.\]
+        (Find all answers and prove that there are no other answers. The same letters denote the same digit; the different letters denote different digits. No number has zero as the first digit.)
+      \end{problem}
+
+      Substract $OAK$ from both sides, we got:
+      \[ 4 \times OAK = S \times 1{,}000 \]
+      or 
+      \[ OAK = S \times 250. \]
+      $S$ can get any value from $1$ till $3$, otherwise $S \times 250$ would be $4$-digit number. $S=2$ don't work, since $A = K = 0.$ For both $S = 1$ and $S = 3$ we got \textbf{two solutions}:
+      \begin{gather*}
+        250 + 250 + 250 + 250 + 250 = 1250, \\
+        750 + 750 + 750 + 750 + 750 = 3750.
+      \end{gather*} 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 18}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        When Robinson Crusoe had got to an uninhabited island, he had $200$ rifle shots. To conserve them, he decided that each following day he should not use more than $5\%$ of the shots he had that morning. At some point, Robinson can't shoot according to this rule. How many shots has he used by this time?
+      \end{problem}
+      
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Firstly, Robinson can't use more than $10$ shots in one day since he can't get more than $200$ shots. 
+
+      Secondly, once Robinson has from $20$ to $39$ shots, he can't use only one shot per day. So that means that someday Robinson got into that range since it is wider than the number of shots he can use in one day.
+      
+      When Robinson was in rage from $20$ till $39$, he would use one shot daily, until on the last day, when he had $20$ shots, he would use a shot and leave with $19$ shots. From this day, he couldn't use shots anymore. 
+      
+      So total, \textbf{he used $181$ shots}.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 19}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        For which $N$, a big corner, created from three squares $N \times N$, can be cut by grid lines into smaller three-celled corners?
+      \end{problem}
+      It is easy to cut a corner for $N=1$ and $N=2$.
+      \begin{center}
+        \begin{tabular}{ccc}
+          \begin{mplibcode}
+            u = 0.45cm;
+            tableau(2, 2,u);
+              coullignes:=0.8white;
+              draw grille(1, 1);
+              coullignes:=black;
+              draw lignesv(0, 1, 1,
+                          1, 0, 1) epaisseur 2;
+              draw lignesh(0, 1, 
+                          1, 0,
+                          1, 1) epaisseur 2;
+            fin;
+          \end{mplibcode} &\quad&
+          \begin{mplibcode}
+            u = 0.45cm;
+            tableau(4, 4,u);
+              coullignes:=0.8white;
+              draw grille(1, 1);
+              coullignes:=black;
+              draw lignesh(0, 0, 1, 1,
+                          0, 0, 1, 0,
+                          1, 1, 0, 1,
+                          0, 1, 1, 0,
+                          1, 1, 1, 1) epaisseur 2;
+              draw lignesv(0, 0, 1, 0, 1, 
+                          0, 0, 1, 1, 1,
+                          1, 1, 0, 1, 1,
+                          1, 0, 1, 0, 1) epaisseur 2;
+            fin;
+          \end{mplibcode} \\
+          $N = 1$ & & $N=2$
+        \end{tabular}
+      \end{center}
+
+      Now let's suppose we can cut a corner of some size value $K$.
+      Let's show how to cut a corner of size $K+2$. 
+
+      If we can demonstrate it, that means we can cut corners of sizes $N = 1$, $3$, $5$, $7$ and so on, and corners of sizes $N = 2$, $4$, $6$ and so on.\medskip
+
+      This kind of proof is called \textbf{proof by induction}.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Firstly, let's $K = 3m$ for some counting $m$.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.38cm;
+          tableau(16, 16,u);
+            coullignes:=0.8white;
+            draw grille(1, 1);
+            coullignes:=black;
+            draw lignesh(
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                        1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0,
+                        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+                        0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1,
+                        ) epaisseur 2;
+            draw lignesv(
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1,
+                        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+                        1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1,
+                        1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1,            
+            ) epaisseur 2;
+            pickup pencircle scaled 3pt;
+            draw (1.5, 3)--(1.5, 5) dashed withdots scaled 1.5;
+            draw (15.5, 5)--(15.5, 7) dashed withdots scaled 1.5;
+            draw (10, 1.5)--(12, 1.5) dashed withdots scaled 1.5;
+            draw (12, 15.5)--(14, 15.5) dashed withdots scaled 1.5;
+          fin;
+        \end{mplibcode}
+      \end{center}
+      Here instead of dots we put $2 \times 3$ rectangles $m-1$ or $2m-2$ times as needed.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 19, continued}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Secondly, let's $K = 3m + 1$ for some counting $m$.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.32cm;
+          tableau(18, 18,u);
+            coullignes:=0.8white;
+            draw grille(1, 1);
+            coullignes:=black;
+            draw lignesh(
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+                        0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+                        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1,
+                        ) epaisseur 2;
+            draw lignesv(
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+                        1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+                        1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1,            
+                        1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1,            
+            ) epaisseur 2;
+            pickup pencircle scaled 3pt;
+            draw (1.5, 4)--(1.5, 6) dashed withdots scaled 1.25;
+            draw (17.5, 5)--(17.5, 7) dashed withdots scaled 1.25;
+            draw (12, 1.5)--(14, 1.5) dashed withdots scaled 1.25;
+            draw (13, 17.5)--(15, 17.5) dashed withdots scaled 1.25;
+          fin;
+        \end{mplibcode}
+      \end{center}
+      Here instead of dots we put $2 \times 3$ rectangles $m-1$ or $2m-3$ times as needed.
+      If $K = 1$ we remove one or two $2 \times 3$ rectangles from sides.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Finally, let's $K = 3m + 2$ for some counting $m$.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.32cm;
+          tableau(14, 14,u);
+            coullignes:=0.8white;
+            draw grille(1, 1);
+            coullignes:=black;
+            draw lignesh(
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+                        0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                        0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+                        1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+                        0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+                        1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1,
+                        ) epaisseur 2;
+            draw lignesv(
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+                        1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+                        1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+                        1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1,
+                        1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1,
+            ) epaisseur 2;
+            pickup pencircle scaled 3pt;
+            draw (1.5, 5)--(1.5, 7) dashed withdots scaled 1.5;
+            draw (13.5, 5)--(13.5, 7) dashed withdots scaled 1.5;
+            draw (8, 1.5)--(10, 1.5) dashed withdots scaled 1.5;
+            draw (8, 13.5)--(10, 13.5) dashed withdots scaled 1.5;
+          fin;
+        \end{mplibcode}
+      \end{center}
+      Here instead of dots we put $2 \times 3$ rectangles $m$ or $2m-1$ times as needed.
+      If $K = 2$ we remove two $2 \times 3$ rectangles from long sides.\medskip
+
+      So, for any $N$ it is possible to cut a big corner into small corners.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 20}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        a)  Masha made a cake, a square with a side of $21$ cm. Then she chose a point on a cake side and made a cut of length $20$ cm from this point perpendicular to the chosen side. Masha did the same for each of the 4 sides. Is it necessary for a piece of cake to be cut off?
+
+        b)  Solve the same problem when Masha made a~cake in the form of a regular hexagon with a diameter of $35$ cm and made a $20$ cm cut perpendicular to each side.
+      \end{problem}
+      \begin{wrapfigure}{r}{0.45\textwidth}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 0.17cm;
+          repere(-1, 22, u, -1, 22, u);
+            draw (0, 0)--(0,20)--(20, 20)--(20, 0)--cycle;
+            draw (0, 18)--(16, 18) penbold withcolor rouge;
+            draw (2, 0)--(2, 16) penbold withcolor rouge;
+            draw (4, 2)--(20, 2) penbold withcolor rouge;
+            draw (18, 4)--(18, 20) penbold withcolor rouge;
+            legende.top("$0{.}5$ cm", (6, 12){down}..{down}(1, 2.2));
+            legende.top("", (6, 12){down}..{down}(3, 2.2));
+            dec_cote:=1.5mm;
+            traits_cote:=true;
+            cotefleche.top((4, 2),(20, 2),"$20$ cm");
+          fin;
+        \end{mplibcode}
+      \end{wrapfigure}
+      a) If the cut performed $0{.}5$ cm from the edge, as shown, it is possible to keep a cake in one piece. In this case distance between cuts will be $0{.}5$ cm.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{wrapfigure}{r}{0.4\textwidth}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 1.5cm;
+          repere(-1, 22, u, -1, 22, u);
+            pair A, B, C;
+            A := origin;
+            B := 2*dir(30);
+            C := B + (0, -1);
+            draw A--B--C--cycle pensemibold;
+            nomme(C,A,B,"$30°$");
+            draw marqueangledroit(B, C, A);
+            label.bot("$17.5$ cm", 0.5[A, C]);
+            cote.top(A, B, "$\approx 20.2$ cm");
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      b) Let's take a look at this $30-60-90$ triangle. If it longer leg has a length of $17{.}5$ cm, it's hypotenuse has a length (by Pythagorean theorem ) of $\dfrac{17.5 \times 2}{\sqrt{3}} \approx 20.2$ cm. 
+
+      \begin{wrapfigure}{l}{0.7\textwidth}
+        \vspace*{-\intextsep}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.45cm;
+          repere(-10, 10, u, -10, 10, u);
+            pair O, A[], T[];
+            for i = 0 upto 5:
+              A[i] := 5*dir(60*i);
+            endfor;
+            draw A0--A1--A2--A3--A4--A5--cycle;
+            for i = 0 upto 5:
+              T1 := A[i] + 0.2*dir(60*i + 120);
+              T2 := T1 + 5.3*dir(60*i + 210);
+              draw T1--T2 penbold withcolor rouge;
+            endfor;
+            legende.top("$\approx 0{.}1$ cm", (0, 0){down}..{down}(T2+(-0.15, 0.05)));
+            legende.top("", (0, 0){down}..{right}(T1+(-0.2, -0.05)));
+          fin;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      This gives us gap of about $0.1$cm between cuts like at this picture.
+      So it is also possible to keep a cake in one piece.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

@@ -52,7 +52,7 @@
       \end{problem}
     \end{column}
     \begin{column}{0.5\textwidth}
-      Step 1: set initial \emph{tentative distance} for all nodes.
+      Step 1: set an initial \emph{tentative distance} for all nodes.
       \begin {center}
         \begin {tikzpicture}[-latex,auto,node distance =2 cm and 2.5cm ,on grid ,
         semithick ,
@@ -85,7 +85,7 @@
 \begin{frame}{Dijkstra's algorithm}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      Step 2: select node with lowest \emph{tentative distance} ($T$) and update all connected nodes.
+      Step 2: select a node with lowest \emph{tentative distance} ($T$) and update all connected nodes.
 
       For $S$: $0 + 4.20 = 4.20 < \infty$ - update
 
@@ -119,7 +119,7 @@
       \end{center}
     \end{column}
     \begin{column}{0.5\textwidth}
-      Step 3: Mark current node ($T$) as visited, select node with lowest \emph{tentative distance} ($S$) and update all connected nodes.
+      Step 3: Mark current node ($T$) as visited, select a node with lowest \emph{tentative distance} ($S$) and update all connected nodes.
 
       For $N$: $4.20 + 1.75 = 5.95 < 6.35$ - update
 
@@ -159,7 +159,7 @@
 \begin{frame}{Dijkstra's algorithm}
   \begin{columns}[T]
     \begin{column}{0.45\textwidth}
-      Step 4: Mark current node ($S$) as visited, select node with lowest \emph{tentative distance} ($N$) and update all connected nodes.
+      Step 4: Mark current node ($S$) as visited, select a node with lowest \emph{tentative distance} ($N$) and update all connected nodes.
 
       For $W$: $5.95 + 4.25 = 10.20 < 11.70$ - update
       \begin {center}
@@ -189,7 +189,7 @@
       \end{center}
     \end{column}
     \begin{column}{0.55\textwidth}
-      Step 5: Mark current node ($N$) as visited, select node with lowest \emph{tentative distance} ($O$) and update all connected nodes.
+      Step 5: Mark current node ($N$) as visited, select a node with lowest \emph{tentative distance} ($O$) and update all connected nodes.
 
       For $W$: $6.70 + 3.75 = 10.45 > 10.20$ - \textbf{DON'T update}
       \begin {center}
@@ -226,9 +226,9 @@
 \begin{frame}{Dijkstra's algorithm}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      Step 6: Final node become current ($S$), end of algorithm.
+      Step 6: The final node becomes current ($S$), end of algorithm.
 
-      So shortest distance from $T$ to $W$ is $10.20$.
+      So the shortest distance from $T$ to $W$ is $10.20$.
 
       \begin {center}
         \vspace*{-0.5em}
@@ -260,11 +260,11 @@
     \begin{column}{0.5\textwidth}
       Dijkstra's algorithm consider each node \emph{no more then once} and consider every road \emph{no more then once}.
 
-      To restore a shortest path, algorithm may be modified: each node needs to remember last current node to update its distance.
+      To restore the shortest path, the algorithm need to be modified: each node needs to remember the last current node to update its distance.
 
-      If we dod that, then 
+      If we did that, then 
       
-      $T$ is initial node,
+      $T$ is the initial node,
 
       $S$ remembers $T$, 
       

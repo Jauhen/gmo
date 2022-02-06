@@ -1,0 +1,351 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ January 2022}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 21 \hspace*{5cm} Problem 22}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        On an island, there are knights, liars, and jokesters (who can both tell the truth and lie). Everyone was asked the question: “Are you a jokester?” Exactly $20$ people answered “yes”. After that, everyone was asked: “Are you a liar?” This time exactly $21$ people said “yes”. Whom on the island is more — jokesters or liars?
+      \end{problem}
+
+      Firstly, we may see, that to the question "Are you a liar?" only jokesters may answer "yes", so there are more then $21$ jokesters on the island.
+
+      Secondly, all liars must answer "yes" for the question "Are you a jokester?", so there are less then $20$ liers on the island.
+
+      As a result, there are more jokesters then liers on the island.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Both a circle and a rectangle are easily cut into any number of identical parts. Is there a figure with the same property without neither a center of symmetry nor an axis of symmetry? (Parts should be equal in shape and size.)
+      \end{problem}
+      There are several possibilities for such a figure. For example a combination of a rectangle and a~parallelogram. Or a segment with a fancy radius:
+      \begin{center}
+        \begin{tabular}{cc}
+          \begin{mplibcode}
+            u = 0.65cm;
+            repere(-5, 5, u, -5, 5, u);
+              draw (0, 0)--(4, 0)--(4, 2)--(3, 3)--(-1, 3)--(0, 2)--cycle pensemibold;
+              for i = 1 upto 6:
+                draw (4*i/7, 0)--(4i/7, 2)--(4i/7 -1, 3);
+              endfor;
+              draw (0, 2)--(4, 2) dashed evenly withcolor 0.7white;
+            fin;            
+          \end{mplibcode}&
+          \begin{mplibcode}
+            u = 0.75cm;
+            repere(-5, 5, u, -5, 5, u);
+              path p;
+              p := subpath(1, 2) of circle((0, 1), 1)--(0, 0);
+              draw p pensemibold;
+              draw p rotatedaround (origin, 180) pensemibold;
+              for i = 1 upto 6:
+                draw p rotatedaround (origin, 180*i/7);
+              endfor;
+              draw subpath(1, 3) of circle(origin, 2) pensemibold;
+              draw (0, 2)--(0, -2) dashed evenly withcolor 0.7white;
+            fin;
+          \end{mplibcode}
+        \end{tabular}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 23}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \emph{The Fibonacci sequence} is a sequence of numbers in which the first two numbers are equal to $1$, and each subsequent number is equal to the sum of the two previous ones: $1$, $1$, $2$, $3$, $5$, $8$, $13$, $\ldots$ 
+        
+        Can the first $2022$ numbers of the Fibonacci sequence be divided into two groups containing equal amounts of the numbers so that the sums of the numbers in these groups were equal to each other?
+      \end{problem}
+      If we split the sequence in the triplets:
+      $\{1,\ 1,\ 2\},$ $\{3,\ 5,\ 8\}$, $\{13,\ 21,\ 34\}$, etc.
+      Since the $2022$ is divisible by $3$, we may split all numbers into these triplets.
+
+      We may see that sum of the first two numbers in a triplet is equal to the third number. 
+      
+      So, we put first two numbers of a triplet into the one group and the third number into the other group. As a~result sum of numbers in these groups would be equal. 
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      To have an equal amount of number in each group, we split triplets into two classes. We can do that, because we have even amount of triplets.
+      \[ 2022 / 6 = 338. \]
+      For example, the first, the third, the fifth and so on triplets into the first class, and the second, the forth, the sixth and so on into the second class.
+
+      From the first class we put 2 first numbers into the first group, and the third number into the second group.
+
+      From the second class we put 2 first numbers into the second group, and the third number into the first group.
+
+      \medskip
+      As a result both groups will have equal amount of numbers and their sums will be equal.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 24}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        a) Is it possible to paint several cells in a white grid square $10 \times 10$ so that the number of white-to-white adjacent cells is equal to the number of white-to-black adjacent cells and is equal to the number of black-to-black adjacent cells? (Cells with a common side are considered adjacent.)
+
+        b) The same question about a $9 \times 9$ square.
+      \end{problem}
+      a) The total number of pairs of adjacent cells is 
+      \begin{multline*} 
+        10\text{ rows }\times 9\text{ pairs in a row } + \\ 
+        + 10\text{ columns }\times 9\text{ pairs in a column } =\\
+        = 10\times 9\times 2 = 180. 
+      \end{multline*} 
+      So, our table should have $60$ white-to-black, $60$ black-to-black and $60$ white-to-white adjacencies.
+      \smallskip
+
+      $60$ is pretty big number to be tackled all at once, so we split the problem into smaller chunks. First we will try to find groups, whose numbers of black-to-black and white-to-black adjacencies is equal.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \vspace*{-1.5\intextsep}
+        \begin{tabular}{ccc}
+          \begin{mplibcode}
+            u = 0.35cm;
+            tableau(4, 4, u);
+              coullignes:=0.7white;
+              draw cases((1,4),(2,4),(3,4),(4,4),(1,1),(1,2),(1,3)) withcolor bleu;
+              draw cases((2,2),(2,3),(3,2),(3,3)) withcolor 0.4white;
+              draw grille(1,1);
+              draw lignesh(0, 0, 0, 0,
+                           0, 1, 1, 1,
+                           0, 0, 0, 0,
+                           0, 1, 1, 0,
+                           0, 0, 0, 0) penextrabold;
+              draw lignesv(0, 0, 0, 0, 0,
+                           0, 1, 0, 1, 0,
+                           0, 1, 0, 1, 0,
+                           0, 1, 0, 0, 0) penextrabold;
+            fin;
+          \end{mplibcode}&
+          \begin{mplibcode}
+            u = 0.35cm;
+            tableau(5, 4, u);
+              coullignes:=0.7white;
+              draw cases((1,4),(2,4),(3,4),(4,4),(5,4)) withcolor bleu;
+              draw cases((2,2),(2,3),(3,2),(3,3),(4,2),(4,3)) withcolor 0.4white;
+              draw grille(1,1);
+              draw lignesh(0, 0, 0, 0, 0,
+                           1, 1, 1, 1, 1,
+                           0, 0, 0, 0, 0,
+                           0, 1, 1, 1, 0,
+                           0, 0, 0, 0, 0) penextrabold;
+              draw lignesv(0, 0, 0, 0, 0, 0,
+                           0, 1, 0, 0, 1, 0,
+                           0, 1, 0, 0, 1, 0,
+                           0, 0, 0, 0, 0, 0) penextrabold;
+            fin;            
+          \end{mplibcode}&
+          \begin{mplibcode}
+            u = 0.35cm;
+            tableau(6, 6, u);
+            coullignes:=0.7white;
+            draw cases((2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(2,4),(3,4),(4,4),(5,4),(4,5),(5,5)) withcolor 0.4white;
+            draw grille(1,1);
+            draw lignesh(0, 0, 0, 0, 0, 0,
+                         0, 0, 0, 1, 1, 0,
+                         0, 1, 1, 0, 0, 0,
+                         0, 0, 0, 0, 1, 0,
+                         0, 0, 0, 0, 0, 0,
+                         0, 1, 1, 1, 0, 0,
+                         0, 0, 0, 0, 0, 0) penextrabold;
+            draw lignesv(0, 0, 0, 0, 0, 0, 0,
+                         0, 0, 0, 1, 0, 1, 0,
+                         0, 1, 0, 0, 0, 1, 0,
+                         0, 1, 0, 0, 1, 0, 0,
+                         0, 1, 0, 0, 1, 0, 0,
+                         0, 0, 0, 0, 0, 0, 0) penextrabold;
+            fin;
+          \end{mplibcode}\\
+          \textbf{4}&\textbf{7}&\textbf{16}
+        \end{tabular}
+      \end{center}
+      Here the blue cells are the border of the board and the number below is number of adjacent black-to-black and white-to-black cells in each group.
+      Since \[ 4\times 4+ 7\times 4 + 16 = 60, \] we can arrange our groups as displayed.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Problem 24, continued}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.35cm;
+          tableau(10, 10, u);
+          coullignes:=0.7white;
+          draw cases(
+            (1,1),(1,2),(1,5),(1,6),(1,7),(1,9),(1,10),
+            (2,1),(2,2),(2,5),(2,6),(2,7),(2,9),(2,10),
+            (4,1),(4,2),(4,5),(4,6),(4,7),(4,9),(4,10),
+            (5,1),(5,2),(5,5),(5,6),(5,7),(5,9),(5,10),
+            (6,1),(6,2),(6,4),(6,5),(6,6),(6,7),(6,9),(6,10),
+            (7,4),(7,5),
+            (9,1),(9,2),(9,5),(9,6),(9,7),(9,9),(9,10),
+            (10,1),(10,2),(10,5),(10,6),(10,7),(10,9),(10,10),
+            ) withcolor 0.4white;
+          draw grille(1,1);
+          draw lignesh(1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                       1, 1, 0, 1, 1, 1, 0, 0, 1, 1,
+                       1, 1, 0, 1, 1, 1, 0, 0, 1, 1,
+                       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                       0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+                       1, 1, 0, 1, 1, 0, 0, 0, 1, 1,
+                       0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+                       1, 1, 0, 1, 1, 1, 0, 0, 1, 1,
+                       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                       1, 1, 1, 1, 1, 1, 1, 1, 1, 1) penextrabold;
+
+          draw lignesv(1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1,
+                       1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1,
+                       1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                       1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1,
+                       1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1,
+                       1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1,
+                       1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1,
+                       1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+                       1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1,
+                       1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1) penextrabold;
+          fin;    
+        \end{mplibcode}
+
+        $10\times 10$
+      \end{center}
+      As a result, we have $60$ white-to-black and $60$ black-to-black adjacent cells, which implies, we have $60$ white-to-white adjacent cells.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      b) For the $9\times 9$ table we need $9\times 8\times 2 / 3 = 48$ adjacent black-to-black and white-to-black cells.
+
+      So we will use one additional piece with \textbf{8} adjacent black-to-black and white-to-black cells.
+      \[ 4 + 4 + 16 + 16 + 8 = 48. \]
+      So we arrange our groups as displayed.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.35cm;
+          tableau(9, 9, u);
+          coullignes:=0.7white;
+          draw cases(
+            (1,8),(1,9),
+            (2,4),(2,5),(2,8),(2,9),
+            (3,2),(3,3),(3,4),(3,5),
+            (4,2),(4,3),(4,4),(4,6),(4,7),(4,8),
+            (5,2),(5,3),(5,4),(5,6),(5,7),(5,8),
+            (6,5),(6,6),(6,7),(6,8),
+            (7,5),(7,6),
+            (8,1),(8,2),(8,8),(8,9),
+            (9,1),(9,2),(9,3),(9,4),(9,5),(9,6),(9,8),(9,9),
+            ) withcolor 0.4white;
+          draw grille(1,1);
+          draw lignesh(1, 1, 1, 1, 1, 1, 1, 1, 1, 
+                       0, 0, 0, 1, 1, 1, 0, 0, 0,
+                       1, 1, 0, 0, 0, 0, 0, 1, 1,
+                       0, 0, 0, 0, 0, 0, 1, 0, 1,
+                       0, 1, 1, 1, 1, 0, 0, 0, 0,
+                       0, 0, 0, 1, 1, 1, 1, 0, 0,
+                       0, 1, 0, 0, 0, 0, 0, 0, 0,
+                       0, 0, 0, 0, 0, 0, 0, 1, 0,
+                       0, 0, 1, 1, 1, 0, 0, 0, 0,
+                       1, 1, 1, 1, 1, 1, 1, 1, 1,) penextrabold;
+
+          draw lignesv(1, 0, 1, 0, 0, 0, 0, 1, 0, 1,
+                       1, 0, 1, 1, 0, 0, 1, 1, 0, 1,
+                       1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+                       1, 0, 0, 1, 0, 0, 0, 1, 1, 1,
+                       1, 1, 0, 1, 0, 1, 0, 1, 1, 1,
+                       1, 1, 0, 0, 0, 1, 0, 0, 1, 1,
+                       1, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+                       1, 0, 1, 0, 0, 1, 0, 1, 0, 1,
+                       1, 0, 0, 0, 0, 0, 0, 1, 0, 1) penextrabold;
+          fin;    
+        \end{mplibcode}
+
+        $9\times 9$
+      \end{center}
+      As a result we have $48$ of each kind of adjacent cells.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 25}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        The point $F$ outside the regular pentagon $ABCDE$ is such that the segments $ED$, $EC$, $AC$, and $AB$ are visible from $F$ at the same angle (see figure). How big is the angle in degrees? (The segment $MN$ is said to be seen from the point $X$ at angle $\alpha$ if the angle $MXN$ is equal to $\alpha$).
+      \end{problem}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.9cm;
+          pair A[], F, G;
+          for i = 0 upto 4:
+            A[i]= 2u*dir(i*360/5);
+          endfor;
+          F := (6u, 0);
+          G := A3 rotatedaround (A2, 60);
+          draw A0--A1--A2--A3--A4--cycle pensemibold;
+          Draw F--G--A2--F, F--A1, A3--G;
+          label.bot("$F$", F);
+          label.lrt("$C$", A0);
+          label.top("$D$", A1);
+          label.ulft("$E$", A2);
+          label.llft("$A$", A3);
+          label.lrt("$G$", G);
+          label.bot("$B$", A4);
+          arcs(A2, F, A1, 18);
+          arcs(A0, F, A2, 20);
+          Dot A0, A1, A2, A3, A4, F, G;
+          rimmark(A1--F, G--F);
+          rimmark2(A0--A1, A1--A2, A2--A3, A2--G, A3--G);
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Lets construct point $G$ on continuation of $FC$, so $FG = FD$, then $\triangle FEG \cong \triangle FED$, by \textbf{SAS} ($FG=FD$, $\angle EFG = \alpha = \angle EFD$, $EF$ is shared between triangles).
+
+      That means $EG = ED$, and, by symmetry, $GA=AB$. So $\triangle AEG$ is equilateral, so $\angle AEG = 60°$. 
+      
+      Which implies $\angle GED = 108° - 60° = 48°$. And, since $\angle GEF=\angle DEF$, $\angle GEF = 24°$.
+
+      By symmetry, $\angle EGF = \angle AGF$, and having $\angle EGF + \angle AGF + \angle EGA = 360°$, we got $\angle EGF = (360° - 60°)/2 = 150°$.
+
+      In the triangle $EGF$ we already know two angles, so the third $\angle EFG = 180° - \angle FEG - \angle EGF = 180° - 24° - 150° = 6°$.
+
+      As a result we have $\alpha = 6°$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

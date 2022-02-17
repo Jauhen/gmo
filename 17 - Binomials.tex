@@ -1,0 +1,283 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Binomial Expansions, Identities and More}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Binomial identities}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Let’s expand $(x + y)^2$.  This is $(x + y)(x + y)$.  Applying the distributive property by considering $(x + y)$ as a single term, we obtain:  $(x + y)x + (x + y)y$.  Using the distributive property again we obtain $x^2 + xy + xy + y^2 = x^2 + 2xy + y^2$.  So
+      \begin{definition}
+        \vspace*{-0.5\intextsep}
+        \[ (x + y)^2 =  x^2 + 2xy + y^2. \]
+        \vspace*{-\intextsep}
+      \end{definition}
+      Of course, we could replace $y$ with $(-y)$ and see that:
+      \begin{definition}
+        \vspace*{-0.5\intextsep}
+        \[(x - y)^2 =  x^2 - 2xy + y^2.\]
+        \vspace*{-\intextsep}
+      \end{definition}
+      Knowing the result when you square a binomial comes up pretty frequently in middle school contests.  Even more useful to know is the identity for the difference of perfect squares:
+      \begin{definition}
+        \vspace*{-0.5\intextsep}
+        \[ x2 – y2 = (x – y)(x + y).\]
+        \vspace*{-\intextsep}
+      \end{definition}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Examples:
+      \begin{problem}
+        What is the value of $1002^2 - 998^2$?
+      \end{problem}
+
+      Without using a calculator, we employ the identity for the difference of perfect squares:
+      \begin{multline*}  
+        1002^2 - 998^2 = (1002 - 998)(1002 + 998) =\\
+        = (4)(2000) = 8000.
+      \end{multline*} 
+      \begin{problem}
+        Given that $ab = 10,$ what is the value of $(a + b)^2 - (a - b)^2$?
+      \end{problem}
+      Squaring the binomials we have 
+      \begin{multline*}  
+        (a + b)^2 - (a - b)^2 =\\
+        = a^2 + b^2 + 2ab - (a^2 + b^2 - 2ab) =\\
+        = 4ab = 40.
+      \end{multline*} 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The Binomial theorem}
+  \begin{columns}[T]
+    \begin{column}{0.43\textwidth}
+      \textbf{The binomial theorem} is an algebraic method of expanding a \textbf{binomial expression}.  It shows what happens when you multiply a binomial by itself a positive integer number of times.  For example, consider the expression $(4x+y)^7$. It would be tedious to multiply the binomial $(4x+y)$ out seven times. The binomial theorem provides a formula that yields the expanded form of this expression.
+      
+      \medskip
+      According to the theorem, it is possible to expand $(x+y)^n$ into a sum involving terms of the form $a_i x^b y^c$, where the exponents $b$ and $c$ are non-negative integers with $b + c = n$, and the coefficient $a_i$ of each term is a specific positive integer depending on $n$ and $b$. When an exponent is zero, the corresponding power is usually omitted from the term (so that $3x^2 y^0$ would be written as $3x^2$).
+
+    \end{column}
+    \begin{column}{0.57\textwidth}
+      \vspace*{-1em}
+      \begin{definition}
+        \textbf{The Binomial Theorem}
+
+        It is possible to expand any power of $(x + y)^n$ as:
+        \begin{multline*}
+          (x + y)^n = C(n,0)x^n + C(n,1)x^{n-1}y^1 + \\
+          +C(n,2)x^{n-2}y^2 + \ldots + C(n,n-1)x^1y^{n-1} + C(n,n)y^n      
+        \end{multline*}
+        where the coefficients in the expansion can be calculated using combinatorics.  For example, the coefficient of the third term is $C(n, 2)$ or $\binom{n}{2}$ which is simply $n$ choose $2$.
+      \end{definition}
+      
+      \begin{problem}
+        Expand $(x + y)^3$.        
+      \end{problem}
+
+      Using the binomial theorem we have:
+      \begin{multline*}
+        C(3,0)x^3 + C(3,1)x^2y^1 + C(3,2)x^1y^2 + C(3,3)y^3 =\\
+          =x^3 + 3x^2y^1 + 3x^1y^2 + y^3.
+      \end{multline*}
+      \vspace*{-\intextsep}
+      \begin{problem}
+        What is the coefficient in front of $x^5y^2$ in the expansion of $(4x+y)^7$?
+      \end{problem}
+
+      We start with $C(7,2)(4x)^5y^2$ (note we need to use $4x$ rather than x when applying the binomial theorem here).  $C(7,2) = 21.$  $4^5 = 1024$.  So the coefficient is $21{,}504$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The binomial theorem and Pascal's triangle}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      The rows of Pascal’s triangle are numbered, starting with row $n = 0$ at the top. The entries in each row are numbered from the left beginning with $k = 0$ and are usually staggered relative to the numbers in the adjacent rows. A simple construction of the triangle proceeds in the following manner. On row $0$, write only the number $1$. Then, to construct the elements of following rows, add the two above numbers to find the new value. If either of the above numbers is not present, substitute a zero in its place. For example, each number in row one is $0+1 = 1$.
+
+      \begin{example}
+        If binomial x+y is raised to a positive integer power: 
+        \vspace*{-\intextsep}
+        \begin{multline*}
+          (x+y)^n=a_0x^n+a_1x^{n-1}y+a_2x^{n-2}y^2+\dots\\
+          +a_{n-1}xy^{n-1}+a_ny^n.
+        \end{multline*}
+        Where the coefficients $a_i$ in this expansion are precisely the numbers on row $n$ of Pascal’s triangle.
+      \end{example}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}        
+        \begin{tabular}{>{Row $}l<{$:\hspace{12pt}}*{13}{>{\!\!\!\!\!\!\!\!\!\!$}p{0.1ex}<{$\!\!\!\!\!\!\!\!\!\!}}}
+          0 &&&&&&&1&&&&&&\\
+          1 &&&&&&1&&1&&&&&\\
+          2 &&&&&1&&2&&1&&&&\\
+          3 &&&&1&&3&&3&&1&&&\\
+          4 &&&1&&4&&6&&4&&1&&\\
+          5 &&1&&5&&10&&10&&5&&1&\\
+          6 &1&&6&&15&&20&&15&&6&&1
+        \end{tabular}
+      \end{definition}
+      \begin{problem}
+        Using Pascal’s triangle, expand $(x+y)^4$.
+      \end{problem}
+      Looking at the triangle above, we see the coefficients are: 
+      \[1\quad 4\quad 6\quad 4\quad 1.\]  
+      The expansion is: 
+      \[(x+y)^4=x^4+4x^3y+6x^2y^2+ 4xy^3+y^4.\]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Special factorizations}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Slick use of factorizations can make many intimidating algebra problems easier than they first seem.  For middle school contests, you really need to know the first two factorizations below.  You can verify they are true using the distributive property, which we did earlier in this unit.
+      \begin{definition}
+        Difference of squares: 
+        \[ a^2 - b^2 = (a - b)(a + b). \]
+        Sum of squares: 
+        \[ a^2 + b^2 = (a + b)^2 - 2ab. \]
+        \vspace*{-\intextsep}
+      \end{definition}
+      The cubic identities below may show up in very hard middle school contests, and will be useful in high school competitions:
+      \begin{definition}
+        \vspace*{-0.5\intextsep}
+        \begin{gather*}          
+          a^3 - b^3 = (a - b)(a^2 + ab + b^2)\\
+          a^3 + b^3 = (a + b)(a^2 - ab + b^2)
+        \end{gather*}
+        \vspace*{-\intextsep}
+      \end{definition}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      % \begin{problem}
+      %   If $1/(a + c) = 1/a + 1/c$ find $(a/c)^3$.        
+      % \end{problem}
+
+      % The fact that they are asking for $(a/c)^3$ suggests that a sum or difference of cubes identity could be useful here.  As a first step, lets get rid of the denominators by multiplying both sides of the equation by $ac(a + c)$.  This yields:
+      % \[ac = c(a + c) + a(a + c),\]
+      % which we rearrange as
+      % \[a^2 + c^2 + ac = 0.\]  
+      % There is no obvious way to proceed here, but examining the difference of cubes identity, we notice the three terms on the left are one of the factors in the identity.   We multiply both sides of our equation by $(a - c)$, to obtain 
+      % \[(a^2 + c^2 + ac)(a - c) = a^3 - c^3 = 0.\]  
+      % Hence $a^3 = c^3$ and $(a/c)^3 = 1$.
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Manipulations}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      There are some problems in which you will need to manipulate the equations or terms in order to use the given information to solve the problem.  These manipulations are often combined with the identities from the previous slide.
+
+      \medskip
+      These manipulations will take time for you to become comfortable with.  At first, you may feel like the student in the photo below, but as you move into high school contests, you will learn the techniques needed to master these problems.
+
+      \begin{center}
+        \includegraphics[width=0.7\textwidth]{15 - Binomials/confussed.png}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Find $1/a + 1/b$ if $a + b = 6$ and $ab = 3$.        
+      \end{problem}
+      The first step here is to add the fractions by creating the common denominator $ab$.  Then we have \[b/ab + a/ab = (a + b)/ab = 6/3 = 2.\]
+      \vspace*{-0.7\intextsep}
+      \begin{problem}
+        Find $x^6 + 1/x^6$ if $x + 1/x = 3$.
+      \end{problem}
+
+      We are given an equation with $x$ raised to the first power and we need to get to an equation with $x$ to the sixth power.  First, we square both sides of the equation: 
+      $(x + 1/x)^2 = x^2 + 1/x^2 + 2  = 9.$
+
+      So  $x^2 + 1/x^2 = 7$.  
+      Cubing squares gives us sixth powers, so we cube both sides:  
+      $(x^2 + 1/x^2)^3 = 343.$
+      
+      Writing out the binomial expansion, we obtain 
+      \[x^6 + 1/x^6 + 3(x^2 + 1/x^2) = 343.\]  
+      But $x^2 + 1/x^2 = 7,$ so $x^6 + 1/x^6 + 3(7) = 343.$  
+      
+      Hence $x^6 + 1/x^6 = 322.$
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Given that $9876^2 = 97{,}535{,}376$, find $9877^2$ without needing to compute the square of $9877$.
+        \item What is the greatest prime factor of $9^18 - 3^32$?
+        \item What is the sum of the coefficients for all $9$ terms of $(x + y)^8$?
+        \item What is the coefficient of the $x^2y^3$ term in the expansion of $\left(\dfrac{1}{2} x + 2y\right)^5$?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Questions $5-7$ are all parts of the same problem: if $a + b = 1$ and $a^2 + b^2 = 2$ find $a^4 + b^4.$
+      \begin{enumerate}
+        \conti
+        \item For question 5, first expand the binomial $(a + b)^2$ and find the value of $ab$ given that $a + b = 1$ and $a^2 + b^2 = 2.$
+        \item For question 6, write out the binomial expansion of $(a^2 + b^2)^2$ in terms with powers of $a$ and $b$.
+        \item For question 7, substitute the value of $ab$ from question 5 into the expansion you found in question 6 to solve for $a^4 + b^4$.
+        \item The hypotenuse of a right triangle is $25/2$.  If the product of the lengths of the two legs of the right triangle is $42$, what is the perimeter of the triangle.\\
+        (\emph{Hint}: think of how the identity for the sum of squares can help you solve this problem.)     
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item What is the sum of the prime factors of  $2^{16} - 1$?
+        \item Find all possible values of $ab$ given that $a+ b = 2$ and $a^4 + b^4 = 16$. 
+        \item Given that the sum of a number $n$ and its reciprocal $1/n$ is equal to $1$, find the sum of $n^3 + (1/n)^3$? \\
+        (\emph{Hint}: by using identities and manipulations, this sum can be found without ever solving for the number itself, which is helpful as the number itself is a \emph{complex number} – a~number with real and imaginary parts.)
+        \item Find the sum of all positive integers $x$ such that there is a positive integer $y$ satisfying $9x^2 – 4y^2 = 2021$.
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

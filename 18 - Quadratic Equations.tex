@@ -1,0 +1,288 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Quadratic Equations}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{What are quadratics?}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Suppose we are given the equation:
+      \[ (x-5)(x-4) = 0 \]
+      when expanded, this equation can be written as
+      \[ x^2 - 9x + 20 = 0 \]
+      Equations of this type are known as quadratics.  The highest power that the variable $x$ is raised to is $2,$ and quadratics are therefore second order equations.  
+      \begin{definition}
+        If the highest power of the exponent in an equation is the integer $n$, it is known as an $n$\textsuperscript{th} order equation.          
+      \end{definition}
+
+      How can we solve this equation?  Since the equation is the product of $(x-5)$ and $(x-4)$ it is solved when either of the factors is zero; therefore the solutions are $x = 5$ or $x = 4$.  
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      In standard form, a quadratic is written as 
+	    \[ ax^2 + bx + c = 0\quad (\text{where } a \neq 0)\]
+      This equation can always be factored as
+      \[ a(x - r)(x - s) = 0/ \]
+      The solutions of this equation occur when $x = r$ or $x = s$.  These values are also known as the roots of the equation.  Let’s see what happens when we expand this equation using the distributive property.  We obtain
+      \[ ax^2 - a(r + s)x + ars = 0 \]
+      Note that the coefficient $b$ is equal to $-a\times(\text{sum of the roots})$, and the coefficient $c$ is equal to $a \times (\text{product of the roots})$.  When the coefficient $a$ is equal to $1$, the equation simplifies to
+      \[ x^2 - (r + s)x + rs = 0. \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Factoring quadratic (\MakeLowercase{$a = 1$})}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      If you are given a quadratic equation with the coefficient of the $x^2$ term equal to $1$, it is sometimes easy to solve the equation by factoring it into the product of two binomials.
+      \begin{problem}
+        What are the roots of $x^2 - x - 30 = 0$?
+      \end{problem}
+
+      We wish to factor this quadratic into the product of two binomials in the form $(x - r)(x - s)$.  Once in this form, the roots are the values of $x$ that make either binomial zero.  In order to factor this quadratic, the product $rs = 30$.  Taking the binomial product, the coefficient of the $x$ term is $-(r + s)$ and this must equal $-1$.  We see that the product $(x - 6)(x + 5)$ satisfies both of these conditions.  Therefore the roots of this equation are $x = 6$ or $x = -5$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Factoring is a bit of an art.  With practice, you can get incredibly fast at solving certain quadratics with factoring The signs in the quadratic equations give us vital hints to successful factoring.  If the coefficient $c$ is negative, the roots have opposite signs.  If the roots have the same sign, the sign of coefficient $b$ tells us if both roots are positive or negative.
+
+      \begin{problem}
+        Let $m$ and $n$ be roots of the equation $x^2 - 28x + 192 = 0$.  What polynomial has roots $–m$ and $–n$?
+      \end{problem}
+      Of course you could solve this equation by factoring, reverse the sign of the roots, and then re-expand the binomials, but there is a faster way.  Coefficient $c$ is the product of roots, so changing the sign of both roots leaves $c$ unchanged, but reverses the sign of $b$ (which is root's sum), so we simply change $-28x$ to $28x$ in the original equation.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Factoring quadratics (\MakeLowercase{$a \neq 1$})}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Factoring quadratics when the coefficient of the $x^2$ term equals $1$ is tricky, but you are helped by the fact that the first term in each binomial factor is just $x$.  Now we have to find a pair of binomials in the form $(ux - r)(vx - s)$.  The product of these binomials is equal to $ax^2 + bx + c$, so $uv = a$, $-(rv + su) = b$, and $c$ remains equal to the product $rs$.
+      \begin{problem}
+        What are the roots of $4x^2 + 6x - 18 = 0$?
+      \end{problem}
+      The coefficient $a$ is positive, so let's assume $u$ and $v$ are positive.  Our choices for integer roots are $u = v = 2$, or $u = 4$ and $v = 1$.  The value of $c$ is negative, so $r$ and $s$ have opposite signs, and a product of $18$.  With some trial and error, we see that $(4x - 6)(x + 3)$ are binomial factors of the equation, so the roots are $x = 3/2$ or $-3$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        What are the roots of $-x^2 + \dfrac{1}{3} x + \dfrac{2}{3} = 0$?
+      \end{problem}
+
+      Hmm, this looks tricky.  First let's multiply both sides of the equation by $-3$ (this eliminates fractions, and keeps the coefficient a positive which are both generally good strategies).  Now we have:
+	    \[ -(3x^2 - x - 2) = 0.\]
+      The lead negative sign does not affect our factoring.  Our choices now are quite limited (which is a good thing).  We are looking for a solution of the form $(3x - r)(x + s)$, where the product $rs$ is $2$, and $-r + 3s = -1$.  Let $s = 1$ and $r = 2$.  Then $(3x + 2)(x - 1) = 0$ is our factorization.  The roots are $x = -2/3$ or $1$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Special factorizations}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \textbf{Perfect Squares}
+      These factor into the form $(x - r)^2$.  So both roots are equal to $r$.  In this case, $r$ is called a double root.
+      
+      \medskip
+      \textbf{Equations with a root equal to zero}
+      These are equations such as $x(x - r) = 0$.  The roots are zero and $r$.  These are very easy to factor.
+
+      \medskip
+      \textbf{Difference of Squares}
+      These are equations like $x^2 - r^2$.  Recall from our binomial identities that this factors into $(x + r)(x - r)$.  The roots are $\pm r$ (plus and minus $r$).
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      Factor this following quadratics:
+
+      $x^2 + 4x + 4 = 0  \Rightarrow (x + 2)^2 = 0.$  Roots: $-2$ (double)
+
+      $x^2 - 6x + 9 = 0  \Rightarrow (x - 3)^2 = 0.$	Roots: $3$ (double)
+      \medskip
+
+      $5x^2 + 25x = 0 \Rightarrow 5x(x + 5) = 0.$  Roots: $0$, $-5$
+      \bigskip
+      \bigskip
+      \bigskip
+      \smallskip
+
+      $9x^2 - 25 = 0 \Rightarrow (3x + 5)(3x - 5) = 0$.  
+      
+      Roots: $-5/3$, $5/3$
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Completing the square}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Factoring can be a very powerful technique for solving problems, but sometimes the terms don’t quite lend themselves to being factored immediately.  In some of those instances, strategically adding or subtracting a term on both sides of the equation can make your life easier.
+
+      A classic example of this is “completing the square.”  Suppose we want to find the solutions to $x^2 + 4x + 1 = 0$.  The left-hand side of the equation is almost $(x+2)^2$.  To turn the left-hand side of the equation into that perfect square, let’s add $3$ both sides of the equation: $x^2 + 4x + 4 = 3$.  Factoring the left side we get, $(x+2)^2 = 3$. This is true if $(x+2)$ is equal to $\sqrt{3}$ or $-\sqrt{3}$, so the solutions are $x = \sqrt{3} - 2$ or $x = -\sqrt{3} - 2$.  You can insert either of these values for $x$ into the original equation to verify they are the solutions.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \includegraphics[width=0.8\textwidth]{18 - Quadratic Equations/tracktor.png}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{The quadratic equation}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      Derivation: $ax^2 + bx + c = 0 \quad (\text{where }a \neq 0).$
+
+      We divide by $a$, which is valid as $a \neq 0$ if the equation is quadratic.
+      $x^2 + (b/a)x + c/a = 0.$
+      For simplicity, subtract c/a from both sides, yielding $x^2 + (b/a)x = -c/a$.  To create a perfect square on the left side, we need to add $(b/2a)^2$ to both sides of the equation, yielding 
+      \[x^22 + (b/a)x + (b/2a)^2 = -c/a + (b/2a)^2.\]  
+      Using the binomial squared identity to simplify the left side, we get $(x + b/2a)^2 = (b^2/4a^2) - c/a$.  Putting the right side over a common denominator, 
+      \[ (x + b/2a)^2 = \sqrt{b^2 - 4ac}/4a^2.\]  
+      Next we take the square root of both sides, giving
+      \[ x + b/2a = \pm \sqrt{b^2 - 4ac}/2a.\]  
+      Note we have the plus/minus sign as either sign of the righthand side squared could equal the square of the left side.  Finally, we subtract $b/2a$ from both sides:
+	    \[ x = [-b \pm \sqrt{b^2 - 4ac}]/2a. \]
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{definition}
+        \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+
+        The \textbf{quadratic formula} for the roots of general quadratic equation.
+      \end{definition}
+
+      On the left, we use the technique of completing the square to derive the quadratic equation.  As we saw on the previous slide, not all quadratics can be easily factored.  In fact, sometimes the roots of a quadratic contain imaginary numbers (that is, they are square roots of negative numbers).  The quadratic equation is a powerful tool that will allow you to solve any quadratic, though factoring is often a quicker way to solve those equations in which factoring works well.
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Roots and the quadratic equation}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      \begin{definition}
+        \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \]
+
+        The \textbf{quadratic formula} for the roots of general quadratic equation.
+      \end{definition}
+
+      The quantity under the square root is known as the \textbf{discriminant}.  When the discriminant is zero there is a sole double root to the equation.  When the discriminant is negative, the roots are imaginary.  If the coefficients $a$, $b$ and $c$ are real numbers and if the discriminant is negative, the roots are complex conjugates which means they are in the form $x = d \pm f\sqrt{h}\, i$ where $i = \sqrt{-1}$.  They must be in this form, as the discriminant is the only location in the formula where an imaginary number can be created if the coefficients in the original quadratic are real numbers.
+    \end{column}
+    \begin{column}{0.54\textwidth}
+      Similarly, if the coefficients $a$, $b$ and $c$ are rational numbers and the discriminant is an irrational number, the roots of the quadratic are the form $x = d \pm f\sqrt{h}$ ($d$, $f$ and $h$ being rational), because the discriminant is the only place where an irrational number can be created.
+      If we add the two roots of an equation to one another, the discriminants cancel, and \textbf{the sum of the roots is equal to $-b/a$}.  Similarly, if we multiply the two roots, \textbf{the product of the roots is equal to $c/a$}.  Recall that we found these relationships for the sum and product of the roots at the beginning of this unit when we described how any quadratic could be factored into two binomials.
+
+      \begin{problem}
+        What are the roots of $2x^2 - 5x + 2$?        
+      \end{problem}
+      
+      Use the quadratic formula with $a = 2$, $b = 5$, and $c = 2$, to find $x = \dfrac{5 \pm \sqrt{25 - 16}}{4}$
+      $x =(5 \pm 3)/4 = 2$ or $1/2$.  Inserting the roots into the equation, we can quickly verify they are correct.
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Hidden quadratics}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Some equations may not appear to be quadratics at first glance, but with clever substitutions or manipulations, can be converted into standard quadratic form.  We will go over a two common examples here.  Warning: when doing these substitutions and manipulations, it is important to check that you final roots are indeed valid.
+      \begin{problem}
+        Find all x such that $x^4 + 3x^2 - 4 = 0$.
+      \end{problem}
+      This is a $4$\textsuperscript{th} order equation (which can have up to $4$ roots), but if we let $y = x^2$ then a quick substitution yields, $y^2 +3y - 4 = 0$.  We factor this into $(y + 4)(y - 1) = 0.$  The roots are $y = -4$ and $y = +1$.  Since $y = x^2$, to find $x$ we take the square root of $y$, yielding:  $x = \pm 2i$ or $x = \pm 1$.  Checking our roots by inserting them back into the equation, it is obvious that ±1 both work. Both $(2i)^2$ and $(-2i)^2$ equal $-4$, so all $4$ roots do in fact satisfy the equation.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Find all y satisfying:
+        $1 + \dfrac{y + 3}{y - 2} =  3\dfrac{y - 1}{6 - y}.$
+      \end{problem}
+      First we multiply both sides of the equation by 	
+      $(y - 2)(6 - y)$.  This gives us 
+      \begin{align*}
+        (y - 2)(6 - y) + (y + 3)(6 - y) &= 3(y - 2)(y - 1)\\
+        -y^2 + 8y - 12 - y^2 + 3y + 18 &= 3y^2 -9y + 6\\
+        -2y^2 + 11y + 6 &= 3y^2 - 9y + 6\\
+        5y^2 - 20y &= 0\\
+        5y(y - 4) &= 0        
+      \end{align*}
+      
+      So the roots appear to be $y = 0$ or $4$.  In problems like this, it is especially important to check our roots in the original equation.  In particular, if a root cause a denominator to equal zero, it is invalid and must be discarded.  In this instance, however, both $y = 0$ and $4$ are valid solutions.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Use factoring to find the roots of $x^2 – 22x – 48 = 0$.
+        \item Complete the square to find the possible values of $x$ for which $x^2 + 4x + 3 = 0$?
+        \item What is the value of $i^3$?
+        \item For what value(s) of $x$ does the fraction of $3$ raised to the power $x^2$ over $3$ raised to the power $3x$ equal one-ninth?  
+        
+        (\emph{Hint}: If all exponents have the same base, then we can solve the problem by equating the exponents.
+        \item Find the roots of $x = \dfrac{28}{x - 3}$.
+        \item If $b$ and $c$ are both rational numbers and one of the roots of $x^2 + bx + c = 0$ is $3 + \sqrt{2}$, find $b$ and $c$.
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item For how many different integer values of $b$ are both roots of $x^2 + bx - 16 = 0$ integers?
+        \item Let $m$ and $n$ be roots of: $x^2 − 60x + 864 = 0$.  Find a polynomial with roots $m + 1$ and $n + 1$.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Find the minimum possible value of the absolute value of $(m - n)$, where $m$ and $n$ are integers satisfying $m + n = mn – 2021$. 
+        
+        (\emph{Hint}: could completing the square be useful here if the variables were all grouped on one side of the equation?)
+        \item Find all possible values of $ab$ given that $a+ b = 2$ and $a^4 + b^4 = 16$. 
+        \item Let $m$ and $n$ be roots of the polynomial $x^2 − 60x + 899 = 0.$  What is $m^2 + n^2$? 
+        
+        (\emph{Hint}: think about how $m^2 + n^2$ can be rewritten in terms of the sum and product of the roots $m$ and $n$).
+        \item Find all real values of $n$ such that $2^{2n} + 2^n + 1 = 73$.  
+        
+        (\emph{Hint}:  What substitution would turn this into a quadratic?)
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item (For fun) In the novel, “The Curious Incident of the Dog in the Nighttime,” a student in England taking his A-level college entrance exam in maths was given the following question: 
+        
+        Prove that a triangle with sides that can written in the form $n^2 +1$, $n^2 -1$ and $2n$ (where $n > 1$) is right-angled.  
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

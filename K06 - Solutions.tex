@@ -1,0 +1,198 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ February 2022}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 26 \hspace*{5cm} Problem 27}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Wise men $A$ and $B$ each received a counting number. The difference between these numbers is $1$. "I don't know whether you know my number," $A$ said to $B$. Which number has $A$ received?
+      \end{problem}
+      $A$ has received $2$.
+
+      The only case when $B$ may know a number received by $A$ when $B$ got $1$. In any other case $B$ has two options for a number $A$ got.
+
+      If $A$ has received a number bigger than $2$, in this case $B$ received number bigger than $1$ and $B$ can't know number $A$ got. If $A$ has received $1$, $B$ has to receive $2$ and again don't know a number $A$ got.
+
+      If $A$ has received $2$, $B$ may receive $1$, in this case he knows the number $A$ got, $B$ may also receive $2$, in this case he don't know the number $A$ got.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Cut a ring with a hole (pic. 1) into four equal pieces and put them together to make a snowflake (pic. 2).
+      \end{problem}
+      Here is an example of possible cuts.
+      \begin{center}
+        \begin{tabular}{cc}
+          \begin{mplibcode}
+            u = 0.3cm;
+            fill (0u, 4u)--(1u, 1u)--(4u, 0u)--(7u, 1u)--(8u, 4u)--(7u, 7u)--(4u, 8u)--(1u, 7u)--cycle withcolor Thistle;
+            fill (3u, 3u)--(5u, 3u)--(5u, 5u)--(3u, 5u)--cycle withcolor white;
+            for i = 0 upto 8:
+              draw (0u, i*u)--(8u, i*u) withcolor 0.7white;
+              draw (i*u, 0u)--(i*u, 8u) withcolor 0.7white;
+            endfor;
+            draw (0u, 4u)--(1u, 1u)--(4u, 0u)--(7u, 1u)--(8u, 4u)--(7u, 7u)--(4u, 8u)--(1u, 7u)--cycle pensemibold;
+            draw (3u, 3u)--(5u, 3u)--(5u, 5u)--(3u, 5u)--cycle pensemibold;
+            draw (1u, 7u)--(2u, 4u)--(3u, 4u) pensemibold;
+            draw (1u, 1u)--(4u, 2u)--(4u, 3u) pensemibold;
+            draw (5u, 4u)--(6u, 4u)--(7u, 1u) pensemibold;
+            draw (4u, 5u)--(4u, 6u)--(7u, 7u) pensemibold;
+            label.("$1$", (1.5u, 3u));
+            label.("$2$", (3u, 6.5u));
+            label.("$3$", (6u, 5u));
+            label.("$4$", (5u, 2u));
+          \end{mplibcode}&
+          \begin{mplibcode}
+            u = 0.3cm;
+            fill (0u, 6u)--(3u, 5u)--(3u, 4u)--(4u, 4u)--(4u, 3u)--(5u, 3u)--(6u, 0u)--(7u, 3u)--(8u, 3u)--(8u, 4u)--(9u, 4u)--(9u, 5u)--(12u, 6u)--(9u, 7u)--(9u, 8u)--(8u, 8u)--(8u, 9u)--(7u, 9u)--(6u, 12u)--(5u, 9u)--(4u, 9u)--(4u, 8u)--(3u, 8u)--(3u, 7u)--cycle withcolor Thistle;
+            for i = 0 upto 12:
+              draw (0u, i*u)--(12u, i*u) withcolor 0.7white;
+              draw (i*u, 0u)--(i*u, 12u) withcolor 0.7white;
+            endfor;
+            draw (0u, 6u)--(3u, 5u)--(3u, 4u)--(4u, 4u)--(4u, 3u)--(5u, 3u)--(6u, 0u)--(7u, 3u)--(8u, 3u)--(8u, 4u)--(9u, 4u)--(9u, 5u)--(12u, 6u)--(9u, 7u)--(9u, 8u)--(8u, 8u)--(8u, 9u)--(7u, 9u)--(6u, 12u)--(5u, 9u)--(4u, 9u)--(4u, 8u)--(3u, 8u)--(3u, 7u)--cycle pensemibold;
+            draw (5u, 9u)--(7u, 3u) pensemibold;
+            draw (3u, 5u)--(9u, 7u) pensemibold;
+            label.("$1$", (7u, 8u));
+            label.("$2$", (7.5u, 5.5u));
+            label.("$3$", (5u, 4.5u));
+            label.("$4$", (4u, 7u));
+          \end{mplibcode}\\
+          Pic. 1&Pic. 2
+        \end{tabular}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 28}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        In the IV round, we asked to solve a cryptarithm $ OAK \times 5 = SOAK $, and it has two solutions. a) Replace the $5$ with another digit, so the new cryptarithm has a solution. 
+        
+        b) Prove that there is only one such digit. 
+        
+        c) Prove that the new cryptarithm has only one solution.
+
+        (As usual, the same letters denote the same digit; the different letters denote different digits. No number has zero as the first digit.)
+      \end{problem}
+      Let's $n$ replace $5$. Then equation may be written as $OAK \times n = SOAK$ or 
+      \[OAK \times (n-1) = S \times 1000.\] 
+      The same is 
+      \[OAK = S \times \dfrac{1000}{n-1}.\]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      For $A$ and $K$ to be different digits, $\dfrac{1000}{n-1}$ should not be multiple of $100$. So $n-1$ should be divisible by $4$ or $25$.
+
+      Since $n-1 < 9$ ($n$ is a digit), $n-1$ should be multiple of $4$, so $n-1 = 4$ of $n-1 = 8$. 
+
+      $n=5$ can't be solution of the problem, so $n=9$ is the only solution. Solving
+      \[ OAK = S \times 125 \]
+      for different values of $S$ we got following values for $SOAK$: $1125$, $2250$, $3375$, $4500$, $5625$, $6750$, $7875$. 
+      
+      \medskip
+      Only $6750$ has different digits. So solution for our cryptarithm would be
+      \[ 750 \times 8 = 6750. \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 29}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Some cells of a white rectangular board are painted blue. In any row, the number of painted cells is different; and in any column, the number of painted cells is different. Prove if the number of rows and columns is different, the board has an equal number of white and blue cells.
+      \end{problem}
+      
+      Let our board would be $m \times n$, where $m > n$. And without lost of generality we may say that $n$ is the number of columns. In this case the possible number of colored cells in each row can be $0$, $1$, $2$, \ldots, $n$: for a total of at most $n+1$ different values. And since number of rows are greater than number of columns, we got $m = n+1$.
+
+      \smallskip
+      So board should be $(n+1) \times n$ and each rows has number of colored cells equal $0$, $1$, \ldots, $n$, so total number of colored cells is $\dfrac{n \cdot (n+1)}{2}$, which is the half total number of cells in the board.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 30}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        The square $6 \times 6$ and rectangle $3 \times 12$ intersect as shown in the picture. Prove that the two green segments sum is twice that of the two red segments.
+      \end{problem}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u := 1.4cm;
+          pair A[], B[], C[];
+          path a, b;
+          A0 := (0u, 0u);
+          A1 := (2u, 0u);
+          A2 := (2u, 2u);
+          A3 := (0u, 2u);
+          b := (0u, 0u)--(4u, 0u)--(4u, 1u)--(0u, 1u)--cycle;
+          b := b rotatedaround ((2u, 0.5u), 4) shifted (-0.3u, 0.65u);
+          B0 := point 0 of b;
+          B1 := point 1 of b;
+          B2 := point 2 of b;
+          B3 := point 3 of b;
+          C0 := whatever[A0, A3]=whatever[B0, B1];
+          C1 := whatever[A2, A1]=whatever[B0, B1];
+          C2 := whatever[A2, A1]=whatever[B2, B3];
+          C3 := whatever[A0, A3]=whatever[B2, B3];
+          fill C0--C1--C2--C3--cycle withcolor LightBlue1;
+          fill A0--A1--C1--C0--cycle withcolor Bisque1;
+          fill C3--C2--A2--A3--cycle withcolor Bisque1;
+          fill B0--C0--C3--B3--cycle withcolor DarkSeaGreen1;
+          fill C1--B1--B2--C2--cycle withcolor DarkSeaGreen1;
+          draw A0--A1--A2--A3--cycle;
+          draw b;
+          draw B3--C3 withcolor 0.6green penextrabold;
+          draw B2--C2 withcolor 0.6green penextrabold;
+          draw A0--C0 withcolor 0.8red penextrabold;
+          draw A3--C3 withcolor 0.8red penextrabold;
+        \end{mplibcode}
+      \end{center}
+
+      The area of the square is equal $36$ and it is an equal to the area of the rectangle. Let area of the blue area (the intersect of the square and the rectangle) is equal $x$.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \smallskip
+      The area of the rectangle formed by two orange trapezoids inside the square and outside of the blue area is 
+      \[6 \times (\text{sum of the two red segments}) = 36 - x.\]
+      The area of the rectangle formed by two green trapezoids inside the rectangle and outside of the blue area is 
+      \[3 \times (\text{sum of the two red segments}) = 36 - x.\]
+      So  $6 \times (\text{sum of the two red segments}) = 3 \times (\text{sum of the two red segments})$
+      \begin{multline*}
+        2 \times (\text{sum of the two red segments}) =\\
+        = \times (\text{sum of the two red segments}),
+      \end{multline*}
+      which is we need to prove.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

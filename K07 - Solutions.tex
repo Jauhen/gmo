@@ -1,0 +1,174 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ March 2022}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 31 \hspace*{5cm} Problem 32}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        In February this year, a date forms a palindrome (in European format): $22/02/2022$ (digits read from left to right are in the same order when read from right to left). Find the next date that forms a palindrome (and prove it is the earliest). 
+      \end{problem}
+      Since only one date is corresponded to a year, all we need to do is goes year by year to see which year spelled in reverse order is a valid date. 
+
+      Other observation is a date may only start from $0,$ $1,$ $2$ or $3.$ So a year should be ended with those digits.
+
+      So next date $32/02/2023$ is not valid date and next following years are ended with digit greater than $4$. 
+
+      \medskip
+      The first date to satisfy requirement is 
+      \[03/02/2030\]
+      which is an answer to this problem.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        a) Draw a convex hexagon on grid paper with vertices in lattice points (the intersection of grid lines), and edges do not need to lay on grid lines, such that it can be cut with two straight lines into four congruent parts. (Don't forget to show the cuts.)
+
+        b) Solve the same problem for a convex heptagon.
+      \end{problem}
+      The possible figures are shown below:
+
+      \begin{tabular}{cc}
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-3, 3, u, -3, 3, u);
+            draw quadrillage(1,1);
+            draw (2, 0)--(1, -2)--(-1, -2)--(-2, 0)--(-1, 2)--(1, 2)--cycle penbold;
+            draw (-3, 0)--(3, 0) withcolor rouge penbold;
+            draw (0, -3)--(0, 3) withcolor rouge penbold;
+          fin;
+        \end{mplibcode}&
+        \begin{mplibcode}
+          u = 0.5cm;
+          repere(-3, 3, u, -3, 3, u);
+            draw quadrillage(1,1);
+            draw (2, 0)--(1, -2)--(-1, -2)--(-2, 0)--(-1, 2)--(0,2)--(2, 1)--cycle penbold;
+            draw (-3, 0)--(3, 0) withcolor rouge penbold;
+            draw (0, -3)--(0, 3) withcolor rouge penbold;
+          fin;
+        \end{mplibcode}
+      \end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 33}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        $N$ players take part in a tennis tournament, each participant plays exactly once every other participant. As a result, everyone wins the same amount of games (there are no draws in tennis). Next year, the number of participants increases by one, and each participant plays every other once. Is it possible that now everyone has the same amount of wins?
+      \end{problem}
+      The first observation is since all players played the same amount of games (one less than number of players), they all have the same amount of loses.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+
+      And since the total amount of wins is equal to the total amount of loses (every game add one win and one loss), every player have equal amount wins and loses. So that means that a player a played even amount of games, so $N$ should be odd.
+
+      Next year amount of players is become \textbf{even}, so amount of wins and loses of a player can't be equal, since a player played odd amount of games. And if everyone had had the same amount of wins, that would mean that the total amount of wins isn't equal the total amount of loses, which is \textbf{impossible}.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 34}
+  \begin{columns}[T]
+    \begin{column}{0.65\textwidth}
+      \begin{problem}
+        A square and two equilateral triangles are placed, as shown in the picture. Find the degree measure of the angle marked with a question mark. 
+      \end{problem}
+      Let's $AB$ is equal to $2$.
+      Let's construct points $G$ and $H$ as shown on the picture on a left. 
+      
+      Then $GA$ is equal $\sqrt{3}$, as height of an equilateral triangle with side $2$. So $GB$ is equal to $2 + \sqrt{3}$ and $GE$ is equal $1$, using the Pythagorean theorem we may find 
+      $EB = \sqrt{1^2 + \left(2 + \sqrt{3}\right)^2} = \sqrt{2}\sqrt{1 + 2\sqrt{3}+ 3} = \sqrt{2}\left(1 + \sqrt{3}\right) .$
+
+      Since $EA=AB$ and $\angle EAB = 150°$, $\angle AEB=\angle ABE=15°$. So $\angle ABF=60°-15°=45°$ and $\angle FBH=45°$. That means $FH=HB=FB / \sqrt{2} = 1 + \sqrt{3}.$
+      $FC = \sqrt{FH^2 + HC^2}=\sqrt{ 2(2 +\sqrt{3}) + \left(3 + \sqrt{3}\right)^2} =$
+      $= \sqrt{16 + 8\sqrt{3}} = 2\sqrt{1 + 2\sqrt{3} + 3} = 2\left(1 + \sqrt{3}\right).$
+
+      And we get $FC = 2FH$, that means that $\triangle FCH$ is $30°-60°-90°$ triangle, and $\angle FCH = 30°$.
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.8cm;
+          pair A, B, C, D, E, F, G, H;
+          A := origin;
+          B := (3u, 0u);
+          C := (3u, 3u);
+          D := (0u, 3u);
+          E := 3u*dir(150);
+          F := E rotatedaround (B, 60);
+          G := (xpart E, ypart A);
+          H := (xpart B, ypart F);
+          labelarcsprof(F, C, B, 14, 15, "$?$");
+          mark_rt_angle_withsize(E, G, A, 6);
+          mark_rt_angle_withsize(B, H, F, 6);
+          draw A--B--C--D--E--cycle pensemibold withcolor bleu;
+          draw A--D pensemibold withcolor bleu;
+          draw B--E--F--cycle pensemibold withcolor orange;
+          draw F--C pensemibold;
+          draw A--G--E withcolor 0.5white;
+          draw F--H--B withcolor 0.5white;
+          label.bot("$A$", A);
+          label.rt("$B$", B);
+          label.top("$C$", C);
+          label.top("$D$", D);
+          label.lft("$E$", E);
+          label.bot("$F$", F);
+          label.lft("$G$", G);
+          label.bot("$H$", H);
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 35}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Kvantik has a white grid ribbon with size $1 \times 33$ cells. Kvantik put the left side of the ribbon into black paint, so some cells (at least one and no more than $32$) at the beginning are now black. Notik doesn't see the ribbon, but he can find out the color of some cell with one question (by calling its number from the left). 
+
+        How can he find the rightmost black cell number using only $5$ questions?
+      \end{problem}
+      1) First, we check the color of cell number $17$.
+
+      If it is white, we will consider a subribbon from cells $1-17$, if it is black we will consider a subribbon from cells $17-33$. So new subribbon will contain $17$ cells with the leftmost cell is black, and the rightmost cell is white.
+
+      2) For the new subribbon we test a cell number $9$. The new subsubribbon, build by the same rule will be $9$ cells long with the leftmost cell is black, and the rightmost cell is white.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      3) For new subsubribbon we test a cell number $5$ (or $14$, $22$, $31$). The new subsubsubribbon, build by the same rule will be $5$ cells long with the leftmost cell is black, and the rightmost cell is white.
+
+      4) For new subsubsubribbon we test a cell number $3$. The new subsubsubsubribbon, build by the same rule will be $3$ cells long with the leftmost cell is black, and the rightmost cell is white.
+
+      5) At the final stage we test a cell number $2$. Since only two cells may be the rightmost black cells, we easily find the rightmost black cell of the full $1\times 33$ ribbon.
+
+      So in $5$ question we will find the rightmost black cell. This process is called a \textbf{binary search}. Since $5$ questions can generate $2^5=32$ different results, we can find one of $32$ of possible positions of the rightmost black cell.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

@@ -1,0 +1,203 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Kvantik problems,\\ April 2022}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem 36}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        A postman has a pack of envelopes from which he needs precisely $50$. While he was meticulously counting them off one by one, his son, who is in fifth grade, said: "If you only knew how many envelopes there are in total, you could count them twice as fast." What does son mean, and how many envelopes are in one pack?
+      \end{problem}
+
+      The other way to get $50$ envelopes is to count some number of envelopes in a pack and get the rest. Since in this case we need to count the half of $50$, e.g. $25$, the total amount of envelopes in a pack is $75$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 37}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        There is a set of four different pentominoes (figures made of 5 connected equal-sized squares). For each possible pairing within the set, the pentominoes in the two pairs can be combined to create two congruent figures. Provide an example of such pentominoes and figures.
+      \end{problem}
+
+      We can get following pentominoes:
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          fill (0u, 0u)--(1u, 0u)--(1u, 2u)--(2u, 2u)--(2u, 4u)--(1u, 4u)--(1u, 3u)--(0u, 3u)--cycle withcolor 0.6[white, rouge];
+          fill (3u, 0u)--(4u, 0u)--(4u, 2u)--(5u, 2u)--(5u, 3u)--(4u, 3u)--(4u, 4u)--(3u, 4u)--cycle withcolor 0.6[white, bleu];
+          fill (7u, 1u)--(8u, 1u)--(8u, 3u)--(9u, 3u)--(9u, 4u)--(6u, 4u)--(6u, 3u)--(7u, 3u)--cycle withcolor 0.6[white, vert];
+          fill (10u, 1u)--(11u, 1u)--(11u, 3u)--(13u, 3u)--(13u, 4u)--(10u, 4u)--cycle withcolor 0.6[white, orange];
+          draw (0u, 0u)--(1u, 0u)--(1u, 2u)--(2u, 2u)--(2u, 4u)--(1u, 4u)--(1u, 3u)--(0u, 3u)--cycle pensemibold;
+          draw (3u, 0u)--(4u, 0u)--(4u, 2u)--(5u, 2u)--(5u, 3u)--(4u, 3u)--(4u, 4u)--(3u, 4u)--cycle pensemibold;
+          draw (7u, 1u)--(8u, 1u)--(8u, 3u)--(9u, 3u)--(9u, 4u)--(6u, 4u)--(6u, 3u)--(7u, 3u)--cycle pensemibold;
+          draw (10u, 1u)--(11u, 1u)--(11u, 3u)--(13u, 3u)--(13u, 4u)--(10u, 4u)--cycle pensemibold;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      And combine them in following ways:
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          path fig[];
+          fig1 := (0u, 0u)--(1u, 0u)--(1u, 2u)--(2u, 2u)--(2u, 4u)--(1u, 4u)--(1u, 3u)--(0u, 3u)--cycle;
+          fig2 := (0u, 0u)--(1u, 0u)--(1u, 2u)--(2u, 2u)--(2u, 3u)--(1u, 3u)--(1u, 4u)--(0u, 4u)--cycle;
+          fig3 := (1u, 1u)--(2u, 1u)--(2u, 3u)--(3u, 3u)--(3u, 4u)--(0u, 4u)--(0u, 3u)--(1u, 3u)--cycle;
+          fig4 := (0u, 1u)--(1u, 1u)--(1u, 3u)--(3u, 3u)--(3u, 4u)--(0u, 4u)--cycle;
+
+          fill fig1 reflectedabout ((1u, 0u), (1u, 4u)) rotatedaround ((1u, 2u), 180) withcolor 0.6[white, rouge];
+          fill fig2 shifted (2u,-2u) withcolor 0.6[white, bleu];
+          draw fig1 reflectedabout ((1u, 0u), (1u, 4u)) rotatedaround ((1u, 2u), 180) pensemibold;
+          draw fig2 shifted (2u,-2u) pensemibold;
+          fill fig3 shifted (6u, -3u) withcolor 0.6[white, vert];
+          fill fig4 rotatedaround ((0u, 3u), 90) shifted (6u, -2u) withcolor 0.6[white, orange];
+          draw fig3 shifted (6u, -3u) pensemibold;
+          draw fig4 rotatedaround ((0u, 3u), 90) shifted (6u, -2u) pensemibold;
+
+          fill fig1 rotatedaround ((1u, 2u), 90) shifted (0u, -7u) withcolor 0.6[white, rouge];
+          fill fig3 rotatedaround ((1u, 1u), -90) shifted (0u, -5u) withcolor 0.6[white, vert];
+          draw fig1 rotatedaround ((1u, 2u), 90) shifted (0u, -7u) pensemibold;
+          draw fig3 rotatedaround ((1u, 1u), -90) shifted (0u, -5u) pensemibold;
+
+          fill fig2 reflectedabout ((1u, 0u), (1u, 4u)) rotatedaround ((1u, 2u), 90) shifted (6u, -7u) withcolor 0.6[white, bleu];
+          fill fig4 rotatedaround ((1u, 2u), 180) shifted (8u, -6u) withcolor 0.6[white, orange];
+          draw fig2 reflectedabout ((1u, 0u), (1u, 4u)) rotatedaround ((1u, 2u), 90) shifted (6u, -7u) pensemibold;
+          draw fig4 rotatedaround ((1u, 2u), 180) shifted (8u, -6u) pensemibold;
+
+          fill fig1 reflectedabout ((1u, 0u), (1u, 4u)) rotatedaround ((1u, 2u), 90) shifted (0u, -11u) withcolor 0.6[white, rouge];
+          fill fig4 rotatedaround ((1u, 2u), 180) shifted (2u, -10u) withcolor 0.6[white, orange];
+          draw fig1 reflectedabout ((1u, 0u), (1u, 4u)) rotatedaround ((1u, 2u), 90) shifted (0u, -11u) pensemibold;
+          draw fig4 rotatedaround ((1u, 2u), 180) shifted (2u, -10u) pensemibold;
+
+          fill fig2 rotatedaround ((1u, 2u), 90) shifted (6u, -11u) withcolor 0.6[white, bleu];
+          fill fig3 rotatedaround ((2u, 2u), -90) shifted (6u, -11u) withcolor 0.6[white, vert];
+          draw fig2 rotatedaround ((1u, 2u), 90) shifted (6u, -11u) pensemibold;
+          draw fig3 rotatedaround ((2u, 2u), -90) shifted (6u, -11u) pensemibold;
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 38}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Kvantik the Robot permuted numbers in sequence $1,\ 2,\ 3, \ldots,\ 100$ in “alphabetical order”, so the first come the numbers starting with $1$, then starting with $2$, and so on (numbers beginning with the same digit are ordered by the second digit). He got the sequence $1,\ 10,\ 100,\ 11,\ 12,$ etc. How many numbers stay in their original place?
+      \end{problem}
+
+      $1$ is obvious on its place. No more single digit number are on their places, since this places are occupied by numbers $10$, $100$, $11$, $12$ and so on.
+
+      $100$ is also on its place.
+
+      Let's consider two digit numbers: $\overline{ab} = 10a + b$, where $a$ and $b$ are digits.
+      All numbers started from the same digit (except $1$) are in groups of $11$ numbers: 
+      \[a,\ \overline{a0},\ \overline{a1},\ \overline{a2},\ \overline{a3},\ \overline{a4},\ \overline{a5},\ \overline{a6},\ \overline{a7},\ \overline{a8},\ \overline{a9}.\]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      So we can calculate the new position of $\overline{ab}$ which is \[ 11(a-1) + b + 3, \]
+      where $a-1$ because we are starting from $1$, not $0$, $+2$ because $\overline{a0}$ are on the second place and $+1$ for $100$ which is in the beginning. The formula is incorrect only for $10$ because of the position of $100$.
+
+      For other numbers we can find the numbers that keeps their places:
+      \[ 11 (a-1) + b + 3 = 10a + b. \]
+      So 
+      \[ a = 8, \]
+      and that means all two digit numbers started from $8$ are stay in their original places.
+
+      As the result we have $11$ numbers to stay in place:
+      \[ 1,\ 80,\ 81,\ 82,\ 83,\ 84,\ 85,\ 86,\ 87,\ 88,\ 89. \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 39}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Color some cells of a $5\times 5$ white grid in blue so that all $16$ $2\times 2$ squares have different colorings (they may not fit together when shifted).
+      \end{problem}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      That may be done in the following way:
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          tableau(5, 5, 0.8cm);
+            coullignes:=0.5white;
+            draw grille(1,1);
+            draw cases((1, 1), (2,1), (4,1), (5,1), (1,2), (4,2), (5,2), (1, 3), (2, 4), (3, 4), (5, 4), (1, 5), (3, 5), (4, 5), (5, 5)) couleur bleu;
+          fin;
+        \end{mplibcode}
+      \end{center}
+      An observation that the total amount of different $2\times 2$ squares is $2^4 = 16$ is equal to the total amount of different $2\times 2$ subsquares of $5\times 5$ squares may help to check whether the solution is correct.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 40}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Through a point inside an equilateral triangle, we have drawn three lines parallel to the sides of the triangle. Then we measured the areas of the six pieces we got. Can these areas have exactly three different values?
+      \end{problem}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Lets divide the triangle into $16$ smaller equilateral triangles.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1.25cm;
+          draw origin--(4u*dir(0))--(4u*dir(60))--cycle;
+          draw (1u*dir(60))--(4u*dir(0)+1u*dir(120)) withcolor 0.5white;
+          draw (2u*dir(60))--(4u*dir(0)+2u*dir(120)) penextrabold;
+          draw (3u*dir(60))--(4u*dir(0)+3u*dir(120)) withcolor 0.5white;
+          draw (1u*dir(0))--(1u*dir(-60)+4u*dir(60)) penextrabold;
+          draw (2u*dir(0))--(2u*dir(-60)+4u*dir(60)) withcolor 0.5white;
+          draw (3u*dir(0))--(3u*dir(-60)+4u*dir(60)) withcolor 0.5white;
+          draw (1u*dir(60))--(1u*dir(0)) withcolor 0.5white;
+          draw (2u*dir(60))--(2u*dir(0)) withcolor 0.5white;
+          draw (3u*dir(60))--(3u*dir(0)) penextrabold;
+        \end{mplibcode}
+      \end{center}
+      And we got:
+      
+      $3$ figures with area $4$;
+
+      $1$ figure with area $2$ and
+
+      $2$ figures with area $1$. 
+
+      So areas have exactly $3$ different values.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

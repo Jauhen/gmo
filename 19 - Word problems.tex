@@ -1,0 +1,340 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Word Problems}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Turning words into formula}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Qiang drives $15$ miles at an average speed of $30$ miles per hour. \emph{How many additional miles will he have to drive} at $55$ miles per hour to average $50$ miles per hour for the entire trip?
+      \end{problem}
+      Here we need to know the additional number of miles, so let it be some unknown number $x$.
+
+      Then the problem will sound like this:
+      \begin{problem}
+        Qiang drives $15$ miles at an average speed of $30$ miles per hour. \emph{He then drives $x$ miles} at $55$ miles per hour to average $50$ miles per hour for the entire trip.
+      \end{problem}
+      As a result, our problem become \textbf{a story}. Let's rewrite the story using formulas.
+      
+      At first, we will use our knowledge about distance, speed and time.
+      \[ \text{distance} = \text{time} \times \text{average speed}. \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+
+      Then we know that 
+      \begin{problem}
+        Qiang drives with average $50$ miles per hour for the entire trip.
+      \end{problem}
+      So we may write as
+      \[ \text{total distance} = \text{total time} \times 50. \]
+      The total distance is the sum of two segments of $15$ miles and $x$ miles.
+      \[ 15 + x = \text{total time} \times 50. \]
+      And the time of a segment is a distance divided by average speed, so the total time will be:
+      \[ \text{total time} = \frac{15}{30} + \frac{x}{55}. \]
+      Combining all we \textbf{turned the story into an equation:}
+      \[ 15 + x = \left(\frac{15}{30} + \frac{x}{55}\right) \times 50. \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Solving equation with one unknown}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      So we have turned our story into a formula
+      \[ 15 + x = \left(\frac{15}{30} + \frac{x}{55}\right) \times 50, \]
+      how we will know the value of $x$?
+
+      If we have an equation with only one unknown, our goal is to rewrite it, so parts with variables are on one side of the equal sign, and the rest on another side:
+      \[ \text{some number} \times x = \text{some other number}. \]
+      In this case, dividing by $\text{some number}$ we will get the answer
+      \[ x = \frac{\text{some other number}}{\text{some number}}. \]
+
+      But first, let's open brackets and simplify fractions
+      \[ 15 + x = \frac{15 \cdot 50}{30} + \frac{x \cdot 50}{55}, \] or 
+      \[ 15 + x = 25 + \frac{x \cdot 10}{11}. \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Then multiplying everything by $11$ we get
+      \[ 165 + 11x = 275 + 10x. \]
+
+      Now let's move everything with $x$ to the left.
+
+      On the right side of the equation we have $10x$, so let's subtract it from both parts of equations:
+      \[ 165 + 11x - 10x = 275. \]
+      Now get rid of $165$ from the left part, by subtracting it from both parts:
+      \[ 11x - 10x = 275 - 165. \]
+      Simplifying both parts we will get:
+      \[ x = 110. \]
+      Which will give us the answer to the initial problem.
+      \begin{definition}
+        The process of getting the value of an unknown is called \textbf{solving for the unknown}.
+      \end{definition}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Turning words into formulas with multiple unknown}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Sometimes a problem has more than one unknown
+      \begin{problem}
+        Starting with some gold coins and some empty treasure chests, I tried to put $9$ gold coins in each treasure chest, but that left $2$ treasure chests empty. So instead I put $6$ gold coins in each treasure chest, but then I had $3$ gold coins left over. How many gold coins did I have?
+      \end{problem}
+      Here we have two unknowns: the number of gold coins and the number of treasure chests. Let's
+      
+      \textbf{the number of chests is $x$} and 
+      
+      \textbf{the number of treasure chests is $y$}.
+      
+      Then the sentence
+      \begin{problem}
+        I tried to put $9$ gold coins in each treasure chest, but that left $2$ treasure chests empty.
+      \end{problem}
+      So we are using $y - 2$ chests to fit all coins: 
+      \[ 9 \times (y - 2) = x. \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      From the second sentence we get
+      \begin{problem}
+        So instead I put $6$ gold coins in each treasure chest, but then I had $3$ gold coins left over.
+      \end{problem}
+      Which can be written as
+      \[ 6 \times y = x - 3. \]
+      As a result, we got two equations, which are called \textbf{the system of equations}
+      \begin{gather*}
+        9 \times (y - 2) = x,\\
+        6 \times y = x - 3.
+      \end{gather*}
+      In general, for the problem to be solvable, 
+      \begin{definition}
+        the number of equations should be equal to the number of variables.
+      \end{definition} 
+      So if you introduced $2$ variables, you should get $2$ equations from a problem.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Solving system of equations}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      There are several ways to the system of equations, one of them is to 
+      \begin{definition}
+        \textbf{solve a system of equation by elimination}. 
+
+        The idea is to solve one equation for some unknown, then replace this unknown in other equations with this value. This process will reduce the number of unknowns in other equations by one and we will continue until we get one equation with one variable.
+      \end{definition}
+
+      Let's consider our system:
+      \begin{gather*}
+        9 \times (y - 2) = x,\\
+        6 \times y = x - 3.
+      \end{gather*}
+      Here we may see from the first equation that $x$ is already solved, it is equal to $ 9 \times (y - 2)$. Let's plug this value into the second equation:
+      \[ 6 \times y = 9 \times (y - 2) - 3. \]  
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Simplifying we get
+      \[ 6y = 9y - 18 - 3. \]
+      Subtracting $9y$ from both sides we get
+      \[ 6y - 9y = - 18 - 3. \]
+      And simplifying both parts we get
+      \[ -3y = -21. \]
+      Dividing both parts by $-3$ we finally get
+      \[ y = 7. \]
+      But $y$ is the number of treasure chests, and we need to know how many gold coins we have.
+
+      By plugging in value of $y$ into the first equation, we will get
+      \[ 9 \times (7 - 2) = x. \]
+      And simplifying we will get 
+      \[ 45 = x. \]
+      So as a result we did have $45$ gold coins.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Number of solutions}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      In general, \textbf{linear} equations may have zero, one, or an infinite number of solutions. For example:
+      \begin{align*}
+        &x + 1 = x + 0 \text{ has zero solutions, }\\
+        &x = 3 \text{ has one solution, and }\\
+        &x = x \text{ has infinite number of solutions.}
+      \end{align*}
+      To recognize the case, the best approach is to rewrite an equation in \textbf{the canonical form}
+      \[ \text{A} x + \text{B} = 0. \]
+      Where $\text{A}$ and $\text{B}$ are some numbers.
+
+      For equations of the higher orders, like \textbf{quadratic} we may have more than one solution. For these solutions, we always must \textbf{verify that our problem makes sense}.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      One of the most important caveats of systems of equations is some equations, that look different, are essentially the same equations. Consider this system
+      \begin{align*}
+        &5x + 10y = 20,\\
+        &x + 2y = 4.
+      \end{align*}
+      The first equation is essentially the second multiplied by $5$. This system will have an infinite number of solutions.
+
+      On the other hand system may not have solutions in cases like this:
+      \begin{align*}
+        &x + 2y = 5,\\
+        &x + 2y = 4,
+      \end{align*}
+      because, obviously, $5 \neq 4$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Using unknowns for geometric problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        In the figure below, choose point $D$ on $\overline{BC}$ so that $\triangle ACD$ and $\triangle ABD$ have equal perimeters. What is the area of $\triangle ABD$?
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u := 0.7cm;
+            pair A, B, C;
+            A := origin;
+            B := (0u, 3u);
+            C := (4u, 0u);
+            draw A--B--C--cycle pensemibold;
+            label.lft("$A$", A);
+            label.lft("$C$", B);
+            label.rt("$B$", C);
+            label.lft("$3$", 0.5[A, B]);
+            label.bot("$4$", 0.5[A, C]);
+            label.urt("$5$", 0.5[C, B]);
+          \end{mplibcode}
+        \end{center}
+      \end{problem}
+
+      \begin{wrapfigure}{r}{20.00mm}
+        \begin{mplibcode}
+          u := 0.7cm;
+          pair A, B, C, D, H;
+          A := origin;
+          B := (0u, 3u);
+          C := (4u, 0u);
+          D := 0.55[B, C];
+          H := altitude(B, A, C);
+          draw A--B--C--cycle pensemibold;
+          Draw D--A--H;
+          mark_rt_angle_withsize(A, H, C, 5);
+          label.lft("$A$", A);
+          label.lft("$C$", B);
+          label.rt("$B$", C);
+          label.urt("$D$", D);
+          label.lft("$3$", 0.5[A, B]);
+          label.bot("$4$", 0.5[A, C]);
+          label.urt("$5-x$", 0.5[D, B]);
+          label.urt("$x$", 0.5[D, C]);
+          label.lrt("$y$", 0.6[A, D]);
+          label.ulft("$h$", 0.55[A, H]);
+        \end{mplibcode}
+      \end{wrapfigure}
+      You may recognize the right triangle, but let the length of $\overline{BD}$ be $x$ and the length of $\overline{DA}$ be $y$. That means the length of $DC$ is $5 - x$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      From the equality of the perimeters we have:
+      \[ 3 + y + (5-x) = 4 + y + x. \]
+      We have only one equation, but turns out the $y$ can be eliminated and we have one equation with one unknown:
+      \[ 3 + 5 - x = 4 + x. \]
+      Solving for $x$ we will get
+      \[ x = 2. \]
+      To find the area of $\triangle ABD$ we need to know the height of the perpendicular to $BC$. Let it be $h$. 
+      
+      It is also the altitude of the $\triangle ABC$, so 
+      \[S (\triangle ABC) = \frac{1}{2}\cdot \overline{BC} \cdot h = \frac{1}{2}\cdot \overline{BA} \cdot \overline{AC}. \] 
+      So $5h = 3 \cdot 4 = 12$ or $h = 12/5$. 
+      \[ S(\triangle ABD) = \frac{1}{2}\cdot \overline{BD} \cdot h = \frac{1}{2}\cdot 2 \cdot \frac{12}{5} = \frac{12}{5}. \]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item The lengths of the sides of a triangle are in the ratio $4:3:5$. Find the lengths of the longest side if the perimeter is $18$ inches.
+        \item There are $40$ pigs and chickens in a farmyard. Joseph counted $100$ legs in all. How many pigs and how many chickens are there?
+        \item The cost of gas rises by $2$ cents a liter. Last week a man bought $20$ liters at the old price. This week he bought $10$ liters at the new price. Altogether, the gas costs \$$9{.}20$. What was the old price for $1$ liter?
+        \item $A$ can do a work in $14$ days and working together $A$ and $B$ can do the same work in $10$ days. In what time can $B$ alone do the work?
+        \item The sum of the first and last of four consecutive odd integers is $52.$ What are the four integers?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item Annie and Bonnie are running laps around a~$400$-meter oval track. They started together, but Annie has pulled ahead because she runs $25\%$ faster than Bonnie. How many laps will Annie have run when she first passes Bonnie?
+        \item A washer costs $25\%$ more than a dryer. If the store clerk gave a $10\%$ discount for the dryer and a $20\%$ discount for the washer, how much is the washer before the discount if you paid $1900$ dollars?
+        \item In the right triangle $ABC$, $AC=12$, $BC=5$, and angle $C$ is a right angle. A semicircle is inscribed in the triangle as shown. What is the radius of the semicircle?
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u := 0.25cm;
+            pair A, B, C;
+            A := origin;
+            B := (12u, 5u);
+            C := (12u, 0u);
+            draw A--B--C--cycle pensemibold;
+            draw subpath(0, 2) of circle((26/3*u, 0u), 10/3*u);
+            label.lft("$A$", A);
+            label.rt("$B$", B);
+            label.rt("$C$", C);
+            label.bot("$\scriptsize 12$", 0.5[A, C]);
+            label.rt("$\scriptsize 5$", 0.5[B, C]);
+          \end{mplibcode}
+        \end{center}
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item A basketball team's players were successful on $50\%$ of their two-point shots and $40\%$ of their three-point shots, which resulted in $54$ points. They attempted $50\%$ more two-point shots than three-point shots. How many three-point shots did they attempt?
+        \item Two sides of a triangle have lengths $10$ and $15$. The length of the altitude to the third side is the average of the lengths of the altitudes to the two given sides. How long is the third side?
+        \item It takes Clea $60$ seconds to walk down an escalator when it is not operating, and only $24$ seconds to walk down the escalator when it is operating. How many seconds does it take Clea to ride down the operating escalator when she just stands on it?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item Paula the painter and her two helpers each paint at constant, but different, rates. They always start at $8{:}00$~AM, and all three always take the same amount of time to eat lunch. On Monday the three of them painted 5$0\%$ of a house, quitting at $4{:}00$~PM. On Tuesday, when Paula wasn't there, the two helpers painted only $24\%$ of the house and quit at $2{:}12$~PM. On Wednesday Paula worked by herself and finished the house by working until $7{:}12$~PM How long, in minutes, was each day's lunch break?
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

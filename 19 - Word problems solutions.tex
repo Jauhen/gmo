@@ -1,0 +1,201 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Word Problems solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problems 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{1.} The lengths of the sides of a triangle are in the ratio $4:3:5$. Find the lengths of the longest side if the perimeter is $18$ inches.
+      \end{problem}
+      Let sides of triangle will be $4x$, $3x$ and $5x$.
+      \[ 4x + 3x + 5x = 12x = 18. \]
+      So $x = \dfrac{18}{12} = \dfrac{3}{2}$. So the longest side is $5x = 5 \cdot \dfrac{3}{2} = \dfrac{15}{2} = \fbox{7{.}5}$ inches.
+      \begin{problem}
+        \textbf{2.} There are $40$ pigs and chickens in a farmyard. Joseph counted $100$ legs in all. How many pigs and how many chickens are there?
+      \end{problem}
+      Let it be $p$ pigs and $c$ chicken. We got:
+      \[
+        p + c = 40,\quad 4p + 2c = 100.
+      \]
+      $p = 40 - c$, so $4(40-c) + 2c = 160 - 4c + 2c =$ $=160 - 2c = 100$. $2c = 60$ and $c = \fbox{30}$ chickens.
+      $p = 40 - c = 40-30 = \fbox{10}$ pigs.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{3.} The cost of gas rises by $2$ cents a liter. Last week a man bought $20$ liters at the old price. This week he bought $10$ liters at the new price. Altogether, the gas costs \$$9{.}20$. What was the old price for $1$ liter?
+      \end{problem}
+      Let $x$ is the old price of a liter in cents.
+      \[ 20 x + 10 (x + 2) = 920. \]
+      $20x + 10x + 20 = 30x + 20 = 920$. $30x = 900$ and $x = \fbox{30}$ cents. 
+      \begin{problem}
+        \textbf{4.} $A$ can do a work in $14$ days and working together $A$ and $B$ can do the same work in $10$ days. In what time can $B$ alone do the work?
+      \end{problem}
+      Let $S$ amount of work and $x$ days are needed $B$ to do the work. $S/\text{days}$ is the speed.
+      \[ \frac{S}{10} = \frac{S}{14} + \frac{S}{x}. \] 
+      $\dfrac{1}{10} = \dfrac{1}{14} + \dfrac{1}{x},$ $\dfrac{140x}{10} = \dfrac{140x}{14} + \dfrac{140x}{x}$, so $14x = 10x + 140$ and $4x = 140$, so $x = \fbox{35}$ days.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problems 5-8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{5.} The sum of the first and last of four consecutive odd integers is $52.$ What are the four integers?
+      \end{problem}
+      Let $x$ is the first odd integer.
+      \[ x + (x + 6) = 52.\]
+      $2x = 46,$ and $x = 23$. Answer is $\fbox{23,\ 25,\ 27,\ 29}$.
+      \begin{problem}
+        \textbf{6.} Annie and Bonnie are running laps around a~$400$-meter oval track. They started together, but Annie has pulled ahead because she runs $25\%$ faster than Bonnie. How many laps will Annie have run when she first passes Bonnie?
+      \end{problem}
+      Let $x$ is the speed of Bonnie, $1.25x$ is the speed of Annie. $t$ is the time when Annie passed Bonnie.
+      \[ x \cdot t + 400 = 1.25 x \cdot t.\] 
+      $0.25 x \cdot t = 400$, so $1.25x \cdot t = 2000$. So Annie ran $2000$ meters before passing Bonnie, which gives us $\fbox{5}$ laps.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{7.} A washer costs $25\%$ more than a dryer. If the store clerk gave a $10\%$ discount for the dryer and a $20\%$ discount for the washer, how much is the washer before the discount if you paid $1900$ dollars?
+      \end{problem}
+      Let $x$ is the washer price, $x/1{.}25$~--- dryer.
+      \[ 0{.}80x + 0{.}90\cdot \frac{x}{1{.}25} = 1900. \]
+      $0{.}8x\cdot 1.25 + 0{.}9x = 1900\cdot 1{.}25$, $1x+0.9x =$ $=1.9x = 1900\cdot 1.25$, $x = 1000 \cdot 1.25 = \fbox{\text{\$}1250}$.
+      \begin{problem}
+        \textbf{8.} In the right triangle $ABC$, $AC=12$, $BC=5$, and angle $C$ is a right angle. A semicircle is inscribed in the triangle as shown. What is the radius of the semicircle?
+      \end{problem}
+      \begin{columns}[T]
+        \begin{column}{0.15\textwidth}
+          \begin{mplibcode}
+            u := 0.15cm;
+            pair A, B, C, D, O;
+            A := origin;
+            B := (12u, 5u);
+            C := (12u, 0u);
+            O := (26/3*u, 0u);
+            D := altitude(A, O, B);
+            draw A--B--C--cycle pensemibold;
+            Draw subpath(0, 2) of circle((26/3*u, 0u), 10/3*u), O--D;
+            label.lft("$\scriptstyle A$", A);
+            label.rt("$\scriptstyle B$", B);
+            label.rt("$\scriptstyle C$", C);
+            label.top("$\scriptstyle D$", D);
+            label.bot("$\scriptstyle O$", O);
+            label.bot("$\scriptstyle 12-r$", 0.5[A, O]);
+            label.bot("$\scriptstyle r$", 0.5[C, O]);
+            label.rt("$\scriptstyle r$", 0.5[O, D]);
+            label.rt("$\scriptstyle 5$", 0.5[B, C]);
+          \end{mplibcode}
+        \end{column}
+        \begin{column}{0.8\textwidth}
+          $\triangle ADO \sim \triangle ACB$, 
+          $\dfrac{12-r}{r} = \dfrac{13}{5}$, 
+          $5(12-r) = 13r$, $60 - 5r = 13r$, 
+          $18r = 60$, 
+          $\fbox{r = 10/3}$.
+        \end{column}
+      \end{columns}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge Problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C1.} A basketball team's players were successful on $50\%$ of their two-point shots and $40\%$ of their three-point shots, which resulted in $54$ points. They attempted $50\%$ more two-point shots than three-point shots. How many three-point shots did they attempt?
+      \end{problem}
+      Let $x$ is the number of two-points shots and $y$ is the number of three-points shots.
+      \begin{align*}
+        &x = 1{.}5\cdot y,\\
+        &0.5\cdot 2 \cdot x + 0.4\cdot 3 \cdot y = 54.
+      \end{align*}
+      $x + 1.2 y = 54$, $x = 54 - 1.2y$, $54 - 1.2 y = 1.5y,$ $2.7y = 54$, $y = \fbox{20}$ shots.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C2.} Two sides of a triangle have lengths $10$ and $15$. The length of the altitude to the third side is the average of the lengths of the altitudes to the two given sides. How long is the third side?
+      \end{problem}
+      Let $S$ is the area of the triangle. $x$ is the length the third side and $h$ is the length of altitude to third side. $a$ and $b$ is altitudes to sides $10$ and $15$.
+      \begin{align*}
+        &S = \frac{1}{2} xh = \frac{1}{2} 10a = \frac{1}{2} 15b,\\
+        &\frac{a + b}{2} = h.
+      \end{align*}
+      $xh = 10a\ \Rightarrow\ a = xh/10$, $xh = 15b\ \Rightarrow\ b = xh/15$, 
+      \[ \frac{a + b}{2} = \frac{\dfrac{xh}{10} + \dfrac{xh}{15}}{2} = \frac{3xh + 2xh}{60} = \frac{5xh}{60} = \frac{xh}{12} = h.\]
+      $x = \fbox{12}.$  
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 3}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C3.} It takes Clea $60$ seconds to walk down an escalator when it is not operating, and only $24$ seconds to walk down the escalator when it is operating. How many seconds does it take Clea to ride down the operating escalator when she just stands on it?
+      \end{problem}
+      Let $S$ meters be the length of the escalator. $v$~meters per second is the speed of Clea and $x$~meters per second is the speed of the escalator.
+      \[ S = 60 \cdot v = 24 \cdot (v + x). \] 
+      $60 v = 24 v + 24 x,$ $36 v = 24 x,$ $v = \dfrac{2}{3}x$.
+      $ S = 60 \cdot v = 60 \cdot \dfrac{2}{3} x,$ $S/x = \fbox{40}$ seconds.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C4.} Paula the painter and her two helpers each paint at constant, but different, rates. They always start at $8{:}00$~AM, and all three always take the same amount of time to eat lunch. On Monday the three of them painted $50\%$ of a house, quitting at $4{:}00$~PM. On Tuesday, when Paula wasn't there, the two helpers painted only $24\%$ of the house and quit at $2{:}12$~PM. On Wednesday Paula worked by herself and finished the house by working until $7{:}12$~PM How long, in minutes, was each day's lunch break?
+      \end{problem}
+      Let $x$ hours be the length of the lunch break. $S$ total amount of work, $v$ work/hours is the speed of Paula's work and $u$ is the speed of two helpers.
+      \begin{align}
+        &0{.}5 S = (v + u) \cdot (8 - x),\\
+        &0{.}24 S = u \cdot (6.2 - x),\\
+        &0{.}26 S = v \cdot (11.2 - x).
+      \end{align}
+      Addition of $(2)$ and $(3)$ is equal $(1)$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{gather*}
+        (v + u) (8 - x) = u \cdot (6.2 - x) + v \cdot (13.2 - x),\\
+        8v + 8u - vx - ux = 6.2u - ux + 13.2v - vx,\\
+        8v + 8u = 6.2u + 11.2v,\\
+        1.8u = 3.2v,\quad u = \frac{32}{18}v = \frac{16}{9}v.
+      \end{gather*} 
+      Now using $(2)$ and $(3)$:
+      \begin{gather*} 
+        S = \frac{u (6.2 - x)}{0.24} = \frac{v(11.2 - x)}{0.26}, \\
+        26 \cdot u (6.2 - x) = 24 \cdot v (11.2 - x),\\
+        26 \frac{16}{9} v (6.2 - x) = 24 \cdot v (11.2 - x),\\
+        26 \cdot 16 \cdot (6.2 - x) = 24 \cdot 9 \cdot (11.2 - x),\\
+        13 \cdot 4 \cdot (6.2 - x) = 3 \cdot 9 \cdot (11.2 - x),\\
+        52 \cdot 6.2 - 52 x = 27 \cdot 11.2 - 27 x,\\
+        25 x = 52 \cdot 6.2 - 27 \cdot 11.2 = 322.4 - 302.4 = 20,\\
+        x = \frac{20}{25} = \frac{4}{5}.\quad \text{The lunch break is }\fbox{48}\text{ minutes.}
+      \end{gather*}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\end{document}

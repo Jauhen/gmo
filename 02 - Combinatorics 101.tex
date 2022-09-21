@@ -6,6 +6,12 @@
   \genfrac{\{}{\}}{0pt}{#1}{#2}{#3}%
 }
 \newcommand{\stirlingII}[2]{\genstirlingII{}{#1}{#2}}
+\usepackage{colortbl}
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
 
 \title{Combinatorics 101}
 \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
@@ -17,7 +23,7 @@
 \begin{frame}{Rule of sum}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      Consider following Kindergarten problem:
+      Consider the following Kindergarten problem:
 
       \begin{problem}{}
         There are two plates, one with $3$ apples and one with $2$ pears. You can take \emph{only one piece of fruit}. How many options do you have?
@@ -49,7 +55,7 @@
         if we have $a$ number of ways of doing something and $b$ number of ways of doing another thing and we can not do both at the same time, then there are $a + b$ ways to choose one of the actions.
       \end{definition}
 
-      Of course this principle may be extended for many options, for example if you have $5$ plates with $10$ apples on each, there are 
+      Of course, this principle may be extended for many options, for example, if you have $5$ plates with $10$ apples on each, there are 
       \[10+10+10+10+10 = 50\] 
       options to pick one apple.
     \end{column}
@@ -91,7 +97,7 @@
         if there are $a$ ways of doing something and $b$ ways of doing another thing, then there are $a \times b$ ways of performing both actions.
       \end{definition}
 
-      Of course, this principle may be extended for many options, for example if you have $5$~plates with $10$ apples on each, there are
+      Of course, this principle may be extended for many options, for example, if you have $5$~plates with $10$ apples on each, there are
       \[ 10 \times 10 \times 10 \times 10 \times 10 = 100,000 \]
       options to pick one apple from each plate.
 
@@ -199,7 +205,7 @@
 
       So if we have $n$ objects and want to arrange $k$ of them in a row, there are $\frac{n!}{(n-k)!}$ ways to do this. This is also known as a \hl{ $k$-permutation of $n$ }, and is denoted by $P_k^n$ or $P(n,\ k)$.\medskip
 
-      The rule of division is also works in case when we need to put $5$ fruits not in a line, but in a circle. In this case this $5$ permutations are the same:
+      The rule of division also works in the case when we need to put $5$ fruits not in a line, but in a circle. In this case, these $5$ permutations are the same:
       \vspace*{-0.1cm}
       \begin{nscenter}
         \begin{tikzpicture}[outer sep=0, inner sep=0]
@@ -216,7 +222,7 @@
         \end{tikzpicture}
       \end{nscenter}
       \vspace*{-0.2cm}
-      so the total number of ways to put of $5$ elements in a circle is $\frac{5!}{5} = 24$.
+      so the total number of ways to put $5$ elements in a circle is $\frac{5!}{5} = 24$.
     \end{column}
   \end{columns}
 \end{frame}
@@ -224,7 +230,7 @@
 \begin{frame}{Permutations with identical elements}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      Now get back to problem from Kindergarten
+      Now get back to the problem from Kindergarten
 
       \begin{problem}
         There is a plate with $3$ apples and with $1$ pear and $1$ strawberry. In how many ways can you take all of the pieces of fruit \emph{one by one}, if all apples are considered the same?
@@ -246,7 +252,7 @@
       \end{nscenter}
 
       {\small
-      We already know, that there are $5! = 120$ total orders if all apples are different. But consider the options,when apples are at places $1$, $2$, and $3$. There are a total $3! = 6$ cases when we can put apples in these places. That means for every order, there are $5$ other orders that are the same when all apples are the same, because we can’t distinguish the $6$ ways we can arrange apples from one another. So total number of permutations is}
+      We already know, that there are $5! = 120$ total orders if all apples are different. But consider the options, when apples are at places $1$, $2$, and $3$. There is a total $3! = 6$ cases when we can put apples in these places. That means for every order, there are $5$ other orders that are the same when all apples are the same because we can’t distinguish the $6$ ways we can arrange apples from one another. So the total number of permutations is}
       \[
         \frac{5!}{3!} = \frac{120}{6} = 20.
       \]
@@ -291,7 +297,7 @@
 \begin{frame}{Permutations with restrictions}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      Sometimes additional restrictions may be imposed in a problem. Consider this problem
+      Sometimes additional restrictions may be imposed on a problem. Consider this problem
       \begin{problem}
         There are $3$ algebra books and $2$ geometry books. In how many ways can you put them on a shelf, so given \emph{subject books are kept together}?        
       \end{problem}
@@ -299,7 +305,7 @@
         \includegraphics[width=0.3\textwidth]{02 - Combinatorics 101/books.png}
       \end{wrapfigure}
 
-      First we need to decide which subject will go first. There are $2!$ options for that. Then we need to decide an order of algebra books, we have $3!$ options. Similarly, for geometry books there are $2!$ options. So total number of ways is
+      First, we need to decide which subject will go first. There are $2!$ options for that. Then we need to decide on an order of algebra books, we have $3!$ options. Similarly, for geometry books, there are $2!$ options. So the total number of ways is
       \[
         2! \times 3! \times 2! = 2 \times 6 \times 2 = 24.
       \]
@@ -307,7 +313,7 @@
     \begin{column}{0.5\textwidth}
       When additional restrictions are imposed, the situation is transformed into a problem about \textbf{permutations with restrictions}.\medskip
 
-      Most commonly, the restriction is that only a small number of objects are to be considered, meaning that not all the objects need to be ordered. Other common types of restrictions include restricting the type of objects that can be adjacent to one another, or changing the ordering mechanism from a line to another configuration (e.g. a round table instead of a line, or a keychain instead of a ring).\medskip
+      Most commonly, the restriction is that only a small number of objects are to be considered, meaning that not all the objects need to be ordered. Other common types of restrictions include restricting the type of objects that can be adjacent to one another or changing the ordering mechanism from a line to another configuration (e.g. a round table instead of a line, or a keychain instead of a ring).\medskip
 
       Problems of this form are perhaps the most common in practice.
 
@@ -318,9 +324,9 @@
 \begin{frame}{Permutations in problems}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      Now instead of a plate we have unlimited supply of fruits
+      Now instead of a plate, we have an unlimited supply of fruits
       \begin{problem}
-        There is $4$ bags with fruits: \emph{apples}, \emph{pears}, \emph{peaches} and \emph{strawberries}? You need to pick $5$ fruits \emph{one by one}. In how may way you can do it?
+        There is $4$ bags with fruits: \emph{apples}, \emph{pears}, \emph{peaches} and \emph{strawberries}? You need to pick $5$ fruits \emph{one by one}. In how many ways you can do it?
       \end{problem}
 
       \begin{nscenter}
@@ -338,7 +344,7 @@
         \end{tikzpicture}
       \end{nscenter}
 
-      Let’s consider the first fruit. We have $4$ options to choose from. For second fruit we also have the same $4$ options and so on. So, total numbers of ways is 
+      Let’s consider the first fruit. We have $4$ options to choose from. For the second fruit, we also have the same $4$ options and so on. So, the total number of ways is 
       \[
         \underbrace{4 \times 4 \times 4 \times 4 \times 4}_\text{$5$ times} = 4^5 = 1024.
       \]
@@ -357,13 +363,13 @@
       \[ 60 = 2 \times 2 \times 3 \times 5 = 2^2 \times 3^1 \times 5^1.\]
       Any divisor of $60$ must be some combination of these prime numbers. Let’s count all combinations of prime factors of a divisor:
 
-      The divisor may have $2$ in a power of $0$, $1$, or $2$ ($2$ to the power of $0$ is also counted, because divisor may be odd, like $15$, for example).
+      The divisor may have $2$ in the power of $0$, $1$, or $2$ ($2$ to the power of $0$ is also counted, because the divisor may be odd, like $15$, for example).
 
-      The divisor may have $3$ in a power of $0$ or $1$.
+      The divisor may have $3$ in the power of $0$ or $1$.
 
-      The divisor may have $5$ in a power of $0$ or $1$.
+      The divisor may have $5$ in the power of $0$ or $1$.
 
-      So, total number of divisors of $60$ would be
+      So, the total number of divisors of $60$ would be
       \[(2 + 1) (1 + 1) (1 + 1) = 12.\]
       }
     \end{column}
@@ -394,7 +400,7 @@
         \end{tikzpicture}
       \end{nscenter}
 
-      First, we know, that there are $P_3^5 = 5 \times 4 \times 3 = 60$ ways to select $3$ fruit \emph{one by one}, but in our case order is not important. So for every $3$ given fruits there are $3! = 6$ ways to select them them one by one. That means that each way to take $3$ fruits was counted $6$ times. As a result the total number of ways would be 
+      First, we know, that there are $P_3^5 = 5 \times 4 \times 3 = 60$ ways to select $3$ fruit \emph{one by one}, but in our case order is not important. So for every $3$ given fruits, there are $3! = 6$ ways to select them one by one. That means that each way to take $3$ fruits was counted $6$ times. As a result, the total number of ways would be 
       \[
         \frac{5!}{2! \times 3!} = \frac{120}{2 \times 6} = 10.
       \]
@@ -404,7 +410,7 @@
         A \textbf{combination} is a way of choosing elements from a set in which \emph{order does not matter}.
       \end{definition}
 
-      To find a number of combinations of $k$ unordered elements from set of $n$ distinct objects (denoted as $C_k^n$ or $C(n,\ k)$), first we need to find $P_k^n$. Then, according the \emph{rule of division}, we need divide the number by number of ways to rearrange $k$ elements, which is $P_{\,k}$. Combining everything together we find, that
+      To find a number of combinations of $k$ unordered elements from set of $n$ distinct objects (denoted as $C_k^n$ or $C(n,\ k)$), first we need to find $P_k^n$. Then, according to the \emph{rule of division}, we need to divide the number by the number of ways to rearrange $k$ elements, which is $P_{\,k}$. Combining everything we find, that
       \[
         C_k^n = \frac{n!}{k! (n-k)!}.
       \]
@@ -458,13 +464,13 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       {\small
-      Lets looks at the solutions:
+      Let's look at the solutions:
       \begin{enumerate}[a)]
-        \item This problem may be solved using \highlightbox{permutations with identical elements}, which we covered in this slides, (every spoon may be put in $4$ different cups), so answer is $4^7 = 16,384$.
-        \item This problem may be solved using technique called \highlightbox{stars and bars}, we will cover it in a future lesson, calculated as $\dbinom{13}{3} = 286$.
+        \item This problem may be solved using \highlightbox{permutations with identical elements}, which we covered in these slides, (every spoon may be put in $4$ different cups), so the answer is $4^7 = 16,384$.
+        \item This problem may be solved using a technique called \highlightbox{stars and bars}, we will cover it in a future lesson, calculated as $\dbinom{13}{3} = 286$.
         \item To calculate the solution we need to use \highlightbox{Stirling numbers of the second kind} and the \emph{rule of sum}:
         \[ \stirlingII{7}{1}+\stirlingII{7}{2}+\stirlingII{7}{3}+\stirlingII{7}{4}=1+63+301+350=715. \]\vspace*{-1ex}
-        \item Here is we need to calculate number of \highlightbox{Young tableaux} with $10$ cells and $4$ boxes, which is far beyond middle school math. For this particular problem it is easier to just do the \highlightbox{\emph{\textbf{case}}\ \ \emph{\textbf{bashing}}} (head down and write out all cases) to find out that answer is $23$.  We’ll practice case bashing in a future lesson as well.
+        \item Here we need to calculate the number of \highlightbox{Young tableaux} with $10$ cells and $4$ boxes, which is far beyond middle school math. For this particular problem it is easier to just do the \highlightbox{\emph{\textbf{case}}\ \ \emph{\textbf{bashing}}} (head down and write out all cases) to find out that answer is $23$.  We’ll practice case bashing in a future lesson as well.
       \end{enumerate}
       }
     \end{column}
@@ -475,26 +481,39 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item Prove that $C^n_r$ is equal to $C^n_{n-r}$ using the formula in this unit. 
-        
-        \emph{Note that this is also can be proven logically, since if we are choosing $r$ out of $n$, we are equivalently not choosing $n-r$ out of $n$.}
-        \item If $n = 100$, find the value of $\frac{(n−1)!}{(n+1)!}$.
-        \item A yogurt shop has $4$ different flavours and $6$ different toppings. If a customer picks $1$ flavor and $2$ different toppings, how many different combinations are possible?
-        \item How many $3$-digit numbers are \emph{palindromes} (read the same forward and backward)?
-        \item In base $7$, the possible digits are $0$-$6$. How many possible $4$-digit base $7$ numbers end in an odd digit?
+        \item What is $\dfrac{100!}{98!}$?
+        \item The shape below is made up of four squares. How many ways can we shade some of the squares
+        such that the shaded squares form exactly 1 polygon? (At least one of the squares must be shaded.)
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u := 0.3cm;
+            Draw (0u, 0u)--(3u, 0u)--(3u, 1u)--(0u, 1u)--cycle, (1u, 0u)--(1u, 2u)--(2u, 2u)--(2u, 0u);
+          \end{mplibcode}
+        \end{center}
+        \item How many $5 \times 6$ rectangles can fit in an $11 \times 11$ square such that the $5 \times 6$ rectangles do not overlap?
+        (The rectangles may be rotated.)
+        \item How many four-digit numbers have exactly one digit $5$?
+        \item How many four-digit numbers have exactly one digit $5$ and no other digits equal each other?
         \seti
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \conti
-        \item A ferris wheel has $8$ identical chairs that hold $1$ rider each. How many different ways can $8$ riders be seated on the ride, if we can only distinguish the relative orientation of the riders while the wheel is spinning?
-        \item How many different $10$-letter code words can be made with the letters in \emph{Crittenden}?
-        \item How many $4$ digit ATM passcodes can be made if the first digit cannot be $0$, and all $4$ digits cannot be same?
+        \item How many different ways are there to place a white and a black rook on a chessboard so that they do not attack each other?
+        \item How many different ways are there to place a black and white king on a chessboard so that they do not attack each other?
+        \item In the arrangement of letters and numerals below, by how many different paths can one spell $MATH$? Beginning at the $M$ in the middle, a path allows only moves from one letter to an adjacent (above, below, left, or right, but not diagonal) letter. One example of such a path is traced in the picture.
+        \begin{center}
+          \begin{tabular}{ccccc}
+              & \cellcolor{backgroundOrange}$H$ & $T$ & $H$ & \\
+            $H$ & \cellcolor{backgroundOrange}$T$ & \cellcolor{backgroundOrange}$A$ & $T$ & $H$ \\
+            $T$ & $A$ & \cellcolor{backgroundOrange}$M$ & $A$ & $T$ \\
+            $H$ & $T$ & $A$ & $T$ & $H$ \\
+              & $H$ & $T$ & $H$ &
+          \end{tabular}
+        \end{center}
       \end{enumerate}
-      \begin{flushright}
-        \includegraphics[width=0.4\textwidth]{02 - Combinatorics 101/atm.jpg}
-      \end{flushright}
     \end{column}
   \end{columns}
 \end{frame}
@@ -503,24 +522,71 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item How many odd positive integers are factors of $480$?​
-        \item A circular Beyblade has $5$ spots where decorative stickers can be placed around its edge. The Bey is otherwise perfectly symmetric circularly, so we can only distinguish a Bey by the relative orientation of the $5$ stickers.  If you must select $5$ unique stickers out of $10$ unique choices, how many distinguishable Beys can be created?​
-        \item Two parents are taking their two children and $4$ of their friends to see a movie. They fill all of seats in an $8$-seat row. How many arrangements are possible if a parent must sit on each end on an aisle, and their two children must be seated next to one another?
+        \item All the numbers $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$ are written in a $3\times3$ array of squares, one number in each square, in such a way that if two numbers are consecutive then they occupy squares that share an edge. The numbers in the four corners add up to $18$. What is the number in the center?
+        \item Each vertex of a cube is to be labeled with an integer $1$ through $8$, with each integer being used once, in such a way that the sum of the four numbers on the vertices of a face is the same for each face. Arrangements that can be obtained from each other through rotations of the cube are considered to be the same. How many different arrangements are possible?
         \seti
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \conti
-        \item A game uses a deck of $n$ different cards, where $n \geq 6$. The number of possible set of $6$ cards that can be drawn from the deck is $6$ times the number of possible sets of $3$ cards that can be drawn from the deck. Find the value of $n$.
+        \item A child builds towers using identically shaped cubes of different colors. How many different towers with a height $8$ cubes can the child build with $2$ red cubes, $3$ blue cubes, and $4$ green cubes? (One cube will be left out.)
+        \item There are $10$ people standing equally spaced around a circle. Each person knows exactly $3$ of the other $9$ people: the $2$ people standing next to her or him, as well as the person directly across the circle. How many ways are there for the $10$ people to split up into $5$ pairs so that the members of each pair know each other?
       \end{enumerate}
-      \begin{center}
-        \vspace*{1em}
-        \includegraphics[width=0.8\textwidth]{02 - Combinatorics 101/cards.jpg}
-      \end{center}
     \end{column}
   \end{columns}
 \end{frame}
+
+% \begin{frame}{Exercises}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item Prove that $C^n_r$ is equal to $C^n_{n-r}$ using the formula in this unit. 
+        
+%         \emph{Note that this is also can be proven logically, since if we are choosing $r$ out of $n$, we are equivalently not choosing $n-r$ out of $n$.}
+%         \item If $n = 100$, find the value of $\frac{(n−1)!}{(n+1)!}$.
+%         \item A yogurt shop has $4$ different flavours and $6$ different toppings. If a customer picks $1$ flavor and $2$ different toppings, how many different combinations are possible?
+%         \item How many $3$-digit numbers are \emph{palindromes} (read the same forward and backward)?
+%         \item In base $7$, the possible digits are $0$-$6$. How many possible $4$-digit base $7$ numbers end in an odd digit?
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item A ferris wheel has $8$ identical chairs that hold $1$ rider each. How many different ways can $8$ riders be seated on the ride, if we can only distinguish the relative orientation of the riders while the wheel is spinning?
+%         \item How many different $10$-letter code words can be made with the letters in \emph{Crittenden}?
+%         \item How many $4$ digit ATM passcodes can be made if the first digit cannot be $0$, and all $4$ digits cannot be same?
+%       \end{enumerate}
+%       \begin{flushright}
+%         \includegraphics[width=0.4\textwidth]{02 - Combinatorics 101/atm.jpg}
+%       \end{flushright}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item How many odd positive integers are factors of $480$?​
+%         \item A circular Beyblade has $5$ spots where decorative stickers can be placed around its edge. The Bey is otherwise perfectly symmetric circularly, so we can only distinguish a Bey by the relative orientation of the $5$ stickers.  If you must select $5$ unique stickers out of $10$ unique choices, how many distinguishable Beys can be created?​
+%         \item Two parents are taking their two children and $4$ of their friends to see a movie. They fill all of seats in an $8$-seat row. How many arrangements are possible if a parent must sit on each end on an aisle, and their two children must be seated next to one another?
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item A game uses a deck of $n$ different cards, where $n \geq 6$. The number of possible set of $6$ cards that can be drawn from the deck is $6$ times the number of possible sets of $3$ cards that can be drawn from the deck. Find the value of $n$.
+%       \end{enumerate}
+%       \begin{center}
+%         \vspace*{1em}
+%         \includegraphics[width=0.8\textwidth]{02 - Combinatorics 101/cards.jpg}
+%       \end{center}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
 % \begin{frame}{Team attack problems}
 %   \begin{columns}[T]

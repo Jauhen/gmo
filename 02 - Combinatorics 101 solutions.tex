@@ -1,0 +1,387 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{colortbl}
+\usepackage{chessboard}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Combinatorics 101 solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+
+\begin{frame}{Exercises 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E1.} What is $\dfrac{100!}{98!}$?
+      \end{problem}
+      \[
+        \frac{100!}{98!} = \frac{100 \cdot 99 \cdot \cancel{98} \cdot \cancel{97} \cdot \dots \cdot \cancel{1}}{\cancel{98} \cdot \cancel{97} \cdot \dots \cdot \cancel{1}} = \fbox{9900}. 
+      \]
+      \begin{problem}
+        \textbf{E2.} The shape below is made up of four squares. How many ways can we shade some of the squares
+        such that the shaded squares form exactly 1 polygon? (At least one of the squares must be shaded.)
+        \begin{mplibcode}
+          u := 0.25cm;
+          Draw (0u, 0u)--(3u, 0u)--(3u, 1u)--(0u, 1u)--cycle, (1u, 0u)--(1u, 2u)--(2u, 2u)--(2u, 0u);
+        \end{mplibcode}
+      \end{problem}
+      Case 1, once shaded square: $4$ options.
+      
+      Case 2, two shaded squares: $3$ options (square in the middle should be shaded).
+
+      Case 3, three shaded squares: $3$ options (by complimentary counting of empty squares).
+
+      Case 4, four shaded squares: $1$ option.
+
+      Total is $4 + 3 + 3 + 1 = \fbox{11}$ options.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E3.} How many $5 \times 6$ rectangles can fit in an $11 \times 11$ square such that the $5 \times 6$ rectangles do not overlap?
+        (The rectangles may be rotated.)
+      \end{problem}
+      $\fbox{4}$ rectangles:
+      \begin{center}
+        \vspace*{-1.5\baselineskip}
+        \leavevmode
+        \begin{mplibcode}
+          u := 0.20cm;
+          for i := 0 upto 11:
+            draw (0u, i*u)--(11u, i*u) withcolor 0.6white;
+            draw (i*u, 0u)--(i*u, 11u) withcolor 0.6white;
+          endfor;
+          draw (0u, 0u)--(5u, 0u)--(5u, 6u)--(0u, 6u)--cycle penbold;
+          draw (0u, 6u)--(6u, 6u)--(6u, 11u)--(0u, 11u)--cycle penbold;
+          draw (5u, 0u)--(11u, 0u)--(11u, 5u)--(5u, 5u)--cycle penbold;
+          draw (6u, 5u)--(11u, 5u)--(11u, 11u)--(6u, 11u)--cycle penbold;
+        \end{mplibcode}
+      \end{center}
+      \begin{problem}
+        \textbf{E4.} How many four-digit numbers have exactly one digit $5$?
+      \end{problem}
+      Case 1, $5$ in the first place. $9 \cdot 9 \cdot 9 = 729$. 
+      
+      For each of 3 places, we have $9$ options.
+
+      Case 2, $5$ on other places. $3 \cdot 8 \cdot 9 \cdot 9 = 1944$. 
+      
+      $3$~different places for $5$, $8$ options for the first place (no $0$ or $5$) and $9$ options for two other places.  
+
+      Total is $729 + 1944 = \fbox{2673}$ numbers.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 5-7}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E5.} How many four-digit numbers have exactly one digit $5$ and no other digits equal each other?
+      \end{problem}
+      Case 1, $5$ in the first place. $9 \cdot 8 \cdot 7 = 504$.
+
+      Case 2, $5$ on other places. $3 \cdot 8 \cdot 8 \cdot 7 = 1344$.
+
+      So total is $504 + 1344 = \fbox{1848}$ numbers.
+
+      \begin{problem}
+        \textbf{E6.} How many different ways are there to place a white and a black rook on a chessboard so that they do not attack each other?
+      \end{problem}
+      \begin{wrapfigure}{l}{32.00mm}
+        \vspace*{-1.5\baselineskip}
+        \chessboard[
+          tinyboard,
+          setpieces={Rc6},
+          pgfstyle=cross,
+          shortenstart=0.5ex,
+          shortenend=0.5ex,
+          color=blue,
+          backfields={a6, b6, d6, e6, f6, g6, h6, c1, c2, c3, c4, c5, c7, c8}, 
+          showmover=false]
+      \end{wrapfigure}
+      By placing the white rook on any of $64$ squares, we attack $14$ additional squares, so the total possible positions for the black rook is $64 - 1 - 14 = 49$ squares. The total number of positions is $64 \times 49 = \fbox{3136}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E7.} How many different ways are there to place a black and white king on a chessboard so that they do not attack each other?
+      \end{problem}
+      \begin{wrapfigure}{r}{30.00mm}
+        \vspace*{-1.7\baselineskip}
+        \chessboard[
+          hlabel=false,
+          vlabel=false,
+          tinyboard,
+          setpieces={Kc6, Ka1, Kh4},
+          pgfstyle=cross,
+          shortenstart=0.5ex,
+          shortenend=0.5ex,
+          color=blue,
+          backfields={b5, c5, d5, b6, d6, b7, c7, d7, a2, b1, b2, h3, h5, g3, g4, g5}, 
+          showmover=false]
+      \end{wrapfigure}
+
+      We have 3 cases: the white king is in a corner, on a side, or in the middle.
+
+      The king is in corner, we have $60-4$ positions for the black king: $4 \times (64 - 4) = 240$.
+      
+      The king is on side: $24 \times (64 - 6) = 1392$.
+      
+      The king is in the middle: $36 \times (64 - 9) = 1980$.
+      
+      So total is $\fbox{3612}$.
+      \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercise 8\hspace{5cm} Challenge problem 1}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E8.} In the arrangement of letters and numerals below, by how many different paths can one spell $MATH$? Beginning at the $M$ in the middle, a path allows only moves from one letter to an adjacent (above, below, left, or right, but not diagonal) letter. One example of such a path is traced in the picture.
+        \begin{center}
+          \begin{tabular}{ccccc}
+              & \cellcolor{backgroundOrange}$H$ & $T$ & $H$ & \\
+            $H$ & \cellcolor{backgroundOrange}$T$ & \cellcolor{backgroundOrange}$A$ & $T$ & $H$ \\
+            $T$ & $A$ & \cellcolor{backgroundOrange}$M$ & $A$ & $T$ \\
+            $H$ & $T$ & $A$ & $T$ & $H$ \\
+              & $H$ & $T$ & $H$ &
+          \end{tabular}
+        \end{center}
+      \end{problem}
+      We have $4$ options to choose $A$. From each $A$ we have $3$ options for $T$. And for each $T$ we have $2$ options to choose $H$.
+      
+      The total numbers of path is $4 \times 3 \times 2 = 24$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C1.} All the numbers $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$ are written in a $3\times3$ array of squares, one number in each square, in such a way that if two numbers are consecutive then they occupy squares that share an edge. The numbers in the four corners add up to $18$. What is the number in the center?
+      \end{problem}
+      \begin{wrapfigure}{r}{18.00mm}
+        \begin{mplibcode}
+          u := 0.5cm;
+          fill (0u, 0u)--(0u, 1u)--(1u, 1u)--(1u, 0u)--cycle withcolor 0.7white;
+          fill (2u, 0u)--(2u, 1u)--(3u, 1u)--(3u, 0u)--cycle withcolor 0.7white;
+          fill (1u, 1u)--(1u, 2u)--(2u, 2u)--(2u, 1u)--cycle withcolor 0.7white;
+          fill (0u, 2u)--(0u, 3u)--(1u, 3u)--(1u, 2u)--cycle withcolor 0.7white;
+          fill (2u, 2u)--(2u, 3u)--(3u, 3u)--(3u, 2u)--cycle withcolor 0.7white;
+          for i := 0 upto 3:
+            Draw (0u, i*u)--(3u, i*u), (i*u, 0u)--(i*u, 3u);
+          endfor;
+        \end{mplibcode}
+      \end{wrapfigure}
+      Consecutive numbers share an edge. That means that it is possible to walk from $1$ to $9$ by single steps north, south, east, or west. Consequently, the squares in the diagram with different shades have different parity.
+
+      But since there are only four even numbers in the set, the five darker squares must contain the odd numbers, which sum to $1+3+5+7+9=25.$ Therefore, if the sum of the numbers in the corners is $18$, the number in the center must be~$\fbox{7}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problem 2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C2.} Each vertex of a cube is to be labeled with an integer $1$ through $8$, with each integer being used once, in such a way that the sum of the four numbers on the vertices of a face is the same for each face. Arrangements that can be obtained from each other through rotations of the cube are considered to be the same. How many different arrangements are possible?
+      \end{problem}
+      Note that the sum of the numbers on each face must be $18$, because $\dfrac{1+2+\cdots+8}{2}=18$.
+
+      So now consider the opposite edges (two edges that are parallel but not on the same face of the cube); they must have the same sum value too. Now think about the points $1$ and $8$. If they are not on the same edge, they must be endpoints of opposite edges, and we should have $1+X=8+Y$.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      However, this scenario would yield no solution for $[7,2]$, which is a contradiction. (Try drawing out the cube if it doesn't make sense to you.)
+    
+      The points $1$ and $8$ are therefore on the same side and all edges parallel must also sum to $9$.
+
+      Now we have $4$ parallel sides $1-8$, $2-7$, $3-6$, $4-5$. Thinking about $4$ endpoints, we realize they need to sum to $18$. It is easy to notice only $1-7-6-4$ and $8-2-3-5$ would work.
+
+      So if we fix one direction $1-8$ (or $8-1)$ all other $3$ parallel sides must lay in one particular direction. $(1-8,\ 7-2,\ 6-3,\ 4-5)$ or $(8-1,\ 2-7,\ 3-6,\ 5-4)$
+
+      Now, the problem is the same as arranging $4$ points in a two-dimensional square, which is $\dfrac{4!}{4}=\fbox{6}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problem 3}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C3.} A child builds towers using identically shaped cubes of different colors. How many different towers with a height $8$ cubes can the child build with $2$ red cubes, $3$ blue cubes, and $4$ green cubes? (One cube will be left out.)
+      \end{problem}
+      We can divide the problem into three cases, each representing one cube to be excluded:
+
+      \textbf{Case 1:} The red cube is excluded. This gives us the problem of arranging one red cube, three blue cubes, and four green cubes. The number of possible arrangements is $\dfrac{8!}{4!\cdot3!}=280$. Note that we do not need to multiply by the number of red cubes because there is no way to distinguish between the first red cube and the second.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Case 2:} The blue cube is excluded. This gives us the problem of arranging two red cubes, two blue cubes, and four green cubes. The number of possible arrangements is $\dfrac{8!}{2!\cdot2!\cdot4!}=420$.
+
+      \textbf{Case 3:} The green cube is excluded. This gives us the problem of arranging two red cubes, three blue cubes, and three green cubes. The number of possible arrangements is $\dfrac{8!}{2!\cdot3!\cdot3!}=560$.
+
+      Adding up the individual cases from above gives the answer as $280+420+560=\fbox{1260}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problem 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C4.} There are $10$ people standing equally spaced around a circle. Each person knows exactly $3$ of the other $9$ people: the $2$ people standing next to her or him, as well as the person directly across the circle. How many ways are there for the $10$ people to split up into $5$ pairs so that the members of each pair know each other?
+      \end{problem}
+
+      Consider the $10$ people to be standing in a circle, where two people opposite each other form a diameter of the circle.
+
+      Let us use casework on the number of pairs that form the diameter of the circle.
+
+      \textbf{Case 1:} $0$ diameters ---
+      There are $2$ ways: either $1$ pairs with $2$, $3$ pairs with $4$, and so on or $10$ pairs with $1$, $2$ pairs with $3$, etc.
+
+      \textbf{Case 2:} $1$ diameter ---
+      There are $5$ possible diameters to draw (everyone else pairs with the person next to them).
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Note that there cannot be $2$ or $4$ diameters since there would be one person on either side that will not have a pair adjacent to them. The only scenario forced is when the two people on either side would be paired up across a diameter. Thus, a contradiction will arise.
+
+      \textbf{Case 3:} $3$ diameters ---
+      There are $5$ possible sets of $3$ diameters to draw. Notice we are technically choosing the number of ways to choose a pair of two diameters that are neighbors to each other. This means we can choose the first diameter in the pair, and have only two diameters to choose from for the second in the pair. This means we have $5\times 2=10$ possibilities for choosing 5 neighboring diameters. However, notice that there are duplicates, so we divide the $10$ possibilities by $2$ to get $5$.
+
+      \textbf{Case 4:} $5$ diameters ---
+      There is only $1$ way.
+
+      In total, there are $2+5+5+1=\fbox{13}$ possible ways. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}
+%   \begin{mplibcode}
+%     u := 0.5cm;
+%     fill (1u, 0u)--(2u, 0u)--(2u, 1u)--(1u, 1u)--cycle withcolor 0.1white;
+%     fill (3u, 0u)--(4u, 0u)--(4u, 1u)--(3u, 1u)--cycle withcolor 0.1white;
+%     fill (6.5u, 0u)--(7.5u, 0u)--(7.5u, 1u)--(6.5u, 1u)--cycle withcolor 0.1white;
+%     Draw (0u, 0u)--(5u, 0u)--(5u, 1u)--(0u, 1u)--cycle, (6.5u, 0u)--(8.5u, 0u)--(8.5u, 1u)--(6.5u, 1u)--cycle, (1u, 0u)--(1u, 1u), (2u, 0u)--(2u, 1u), (3u, 0u)--(3u, 1u), (4u, 0u)--(4u, 1u), (7.5u, 0u)--(7.5u, 1u); 
+%     draw (5.2u, 0.5u)--(6.2u, 0.5u) dashed withdots penextrabold;
+%   \end{mplibcode}
+% \end{frame}
+
+\begin{frame}
+  Empty
+\end{frame}
+
+\begin{frame}{Problem 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{Problem 1.}
+
+      Let $x$ --- the largest number. Then other 5 are $x-1$, $x-2$, $x-3$, $x-4$, and $x-5$. So total is
+      \[ 6x - 15 = 2019. \]
+      $6x = 2019 + 15 = 2034$, $x = \fbox{378}$.
+
+      \vspace*{\baselineskip}
+      \textbf{Problem 2.}
+
+      Each rook is occupy one row and one column. So each column has exactly one rook, so the rook in the first column has $8$ possible rows to occupy, the rook in the second column has $7$ possible rows to occupy and so on.
+      \[ 8 \times 7 \times 6 \times \dots \times 2 \times 1 = 8! = \fbox{40{,}320}. \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Problem 3.}
+
+      A digit $A$ in units place is appeared in $6$ numbers (permutations of other $3$ digits), so the sum of all digits in the first place is $6 \times (1 + 2 + 3 + 4) = 60$. The same is applied for other places. So sum of all numbers are:
+      \[ 60{,}000 + 6{,}000 + 600 + 60 = \fbox{66{,}660}. \]
+      
+      \vspace*{\baselineskip}
+      \textbf{Problem 4.}
+
+      Case 1, $3$ women: $\dbinom{7}{3} \times \dbinom{4}{3} = \dfrac{7 \times 6 \times 5}{1 \times 2 \times 3} \times \dfrac{4}{1} = 35 \times 4 = 140$. 
+
+      Case 2, $4$ women: $\dbinom{7}{2} \times \dbinom{4}{4} = \dfrac{7 \times 6}{1 \times 2} \times 1 = 21$.
+
+      Total: $140 + 21 = \fbox{161}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 5}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Let's color the grid the following way:
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u := 0.5cm;
+          fill (1u, 1u)--(2u, 1u)--(2u, 2u)--(1u, 2u)--cycle withcolor 0.1white;
+          fill (3u, 1u)--(4u, 1u)--(4u, 2u)--(3u, 2u)--cycle withcolor 0.1white;
+          fill (5u, 1u)--(6u, 1u)--(6u, 2u)--(5u, 2u)--cycle withcolor 0.1white;
+          fill (7u, 1u)--(8u, 1u)--(8u, 2u)--(7u, 2u)--cycle withcolor 0.1white;
+          fill (1u, 3u)--(2u, 3u)--(2u, 4u)--(1u, 4u)--cycle withcolor 0.1white;
+          fill (3u, 3u)--(4u, 3u)--(4u, 4u)--(3u, 4u)--cycle withcolor 0.1white;
+          fill (5u, 3u)--(6u, 3u)--(6u, 4u)--(5u, 4u)--cycle withcolor 0.1white;
+          fill (7u, 3u)--(8u, 3u)--(8u, 4u)--(7u, 4u)--cycle withcolor 0.1white;
+          fill (1u, 5u)--(2u, 5u)--(2u, 6u)--(1u, 6u)--cycle withcolor 0.1white;
+          fill (3u, 5u)--(4u, 5u)--(4u, 6u)--(3u, 6u)--cycle withcolor 0.1white;
+          fill (5u, 5u)--(6u, 5u)--(6u, 6u)--(5u, 6u)--cycle withcolor 0.1white;
+          fill (7u, 5u)--(8u, 5u)--(8u, 6u)--(7u, 6u)--cycle withcolor 0.1white;
+          fill (1u, 7u)--(2u, 7u)--(2u, 8u)--(1u, 8u)--cycle withcolor 0.1white;
+          fill (3u, 7u)--(4u, 7u)--(4u, 8u)--(3u, 8u)--cycle withcolor 0.1white;
+          fill (5u, 7u)--(6u, 7u)--(6u, 8u)--(5u, 8u)--cycle withcolor 0.1white;
+          fill (7u, 7u)--(8u, 7u)--(8u, 8u)--(7u, 8u)--cycle withcolor 0.1white;
+          for i := 0 upto 9:
+            Draw (0u, i*u)--(9u, i*u), (i*u, 0u)--(i*u, 9u);
+          endfor;
+        \end{mplibcode}
+      \end{center}
+      Every figure must cover one black cell, so the max number of figures is $\fbox{16}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      The following example shows that 16 figures may fit into the grid.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u := 0.5cm;
+          for i := 0 upto 9:
+            draw (0u, i*u)--(9u, i*u) withcolor 0.7white;
+            draw (i*u, 0u)--(i*u, 9u) withcolor 0.7white;
+          endfor;
+          draw (0u, 0u)--(8u, 0u) penextrabold;
+          draw (0u, 2u)--(9u, 2u) penextrabold;
+          draw (0u, 4u)--(9u, 4u) penextrabold;
+          draw (0u, 6u)--(9u, 6u) penextrabold;
+          draw (1u, 8u)--(9u, 8u) penextrabold;
+          for i := 0 upto 4: 
+            for j := 0 upto 3:
+              draw (i*2u, j*2u)--(i*2u, j*2u+u) penextrabold;
+              draw (i*2u+u, j*2u+u)--(i*2u+u, j*2u+2u) penextrabold;
+              draw (i*2u, j*2u+u)--(i*2u+u, j*2u+u) penextrabold;
+            endfor;
+          endfor;
+
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

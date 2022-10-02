@@ -32,7 +32,7 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{definition}
-        If the number of outcomes is countable and \emph{if all outcomes have the same probability}, then \mbox{the~\textbf{probability}} of desired outcome is:
+        If the number of outcomes is countable and \emph{if all outcomes have the same probability}, then \mbox{the~\textbf{probability}} of the desired outcome is:
         \[ P = \frac{\text{(number of desired outcomes)}}{\text{(total number of events)}}. \]
         \vspace*{-1.5ex}
       \end{definition}
@@ -45,7 +45,7 @@
         \vspace*{-1.5ex}
       \end{definition}
 
-      Probabilities in any case are always between $0$ and $1$, inclusive.
+      Probabilities, in any case, are always between $0$ and $1$, inclusive.
 
       Probability is sometimes also given in percent:
       \[ 𝑃(\text{in percent}) = 𝑃(\text{as a decimal or fraction}) \times 100\%. \]
@@ -64,10 +64,10 @@
         \vspace{-1em}
         \includegraphics[width=0.25\textwidth]{03 - Probability/king-clip-art.png}
       \end{wrapfigure}
-      \mbox{A card that we got from the deck of cards} may not be both an ace and a king. So we have $4$ \emph{outcomes} of getting an ace and $4$ \emph{outcomes} of getting a king. The result number of \emph{desired outcomes} is $8$. The \emph{total number of possible outcomes} is $52$.
+      \mbox{A card that we got from the deck of cards} may not be both an ace and a king. So we have $4$ \emph{outcomes} of getting an ace and $4$ \emph{outcomes} of getting a king. The resulting number of \emph{desired outcomes} is $8$. The \emph{total number of possible outcomes} is $52$.
       The total probability is
       \[ P = \frac{4 + 4}{52} = \frac{8}{52} = \frac{2}{13}. \]
-      We also may count the probability in other way. The \emph{probability} of getting an ace is $4/52$ and the \emph{probability} of getting a king is also $4/52$. Since both cases are good for us, the total probability is
+      We also may count the probability in another way. The \emph{probability} of getting an ace is $4/52$ and the \emph{probability} of getting a king is also $4/52$. Since both cases are good for us, the total probability is
       \[ P = \frac{4}{52} + \frac{4}{52} = \frac{1}{13} + \frac{1}{13} = \frac{2}{13}. \]
     \end{column}
     \begin{column}{0.5\textwidth}
@@ -78,9 +78,9 @@
       \end{definition}
 
       \begin{problem}
-        What is the probability of choosing \emph{a multiple of $4$} or \emph{a multiple of $5$} from a numbers from $1$ to $100$?
+        What is the probability of choosing \emph{a multiple of $4$} or \emph{a multiple of $5$} from numbers from $1$ to $100$?
       \end{problem}
-      The probability of getting a multiple of $4$ is $25/100$, the probability of getting a multiple of $5$ is $20/100$. But there are multiples of $20$, which we counted twice. To make up for this case, we need to subtract the probability of getting a multiple of $20$, which is $5/100$. So total probability would be
+      The probability of getting a multiple of $4$ is $25/100$, and the probability of getting a multiple of $5$ is $20/100$. But there are multiples of $20$, which we counted twice. To make up for this case, we need to subtract the probability of getting a multiple of $20$, which is $5/100$. So total probability would be
       \[
         P = \frac{25}{100} + \frac{20}{100} - \frac{5}{100} = \frac{25 + 20 - 5}{100} = \frac{40}{100} = \frac{2}{5}.
       \]
@@ -116,7 +116,7 @@
       \begin{definition}
         The \textbf{conditional probability} of an event $E$ that depends on another event $F$ to happen is denoted 
         \[ P(E \mid F) \]
-        and is probability of $E$ to happen if we know that $F$ has already happened.
+        and is a probability of $E$ to happen if we know that $F$ has already happened.
       \end{definition}
       {\small We used that rule to solve the problem \emph{"throw a die and toss a coin"}.}
       \begin{definition}
@@ -142,11 +142,11 @@
       \[ P(\text{All outcomes}) = 1. \]
       \vspace*{-1em}
       \begin{problem}
-        What is the probability if throwing the dice and not to get $4$. 
+        What is the probability of throwing the dice and not to get $4$. 
       \end{problem}
       There are $5$ outcomes that are desired: $1$, $2$, $3$, $5$, and $6$. So total probability would be 
       \[ P(\text{not throwing $4$}) = 5 \cdot \frac{1}{6} = \frac{5}{6}. \]
-      On the other hand there is only one event that is not desired, so we can calculate the same probability as
+      On the other hand, there is only one event that is not desired, so we can calculate the same probability as
       \begin{multline*} 
         P(\text{not throwing $4$}) = \\
         = P(\text{all possible results}) - P(\text{throwing $4$}) = \\
@@ -155,7 +155,7 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{definition}
-        The \textbf{complement event} of a \emph{desired event $E$}, denoted as $\overline{E}$, is the event that $E$ does not occur. Since for any event we know whether it is desired or not
+        The \textbf{complement event} of a \emph{desired event $E$}, denoted as $\overline{E}$, is the event that $E$ does not occur. Since for any event, we know whether it is desired or not
         \[ P(\overline{E}) = 1 - P(E). \]
         \vspace*{-2.5ex} 
       \end{definition}
@@ -163,7 +163,7 @@
       \begin{problem}
         We are drawing $4$ cards from a full deck of cards. What is the probability to get \emph{at least one ace}?
       \end{problem}
-      If we try to solve the problem using the \emph{conditional probability} we find out that number of cases is pretty big. But we may count the probability to \emph{not get any ace}.
+      If we try to solve the problem using the \emph{conditional probability} we find out that the number of cases is pretty big. But we may count the probability to \emph{not get any ace}.
       \[ P (\text{no ace}) = \frac{48}{52} \cdot \frac{47}{51} \cdot \frac{46}{50} \cdot \frac{45}{49} = \frac{38916}{54145} \approx 72\%.\]\\[-1ex]
       And probability to get \emph{an ace with $4$ cards} is
       \[ P (\text{at least one ace}) = 1 - \frac{38916}{54145} = \frac{15229}{54145} \approx 28 \%. \]
@@ -179,11 +179,11 @@
       \end{problem}
       It is easier to calculate the probability that \emph{no two people share a birthday}. 
       
-      Les's start with the first guest. He doesn't share a birthday with anyone. So the probability is $1$.
+      Let's start with the first guest. He doesn't share a birthday with anyone. So the probability is $1$.
       
-      The second guest may share a birthday with the first guest with probability $364/365$. 
+      The second guest may share a birthday with the first guest with a probability $364/365$. 
       
-      The third one doesn't share a birthday with previous guests with probability $363/365$ and so on. 
+      The third one doesn't share a birthday with previous guests with a probability $363/365$ and so on. 
       
       For $n$ guests
       \begin{multline*}
@@ -197,13 +197,13 @@
          P(\text{there is a shared birthday}) = \\ 
          = 1 - P(\text{no shared birthday})
       \end{multline*}
-      we can calculate, using computer, the probability for any number of guests
+      we can calculate, using a computer, the probability for any number of guests
       \begin{center}
         \vspace*{-1ex}   
         \includegraphics[width = 0.80\textwidth]{03 - Probability/Birthday_Paradox.pdf}
         \vspace*{-1ex}   
       \end{center} 
-      So we may see that group of $23$ people has the probability of $50.7\%$ to have a shared birthday, and group of $70$ people has probability of $99.9\%$ to~share a birthday.
+      So we may see that group of $23$ people has the probability of $50.7\%$ to have a shared birthday, and a group of $70$ people has a probability of $99.9\%$ to~share a birthday.
     \end{column}
   \end{columns}
 \end{frame}
@@ -216,7 +216,7 @@
         Mala and Joslyn number the cards in a deck of playing cards from $1$ to $52$. Mala and Joslyn each draw a card and show them to each other. What is the probability that the sum of the numbers on the cards is \emph{odd}? Express your answer as a common fraction.
       \end{problem}
 
-      {\color{textBlue} Solution 1:} There are two ways for the sum to be \emph{odd}:  Mala draws an odd card and Joslyn draws an even, or vice versa.  If the both draw even or odd cards, the resulting sum is even.
+      {\color{textBlue} Solution 1:} There are two ways for the sum to be \emph{odd}:  Mala draws an odd card and Joslyn draws an even, or vice versa.  If both draw even or odd cards, the resulting sum is even.
 
       Using the \emph{addition rule for probability}, we add the probabilities from the two scenarios that lead to an odd sum.  Namely, 
       \[ P(\text{odd sum}) = P\left(\text{\parbox{5.3em}{Mala odd\\Joslyn even}}\right) + P\left(\text{\parbox{4.8em}{Mala even\\Joslyn odd}}\right). \]
@@ -232,7 +232,7 @@
       \end{multline*}
       }
       \begin{example}
-        The initial intuition is that probability should be $1/2$. But this is not a case, because once you draw the first card, the probabilities to draw odd/even card has changed.  
+        The initial intuition is that probability should be $1/2$. But this is not the case, because once you draw the first card, the probability to draw odd/even card has changed.  
       \end{example}
     \end{column}
   \end{columns}
@@ -280,21 +280,32 @@
 \begin{frame}{Exercises}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      \setlength{\leftmargini}{0cm}
       \begin{enumerate}
-        \item When a pair of $6$-sided dice are rolled, what is the probability that the numbers rolled sum to $7$?
-        \item What is the probability of being dealt a $5$-card poker hand that is a royal flush (\emph{10-Jack- Queen-King-Ace}) of the same suit?
-        \item In blackjack, you automatically win and get a larger payout if you are dealt two cards, one of which is an ace, and the other is a \emph{10, jack, queen, or king}.  What is the probability of being dealt such a two-card hand?
-        \item With the score tied, a player who makes $50\%$ of her free throws is fouled while attempting a $3$-point shot at the buzzer, and earns $3$ free throws.  If she makes at least one shot, her team will win in regulation time.  What is the probability that she makes at least one of her free throws?
+        \item When a pair of $6$-sided dice are rolled, what is the probability that the numbers rolled sum to $8$?
+        \item If you flip a fair coin $5$ times, what is the probability that you will flip a total of $3$ heads and $2$ tails?
+        \item Each of two boxes contains three chips numbered $1$, $2$, $3$. A chip is drawn randomly from each box and the numbers on the two chips are multiplied. What is the probability that their product is even? %AMC 8 2015, Problem 7
+        \item A box contains five cards, numbered $1$, $2$, $3$, $4$, and $5$. Three cards are selected randomly without replacement from the box. What is the probability that 4 is the largest value selected? %AMC 8 2017, Problem 10
+        \item \begin{minipage}[t]{\textwidth-6em}
+          Abby, Bridget, and four of their classmates will be seated in two rows of three for a group picture, as shown.
+        \end{minipage}
+        \begin{minipage}[t]{3.5em}
+          \quad X\ X\ X
+
+          \quad X\ X\ X
+        \end{minipage}
+
+        If the seating positions are assigned randomly, what is the probability that Abby and Bridget are adjacent to each other in the same row or the same column? %AMC 8 2018, problem 11
         \seti
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
+      \setlength{\leftmargini}{0cm}
       \begin{enumerate}
         \conti
-        \item If you flip a fair coin $5$ times, what is the probability that you will flip a total of $3$ heads and $2$ tails?
-        \item I have $100$ marbles:  $20$ red, $40$ blue, $30$~green, $10$ black.  If I pick a marble, and then a second marble without replacing the first one, what is the probability that I will select a red marble and then a blue marble.
-        \item If I start with the same $100$ marbles as in question {\color{darkOrange} 6}, and keep picking until no marbles remain, what is the probability that the last marble chose will be blue?
-        \item If the missing digit $A$ in the number $579A6$ is chosen at random, what is the probability that the number is divisible by $3$?
+        \item Two different numbers are randomly selected from the set $\{ - 2,\ -1,\ 0,\ 3,\ 4,\ 5\}$ and multiplied together. What is the probability that the product is $0$? %AMC 8 2016, Problem 13
+        \item On a beach $50$ people are wearing sunglasses and $35$ people are wearing caps. Some people are wearing both sunglasses and caps. If one of the people wearing a cap is selected at random, the probability that this person is also wearing sunglasses is $\dfrac{2}{5}$. If instead, someone wearing sunglasses is selected at random, what is the probability that this person is also wearing a cap? %AMC 8 2019, problem 15
+        \item A top hat contains $3$ red chips and $2$ green chips. Chips are drawn randomly, one at a time without replacement, until all $3$ of the reds are drawn or until both green chips are drawn. What is the probability that the $3$ reds are drawn? %AMC 8 2016, Problem 21
       \end{enumerate}
     \end{column}
   \end{columns}
@@ -303,33 +314,75 @@
 \begin{frame}{Challenge problems}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      {\small
       \begin{enumerate}
-        \item During the 2021 NBA playoffs, Giannis was a $50\%$ free throw shooter.  Bucking that trend, in the clinching game of the NBA finals, he made $17$ of his first $18$ free throws.  What is the probability that a $50\%$ shooter could accomplish this?  
-        
-        \emph{Note that this problem is equivalent to asking what is the probability of tossing heads $17$-of-$18$ times when flipping a fair coin.}
-        \item On the TV show “Let’s Make a Deal,” there were $3$ doors.  Behind one door was a new car.  Behind the other two doors there were goats.  The contestant initially picks a door.  The host, Monte Hall, knows where the car is, and following the contestant’s guess, he always opens a door the contestant didn’t pick, and that doesn’t have the car behind it, revealing a goat, and leaving two doors unopened.  At this point, he asks the contestant if they want to keep their original guess, or switch to the other door. 
-        
-        What is the probability of winning the car if you switch? 
-        What is the probability of winning if you keep your original guess? Should the contestant switch?
+        \item Real numbers $x$ and $y$ are chosen independently and uniformly at random from the interval $[0,\ 1]$. What is the probability that their difference is less than $0{.}5$?
+        \item A radio program has a quiz consisting of $3$ multiple-choice questions, each with $3$ choices. A contestant wins if he or she gets $2$ or more of the questions right. The contestant answers randomly to each question. What is the probability of winning? %AMC 10b 2017, Problem 9
+        \item When $7$ fair standard $6$-sided dice are thrown, the probability that the sum of the numbers on the top faces is $10$ can be written as $\dfrac{n}{6^{7}}$, where $n$ is a positive integer. What is $n$? % AMC 10a 2018, Problem 11
         \seti
       \end{enumerate}
-      }
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \conti
-        \item A 3-legged creature has an unorganized sock drawer with $4$ red socks, $6$ blue socks and $8$ yellow socks.
-        \begin{center}
-          \vspace*{-1ex}   
-          \includegraphics[width = 0.80\textwidth]{03 - Probability/3-leg-creature.png}
-          \vspace*{-1ex}   
-        \end{center} 
-        The creature reaches into the sock drawer without looking and pulls out three random socks.  What is the probability that he pulls out a matching pair of $3$ socks?
+        \item A number $m$ is randomly selected from the set $\{11,\ 13,\ 15,\ 17,\ 19\}$, and a number $n$ is randomly selected from $\{1999,\ 2000,\ 2001,\ \ldots,\ 2018\}$. What is the probability that $m^n$ has a units digit of $1$? %AMC 10a 2018, Problem 19
       \end{enumerate}
     \end{column}
   \end{columns}
 \end{frame}
+
+% \begin{frame}{Exercises}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item When a pair of $6$-sided dice are rolled, what is the probability that the numbers rolled sum to $7$?
+%         \item What is the probability of being dealt a $5$-card poker hand that is a royal flush (\emph{10-Jack- Queen-King-Ace}) of the same suit?
+%         \item In blackjack, you automatically win and get a larger payout if you are dealt two cards, one of which is an ace, and the other is a \emph{10, jack, queen, or king}.  What is the probability of being dealt such a two-card hand?
+%         \item With the score tied, a player who makes $50\%$ of her free throws is fouled while attempting a $3$-point shot at the buzzer, and earns $3$ free throws.  If she makes at least one shot, her team will win in regulation time.  What is the probability that she makes at least one of her free throws?
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item If you flip a fair coin $5$ times, what is the probability that you will flip a total of $3$ heads and $2$ tails?
+%         \item I have $100$ marbles:  $20$ red, $40$ blue, $30$~green, $10$ black.  If I pick a marble, and then a second marble without replacing the first one, what is the probability that I will select a red marble and then a blue marble.
+%         \item If I start with the same $100$ marbles as in question {\color{darkOrange} 6}, and keep picking until no marbles remain, what is the probability that the last marble chose will be blue?
+%         \item If the missing digit $A$ in the number $579A6$ is chosen at random, what is the probability that the number is divisible by $3$?
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       {\small
+%       \begin{enumerate}
+%         \item During the 2021 NBA playoffs, Giannis was a $50\%$ free throw shooter.  Bucking that trend, in the clinching game of the NBA finals, he made $17$ of his first $18$ free throws.  What is the probability that a $50\%$ shooter could accomplish this?  
+        
+%         \emph{Note that this problem is equivalent to asking what is the probability of tossing heads $17$-of-$18$ times when flipping a fair coin.}
+%         \item On the TV show “Let’s Make a Deal,” there were $3$ doors.  Behind one door was a new car.  Behind the other two doors there were goats.  The contestant initially picks a door.  The host, Monte Hall, knows where the car is, and following the contestant’s guess, he always opens a door the contestant didn’t pick, and that doesn’t have the car behind it, revealing a goat, and leaving two doors unopened.  At this point, he asks the contestant if they want to keep their original guess, or switch to the other door. 
+        
+%         What is the probability of winning the car if you switch? 
+%         What is the probability of winning if you keep your original guess? Should the contestant switch?
+%         \seti
+%       \end{enumerate}
+%       }
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item A 3-legged creature has an unorganized sock drawer with $4$ red socks, $6$ blue socks and $8$ yellow socks.
+%         \begin{center}
+%           \vspace*{-1ex}   
+%           \includegraphics[width = 0.80\textwidth]{03 - Probability/3-leg-creature.png}
+%           \vspace*{-1ex}   
+%         \end{center} 
+%         The creature reaches into the sock drawer without looking and pulls out three random socks.  What is the probability that he pulls out a matching pair of $3$ socks?
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
 % \begin{frame}{Team attack problems}
 %   \begin{columns}[T]

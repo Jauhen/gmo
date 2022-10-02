@@ -1,0 +1,97 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{colortbl}
+\usepackage{chessboard}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Probability solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Title}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{mplibcode}
+        u := 0.5cm;
+        color col;
+        for i := 0 upto 9:
+          for j := 0 upto 9:
+            col := rouge;
+            if (i - j) mod 4 == 1:
+              col := vert;
+            elseif (i - j) mod 4 == 2:
+              col := bleu;
+            elseif (i - j) mod 4 == 3:
+              col := jaune;
+            fi;
+            fill (u*i, u*j)--(u*i+u, u*j)--(u*i+u, u*j+u)--(u*i, u*j+u)--cycle withcolor col;
+          endfor;
+        endfor;
+        for i := 0 upto 10:
+          draw (0u, i*u)--(10u, i*u) withcolor 0.7white;
+          draw (i*u, 0u)--(i*u, 10u) withcolor 0.7white;
+        endfor;
+      \end{mplibcode}
+      \vspace*{0.5cm}
+      \begin{mplibcode}
+        u := 0.5cm;
+        draw (0u, 0u)--(2u, 0u)--(2u, 2u)--(1u, 2u)--(1u, 1u)--(0u, 1u)--cycle;
+        draw (1u, 0u)--(1u, 1u)--(2u, 1u);
+      \end{mplibcode}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{mplibcode}
+        u := 0.5cm;        
+        for i := 0 upto 10:
+          draw (0u, i*u)--(10u, i*u) withcolor 0.7white;
+          draw (i*u, 0u)--(i*u, 10u) withcolor 0.7white;
+        endfor;
+        for i := 0 upto 10:
+          draw (i*u, 10u)--(i*u, 2u) penextrabold;
+        endfor;
+        draw (0u, 10u)--(10u, 10u) penextrabold;
+        draw (0u, 6u)--(10u, 6u) penextrabold;
+        draw (0u, 2u)--(10u, 2u) penextrabold;
+        draw (0u, 1u)--(8u, 1u) penextrabold;
+        draw (0u, 0u)--(8u, 0u) penextrabold;
+        draw (0u, 2u)--(0u, 0u) penextrabold;
+        draw (4u, 2u)--(4u, 0u) penextrabold;
+        draw (8u, 2u)--(8u, 0u) penextrabold;
+      \end{mplibcode}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

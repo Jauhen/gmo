@@ -22,68 +22,209 @@
 \begin{document}
 \maketitle
 
-\begin{frame}{Title}
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{mplibcode}
+%         u := 0.5cm;
+%         color col;
+%         for i := 0 upto 9:
+%           for j := 0 upto 9:
+%             col := rouge;
+%             if (i - j) mod 4 == 1:
+%               col := vert;
+%             elseif (i - j) mod 4 == 2:
+%               col := bleu;
+%             elseif (i - j) mod 4 == 3:
+%               col := jaune;
+%             fi;
+%             fill (u*i, u*j)--(u*i+u, u*j)--(u*i+u, u*j+u)--(u*i, u*j+u)--cycle withcolor col;
+%           endfor;
+%         endfor;
+%         for i := 0 upto 10:
+%           draw (0u, i*u)--(10u, i*u) withcolor 0.7white;
+%           draw (i*u, 0u)--(i*u, 10u) withcolor 0.7white;
+%         endfor;
+%       \end{mplibcode}
+%       \vspace*{0.5cm}
+%       \begin{mplibcode}
+%         u := 0.5cm;
+%         draw (0u, 0u)--(2u, 0u)--(2u, 2u)--(1u, 2u)--(1u, 1u)--(0u, 1u)--cycle;
+%         draw (1u, 0u)--(1u, 1u)--(2u, 1u);
+%       \end{mplibcode}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{mplibcode}
+%         u := 0.5cm;        
+%         for i := 0 upto 10:
+%           draw (0u, i*u)--(10u, i*u) withcolor 0.7white;
+%           draw (i*u, 0u)--(i*u, 10u) withcolor 0.7white;
+%         endfor;
+%         for i := 0 upto 10:
+%           draw (i*u, 10u)--(i*u, 2u) penextrabold;
+%         endfor;
+%         draw (0u, 10u)--(10u, 10u) penextrabold;
+%         draw (0u, 6u)--(10u, 6u) penextrabold;
+%         draw (0u, 2u)--(10u, 2u) penextrabold;
+%         draw (0u, 1u)--(8u, 1u) penextrabold;
+%         draw (0u, 0u)--(8u, 0u) penextrabold;
+%         draw (0u, 2u)--(0u, 0u) penextrabold;
+%         draw (4u, 2u)--(4u, 0u) penextrabold;
+%         draw (8u, 2u)--(8u, 0u) penextrabold;
+%       \end{mplibcode}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\begin{frame}{Exercises 1-3}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \begin{mplibcode}
-        u := 0.5cm;
-        color col;
-        for i := 0 upto 9:
-          for j := 0 upto 9:
-            col := rouge;
-            if (i - j) mod 4 == 1:
-              col := vert;
-            elseif (i - j) mod 4 == 2:
-              col := bleu;
-            elseif (i - j) mod 4 == 3:
-              col := jaune;
-            fi;
-            fill (u*i, u*j)--(u*i+u, u*j)--(u*i+u, u*j+u)--(u*i, u*j+u)--cycle withcolor col;
-          endfor;
-        endfor;
-        for i := 0 upto 10:
-          draw (0u, i*u)--(10u, i*u) withcolor 0.7white;
-          draw (i*u, 0u)--(i*u, 10u) withcolor 0.7white;
-        endfor;
-      \end{mplibcode}
-      \vspace*{0.5cm}
-      \begin{mplibcode}
-        u := 0.5cm;
-        draw (0u, 0u)--(2u, 0u)--(2u, 2u)--(1u, 2u)--(1u, 1u)--(0u, 1u)--cycle;
-        draw (1u, 0u)--(1u, 1u)--(2u, 1u);
-      \end{mplibcode}
+      \begin{problem}
+        \textbf{E1.} When a pair of $6$-sided dice are rolled, what is the probability that the numbers rolled sum to $8$?
+      \end{problem}
+      We can get $8$ in $5$ cases: $2-6$, $3-5$, $4-4$, $5-3$, $6-2$. The total number of possible cases is $6 \times 6 = 36$, so the probability is \fbox{$\dfrac{5}{36}$}.
+      \begin{problem}
+        \textbf{E2.} If you flip a fair coin $5$ times, what is the probability that you will flip a total of $3$ heads and $2$ tails?
+      \end{problem}
+      We can choose $2$ coins that flip tails in $\dbinom{5}{2} = \dfrac{5 \cdot 4}{1 \cdot 2} = 10$. The total number of possible combinations is $2^5 = 32$. So the probability is $\dfrac{10}{32}=$ \fbox{$\dfrac{5}{16}$}.
     \end{column}
     \begin{column}{0.5\textwidth}
-      \begin{mplibcode}
-        u := 0.5cm;        
-        for i := 0 upto 10:
-          draw (0u, i*u)--(10u, i*u) withcolor 0.7white;
-          draw (i*u, 0u)--(i*u, 10u) withcolor 0.7white;
-        endfor;
-        for i := 0 upto 10:
-          draw (i*u, 10u)--(i*u, 2u) penextrabold;
-        endfor;
-        draw (0u, 10u)--(10u, 10u) penextrabold;
-        draw (0u, 6u)--(10u, 6u) penextrabold;
-        draw (0u, 2u)--(10u, 2u) penextrabold;
-        draw (0u, 1u)--(8u, 1u) penextrabold;
-        draw (0u, 0u)--(8u, 0u) penextrabold;
-        draw (0u, 2u)--(0u, 0u) penextrabold;
-        draw (4u, 2u)--(4u, 0u) penextrabold;
-        draw (8u, 2u)--(8u, 0u) penextrabold;
-      \end{mplibcode}
+      \begin{problem}
+        \textbf{E3.} Each of two boxes contains three chips numbered $1$, $2$, $3$. A chip is drawn randomly from each box and the numbers on the two chips are multiplied. What is the probability that their product is even?
+      \end{problem}
+      Let's do complimentary counting: the product is odd if both multiplicands are odd. The probability that a chip from the first box odd is $\dfrac{2}{3}$, the same for the second box. So the probability that two chips are odd is $\dfrac{2}{3} \times \dfrac{2}{3} = \dfrac{4}{9}$. The probability that the product is even is $1 - \dfrac{4}{9} =$ \fbox{$\dfrac{5}{9}$}.
     \end{column}
   \end{columns}
 \end{frame}
 
-% \begin{frame}{Title}
-%   \begin{columns}[T]
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
+\begin{frame}{Exercises 4-5}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E4.} A box contains five cards, numbered $1$, $2$, $3$, $4$, and $5$. Three cards are selected randomly without replacement from the box. What is the probability that $4$ is the largest value selected?
+      \end{problem}
+      There are $\dbinom{5}{3}$ possible groups of cards that can be selected. If $4$ is the largest card selected, then the other two cards must be either $1$, $2$, or $3$, for a~total $\dbinom{3}{2}$ groups of cards. Then the probability is just ${\frac{{\dbinom{3}{2}}}{{\dbinom{5}{3}}}} = \boxed{\frac{3}{10}}$
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E5.} Abby, Bridget, and four of their classmates will be seated in two rows of three for a group picture, as shown.
+        \begin{center}
+          \vspace*{-\baselineskip}
+          \quad X\ X\ X
+  
+          \quad X\ X\ X  
+        \end{center}
+        If the seating positions are assigned randomly, what is the probability that Abby and Bridget are adjacent to each other in the same row or the same column?
+      \end{problem}
+      We can ignore the $4$ other classmates because they aren't relevant. We can treat Abby and Bridget as a pair, so there are $\dbinom{6}{2}=15$ total ways to seat them. If they sit in the same row, there are $2\cdot2=4$ ways to seat them. If they sit in the same column, there are $3$ ways to seat them. Thus our answer is $\dfrac{4+3}{15} = \boxed{\dfrac{7}{15}}$
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 6-7}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E6.} Two different numbers are randomly selected from the set $\{ - 2,\ -1,\ 0,\ 3,\ 4,\ 5\}$ and multiplied together. What is the probability that the product is~$0$?
+      \end{problem}
+      The product can only be $0$ if one of the numbers is~$0$. Once we chose $0$, there are $5$ ways we can choose the second number, or $6-1$. There are $\dbinom{6}{2}$ ways we can choose $2$ numbers randomly, and that is $15$. So, $\dfrac{5}{15}=\dfrac{1}{3}$ so the answer is $\boxed{\dfrac{1}{3}}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E7.} On a beach $50$ people are wearing sunglasses and $35$ people are wearing caps. Some people are wearing both sunglasses and caps. If one of the people wearing a cap is selected at random, the probability that this person is also wearing sunglasses is $\dfrac{2}{5}$. If instead, someone wearing sunglasses is selected at random, what is the probability that this person is also wearing a cap?
+      \end{problem}
+      The number of people wearing caps and sunglasses is $\dfrac{2}{5}\cdot35=14$. So then $14$ people out of the $50$ people wearing sunglasses also have caps. $\dfrac{14}{50}=\boxed{\frac{7}{25}}$
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercise 8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E8.} A top hat contains $3$ red chips and $2$ green chips. Chips are drawn randomly, one at a time without replacement, until all $3$ of the reds are drawn or until both green chips are drawn. What is the probability that the $3$ reds are drawn? 
+      \end{problem}
+      Assume that after you draw the three red chips in a row without drawing both green chips, you continue drawing for the next turn. The last/fifth chip that is drawn must be a green chip because if both green chips were drawn before, we would've already completed the game. So technically, the problem is asking for the probability that the "fifth~draw" is a green chip. This probability is symmetric to the probability that the first chip drawn is green, which is $\dfrac{2}{5}$. So the probability is~$\boxed{\frac{2}{5}}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C1.} Real numbers $x$ and $y$ are chosen independently and uniformly at random from the interval $[0,\ 1]$. What is the probability that their difference is less than $0{.}5$?
+      \end{problem}
+      Let's draw our points on the Cartesian plane and color all points whose coordinates difference is less that $0{.}5$.
+      \begin{center}
+        \vspace*{-\baselineskip}
+        \leavevmode
+        \begin{mplibcode}
+          u := 1cm;
+          fill (0u, 0u)--(1u, 0u)--(2u, 1u)--(2u, 2u)--(1u, 2u)--(0u, 1u)--cycle withcolor 0.7white;
+          draw (2u, 0u)--(2u, 2u)--(0u, 2u);
+          drawarrow (-0.5u, 0u)--(2.7u, 0u) pensemibold;
+          drawarrow (0.u, -0.5u)--(0u, 2.7u) pensemibold;
+          label.llft("$0$", (0u, 0u)); 
+          label.lft("$1$", (0u, 2u)); 
+          label.bot("$1$", (2u, 0u)); 
+          label.llft("$x$", (2.7u, 0u) shifted (0, -2)); 
+          label.llft("$y$", (0u, 2.7u) shifted (-2, 0)); 
+        \end{mplibcode}
+      \end{center}
+      The ratio of the shaded region area to the total area of the square is $\boxed{\dfrac{3}{4}}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C2.} A radio program has a quiz consisting of $3$ multiple-choice questions, each with $3$ choices. A contestant wins if he or she gets $2$ or more of the questions right. The contestant answers randomly to each question. What is the probability of winning?
+      \end{problem}
+      There are two ways the contestant can win.
+
+      \textbf{Case 1}: The contestant guesses all three right. This can only happen $\dfrac{1}{3} \cdot \dfrac{1}{3} \cdot \dfrac{1}{3} = \dfrac{1}{27}$ of the time.
+
+      \textbf{Case 2}: The contestant guesses only two right. We pick one of the questions to get wrong, $3$, and this can happen $\dfrac{1}{3} \cdot \dfrac{1}{3} \cdot \dfrac{2}{3}$ of the time. Thus, $\dfrac{2}{27} \cdot 3 = \dfrac{6}{27}$.
+
+      So, in total the two cases combined equals $\dfrac{1}{27} + \dfrac{6}{27}= \boxed{\dfrac{7}{27}}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 3-4}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{problem}
+        \textbf{C3.} When $7$ fair standard $6$-sided dice are thrown, the probability that the sum of the numbers on the top faces is $10$ can be written as $\dfrac{n}{6^{7}}$, where $n$ is a positive integer. What is $n$?
+      \end{problem}
+      The minimum number that can be shown on the face of a die is $1$, so the least possible sum of the top faces of the 7 dice is $7$.
+
+      In order for the sum to be exactly $10$, 1 to 3 dices numbers on the top face must be increased by a total of $3$.
+
+      There are 3 ways to do so: $3$, $2+1$, and $1+1+1$
+
+      There are $7$ for Case 1, $7\cdot 6 = 42$ for Case 2, and $\frac{7\cdot 6\cdot 5}{3!} = 35$ for Case 3.
+
+      Therefore, the answer is $7+42+35 = \boxed {84}$
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \begin{problem}
+        \textbf{C4.} A number $m$ is randomly selected from the set $\{11,\ 13,\ 15,\ 17,\ 19\}$, and a number $n$ is randomly selected from $\{1999,\ 2000,\ 2001,\ \ldots,\ 2018\}$. What is the probability that $m^n$ has a units digit of $1$?
+      \end{problem}
+      When a number's unit's digit is $1$, then any power to this number will also end in $1$ (since $1^{n}$ for any $n$ is always $1$), so we have $20$ choices for $11$.
+
+      When a number's unit's digit is $3$, then $3^{4n}$ for any $n$ will produce a number ending with $1$. So, $20 \div 4 = 5$ choices for $13$.
+
+      $5^{n}$ always ends in $5$, so there are $0$ possibilities for $15$.
+
+      When a number's unit's digit is $7$, then this is also the same thing with $3$, so we have $5$ choices.
+
+      When a number's unit's digit is $9$, then $9^{2n}$ will produce a number ending in $1$, so we have $20 \div 2 = 10$ possibilities.
+
+      Hence, we have a total of $5 \cdot 20 = 100$ ways, so the probability is $\dfrac{20+5+0+5+10}{100} = \dfrac {40}{100} = \boxed{\dfrac{2}{5}}$.
+    \end{column}
+  \end{columns}
+\end{frame}
 
 % \begin{frame}{Title}
 %   \begin{columns}[T]

@@ -73,11 +73,18 @@
       \begin{problem}
         On an island, there are $99$ citizens, and everyone is or arguer or yeasayer. Everyone has been asked, in order, who there is more of arguers or yeasayers. Everyone, except the first one, responded this way: a yeasayer responded the same way as the previous islander; the arguer responded contrary to the previous answer. As a result, $75$ islanders responded incorrectly. Is it possible to determine who there are more of arguers or yeasayers?
       \end{problem}
-      Every time we asks arguer, the response changed to
+      Every time we ask an arguer, the response changed from a previous response. So if we have more than $49$ arguers, the answer has to be changed at least $49$ times. That means we can have at least $25$ answers that there are more arguers than yeasayers, so we have at most $74$ incorrect answers. \emph{So it isn't possible to have more arguers than yeasayers.}
       
     \end{column}
     \begin{column}{0.5\textwidth}
-      
+      On the other side, if we have at $x$ arguers, and $99-x$ yeasayers ($x \leq 49$), when we start from an arguer, we will have $\lceil x/2 \rceil$ arguers to say the truth, and $\lfloor x/2 \rfloor$ to lie. So if we put $75 - \lfloor x/2 \rfloor$ yeasayers after the second arguer, and the rest after the first arguer, we will have $75$ islanders to answer incorrectly. \emph{So it is possible to have more yeasayers than arguers.}
+      \begin{gather*}
+        99 - x \geq 75 - \lfloor x/2 \rfloor,\\
+        24 \geq x - \lfloor x/2 \rfloor,\\
+        24 \geq \lceil x/2 \rceil,\\
+        49 \geq x.    
+      \end{gather*}
+      $\lceil y \rceil$ is the smallest integer greater or equal to $y$ and $\lfloor y \rfloor$ is the largest integer smaller or equal to $y$. For example $\lceil 3.5 \rceil = 4$, $\lfloor 3.5 \rfloor = 3$, $\lceil 5 \rceil = \lfloor 5 \rfloor = 5$. So $\lceil y/2 \rceil + \lfloor y/2 \rfloor = y$ for any positive integer $y$.
     \end{column}
   \end{columns}
 \end{frame}
@@ -88,21 +95,72 @@
       \begin{problem}
         On the cube's vertices, there are $8$ numbers. For any two parallel edges, the sum of numbers is the same. How many of these $8$ numbers can have different values? (Show all options on how many different numbers can be and prove there are no more options.)
       \end{problem}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      
-    \end{column}
-  \end{columns}
-\end{frame}
+      Let's mark the numbers on the vertices $x$, $y$, $z$, $v$, and $x'$, $y'$, $z'$, $v'$ as show.
 
-\begin{frame}{Problem 40}
-  \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-      \begin{problem}
-        Through a point inside an equilateral triangle, we have drawn three lines parallel to the sides of the triangle. Then we measured the areas of the six pieces we got. Can these areas have exactly three different values?
-      \end{problem}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u := 1cm;
+          pair A, B, C, D, Ai, Bi, Ci, Di;
+          A := origin;
+          B := (2u, 0u);
+          Ai := (0u, 2u);
+          D := 1.5u*dir(30);
+          C := D + B - A;
+          Bi := B + Ai - A;
+          Ci := Bi + C - B;
+          Di := Ai + Ci - Bi;
+          Draw A--B--C--Ci--Di--Ai--A, Ai--Bi--Ci, Bi--B;
+          draw A--D--C dashed evenly;
+          draw D--Di dashed evenly;
+          label.llft("$x$", A);
+          label.bot("$y$", B);
+          label.rt("$y'$", C);
+          label.ulft("$x'$", D);
+          label.lft("$v$", Ai);
+          label.lrt("$z$", Bi);
+          label.urt("$z'$", Ci);
+          label.top("$v'$", Di);
+        \end{mplibcode}
+      \end{center}
     \end{column}
     \begin{column}{0.5\textwidth}
+      For the square $x$, $y$, $z$, $v$ we got
+      \[ x + y = v + z,\quad x + v = y + z.\]
+      Summing and subtracting them together we got
+      \begin{align*}
+        2x + y + v = 2z + v + y \ \ &\Rightarrow \ \ x = z,\\
+        y - v = v - y \ \ &\Rightarrow \ \ y = v.
+      \end{align*} 
+      That means that any two points on a diagonal of a side should be the same, so we may have at most $2$ different values.
+      An example of $2$ different values is shown below.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u := 0.6cm;
+          pair A, B, C, D, Ai, Bi, Ci, Di;
+          A := origin;
+          B := (2u, 0u);
+          Ai := (0u, 2u);
+          D := 1.5u*dir(30);
+          C := D + B - A;
+          Bi := B + Ai - A;
+          Ci := Bi + C - B;
+          Di := Ai + Ci - Bi;
+          Draw A--B--C--Ci--Di--Ai--A, Ai--Bi--Ci, Bi--B;
+          draw A--D--C dashed evenly;
+          draw D--Di dashed evenly;
+          label.llft("$1$", A);
+          label.bot("$2$", B);
+          label.rt("$1$", C);
+          label.ulft("$2$", D);
+          label.lft("$2$", Ai);
+          label.lrt("$1$", Bi);
+          label.urt("$2$", Ci);
+          label.top("$1$", Di);
+        \end{mplibcode}
+      \end{center}
+      And obviously, we can only have all $8$ numbers to have the same value. So the answer is $1$ or $2$ different values.
     \end{column}
   \end{columns}
 \end{frame}

@@ -1,0 +1,197 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{colortbl}
+\usepackage{chessboard}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+\DeclareMathOperator{\lcm}{lcm}
+
+\usetheme{graham}
+
+\title{Number Theory 101 solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+% \begin{frame}{Exercises\hspace*{0.35\textwidth}Challenge Problems}
+%     \begin{columns}[T]
+%       \begin{column}{0.5\textwidth}
+%         \begin{enumerate}
+%           \item What is the remainder when $301 \times 349$ is divided by $9$?
+%           \item Find the GCD and LCM of $42$ and $98$.
+%           \item The GCD of two numbers $A$ and $B$ is $7$. What are possible values of GCD of $15 \cdot A$ and $35 \cdot B$?
+%           \item The numbers $6545$ can be written as the product of a pair of positive two-digit integers. What are these two integers?
+%           \item What is the smallest prime factor of $11^7 + 7^5$?
+%           \item The four digit number $A55B$ is divisible by $36$. What is the sum of $A$ and $B$?
+%           \item What is the sum of the digits of $\dfrac{10^{25}+8}{9}$?
+%           \item Find the GCD of $2n+13$ and $n+7$ by Euclid's algorithm.
+%         \end{enumerate}
+%       \end{column}
+%       \begin{column}{0.5\textwidth}
+%         \begin{enumerate}
+%           \item The positive integers $A$, $B$, $A-B$, and $A+B$ are all prime numbers. What is the sum of these four primes?
+%           \item Show that every prime greater than $3$ must be of the form $6n+1$ or $6n-1$ for a positive integer $n$.
+%           \item If $p$, $q$ and $r$ are prime numbers such that their product is $19$ times their sum, find $p^2 + q^2 + r^2$.
+%           \item Let $a$, $b$, $c$, and $d$ be positive integers such that $\gcd(a,\ b)=24$, $\gcd(b,\ c)=36$, $\gcd(c,\ d)=54$, and $70<\gcd(d,\ a)<100$. Which of the following must be a divisor of $a$: $5$, $7$, $11$, $13$, or $17$? 
+%         \end{enumerate}
+%       \end{column}
+%     \end{columns}
+%   \end{frame}  
+
+\begin{frame}{Problems 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+        \begin{problem}
+            \textbf{E1.} What is the remainder when $301 \times 349$ is divided by $9$?
+        \end{problem}
+        The remainder when $301$ divisible by $9$ is $3 + 0 + 1 = 4$ and the remainder when $349$ divisible by $9$ is $(3 + 4 + 9) - 9 = 7$. The remainder of $4 \times 7 = 28$ divisible by $9$ is $(2 + 8) - 9 = \boxed{1}$.
+        \begin{problem}
+            \textbf{E2.} Find the GCD and LCM of $42$ and $98$.
+        \end{problem}
+        Using prime factorization:
+
+        $42 = 2 \times 3 \times 7$ and $98 = 2 \times 7^2$, so $\gcd(42,\ 98) = 2 \times 7 = 14$, and $\lcm(42,\ 98) = 2 \times 3 \times 7^2 = 294$.
+
+        Using Euclidean algorithm:
+        \begin{align*}
+            \mathbf{98} &= \mathbf{42} \times 2 + 14,\\
+            \mathbf{42} &= \boxed{\mathbf{14}} \times 3 + 0.
+        \end{align*}
+        and
+        \[ \lcm(42,\ 98) = \frac{42 \times 98}{\gcd(42, 98)} = \frac{42 \times 98}{14} = \boxed{294}. \]
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{problem}
+            \textbf{E3.} The GCD of two numbers $A$ and $B$ is $7$. What are the possible values of GCD of $15 \cdot A$ and $35 \cdot B$?
+        \end{problem}
+        The possible values are shown in the table:
+        \begin{center}
+            \begin{tabular}{l|cc}
+                & $7^2\not\mid A$ & $7^2 \mid A$\\\hline
+                $3 \not\mid B$ & \boxed{\kern2.5pt 35\kern2.5pt} & \boxed{245}\\
+                $3 \mid B$ & \boxed{105} & \boxed{735}
+            \end{tabular}            
+        \end{center}
+        $x|y$ means $x$ divides $y$, and $x\not\mid y$ means $x$ not divides $y$.
+
+        \begin{problem}
+            \textbf{E4.} The number $6545$ can be written as the product of a pair of positive two-digit integers. What are these two integers?
+        \end{problem}
+        The prime factorization of $6545$ is $5 \times 7 \times 11 \times 17$, since $5 \times 7 \times 11 > 100$ and $7 \times 17 > 100$, the only possible way to form a pair of two-digit integers is $5 \times 17 = \boxed{85}$ and $7 \times 11 = \boxed{77}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problems 5-8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+        \begin{problem}
+            \textbf{E5.} What is the smallest prime factor of $11^7 + 7^5$?
+        \end{problem}
+        The smallest prime number is $2$, and it is a factor of $11^7 + 7^5$, because both $11^7$ and $7^5$ are odd and their sum is even.
+
+        \begin{problem}
+            \textbf{E6.} The four-digit number $A55B$ is divisible by $36$. What is the sum of $A$ and $B$?
+        \end{problem}
+        $36 = 9 \times 4$, so $A55B$ should be divisible by $9$ and $4$. If $A55B$ is divisible by $9$, so $A + 5 + 5 + B$ is divisible by $9$, so $A + B$ is either $8$ or $17$. And since $5B$ is divisible by $4$, $B$ can be either $2$ or $6$. For both cases the sum $A + B$ can't be $17$, so the only option for $A + B$ is $\boxed{8}$. 
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{problem}
+            \textbf{E7.} What is the sum of the digits of $\dfrac{10^{25}+8}{9}$?
+        \end{problem}
+        $10^{25} = \underbrace{99\cdot 9}_{25\text{ nines}} + 1$, so $\dfrac{10^{25}+8}{9} = \dfrac{\underbrace{99\cdot 9}_{25\text{ nines}} + 9}{9} = \underbrace{11\cdot 1}_{25\text{ ones}} + 1 = \underbrace{11\cdot 1}_{24\text{ nines}}\!2$.
+        And the sum of the digits is $24 + 2 = \boxed{26}$.
+        \begin{problem}
+            \textbf{E8.} Find the GCD of $2n+13$ and $n+7$ by Euclid's algorithm.
+        \end{problem}
+        \begin{align*}
+            \mathbf{2n + 13} &= (\mathbf{n+7}) \times 2 - 1,\\
+            \mathbf{n + 7} &= \boxed{\mathbf{1}} \times (n + 7) + 0.
+        \end{align*}
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1-3}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+          \textbf{C1.} The positive integers $A$, $B$, $A-B$, and $A+B$ are all prime numbers. What is the sum of these four primes?
+      \end{problem}
+      Since $A$, $B$, and $A + B$ are all prime, that means two of them should be odd, so $B$ should be $2$. One of the numbers $A - 2$, $A$, and $A + 2$ should be divisible by $3$ since all of them have different reminders when divisible by $3$. So we got $A - B = 3$, $A = 5$, and $A + B = 7$ and the sum is $2 + 3 + 5 + 7 = \boxed{17}$.
+
+      \begin{problem}
+        \textbf{C2.} Show that every prime greater than $3$ must be of the form $6n+1$ or $6n-1$ for a positive integer~$n$.
+      \end{problem}
+      $6n$ and $6n + 3$ can't be primes because they are divisible by $3$;
+      
+      $6n + 2$ and $6n + 4$  can't be primes because they are divisible by $2$.
+
+      So the only way for primes is to have the form $6n+1$ and $6n-1$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C3.} If $p$, $q$ and $r$ are prime numbers such that their product is $19$ times their sum, find $p^2 + q^2 + r^2$.
+      \end{problem}
+      Since $pqr = 19(p + q + r)$, one of the numbers should be $19$. So $pq = p + q + 19$. $pq - p - q + 1 = 20$, so \[(p - 1)(q - 1) = 20.\]
+      Let's take a look at different factorization of $20$:
+
+      \textbf{Case 1:} $(p - 1)(q - 1) = 1 \times 20$, $p = 2$, $q = 21$.
+
+      \textbf{Case 2:} $(p - 1)(q - 1) = 2 \times 10$, $p = 3$, $q = 11$.
+
+      \textbf{Case 3:} $(p - 1)(q - 1) = 4 \times 5$, $p = 5$, $q = 6$.
+
+      Only in case 2 $p$ and $q$ are primes, so $3$, $11$, and $19$ is the only possible options for $p$, $q$, and $r$ in some order. 
+      \[ p^2 + q^2 + r^2 = 3^2 + 11^2 + 19^2 = \boxed{491}.\]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problem 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C4.} Let $a$, $b$, $c$, and $d$ be positive integers such that $\gcd(a,\ b)=24$, $\gcd(b,\ c)=36$, $\gcd(c,\ d)=54$, and $70<\gcd(d,\ a)<100$. Which of the following must be a divisor of $a$: $5$, $7$, $11$, $13$, or $17$? 
+      \end{problem}
+      Notice that 
+      \begin{multline*}
+        \gcd (a,\ b,\ c,\ d)=\\
+        =\gcd(\gcd(a,\ b),\ \gcd(b,\ c),\ \gcd(c,\ d))=\\
+        =\gcd(24,\ 36,\ 54)=6, 
+      \end{multline*}
+      so $\gcd(d,\ a)$
+      must be a multiple of $6$. 
+
+      If $\gcd(d,\ a)$ is multiple of $2^2$, then $\gcd(c,\ d) \neq 54$, since $d$ and $c$ divisible by $4$.
+
+      If $\gcd(d,\ a)$ is multiple of $3^2$, then $\gcd(a,\ b) \neq 24$, since $a$ and $b$ both divisible by $9$. 
+
+      The only answer choice that gives a value between $70$ and $100$ when multiplied by $6$ is $\boxed{13}$. 
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

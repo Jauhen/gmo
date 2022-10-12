@@ -11,10 +11,112 @@
 $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
         \overline{\enspace\strut#2}$}
 
+\setcounter{MaxMatrixCols}{20}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
+
+
 \DeclareMathOperator{\lcm}{lcm}
 
 \begin{document}
 \maketitle
+
+\begin{frame}{Modular Arithmetic}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Now is $4{:}00$ \emph{pm}, what time will be $100$ hours from now? 
+      \end{problem}
+
+      \begin{wrapfigure}[6]{r}{0.3\textwidth}\centering
+        \vspace*{-1.3ex}
+        \includegraphics[width=0.25\textwidth]{01 - Modular arithmetic/clocks.png}
+      \end{wrapfigure}
+
+      $4$ days is equal to $4 \times 24 = 96$ hours, so $100$ hours is equal to $4$~days and $4$~hours. That means in $96$~hours we will have the same time. After $4$~hours it will be $8{:}00$~\emph{pm}.\medskip
+
+      \begin{definition}
+        \textbf{Modular arithmetic} is a type of arithmetic that deals with remainders of numbers.
+      \end{definition}
+      
+      In modular arithmetic, numbers "wrap around" upon reaching a given number (this given number is known as the \textbf{modulus}) to leave a remainder.
+
+      \begin{definition}
+        The value $a \Mod{m}$ is a shorthand way of saying \emph{“the remainder when $a$ is divided by $m$”}, and is from~$0$~to~$m-1$.
+      \end{definition}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        We say that two numbers $a$ and $b$ are \textbf{congruent modulo} $m$ if $b−a$ is
+        divisible by $m$. That is,
+        \[ a \equiv b \pmod{m} \]
+        if and only if $b−a=mk$ for some integer $k$.
+      \end{definition}
+
+      \begin{example}
+        {\small
+        $38$ is congruent to $14 \Mod{12}$, because ${38 − 14 = 24}$, which is a multiple of $12$, or, equivalently, because both $38$ and $14$ have the same remainder $2$ when divided by $12$.  We use a triple equal sign to represent \emph{congruence}: 
+        \[38 \equiv 14 \pmod{12}.\]
+        The same rule holds for negative values: 
+        \begin{align*}
+          −8 &\equiv 7\hphantom{-} \pmod{5}; \\
+          2 &\equiv −3 \pmod{5}; \\
+          −3 &\equiv −8 \pmod{5}.
+        \end{align*}
+        }
+        \vspace*{-2.2ex}
+      \end{example}
+      In contests, you will often find modular arithmetic a useful tool for solving problems involving remainders or divisibility.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Addition and Multiplication Theorems for Modular Arithmetic}  
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{theorem}
+        If $a + b = c$, then 
+        \[a\Mod{n} + b\Mod{n} \equiv c\Mod{n}.\]
+        To find the \textbf{remainder of the sum} of $a$ and $b$, we can instead \textbf{sum the remainders} of the two terms.  
+      \end{theorem}
+       
+      The proof is straightforward:
+
+      Let's write $a$, $b$ and $c$ as $q_a n + r_a$, $q_b n + r_b$ and $q_a n + r_a$ where $q_a$, $q_b$, and $q_c$ are \emph{quotients} and $r_a$, $r_b$, and $r_c$ are \emph{remainders} of division by $n$.
+      Then
+      \[ a + b = q_a n + r_a + q_b n + r_b = (q_a + q_b) n + (r_a + r_b) \]
+      That means we can ignore $(q_a + q_b) n$ and $q_c n$ when considering numbers \emph{modulo} $n$. So we have 
+      \[ r_a + r_b \equiv r_c \pmod{n}. \]
+      Which we wanted to prove.
+      \begin{example}
+        For example:
+        \[ 2021 \equiv 2000 + 20 + 1 \pmod{n} \]
+        \vspace*{-2.5ex}
+      \end{example}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{theorem}
+        If $a \times b = c$, then 
+        \[a\Mod{n} \times b\Mod{n} \equiv c\Mod{n}.\]
+        To find the \textbf{remainder of the product} of $a$ and $b$, we can instead \textbf{multiply the remainders} of the two factors.
+      \end{theorem}
+      Doing the same substitution as in the proof of the \emph{addition theorem}
+      \begin{multline*}
+        a \times b = (q_a n + r_a) (q_b n + r_b) = \\ = q_a q_b n^2 + (q_a r_b + q_b r_a) n + r_a r_b.
+      \end{multline*}
+      We can ignore $q_a q_b n^2$, $(q_a r_b + q_b r_a) n$, and $q_c n$ because all of them is divisible by $n$. So we have
+      \[ r_a \times r_b \equiv r_c \pmod{n}. \]\vspace*{-1ex}
+      \begin{example}
+        For example:
+        \begin{gather*}
+          2021 \times 2022 \equiv 21 \times 22 \equiv 462 \equiv 62 \Mod{100}; \\
+          42 \times 24 \equiv 3 \times −2 \equiv −6 \equiv 7 \Mod{13}.
+        \end{gather*}
+        \vspace*{-2.2ex}
+      \end{example}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \begin{frame}{Bases}
   \begin{columns}[T]
@@ -195,7 +297,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
         Find the last digit of $7^{42}$?
       \end{problem}
       \begin{example}
-        \emph{As usual for the problems with big numbers, it is sometimes fruitful to start with small numbers and look for a pattern.}
+        \emph{As usual for problems with big numbers, it is sometimes fruitful to start with small numbers and look for a pattern.}
       \end{example}
 
       $7^1 = 7$, $7^2 = ...9$, $7^3 = ...3$, $7^4 = ...1$, $7^5 = ...7$, $7^6 = ...9$, $7^7 = ...3$.
@@ -249,31 +351,69 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
   \end{columns}
 \end{frame}
 
-\begin{frame}{Exercises\hspace*{0.35\textwidth}Challenge Problems}
+% \begin{frame}{Exercises\hspace*{0.35\textwidth}Challenge Problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item What is the last digit in $5432 \times 234 \times 747$?
+%         \item What is the last digit in $7^{49}$?
+%         \item Write $2021$ in base $7$ notation.
+%         \item What is base $10$ representation of $2021_8$?
+%         \item In base $6$ notation, what is the sum of $2021_6 + 2022_6 +  2023_6$?
+%         \item A binary number consists of $5$ digits, all of which are ones.  When that number is doubled, how many digits in the resulting number are now $1$’s?
+%         \item What is the largest base $10$ number that can be expressed as a $2$-digit base $5$ number?
+%         \item How would you represent $531{,}441$ in base $9$?
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item Find the units digit of $3^{1986} - 2^{1986}$.
+%         \item In base $16$ (also known as \emph{hexadecimal} notation), the digits for $10-15$ are given by the letters $A-F$ respectively.  What is the base $10$ value of the number $ACED_{16}$?
+%         \item How many terminal zeros are there when $24^6 \times 9^3$ is written in base $6$ notation?
+%         \item[4*.] When the number $n$ is written in base $b$ its representation is the two-digit number $AB$ where $A = b-2$ and $B = 2$.  What is the representation of $n$ in base $(b-1)$?
+%       \end{enumerate}
+%       \vspace*{5\baselineskip}
+%       \hspace{2em}\rule{0.3\textwidth}{0.2pt}
+
+%       \hspace{2.5em}{\footnotesize * very hard}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\begin{frame}{Exercises}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item What is the last digit in $5432 \times 234 \times 747$?
-        \item What is the last digit in $7^{49}$?
-        \item Write $2021$ in base $7$ notation.
-        \item What is base $10$ representation of $2021_8$?
-        \item In base $6$ notation, what is the sum of $2021_6 + 2022_6 +  2023_6$?
-        \item A binary number consists of $5$ digits, all of which are ones.  When that number is doubled, how many digits in the resulting number are now $1$’s?
-        \item What is the largest base $10$ number that can be expressed as a $2$-digit base $5$ number?
-        \item How would you represent $531{,}441$ in base $9$?
+        \item Convert to the base $7$ the number $532_8$ ?
+        \item What is the last digit in $7^{149}$ ?
+        \item How many trailing zeros in $144!$ ?
+        \item $R + RR = BOW$. What is the last digit of $F \times A \times I \times N \times T \times I \times N \times G$?
+        \item What is the largest power of $2$ that is a divisor of $13^4 - 11^4$?
+        \item What is the smallest positive integer greater than $1$ that leaves a remainder of $1$ when divided by $4$, $5$, and $6$?
+        \item What is the largest integer $n$ for which $5^n$ is a factor of the sum $98!+99!+100!$ ?
+        \seti
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item Find the units digit of $3^{1986} - 2^{1986}$.
-        \item In base $16$ (also known as \emph{hexadecimal} notation), the digits for $10-15$ are given by the letters $A-F$ respectively.  What is the base $10$ value of the number $ACED_{16}$?
-        \item How many terminal zeros are there when $24^6 \times 9^3$ is written in base $6$ notation?
-        \item[4*.] When the number $n$ is written in base $b$ its representation is the two-digit number $AB$ where $A = b-2$ and $B = 2$.  What is the representation of $n$ in base $(b-1)$?
+        \conti
+        \item Starting with some gold coins and some empty treasure chests, I tried to put $9$ gold coins in each treasure chest, but that left $2$ treasure chests empty. So instead I put $6$ gold coins in each treasure chest, but then I had $3$ gold coins left over. How many gold coins did I have?
       \end{enumerate}
-      \vspace*{5\baselineskip}
-      \hspace{2em}\rule{0.3\textwidth}{0.2pt}
+    \end{column}
+  \end{columns}
+\end{frame}
 
-      \hspace{2.5em}{\footnotesize * very hard}
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item The digits $1$, $2$, $3$, $4$, and $5$ are each used once to write a five-digit number $PQRST$. The three-digit number $PQR$ is divisible by $4$, the three-digit number $QRS$ is divisible by $5$, and the three-digit number $RST$ is divisible by $3$. What is $P$?
+        \item What is the greatest possible sum of the digits in the base-seven representation of a positive integer less than $2022$?
+        \item The base-ten representation for $19!$ is $121{,}6T5{,}100{,}40M{,}832{,}H00$, where $T$, $M$, and $H$ denote digits that are not given. What is $T+M+H$?
+        \item There are $6$ boxes of apples in a store, weighting $15$, $16$, $18$, $19$, $20$, and $31$ pounds. Two customers purchased $5$ boxes, and one customer purchased twice as many apples as the second customer. Which box has been left?  
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
     \end{column}
   \end{columns}
 \end{frame}

@@ -185,6 +185,63 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Empty}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Team attack 3 solutions}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{TA1.} Number $\underline{1A2}$ should be divisible by $11$, so $1 + 2 = A$ or $1 + 2 = A \pm 11$. Since $A$ is a digit, the only option is $A = 3$.
+
+      \textbf{TA2.} Abe selects green with probability $1/2$ and Bob matches with probability $1/4$, so the probability that both selected green is $1/8$. The probability that both select red is $1/2 \times 1/2 = 1/4$. The total probability is $1/8 + 1/4 = 3/8$.
+
+      \textbf{TA3.} From the first condition, $n$ should have prime factors $2$ and $3$ in power $1$. From the second condition, because $126 = 2 \times 3 \times 3 \times 7$ $n$ should have prime factor of $7$ and no other prime factors. So $n = 2 \times 3 \times 7 = 42$.
+
+      \textbf{TA4.} $7+4+A+5+2+B+1$ should be divisible by $3$, so $A + B$ has a reminder $2$ when divisible by $3$. $3+2+6+A+B+4+C$ is divisible by $3$, so $A + B + C$ should have the reminder $0$ when divisible by $3$, so $C$ should have the reminder $1$ when divisible by $3$. The largest such digit is $7$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{TA5.} To have all rolls different we have $6 \cdot 5 \cdot 4 \cdot 3 \cdot 2$ options, and we have $6$ options when all rolls are the same. There are $6^5$ options to roll the dice $5$ times. So the desired probability is 
+
+      \begin{wrapfigure}{r}{20.00mm}
+        \leavevmode
+        \begin{mplibcode}
+          u := 0.5cm;
+          fill (0u, 0u)--(2u, 2u)--(2u, 4u)--(0u, 4u)--cycle withcolor 0.7white;
+          drawarrow (-0.5u, 0u)--(3.5u, 0u);
+          drawarrow (0u, -0.5u)--(0u, 4.5u);
+          draw (0u, 0u)--(2u, 0u)--(2u, 4u)--(0u, 4u)--cycle;
+          draw (0u, 2u)--(2u, 2u);
+        \end{mplibcode}
+      \end{wrapfigure}
+      $\dfrac{6 \times 120 + 6}{6^5}=\dfrac{121}{6^4} = \dfrac{121}{1296}$.
+      
+      \textbf{TA6.} Draw Chloé's number on the $x$ axis and Laurent's on the $y$ axis. The probability is $3/4$.
+
+      \textbf{TA7.} Since we are looking for an integer value, each of the prime numbers $2$, $3$, and $5$ occur as factors an even
+      number of times, so $2$, $3$, and $5$ to split with half of the
+      factors in the numerator canceling half in the denominator. The prime number $7$ occurs only once in the
+      expression, so it looks like the best we can
+      possibly do is $7$.
+      \[ \Biggl(\biggl(\Bigl(1 \div \bigl(\left( 2 \div 3\right) \div 4\bigr)\Bigr) \div \bigl(\left(5 \div 6\right) \div 7\bigr)\biggr) \div 8 \Biggr) \div \left(9 \div 10\right) = 7\]
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
 % \begin{frame}{Title}
 %   \begin{columns}[T]
 %     \begin{column}{0.5\textwidth}

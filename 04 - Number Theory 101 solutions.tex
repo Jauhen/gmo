@@ -1,4 +1,4 @@
-\documentclass[9pt,aspectratio=169,]{beamer}
+\documentclass[9pt,aspectratio=169,handout]{beamer}
 
 \usepackage{nicefrac}
 \usepackage{tabularx}
@@ -28,14 +28,14 @@
     \begin{column}{0.5\textwidth}
         \begin{problem}
             \textbf{E1.} What is the remainder when $301 \times 349$ is divided by $9$?
-        \end{problem}
-        The remainder when $301$ divisible by $9$ is $3 + 0 + 1 = 4$ and the remainder when $349$ divisible by $9$ is $(3 + 4 + 9) - 9 = 7$. The remainder of $4 \times 7 = 28$ divisible by $9$ is $(2 + 8) - 9 = \boxed{1}$.
+        \end{problem}\pause
+        The remainder when $301$ divisible by $9$ is $3 + 0 + 1 = 4$ and the remainder when $349$ divisible by $9$ is $(3 + 4 + 9) - 9 = 7$. The remainder of $4 \times 7 = 28$ divisible by $9$ is $(2 + 8) - 9 = \boxed{1}$.\pause
         \begin{problem}
             \textbf{E2.} Find the GCD and LCM of $42$ and $98$.
-        \end{problem}
+        \end{problem}\pause
         Using prime factorization:
 
-        $42 = 2 \times 3 \times 7$ and $98 = 2 \times 7^2$, so $\gcd(42,\ 98) = 2 \times 7 = 14$, and $\lcm(42,\ 98) = 2 \times 3 \times 7^2 = 294$.
+        $42 = 2 \times 3 \times 7$ and $98 = 2 \times 7^2$, so $\gcd(42,\ 98) = 2 \times 7 = 14$, and $\lcm(42,\ 98) = 2 \times 3 \times 7^2 = 294$.\pause
 
         Using Euclidean algorithm:
         \begin{align*}
@@ -43,12 +43,12 @@
             \mathbf{42} &= \boxed{\mathbf{14}} \times 3 + 0.
         \end{align*}
         and
-        \[ \lcm(42,\ 98) = \frac{42 \times 98}{\gcd(42, 98)} = \frac{42 \times 98}{14} = \boxed{294}. \]
+        \[ \lcm(42,\ 98) = \frac{42 \times 98}{\gcd(42, 98)} = \frac{42 \times 98}{14} = \boxed{294}. \]\pause
     \end{column}
     \begin{column}{0.5\textwidth}
         \begin{problem}
             \textbf{E3.} The GCD of two numbers $A$ and $B$ is $7$. What are the possible values of GCD of $15 \cdot A$ and $35 \cdot B$?
-        \end{problem}
+        \end{problem}\pause
         The possible values are shown in the table:
         \begin{center}
             \begin{tabular}{l|cc}
@@ -57,11 +57,11 @@
                 $3 \mid B$ & \boxed{105} & \boxed{735}
             \end{tabular}            
         \end{center}
-        $x|y$ means $x$ divides $y$, and $x\not\mid y$ means $x$ not divides $y$.
+        $x|y$ means $x$ divides $y$, and $x\not\mid y$ means $x$ not divides $y$.\pause
 
         \begin{problem}
             \textbf{E4.} The number $6545$ can be written as the product of a pair of positive two-digit integers. What are these two integers?
-        \end{problem}
+        \end{problem}\pause
         The prime factorization of $6545$ is $5 \times 7 \times 11 \times 17$, since $5 \times 7 \times 11 > 100$ and $7 \times 17 > 100$, the only possible way to form a pair of two-digit integers is $5 \times 17 = \boxed{85}$ and $7 \times 11 = \boxed{77}$.
     \end{column}
   \end{columns}
@@ -72,23 +72,23 @@
     \begin{column}{0.5\textwidth}
         \begin{problem}
             \textbf{E5.} What is the smallest prime factor of $11^7 + 7^5$?
-        \end{problem}
-        The smallest prime number is $2$, and it is a factor of $11^7 + 7^5$, because both $11^7$ and $7^5$ are odd and their sum is even.
+        \end{problem}\pause
+        The smallest prime number is $2$, and it is a factor of $11^7 + 7^5$, because both $11^7$ and $7^5$ are odd and their sum is even.\pause
 
         \begin{problem}
             \textbf{E6.} The four-digit number $A55B$ is divisible by $36$. What is the sum of $A$ and $B$?
-        \end{problem}
-        $36 = 9 \times 4$, so $A55B$ should be divisible by $9$ and $4$. If $A55B$ is divisible by $9$, so $A + 5 + 5 + B$ is divisible by $9$, so $A + B$ is either $8$ or $17$. And since $5B$ is divisible by $4$, $B$ can be either $2$ or $6$. For both cases the sum $A + B$ can't be $17$, so the only option for $A + B$ is $\boxed{8}$. 
+        \end{problem}\pause
+        $36 = 9 \times 4$, so $A55B$ should be divisible by $9$ and $4$. If $A55B$ is divisible by $9$, so $A + 5 + 5 + B$ is divisible by $9$, so $A + B$ is either $8$ or $17$. And since $5B$ is divisible by $4$, $B$ can be either $2$ or $6$. For both cases the sum $A + B$ can't be $17$, so the only option for $A + B$ is $\boxed{8}$. \pause
     \end{column}
     \begin{column}{0.5\textwidth}
         \begin{problem}
             \textbf{E7.} What is the sum of the digits of $\dfrac{10^{25}+8}{9}$?
-        \end{problem}
+        \end{problem}\pause
         $10^{25} = \underbrace{99\cdot 9}_{25\text{ nines}} + 1$, so $\dfrac{10^{25}+8}{9} = \dfrac{\underbrace{99\cdot 9}_{25\text{ nines}} + 9}{9} = \underbrace{11\cdot 1}_{25\text{ ones}} + 1 = \underbrace{11\cdot 1}_{24\text{ nines}}\!2$.
-        And the sum of the digits is $24 + 2 = \boxed{26}$.
+        And the sum of the digits is $24 + 2 = \boxed{26}$.\pause
         \begin{problem}
             \textbf{E8.} Find the GCD of $2n+13$ and $n+7$ by Euclid's algorithm.
-        \end{problem}
+        \end{problem}\pause
         \begin{align*}
             \mathbf{2n + 13} &= (\mathbf{n+7}) \times 2 - 1,\\
             \mathbf{n + 7} &= \boxed{\mathbf{1}} \times (n + 7) + 0.
@@ -103,24 +103,24 @@
     \begin{column}{0.5\textwidth}
       \begin{problem}
           \textbf{C1.} The positive integers $A$, $B$, $A-B$, and $A+B$ are all prime numbers. What is the sum of these four primes?
-      \end{problem}
-      Since $A$, $B$, and $A + B$ are all prime, that means two of them should be odd, so $B$ should be $2$. One of the numbers $A - 2$, $A$, and $A + 2$ should be divisible by $3$ since all of them have different reminders when divisible by $3$. So we got $A - B = 3$, $A = 5$, and $A + B = 7$ and the sum is $2 + 3 + 5 + 7 = \boxed{17}$.
+      \end{problem}\pause
+      Since $A$, $B$, and $A + B$ are all prime, that means two of them should be odd, so $B$ should be $2$. One of the numbers $A - 2$, $A$, and $A + 2$ should be divisible by $3$ since all of them have different reminders when divisible by $3$. So we got $A - B = 3$, $A = 5$, and $A + B = 7$ and the sum is $2 + 3 + 5 + 7 = \boxed{17}$.\pause
 
       \begin{problem}
         \textbf{C2.} Show that every prime greater than $3$ must be of the form $6n+1$ or $6n-1$ for a positive integer~$n$.
-      \end{problem}
+      \end{problem}\pause
       $6n$ and $6n + 3$ can't be primes because they are divisible by $3$;
       
       $6n + 2$ and $6n + 4$  can't be primes because they are divisible by $2$.
 
-      So the only way for primes is to have the form $6n+1$ and $6n-1$.
+      So the only way for primes is to have the form $6n+1$ and $6n-1$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C3.} If $p$, $q$ and $r$ are prime numbers such that their product is $19$ times their sum, find $p^2 + q^2 + r^2$.
-      \end{problem}
+      \end{problem}\pause
       Since $pqr = 19(p + q + r)$, one of the numbers should be $19$. So $pq = p + q + 19$. $pq - p - q + 1 = 20$, so \[(p - 1)(q - 1) = 20.\]
-      Let's take a look at different factorization of $20$:
+      Let's take a look at different factorizations of $20$:\pause
 
       \textbf{Case 1:} $(p - 1)(q - 1) = 1 \times 20$, $p = 2$, $q = 21$.
 
@@ -139,7 +139,7 @@
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C4.} Let $a$, $b$, $c$, and $d$ be positive integers such that $\gcd(a,\ b)=24$, $\gcd(b,\ c)=36$, $\gcd(c,\ d)=54$, and $70<\gcd(d,\ a)<100$. Which of the following must be a divisor of $a$: $5$, $7$, $11$, $13$, or $17$? 
-      \end{problem}
+      \end{problem}\pause
       Notice that 
       \begin{multline*}
         \gcd (a,\ b,\ c,\ d)=\\
@@ -153,7 +153,7 @@
 
       If $\gcd(d,\ a)$ is multiple of $3^2$, then $\gcd(a,\ b) \neq 24$, since $a$ and $b$ both divisible by $9$. 
 
-      The only answer choice that gives a value between $70$ and $100$ when multiplied by $6$ is $\boxed{13}$. 
+      The only answer choice that gives a value between $70$ and $100$ when multiplied by $6$ is $\boxed{13}$. \pause
     \end{column}
     \begin{column}{0.5\textwidth}
     \end{column}
@@ -172,18 +172,21 @@
 \begin{frame}{Team attack 3 solutions}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \textbf{TA1.} Number $\underline{1A2}$ should be divisible by $11$, so $1 + 2 = A$ or $1 + 2 = A \pm 11$. Since $A$ is a digit, the only option is $A = 3$.
+      \textbf{TA1.} Number $\underline{1A2}$ should be divisible by $11$, so $1 + 2 = A$ or $1 + 2 = A \pm 11$. Since $A$ is a digit, the only option is $A = 3$.\pause
 
-      \textbf{TA2.} Abe selects green with probability $1/2$ and Bob matches with probability $1/4$, so the probability that both selected green is $1/8$. The probability that both select red is $1/2 \times 1/2 = 1/4$. The total probability is $1/8 + 1/4 = 3/8$.
+      \textbf{TA2.} Abe selects green with probability $1/2$ and Bob matches with probability $1/4$, so the probability that both selected green is $1/8$. The probability that both select red is $1/2 \times 1/2 = 1/4$. The total probability is $1/8 + 1/4 = 3/8$.\pause
 
-      \textbf{TA3.} From the first condition, $n$ should have prime factors $2$ and $3$ in power $1$. From the second condition, because $126 = 2 \times 3 \times 3 \times 7$ $n$ should have prime factor of $7$ and no other prime factors. So $n = 2 \times 3 \times 7 = 42$.
+      \textbf{TA3.} From the first condition, $n$ should have prime factors $2$ and $3$ in power $1$. From the second condition, because $126 = 2 \times 3 \times 3 \times 7$ $n$ should have prime factor of $7$ and no other prime factors. So $n = 2 \times 3 \times 7 = 42$.\pause
 
-      \textbf{TA4.} $7+4+A+5+2+B+1$ should be divisible by $3$, so $A + B$ has a reminder $2$ when divisible by $3$. $3+2+6+A+B+4+C$ is divisible by $3$, so $A + B + C$ should have the reminder $0$ when divisible by $3$, so $C$ should have the reminder $1$ when divisible by $3$. The largest such digit is $7$.
+      \textbf{TA4.} $7+4+A+5+2+B+1$ should be divisible by $3$, so $A + B$ has a reminder $2$ when divisible by $3$. $3+2+6+A+B+4+C$ is divisible by $3$, so $A + B + C$ should have the reminder $0$ when divisible by $3$, so $C$ should have the reminder $1$ when divisible by $3$. The largest such digit is $7$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \textbf{TA5.} To have all rolls different we have $6 \cdot 5 \cdot 4 \cdot 3 \cdot 2$ options, and we have $6$ options when all rolls are the same. There are $6^5$ options to roll the dice $5$ times. So the desired probability is 
 
+      $\dfrac{6 \times 120 + 6}{6^5}=\dfrac{121}{6^4} = \dfrac{121}{1296}$.\pause
+
       \begin{wrapfigure}{r}{20.00mm}
+        \vspace*{-1cm}
         \leavevmode
         \begin{mplibcode}
           u := 0.5cm;
@@ -193,10 +196,8 @@
           draw (0u, 0u)--(2u, 0u)--(2u, 4u)--(0u, 4u)--cycle;
           draw (0u, 2u)--(2u, 2u);
         \end{mplibcode}
-      \end{wrapfigure}
-      $\dfrac{6 \times 120 + 6}{6^5}=\dfrac{121}{6^4} = \dfrac{121}{1296}$.
-      
-      \textbf{TA6.} Draw Chloé's number on the $x$ axis and Laurent's on the $y$ axis. The probability is $3/4$.
+      \end{wrapfigure}      
+      \textbf{TA6.} Draw Chloé's number on the $x$ axis and Laurent's on the $y$ axis. The probability is $3/4$.\pause
 
       \textbf{TA7.} Since we are looking for an integer value, each of the prime numbers $2$, $3$, and $5$ occur as factors an even
       number of times, so $2$, $3$, and $5$ to split with half of the

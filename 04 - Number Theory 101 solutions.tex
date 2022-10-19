@@ -1,4 +1,4 @@
-\documentclass[9pt,aspectratio=169]{beamer}
+\documentclass[9pt,aspectratio=169,]{beamer}
 
 \usepackage{nicefrac}
 \usepackage{tabularx}
@@ -22,31 +22,6 @@
 
 \begin{document}
 \maketitle
-
-% \begin{frame}{Exercises\hspace*{0.35\textwidth}Challenge Problems}
-%     \begin{columns}[T]
-%       \begin{column}{0.5\textwidth}
-%         \begin{enumerate}
-%           \item What is the remainder when $301 \times 349$ is divided by $9$?
-%           \item Find the GCD and LCM of $42$ and $98$.
-%           \item The GCD of two numbers $A$ and $B$ is $7$. What are possible values of GCD of $15 \cdot A$ and $35 \cdot B$?
-%           \item The numbers $6545$ can be written as the product of a pair of positive two-digit integers. What are these two integers?
-%           \item What is the smallest prime factor of $11^7 + 7^5$?
-%           \item The four digit number $A55B$ is divisible by $36$. What is the sum of $A$ and $B$?
-%           \item What is the sum of the digits of $\dfrac{10^{25}+8}{9}$?
-%           \item Find the GCD of $2n+13$ and $n+7$ by Euclid's algorithm.
-%         \end{enumerate}
-%       \end{column}
-%       \begin{column}{0.5\textwidth}
-%         \begin{enumerate}
-%           \item The positive integers $A$, $B$, $A-B$, and $A+B$ are all prime numbers. What is the sum of these four primes?
-%           \item Show that every prime greater than $3$ must be of the form $6n+1$ or $6n-1$ for a positive integer $n$.
-%           \item If $p$, $q$ and $r$ are prime numbers such that their product is $19$ times their sum, find $p^2 + q^2 + r^2$.
-%           \item Let $a$, $b$, $c$, and $d$ be positive integers such that $\gcd(a,\ b)=24$, $\gcd(b,\ c)=36$, $\gcd(c,\ d)=54$, and $70<\gcd(d,\ a)<100$. Which of the following must be a divisor of $a$: $5$, $7$, $11$, $13$, or $17$? 
-%         \end{enumerate}
-%       \end{column}
-%     \end{columns}
-%   \end{frame}  
 
 \begin{frame}{Problems 1-4}
   \begin{columns}[T]
@@ -245,6 +220,38 @@
 % \begin{frame}{Title}
 %   \begin{columns}[T]
 %     \begin{column}{0.5\textwidth}
+%       \begin{mplibcode}
+%         u := 1cm;
+%         for i := 0 upto 4:
+%           draw (i*u, 0u)--(i*u, 3u) withcolor 0.5white;
+%         endfor;
+%         for i := 0 upto 3:
+%           draw (0u, i*u)--(4u, i*u) withcolor 0.5white;
+%         endfor;
+%         draw (0u, 0u) withpen pencircle scaled 0.2u withcolor black;
+%         draw (0u, 3u) withpen pencircle scaled 0.2u withcolor black;
+%         draw (4u, 0u) withpen pencircle scaled 0.2u withcolor black;
+%         draw (4u, 3u) withpen pencircle scaled 0.2u withcolor black;
+%         draw (2u, 1.5u) withpen pencircle scaled 0.2u withcolor black;
+%       \end{mplibcode}
+
+%       \[ \sqrt{2^2 + 1.5^2} = \sqrt{4 + 2.25} = \sqrt{6.25} = 2.5 \]
+
+%       \begin{mplibcode}
+%         u := 1cm;
+%         fill (0u, 0u)--(2u, 0u)--(2u, 1u)--(1u, 2u)--(0u, 1u)--cycle withcolor 0.5[jaune, white];
+%         fill (2u, 0u)--(4u, 0u)--(4u, 1u)--(3u, 2u)--(2u, 1u)--cycle withcolor 0.5[vertfonce, white];
+%         fill (0u, 1u)--(1u, 2u)--(1u, 3u)--(0u, 3u)--cycle withcolor 0.5[bleu, white];
+%         fill (1u, 2u)--(2u, 1u)--(3u, 2u)--(3u, 3u)--(1u, 3u)--cycle withcolor 0.5[noir, white];
+%         fill (3u, 2u)--(4u, 1u)--(4u, 3u)--(3u, 3u)--cycle withcolor 0.5[rouge, white];
+%         for i := 0 upto 4:
+%           draw (i*u, 0u)--(i*u, 3u);
+%         endfor;
+%         for i := 0 upto 3:
+%           draw (0u, i*u)--(4u, i*u);
+%         endfor;
+%       \end{mplibcode}
+
 %     \end{column}
 %     \begin{column}{0.5\textwidth}
 %     \end{column}

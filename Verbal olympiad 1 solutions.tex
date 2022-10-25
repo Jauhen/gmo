@@ -28,22 +28,22 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{problem}
-        \textbf{P1.} A duckling and a gosling were participating in a triath\-lon competition. The
+        \textbf{P1.} A duckling and a gosling were participating in a triathlon competition. The
         distances for running, swimming, and flying was the same. Duckling ran, swam, and flew with the same speed. The gosling ran twice as slow as the duckling
         but swam twice as fast as the duckling. Who should fly faster and by how much, so they start and finish at the same time?
-      \end{problem}
+      \end{problem}\pause
 
-      Answer: The gosling flew twice as fast as duckling.
+      Answer: The gosling flew twice as fast as the duckling.
 
-      Let duckling completed each part in 1 hour. Then gosling was running for 2 hours and was swimming for $\dfrac{1}{2}$. As a result she had $3 - 2 - \dfrac{1}{2} = \dfrac{1}{2}$ hours for flying to finish in the same time as duckling. 
+      Let the duckling complete each part in 1 hour. Then gosling was running for 2 hours and was swimming for $\dfrac{1}{2}$. As a result she had $3 - 2 - \dfrac{1}{2} = \dfrac{1}{2}$ hours for flying to finish in the same time as duckling. \pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{P2.} Nineteen witches, all of different heights, stand in a~circle around a campfire.
         Each witch says whether she is taller than both of her neighbors, shorter than both,
         or in-between. Exactly three said "I am taller." How many said "I am in-between"?
-      \end{problem}
-      Between each taller and shorter witches all other withes are sorted by height, so in this line all other witches are "in-between". From each taller witch to the left and to the right there are lines of witches in descendant order, so between two taller witches exactly one shorter witch. Since these three taller witches forms $3$ pairs in this circle, there are $3$ shorter witches in the circle. 
+      \end{problem}\pause
+      Between each taller and shorter witches all other witches are sorted by height, so in this line, all other witches are "in-between". From each taller witch to the left and to the right there are lines of witches in descendant order, so between two taller witches exactly one shorter witch. Since these three taller witches form $3$ pairs in this circle, there are $3$ shorter witches in the circle. 
       
       So we have $19 - 3 - 3 = 13$ "in-between" witches. 
     \end{column}
@@ -55,16 +55,16 @@
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{P3.} Find two numbers that aren't divisor of each other, their GCD is $50$, and their LCM is $1000$.
-      \end{problem}
-      Let this number be $50n$ and $50m$, $n < m$ and $\gcd(n,\ m) = 1$. So $\lcm(50n,\ 50m) = 50nm = 1000$, and $nm = 20$. We have $3$ cases:
+      \end{problem}\pause
+      Let this number be $50n$ and $50m$, $n < m$ and $\gcd(n,\ m) = 1$. So $\lcm(50n,\ 50m) = 50nm = 1000$, and $nm = 20$. We have $3$ cases:\pause
 
-      \textbf{Case 1}: $n = 1$, $m = 20$. In this case $50$ is divisor of $1000$.
+      \textbf{Case 1}: $n = 1$, $m = 20$. In this case, $50$ is a divisor of $1000$.\pause
 
-      \textbf{Case 2}: $n = 2$, $m = 10$. In this case $100$ is divisor of $500$.
+      \textbf{Case 2}: $n = 2$, $m = 10$. In this case, $100$ is a divisor of $500$.\pause
 
-      \textbf{Case 3}: $n = 4$, $m = 5$. In this case $200$ is not divisor of $250$.
+      \textbf{Case 3}: $n = 4$, $m = 5$. In this case, $200$ is not a divisor of $250$.\pause
 
-      So our answer is $200$ and $250$.
+      So our answer is $200$ and $250$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \vspace*{-2.2\baselineskip}
@@ -75,9 +75,9 @@
           EF = 5,\ FG = 6,\ GA = 7.
         \end{gather*} 
         Find the arrangement of the points so the distance between the leftmost and the rightmost points is maximal.
-      \end{problem}
+      \end{problem}\pause
 
-      The circle $A-B-C-D-E-F-G-A$ has a length $1 + 2 + 3 + 4 + 5 + 6 + 7 = 28$ and visit both the left and the right points. So the maximum distance between two furthest point is $\dfrac{28}{2} = 14$. The possible configuration of the points is shown on the picture:
+      The circle $A-B-C-D-E-F-G-A$ has a length $1 + 2 + 3 + 4 + 5 + 6 + 7 = 28$ and visit both the left and the right points. So the maximum distance between two furthest point is $\dfrac{28}{2} = 14$. The possible configuration of the points is shown in the picture:
       \begin{center}
         \leavevmode
         \begin{mplibcode}
@@ -93,8 +93,8 @@
           label.bot("$F$", (14u, 0u));
           label.bot("$G$", (8u, 0u));
         \end{mplibcode}
-      \end{center}
-      The uniqueness of this configuration is followed that points between two furthest points should be aligned from left two line, so $14$ should be sum of several consecutive numbers. Only one such sequence exists: $2 + 3 + 4 + 5 = 14$.
+      \end{center}\pause
+      The uniqueness of this configuration is followed in that points between the two furthest points should be aligned from left to right, so $14$ should be the sum of several consecutive numbers. Only one such sequence exists: $2 + 3 + 4 + 5 = 14$.
     \end{column}
   \end{columns}
 \end{frame}
@@ -104,10 +104,10 @@
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{P5.} Integer numbers from 1 to 100 are each colored in one of the three color. Prove that there are two different numbers of one color, such that their difference is a square of an integer (e.\,g. 1, 4, 9, 16, 25, etc.).
-      \end{problem}
-      \emph{Suppose} there are no two different number of one color with a difference of a square of an integer.
+      \end{problem}\pause
+      \emph{Suppose} there are no two different numbers of one color with a difference of a square of an integer.\pause
 
-      The numbers $n$, $n+9$, and $n + 25$ all should have the different colors, because difference between them are $9$, $16$, and $25$. The same is true for $n$, $n+16$, and $n+25$. So numbers $n+9$ and $n+16$ should be of the same color. That means all numbers from $10$ till $91$, which is differed by $7$ is colored in the same color. But for example numbers $10$ and $59$ has a difference of $49$ which is a square of $7$. We got the \emph{contradiction}.
+      The numbers $n$, $n+9$, and $n + 25$ all should have the different colors, because difference between them are $9$, $16$, and $25$.\pause The same is true for $n$, $n+16$, and $n+25$. So numbers $n+9$ and $n+16$ should be of the same color.\pause That means all numbers from $10$ till $91$, which is differed by $7$ is colored in the same color. But for example, numbers $10$ and $59$ has a difference of $49$ which is a square of $7$. We got the \emph{contradiction}.\pause
       
       So our \emph{assumption} is incorrect and there should be two different numbers of one color with the difference of a square of an integer.
     \end{column}

@@ -3,7 +3,9 @@
 \usepackage{tabularx}
 \newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
 \usepackage{luamplib}
-\everymplib{input mpcolornames; input repere; beginfig(1);}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input repere; input macros; beginfig(1);}
 \everyendmplib{endfig;}
 
 \usetheme{graham}
@@ -326,6 +328,48 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{The Triangle Inequality}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Get a ruler and try to draw a triangle with sides $1$, $8$, and $11$ cm. Start from a point $A$, then pick $B$ so that $AB = 8$ cm. Now we pick point $C$ so that $BC = 1$ cm. What are the possible values of $AC$?\smallskip
+
+      If we start from $B$ and move $1$ cm, the closest we can get to $A$ to go directly towards $A$. Thus, the shortest distance possible from $A$ to $C$ is $7$ cm. How about the longest possible distance? For $C$ to be as far as possible from $B$, we must move $1$ cm from $B$ directly away from $A$. Now we see that $C$ can be no further than $9$ cm from $A$, and hence we can't create a triangle such that $AB = 8$, $BC = 1$, and $AC = 11$.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          draw (11u, 0.4u)--(0u, 0u)--(8u, 0u)--(9u, 0u) pensemibold;
+          Dot (11u, 0.4u), (0u, 0u), (8u, 0u), (9u, 0u);
+          label.bot("$A$", (0u, 0u));
+          label.bot("$B$", (8u, 0u));
+          label.bot("$C$", (9u, 0u));
+          label.top("$C'$", (11u, 0.4u));
+        \end{mplibcode}
+      \end{center}
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      This discussion leads us to the \textbf{Triangle Inequality}. 
+      \begin{definition}
+        Given two sides of a triangle the third side must be less than the sum of the first two.         
+      \end{definition}
+      For example, above we found that if two sides of a triangle have lengths $1$ cm and $8$ cm, the third side must be less than $1 + 8 = 9$ cm. If the sum of two sides of a triangle equals the third side, the triangle is \textbf{degenerate}, that is, it is a straight line.
+
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          draw (0u, 0u)--(8u, 0u)--(9u, 0u) pensemibold;
+          Dot (0u, 0u), (8u, 0u), (9u, 0u);
+          label.bot("$A$", (0u, 0u));
+          label.bot("$B$", (8u, 0u));
+          label.bot("$C$", (9u, 0u));
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Exterior angle theorem}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
@@ -641,49 +685,265 @@
   \end{columns}
 \end{frame}
 
+% \begin{frame}{Exercises}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item In $\triangle ABC$, $\alpha$, $\beta$, $\gamma$ are the exterior angles to interior angles $A$, $B$, and $C$.  What is the sum of $\alpha + \beta + \gamma$?
+%         \item How many radians are there in a right angle?
+%         \item A nonagon is a 9-sided polygon.  How many degrees are there in each interior angle of a regular nonagon?
+%         \item In the diagram below lines $l$ and $m$ are parallel. if $\alpha = 40°$ what are the measures of angles $\gamma$, $\beta$, $\theta$?
+%         \begin{center}
+%           \leavevmode
+%           \begin{mplibcode}
+%             u = 0.4cm;
+%             repere(-5,5,u,-5,5,u);
+%               path l, m, n;
+%               l := (-5, 1.5)--(5, 1.5);
+%               m := (-5, -1.5)--(5, -1.5);
+%               n := (2.2, 3.2)--(-2.2, -3.2);
+%               draw l withpen pencircle scaled 1.25;
+%               draw m withpen pencircle scaled 1.25;
+%               draw n withpen pencircle scaled 1.25;
+%               label.top(btex $l$ etex, point 0.05 of l);
+%               label.top(btex $m$ etex, point 0.05 of m);
+%               label.lrt(btex $n$ etex, point 0.05 of n);
+%               pair A, B;
+%               A := l intersectionpoint n;
+%               B := m intersectionpoint n;
+%               label.lrt(btex $\theta$ etex, A);
+%               label.llft(btex $\beta$ etex, A + 0.5 * dir(180));
+%               label.llft(btex $\gamma$ etex, B + 0.3 * dir(180));
+%               label.urt(btex $\alpha$ etex, B + 0.5 * dir(0));
+%             fin;
+%           \end{mplibcode}
+%         \end{center}
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item How many possible combinations (order does not matter) of three integer side lengths can form a scalene triangle with perimeter less than $13$?
+%         \item A $6$ ft. tall man and his $4$ ft. tall son standing some distance in front of him notice the low evening sun behind them is casting a shadow such that the top of the man’s $12$-ft. long shadow lines up with the top of the son’s shadow.  How far in front of the man is the son standing.
+%         \item The sides of a triangle form a sequence of consecutive integers.  What is the smallest possible perimeter for the triangle?
+%         \item The sides of a triangle form a geometric sequence of integers.  What is the smallest possible perimeter of the triangle?
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item The diagram shows regular pentagon $ABCDE$ and square $ABFG$.  Find the measure of angle FAD in degrees.
+%         \begin{center}
+%           \vspace*{-0.2em}
+%           \leavevmode
+%           \begin{mplibcode}
+%             u = 0.40cm;
+%             taille_marque_s := 0.15cm;
+%             angle_marque_s := 90;
+%             repere(-3,8,u,-1,8,u);
+%               pair A, B, C, D, E, F, G;
+%               A := origin;
+%               B := 3.5 * dir(180 * 3 / 5);
+%               C := B + 3.5 * dir(180 / 5);
+%               D := C + 3.5 * dir(-180 / 5);
+%               E := D + 3.5 * dir(-180 * 3 / 5);
+%               F := (3.5, 3.5);
+%               G := (0, 3.5);
+%               draw A--B--C--D--E--A withpen pencircle scaled 1.25;
+%               draw A--G--F--E withpen pencircle scaled 1.25;
+%               draw C--A--F withpen pencircle scaled 1.25 withcolor vertfonce;
+%               nomme.llft(A, btex $A$ etex);
+%               nomme.lft(B, btex $E$ etex);
+%               nomme.top(C, btex $D$ etex);
+%               nomme.rt(D, btex $C$ etex);
+%               nomme.lrt(E, btex $B$ etex);
+%               nomme.llft(G, btex $G$ etex);
+%               nomme.lrt(F, btex $F$ etex);
+%             fin;
+%           \end{mplibcode}
+%           \vspace*{-0.2em}
+%         \end{center}
+%         \item As shown, distinct points $A$, $B$, $C$, $D$, $E$ and $F$ all lie along line $AF$, while distinct points $G$, $H$, $I$, $J$ and $K$ lie along a different line $GK$.  How many distinct triangles can be formed with these 11 points as their vertices?
+%         \begin{center}
+%           \leavevmode
+%           \begin{mplibcode}
+%             u = 0.48cm;
+%             taille_marque_s := 0.15cm;
+%             angle_marque_s := 90;
+%             repere(-5,10,u,-5,6,u);
+%               pair A, F, G, K;
+%               A := origin;
+%               F := (8, 0);
+%               draw A--F withpen pencircle scaled 1.25;
+%               nomme.top(A, btex $A$ etex);
+%               nomme.top(F, btex $F$ etex);
+%               nomme.top(0.15[A,F], btex $B$ etex);
+%               nomme.top(0.45[A,F], btex $C$ etex);
+%               nomme.top(0.6[A,F], btex $D$ etex);
+%               nomme.top(0.8[A,F], btex $E$ etex);
+%               G := (1, -1.2);
+%               K := (6, -1.5);
+%               draw G--K withpen pencircle scaled 1.25;
+%               nomme.bot(G, btex $G$ etex);
+%               nomme.bot(K, btex $K$ etex);
+%               nomme.bot(0.4[G,K], btex $H$ etex);
+%               nomme.bot(0.6[G,K], btex $I$ etex);
+%               nomme.bot(0.75[G,K], btex $J$ etex);
+%             fin;
+%           \end{mplibcode}
+%         \end{center}
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item In the figure, $AB$ is parallel to $CD$ and to $EF$.  If $AB = 4$ and $EF = 3$, what is $CD$?
+%         \begin{center}
+%           \leavevmode
+%           \begin{mplibcode}
+%             u = 0.45cm;
+%             taille_marque_s := 0.15cm;
+%             angle_marque_s := 90;
+%             repere(-5,10,u,-5,6,u);
+%               pair A, B, C, D, E, F;
+%               B := origin;
+%               A := 4*dir(70);
+%               F := (8, 0);
+%               E := F + 3 * dir(70);
+%               C := whatever[A, F]=whatever[B, E];
+%               D := whatever[B, F]=whatever[C, C+dir(250)];
+%               draw A--F--E--B--A withpen pencircle scaled 1.25;
+%               draw C--D withpen pencircle scaled 1.25;
+%               draw B--F withpen pencircle scaled 1.25;
+%               nomme.ulft(A, btex $A$ etex);
+%               nomme.llft(B, btex $B$ etex);
+%               nomme.top(C, btex $C$ etex);
+%               nomme.bot(D, btex $D$ etex);
+%               nomme.urt(E, btex $E$ etex);
+%               nomme.lrt(F, btex $F$ etex);
+%               label.lft(btex $x$ etex, 0.5[A, B]);
+%               label.rt(btex $y$ etex, 0.5[E, F]);
+%               label.lft(btex $z$ etex, 0.5[C, D]);
+%             fin;
+%           \end{mplibcode}
+%         \end{center}
+%         \seti
+%       \end{enumerate}
+%       \begin{columns}[T, totalwidth=\textwidth]
+%         \begin{column}{0.5\linewidth}
+%           \begin{enumerate}
+%             \conti
+%             \item In the figure on the right, side $BC$ of $\triangle ABC$ is extended to point $P$, so that $\triangle PAB \sim \triangle PCA$.  What is the length of~$PC$?            
+%           \end{enumerate}
+%         \end{column}
+%         \begin{column}{0.5\linewidth}
+%           \vspace*{0.7em}
+%           \begin{mplibcode}
+%             u = 0.28cm;
+%             taille_marque_s := 0.15cm;
+%             angle_marque_s := 90;
+%             repere(-5,15,u,-5,15,u);
+%               pair A, B, C, P;
+%               A := origin;
+%               B := (8,0);
+%               path a, b;
+%               a := cercle(A, 6);
+%               b := cercle(B, 7);
+%               C := a intersectionpoint b;
+%               a := cercle(A, 12);
+%               b := cercle(C, 9);
+%               P := b intersectionpoint a;
+%               draw C--P--A withpen pencircle scaled 1.25;
+%               draw triangle(A, B, C) withpen pencircle scaled 1.25;
+%               nomme.llft(A, btex $A$ etex);
+%               nomme.lrt(B, btex $B$ etex);
+%               nomme.urt(C, btex $C$ etex);
+%               nomme.urt(P, btex $P$ etex);
+%               label.lrt(btex $8$ etex, 0.5[A, B]);
+%               label.urt(btex $7$ etex, 0.5[B, C]);
+%               label.ulft(btex $6$ etex, 0.5[A, C]);
+%             fin;
+%           \end{mplibcode}
+%         \end{column}
+%       \end{columns}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
 \begin{frame}{Exercises}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item In $\triangle ABC$, $\alpha$, $\beta$, $\gamma$ are the exterior angles to interior angles $A$, $B$, and $C$.  What is the sum of $\alpha + \beta + \gamma$?
-        \item How many radians are there in a right angle?
-        \item A nonagon is a 9-sided polygon.  How many degrees are there in each interior angle of a regular nonagon?
-        \item In the diagram below lines $l$ and $m$ are parallel. if $\alpha = 40°$ what are the measures of angles $\gamma$, $\beta$, $\theta$?
-        \begin{center}
+        \item If the degree measures of the angles of a triangle are in the ratio $3:3:4$, what is the degree measure of the largest angle of the triangle? %AMC 8 2017 Problem 6
+        \seti
+      \end{enumerate}
+      \vspace*{-0.8em}
+      \begin{columns}[T, totalwidth=\textwidth]
+        \begin{column}{0.65\linewidth}
+          \begin{enumerate}
+            \conti 
+            \item In $\bigtriangleup ABC$, $D$ is a point on side $\overline{AC}$ such that $BD=DC$ and $\angle BCD$ measures $70°$. What is the degree measure of $\angle ADB$?
+
+            \seti
+          \end{enumerate}
+        \end{column}
+        \begin{column}{0.35\linewidth}
           \leavevmode
           \begin{mplibcode}
-            u = 0.4cm;
-            repere(-5,5,u,-5,5,u);
-              path l, m, n;
-              l := (-5, 1.5)--(5, 1.5);
-              m := (-5, -1.5)--(5, -1.5);
-              n := (2.2, 3.2)--(-2.2, -3.2);
-              draw l withpen pencircle scaled 1.25;
-              draw m withpen pencircle scaled 1.25;
-              draw n withpen pencircle scaled 1.25;
-              label.top(btex $l$ etex, point 0.05 of l);
-              label.top(btex $m$ etex, point 0.05 of m);
-              label.lrt(btex $n$ etex, point 0.05 of n);
-              pair A, B;
-              A := l intersectionpoint n;
-              B := m intersectionpoint n;
-              label.lrt(btex $\theta$ etex, A);
-              label.llft(btex $\beta$ etex, A + 0.5 * dir(180));
-              label.llft(btex $\gamma$ etex, B + 0.3 * dir(180));
-              label.urt(btex $\alpha$ etex, B + 0.5 * dir(0));
-            fin;
-          \end{mplibcode}
-        \end{center}
+            u = 0.33cm;
+            pair A, B, C, D;
+            A := origin;
+            C := (7u, 0u);
+            D := (3u, 0u);
+            B := whatever[D, D + u*dir(40)] = whatever[C, C + u*dir(110)];
+            Draw A--B--C--cycle, B--D;
+            Dot A, B, C, D;
+            rimmark(B--D, D--C);
+            labelarcs(A, C, B, 6, "$70°$");
+            label.bot("$A$", A);
+            label.bot("$D$", D);
+            label.bot("$C$", C);
+            label.top("$B$", B);
+          \end{mplibcode} %AMC 8 2014 Problem 9
+        \end{column}
+      \end{columns}
+      \begin{enumerate}
+        \conti 
+        \item How many scalene triangles have all sides of integral lengths and perimeter less than $15$?
+        \item On sides $AB$ and $AC$ of $\triangle ABC$, we pick points $D$ and $E$, respectively, so that
+        $DE \parallel BC$. If $AB = 3AD$ and $DE = 6$, find $BC$.
+        \item A polygon has $N$ sides and $q$ obtuse interior angles. Each of its obtuse interior angles has a measure $150°$ and each of its acute interior angles has measure $80°$. How many sides does the polygon have?
         \seti
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \conti
-        \item How many possible combinations (order does not matter) of three integer side lengths can form a scalene triangle with perimeter less than $13$?
-        \item A $6$ ft. tall man and his $4$ ft. tall son standing some distance in front of him notice the low evening sun behind them is casting a shadow such that the top of the man’s $12$-ft. long shadow lines up with the top of the son’s shadow.  How far in front of the man is the son standing.
-        \item The sides of a triangle form a sequence of consecutive integers.  What is the smallest possible perimeter for the triangle?
-        \item The sides of a triangle form a geometric sequence of integers.  What is the smallest possible perimeter of the triangle?
+        \item In how many ways can we form a nondegenerate triangle by choosing three distinct
+        numbers from the set $\{1,\ 2,\ 3,\ 4,\ 5\}$ as the sides?
+        \item The circumference of the circle with center $O$ is divided into 12 equal arcs. What is the number of degrees in the sum of the angles $x$ and $y$? 
+        \begin{center}
+          \leavevmode
+          \begin{mplibcode}
+            u = 0.35cm;
+            path c;
+            c := circle(origin, 3u);
+            draw c;
+            for i := 0 upto 11:
+              Dot (point i*1/3 of c);
+            endfor;
+            draw origin--(point 4/3 of c)--(point 0 of c)--origin--(point 8/3 of c)--(point 10/3 of c)--origin;
+            labelarcs(origin, (point 4/3 of c), (point 0 of c), 13, "$x$");
+            labelarcs2((point 8/3 of c), (point 10/3 of c), origin, 10, "$y$");
+          \end{mplibcode} %AMC 8 2014 Problem 15
+        \end{center}
+        \item The ratio of the measures of two acute angles is $5:4$, and the complement of one of these two angles is twice as large as the complement of the other. What is the sum of the degree measures of the two angles? % AMC 10b 2016 Problem 7
       \end{enumerate}
     \end{column}
   \end{columns}
@@ -693,141 +953,17 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item The diagram shows regular pentagon $ABCDE$ and square $ABFG$.  Find the measure of angle FAD in degrees.
-        \begin{center}
-          \vspace*{-0.2em}
-          \leavevmode
-          \begin{mplibcode}
-            u = 0.40cm;
-            taille_marque_s := 0.15cm;
-            angle_marque_s := 90;
-            repere(-3,8,u,-1,8,u);
-              pair A, B, C, D, E, F, G;
-              A := origin;
-              B := 3.5 * dir(180 * 3 / 5);
-              C := B + 3.5 * dir(180 / 5);
-              D := C + 3.5 * dir(-180 / 5);
-              E := D + 3.5 * dir(-180 * 3 / 5);
-              F := (3.5, 3.5);
-              G := (0, 3.5);
-              draw A--B--C--D--E--A withpen pencircle scaled 1.25;
-              draw A--G--F--E withpen pencircle scaled 1.25;
-              draw C--A--F withpen pencircle scaled 1.25 withcolor vertfonce;
-              nomme.llft(A, btex $A$ etex);
-              nomme.lft(B, btex $E$ etex);
-              nomme.top(C, btex $D$ etex);
-              nomme.rt(D, btex $C$ etex);
-              nomme.lrt(E, btex $B$ etex);
-              nomme.llft(G, btex $G$ etex);
-              nomme.lrt(F, btex $F$ etex);
-            fin;
-          \end{mplibcode}
-          \vspace*{-0.2em}
-        \end{center}
-        \item As shown, distinct points $A$, $B$, $C$, $D$, $E$ and $F$ all lie along line $AF$, while distinct points $G$, $H$, $I$, $J$ and $K$ lie along a different line $GK$.  How many distinct triangles can be formed with these 11 points as their vertices?
-        \begin{center}
-          \leavevmode
-          \begin{mplibcode}
-            u = 0.48cm;
-            taille_marque_s := 0.15cm;
-            angle_marque_s := 90;
-            repere(-5,10,u,-5,6,u);
-              pair A, F, G, K;
-              A := origin;
-              F := (8, 0);
-              draw A--F withpen pencircle scaled 1.25;
-              nomme.top(A, btex $A$ etex);
-              nomme.top(F, btex $F$ etex);
-              nomme.top(0.15[A,F], btex $B$ etex);
-              nomme.top(0.45[A,F], btex $C$ etex);
-              nomme.top(0.6[A,F], btex $D$ etex);
-              nomme.top(0.8[A,F], btex $E$ etex);
-              G := (1, -1.2);
-              K := (6, -1.5);
-              draw G--K withpen pencircle scaled 1.25;
-              nomme.bot(G, btex $G$ etex);
-              nomme.bot(K, btex $K$ etex);
-              nomme.bot(0.4[G,K], btex $H$ etex);
-              nomme.bot(0.6[G,K], btex $I$ etex);
-              nomme.bot(0.75[G,K], btex $J$ etex);
-            fin;
-          \end{mplibcode}
-        \end{center}
+        \item Let $\triangle ABC$ be an isosceles triangle with $BC = AC$ and $\angle ACB = 40°$. Construct the circle with diameter $\overline{BC}$, and let $D$ and $E$ be the other intersection points of the circle with the sides $\overline{AC}$ and $\overline{AB}$, respectively. Let $F$ be the intersection of the diagonals of the quadrilateral $BCDE$. What is the degree measure of $\angle BFC$ ?  %AMC 10a 2019 Problem 13
+        \item Right triangle $ABC$ has leg lengths $AB=20$ and $BC=21$. Including $\overline{AB}$ and $\overline{BC}$, how many line segments with integer length can be drawn from vertex $B$ to a point on hypotenuse $\overline{AC}$? %2018 AMC 10A Problems/Problem 16
         \seti
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \conti
-        \item In the figure, $AB$ is parallel to $CD$ and to $EF$.  If $AB = 4$ and $EF = 3$, what is $CD$?
-        \begin{center}
-          \leavevmode
-          \begin{mplibcode}
-            u = 0.45cm;
-            taille_marque_s := 0.15cm;
-            angle_marque_s := 90;
-            repere(-5,10,u,-5,6,u);
-              pair A, B, C, D, E, F;
-              B := origin;
-              A := 4*dir(70);
-              F := (8, 0);
-              E := F + 3 * dir(70);
-              C := whatever[A, F]=whatever[B, E];
-              D := whatever[B, F]=whatever[C, C+dir(250)];
-              draw A--F--E--B--A withpen pencircle scaled 1.25;
-              draw C--D withpen pencircle scaled 1.25;
-              draw B--F withpen pencircle scaled 1.25;
-              nomme.ulft(A, btex $A$ etex);
-              nomme.llft(B, btex $B$ etex);
-              nomme.top(C, btex $C$ etex);
-              nomme.bot(D, btex $D$ etex);
-              nomme.urt(E, btex $E$ etex);
-              nomme.lrt(F, btex $F$ etex);
-              label.lft(btex $x$ etex, 0.5[A, B]);
-              label.rt(btex $y$ etex, 0.5[E, F]);
-              label.lft(btex $z$ etex, 0.5[C, D]);
-            fin;
-          \end{mplibcode}
-        \end{center}
-        \seti
+        \item A square with side length $x$ is inscribed in a right triangle with sides of length $3$, $4$, and $5$ so that one vertex of the square coincides with the right-angle vertex of the triangle. A square with side length $y$ is inscribed in another right triangle with sides of length $3$, $4$, and $5$ so that one side of the square lies on the hypotenuse of the triangle. What is $\dfrac{x}{y}$? % 2017 AMC 10A Problems/Problem 21
+        \item Quadrilateral $ABCD$ has $AB = BC = CD$, angle $ABC = 70$ and angle $BCD = 170$. What is the measure of angle $BAD$? % 2008 AMC 10B Problems/Problem 24
       \end{enumerate}
-      \begin{columns}[T, totalwidth=\textwidth]
-        \begin{column}{0.5\linewidth}
-          \begin{enumerate}
-            \conti
-            \item In the figure on the right, side $BC$ of $\triangle ABC$ is extended to point $P$, so that $\triangle PAB \sim \triangle PCA$.  What is the length of~$PC$?            
-          \end{enumerate}
-        \end{column}
-        \begin{column}{0.5\linewidth}
-          \vspace*{0.7em}
-          \begin{mplibcode}
-            u = 0.28cm;
-            taille_marque_s := 0.15cm;
-            angle_marque_s := 90;
-            repere(-5,15,u,-5,15,u);
-              pair A, B, C, P;
-              A := origin;
-              B := (8,0);
-              path a, b;
-              a := cercle(A, 6);
-              b := cercle(B, 7);
-              C := a intersectionpoint b;
-              a := cercle(A, 12);
-              b := cercle(C, 9);
-              P := b intersectionpoint a;
-              draw C--P--A withpen pencircle scaled 1.25;
-              draw triangle(A, B, C) withpen pencircle scaled 1.25;
-              nomme.llft(A, btex $A$ etex);
-              nomme.lrt(B, btex $B$ etex);
-              nomme.urt(C, btex $C$ etex);
-              nomme.urt(P, btex $P$ etex);
-              label.lrt(btex $8$ etex, 0.5[A, B]);
-              label.urt(btex $7$ etex, 0.5[B, C]);
-              label.ulft(btex $6$ etex, 0.5[A, C]);
-            fin;
-          \end{mplibcode}
-        \end{column}
-      \end{columns}
     \end{column}
   \end{columns}
 \end{frame}

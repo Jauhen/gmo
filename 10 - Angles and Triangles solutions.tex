@@ -1,0 +1,329 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{scalerel}
+
+\usetheme{graham}
+
+\title{Angles and Triangles solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\newcommand\Mydiv[2]{%
+$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+        \overline{\enspace\strut#2}$}
+
+\setcounter{MaxMatrixCols}{20}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\usepackage{luamplib}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problems 1-3}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E1.} If the degree measures of the angles of a triangle are in the ratio $3:3:4$, what is the degree measure of the largest angle of the triangle?
+      \end{problem}
+      Let the angles are $3x$, $3x$, and $4x$, so $3x + 3x + 4x = 10x = 180°$. So $x = 18°$ and $4x = \boxed{72°}$.
+
+      \begin{problem}
+        \vspace*{1ex}
+        \begin{columns}[T, totalwidth=0.95\textwidth]
+          \hspace{0.7ex}
+          \begin{column}{0.6\linewidth}
+            \textbf{E2.} In $\bigtriangleup ABC$, $D$ is a point on side $\overline{AC}$ such that $BD=DC$ and $\angle BCD$ measures $70°$. What is the degree measure of $\angle ADB$?
+          \end{column}
+          \hspace{0.7ex}
+          \begin{column}{0.35\linewidth}
+            \leavevmode
+            \begin{mplibcode}
+              u = 0.33cm;
+              pair A, B, C, D;
+              A := origin;
+              C := (7u, 0u);
+              D := (3u, 0u);
+              B := whatever[D, D + u*dir(40)] = whatever[C, C + u*dir(110)];
+              Draw A--B--C--cycle, B--D;
+              Dot A, B, C, D;
+              rimmark(B--D, D--C);
+              labelarcs(A, C, B, 6, "$70°$");
+              label.bot("$A$", A);
+              label.bot("$D$", D);
+              label.bot("$C$", C);
+              label.top("$B$", B);
+            \end{mplibcode} %AMC 8 2014 Problem 9
+          \end{column}
+        \end{columns}
+      \end{problem}
+      $\angle ADB = \angle DCB + \angle DBC$, and since $\triangle BDC$ is isosceles, $\angle DBC = \angle DCB = 70°$, so $\angle ADB = 70° + 70° = \boxed{140°}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E3.} How many scalene triangles have all sides of integral lengths and perimeter less than $15$?
+      \end{problem}
+      Let's take a look at the longest side: its minimal length is $5$ (otherwise other side will be longer) and maximal lenght is $7$ (otherwise it is longer than sum of two other sides).
+
+      Case 1: the longest side is $5$. In this case we have $5-5-5$ triangle, and it isn't scalene.
+
+      Case 2: the longest side is $6$. The sum of two other sides is $9$ and the only case when they both shorter than $6$ is $6-5-4$ triangle.
+
+      Case 3: the longest side is $7$. The sum of two other sides is $8$ and it can be split in $4$ ways: $7-7-1$, $7-6-2$, $7-5-3$, and $7-4-4$. The first and the last cases are isosceles triangles.
+
+      As a result we have $\boxed{3}$ scalene triangles: $6-5-4$, $7-6-2$, and $7-5-3$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problems 4-6}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E4.} On sides $AB$ and $AC$ of $\triangle ABC$, we pick points $D$ and $E$, respectively, so that
+        $DE \parallel BC$. If $AB = 3AD$ and $DE = 6$, find $BC$.
+      \end{problem}
+
+      \begin{wrapfigure}{l}{10.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u := 0.5cm;
+          pair A, B, C, D, E;
+          A := origin;
+          B := 3u*dir(65);
+          C := 4u*dir(0);
+          D := 1/3[A, B];
+          E := 1/3[A, C];
+          Draw A--B--C--cycle, D--E;
+          Dot A, B, C, D, E;
+          label.bot("$A$", A);
+          label.ulft("$D$", D);
+          label.ulft("$B$", B);
+          label.bot("$C$", C);
+          label.bot("$E$", E);
+        \end{mplibcode}
+      \end{wrapfigure}
+      Since $\triangle ADE \sim \triangle ABC$ via \textbf{AA} similarity, $DE : BC = AD : AB$, so $BC = DE \times AB / AD = 6 \times 3 = \boxed{18}$.
+      \begin{problem}
+        \textbf{E5.} Let $\angle ABC = 24°$ and $\angle ABD = 20°$. What is the smallest possible degree measure for $\angle CBD$?
+      \end{problem}
+
+      $\angle ABD$ and $\angle ABC$ share ray $AB$. In order to minimize the value of $\angle CBD$, $D$ should be located between $A$ and $C$.$\angle ABC = \angle ABD + \angle CBD$, so $\angle CBD = 4$. The answer is $\boxed{4}$
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E6.} A polygon has $N$ sides and $q$ obtuse interior angles. Each of its obtuse interior angles has a measure $150°$ and each of its acute interior angles has measure $80°$. How many sides does the polygon have?
+      \end{problem}
+      The total sum of angles in the polygon is $180 \cdot (N - 2)$ and from other side the sum of angles is $150 \cdot q + 80 \cdot (N - q)$.
+      \begin{gather*}
+        180 (N - 2) = 150 q + 80 (N - q),\\
+        180 N - 360 = 150 q + 80 N - 80 q,\\
+        100 N - 360 = 70 q, \\
+        100 N = 360 + 70 q, \\
+        10 N = 36 + 7q.
+      \end{gather*}
+      So $7q$ should be ended up with $4$. This is possible when $q = 2, 12, 22$ etc. For $q = 2$, $\boxed{N = 5}$, for $q = 12$, $\boxed{N = 12}$, but for each $q> 12$, $N < q$, so the there are no more solutions. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problems 7-8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E7.} In how many ways can we form a nondegenerate triangle by choosing three distinct
+        numbers from the set $\{1,\ 2,\ 3,\ 4,\ 5\}$ as the sides?
+      \end{problem}
+      Let's look at the longest side: 
+
+      Case 1: The longest side is $5$. The sum of two other sides should be at least $6$, so the only option is $3-4-5$.
+
+      Case 2: The longest side is $4$. The sum of two other sides should be at least $5$, so the only option is $2-3-4$.
+
+      Case 3: The longest side is $3$. The rest two sides are $1$ and $2$ and we can got only degenerated triangle.
+
+      So we have only two cases $3-4-5$ and $2-3-4$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E8.} The ratio of the measures of two acute angles is $5:4$, and the complement of one of these two angles is twice as large as the complement of the other. What is the sum of the degree measures of the two angles?
+      \end{problem}
+      We let the measures be $5x$ and $4x$ giving us the ratio of $5:4$. We know $90-4x>90-5x$ since this inequality gives $x>0$, which is true since the measures of angles are never negative. We also know the bigger complement is twice the smaller, so
+      \begin{gather*}
+        90-4x=2(90-5x),\\
+        90-4x=180-10x,\\
+        6x=90,\\
+        x=15.
+      \end{gather*}
+      Therefore, the angles are $75$ and $60$, which sum to $\boxed{135}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C1.} Joy has $30$ thin rods, one each of every integer length from $1$ cm through $30$ cm. She places the rods with lengths $3$ cm, $7$ cm, and $15$ cm on a table. She then wants to choose a fourth rod that she can put with these three to form a quadrilateral with positive area. How many of the remaining rods can she choose as the fourth rod?
+      \end{problem}
+      The triangle inequality generalizes to all polygons, so $x < 3+7+15$ and $15<x+3+7$ yields $5<x<25$. Now, we know that there are $19$ numbers between $5$ and $25$ exclusive, but we must subtract $2$ to account for the 2 lengths already used that are between those numbers, which gives $19-2=\boxed{17}$
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C2.} Right triangle $ABC$ has leg lengths $AB=20$ and $BC=21$. Including $\overline{AB}$ and $\overline{BC}$, how many line segments with integer length can be drawn from vertex $B$ to a point on hypotenuse $\overline{AC}$? 
+      \end{problem}
+      $AC = \sqrt{20^2 + 21^2} = 29$ and $\triangle ABC \sim \triangle APB$, so $BP = BC \times AB / AC = 21 \times 20 / 29 \approx 14.5$
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 0.1cm;
+          pair A, B, C, E, P; 
+          A:=(-20u, 0u); 
+          B:=origin; 
+          C:=(0u,21u); 
+          E:=(-21u, 20u); 
+          P:=altitude(A, B, C); 
+          draw A--B--C--cycle; 
+          draw B--P; 
+          label.llft("$A$", A); 
+          label.lrt("$B$", B); 
+          label.urt("$C$", C); 
+          label.bot("$P$", P);
+          draw subpath (1, 2) of circle(B, 21u);
+          draw subpath (1, 2) of circle(B, 20u);
+          draw subpath (1, 2) of circle(B, 19u);
+          draw subpath (1, 2) of circle(B, 18u);
+          draw subpath (1, 2) of circle(B, 17u);
+          draw subpath (1, 2) of circle(B, 16u);
+          draw subpath (1, 2) of circle(B, 15u);
+        \end{mplibcode}          
+      \end{wrapfigure}
+      It follows that we can draw circles of radii $15, 16, 17, 18, 19,$ and $20,$ that each contribute two integer lengths (since these circles intersect the hypotenuse twice) from $B$ to $\overline{AC}$ and one circle of radius $21$ that contributes only one such segment. Our answer is then $6 \cdot 2 + 1 = \boxed{13}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problem 3}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C3.} A square with side length $x$ is inscribed in a right triangle with sides of length $3$, $4$, and $5$ so that one vertex of the square coincides with the right-angle vertex of the triangle. A square with side length $y$ is inscribed in another right triangle with sides of length $3$, $4$, and $5$ so that one side of the square lies on the hypotenuse of the triangle. What is $\dfrac{x}{y}$?
+      \end{problem}
+      \begin{columns}
+        \begin{column}[T]{0.5\textwidth}          
+          \begin{mplibcode}
+            u = 0.6cm;
+            pair A,B,C; pair D, e, F; 
+            A := (0,0); 
+            B := (4u,0); 
+            C := (0,3u);  
+            D := (0, 12/7u); 
+            e := (12/7u, 12/7u); 
+            F := (12/7u, 0);  
+            draw A--B--C--cycle; 
+            draw D--e--F;  
+            label.lft("$x$", D/2); 
+            label.llft("$A$", A); 
+            label.bot("$B$", B); 
+            label.top("$C$", C); 
+            label.lft("$D$", D); 
+            label.urt("$E$", e); 
+            label.bot("$F$", F);
+          \end{mplibcode}
+        \end{column}
+        \begin{column}[T]{0.5\textwidth}
+          \begin{mplibcode}
+            u = 0.6cm;
+            pair A,B,C; pair q, R, S, T; 
+            A := (0,0); 
+            B := (4u,0); 
+            C := (0,3u);  
+            q := (1.297u, 0); 
+            R := (2.27u, 1.297u); 
+            S := (0.973u, 2.27u); 
+            T := (0, 0.973u); 
+            draw A--B--C--cycle; 
+            draw q--R--S--T--cycle;  
+            label.ulft("$y$", (q+R)/2); 
+            label.llft("$A'$", A); 
+            label.lrt("$B'$", B); 
+            label.top("$C'$", C); 
+            label.("$Q$", (q-(0,0.3u))); 
+            label.urt("$R$", R); 
+            label.urt("$S$", S); 
+            label.lft("$T$", T);
+          \end{mplibcode}
+        \end{column}
+      \end{columns}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Analyze the first right triangle.
+      Note that $\triangle ABC$ and $\triangle FBE$ are similar, so $\frac{BF}{FE} = \dfrac{AB}{AC}$. This can be written as $\dfrac{4-x}{x}=\dfrac{4}{3}$. Solving, $x = \dfrac{12}{7}$.
+      
+      Now we analyze the second triangle.
+
+      Similarly, $\triangle A'B'C'$ and $\triangle RB'Q$ are similar, so $RB' = \dfrac{4}{3}y$, and $C'S = \dfrac{3}{4}y$. Thus, $C'B' = C'S + SR + RB' = \dfrac{4}{3}y + y + \dfrac{3}{4}y = 5$. Solving for $y$, we get $y = \dfrac{60}{37}$. Thus, $\dfrac{x}{y} = \boxed{\frac{37}{35}}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problem 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C4.} Quadrilateral $ABCD$ has $AB = BC = CD$, angle $ABC = 70°$ and angle $BCD = 170°$. What is the measure of angle $BAD$?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \begin{mplibcode}
+          u = 0.5cm; 
+          a:=4u; 
+          pair A, B, C, D, E;
+          A:=(0,0); 
+          B = a*dir(0);
+          C=B+a*dir(110); 
+          D=C+a*dir(120); 
+          E=D+a*dir(0); 
+          Draw A--B--C--D--cycle, E--C, B--D, B--E, D--E; 
+          label.llft("$A$",A); 
+          label.lrt("$B$",B); 
+          label.lrt("$C$",C); 
+          label.top("$D$",D); 
+          label.urt("$E$",E); 
+          label("$60°$",C + .75u*dir(360-65-115-55-30)); 
+          label("$65°$",B + .75u*dir(180-32.5)); 
+          label("$x°$",A + .5u*dir(42.5)); 
+          label("$5°$",D + 2.5u*dir(360-60-2.5)); 
+          label("$60°$",D + .75u*dir(360-30)); 
+          label("$60°$",E + .5u*dir(360-150)); 
+          label("$5°$",B + 2.5u*dir(180-65-2.5));
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      First, connect the diagonal $DB$, then, draw line $DE$ such that it is congruent to $DC$ and is parallel to $AB$. Because triangle $DCB$ is isosceles and angle $DCB$ is $170°$, the angles $CDB$ and $CBD$ are both $\dfrac{180-170}{2} = 5°$. Because angle $ABC$ is $70°$, we get angle $ABD$ is $65°$. Next, noticing parallel lines $AB$ and $DE$ and transversal $DB$, we see that angle $BDE$ is also $65°$, and subtracting off angle $CDB$ gives that angle $EDC$ is $60°$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+  
+Now, because we drew $ED = DC$, triangle $DEC$ is equilateral. We can also conclude that $EC=DC=CB$ meaning that triangle $ECB$ is isosceles, and angles $CBE$ and $CEB$ are equal.
+
+Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because $ABED$ is a parallelogram, the angle $DEB$ is also $x°$. Then, $CEB$ is $(x-60)°$. Again because $ABED$ is a parallelogram, angle $ABE$ is $(180-x)°$. Subtracting angle $ABC$ gives that angle $CBE$ equals $(110-x)°$. Because angle $CBE$ equals angle $CEB$, we get\[x-60=110-x,\] solving into $x=\boxed{85°}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

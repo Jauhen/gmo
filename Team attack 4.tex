@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+\usepackage{luamplib}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usepackage[landscape,twocolumn, margin=0.75in]{geometry}
+\setlength{\columnsep}{1.5in}
+\usepackage{enumitem}
+
+\begin{document}
+  \pagestyle{empty}
+  \section*{Team attack 11/02/2022}
+  \begin{enumerate}[leftmargin=3mm]
+      \item It takes Mary $30$ minutes to walk uphill $1$ km from her home to school, but it takes her only $10$ minutes to walk from school to her home along the same route. What is her average speed, in km/hr, for the round trip?
+      \item Members of the Rockham Soccer League buy socks and T-shirts. Socks cost \$4 per pair and each T-shirt costs \$5 more than a pair of socks. Each member needs one pair of socks and a shirt for home games and another pair of socks and a shirt for away games. If the total cost is \$2366, how many members are in the League?
+      \item How many non-congruent triangles with perimeter $7$ have integer side lengths?
+      \item What is the probability that a randomly drawn positive factor of $60$ is less than $7$?
+  \end{enumerate}
+  \begin{minipage}{0.25\textwidth}
+    \begin{enumerate}[leftmargin=3mm]
+      \item[5.] The polygon enclosed by the solid lines in the figure consists of 4 congruent squares joined edge-to-edge. One more congruent square is attached to an edge at one of the nine positions indicated. How many of the nine resulting polygons can be folded to form a cube with one face missing?
+    \end{enumerate}
+  \end{minipage}\qquad
+  \begin{minipage}{0.2\textwidth}
+    \begin{mplibcode}
+      u = 0.8cm;
+      fill (1u,1u)--(2u,1u)--(2u,2u)--(4u,2u)--(4u,3u)--(1u,3u)--cycle withcolor 0.5white; 
+      draw (1u,1u)--(2u,1u)--(2u,2u)--(4u,2u)--(4u,3u)--(1u,3u)--cycle;
+      draw (0u,1u)--(0u,3u)--(1u,3u)--(1u,4u)--(4u,4u)--(4u,3u)--(5u,3u)--(5u,2u)--(4u,2u)--(4u,1u)--(2u,1u)--(2u,0u)--(1u,0u)--(1u,1u)--cycle dashed evenly; 
+      draw (0u,2u)--(2u,2u)--(2u,4u) dashed evenly; 
+      draw (3u,1u)--(3u,4u) dashed evenly; 
+      label("$1$",(1.5u,0.5u)); 
+      draw circle((1.5u,0.5u),.25u); 
+      label("$2$",(2.5u,1.5u)); 
+      draw circle((2.5u,1.5u),.25u); 
+      label("$3$",(3.5u,1.5u)); 
+      draw circle((3.5u,1.5u),.25u); 
+      label("$4$",(4.5u,2.5u)); 
+      draw circle((4.5u,2.5u),.25u); 
+      label("$5$",(3.5u,3.5u)); 
+      draw circle((3.5u,3.5u),.25u); 
+      label("$6$",(2.5u,3.5u)); 
+      draw circle((2.5u,3.5u),.25u); 
+      label("$7$",(1.5u,3.5u)); 
+      draw circle((1.5u,3.5u),.25u); 
+      label("$8$",(0.5u,2.5u)); 
+      draw circle((0.5u,2.5u),.25u); 
+      label("$9$",(0.5u,1.5u)); 
+      draw circle((0.5u,1.5u),.25u);
+    \end{mplibcode}
+  \end{minipage}
+  \begin{enumerate}[leftmargin=3mm]
+    \item[6.] The sum of the two 5-digit numbers $AMC10$ and $AMC12$ is $123422$. What is $A+M+C$?
+    \item[7.] A point $(x,\ y)$ is randomly picked from inside the rectangle with vertices $(0,0)$, $(4,0)$, $(4,1)$, and $(0,1)$. What is the probability that $x<y$?
+  \end{enumerate}
+
+  \newpage
+  \section*{Team attack 11/02/2022}
+  \begin{enumerate}[leftmargin=3mm]
+    \item It takes Mary $30$ minutes to walk uphill $1$ km from her home to school, but it takes her only $10$ minutes to walk from school to her home along the same route. What is her average speed, in km/hr, for the round trip?
+    \item Members of the Rockham Soccer League buy socks and T-shirts. Socks cost \$4 per pair and each T-shirt costs \$5 more than a pair of socks. Each member needs one pair of socks and a shirt for home games and another pair of socks and a shirt for away games. If the total cost is \$2366, how many members are in the League?
+    \item How many non-congruent triangles with perimeter $7$ have integer side lengths?
+    \item What is the probability that a randomly drawn positive factor of $60$ is less than $7$?
+  \end{enumerate}
+  \begin{minipage}{0.25\textwidth}
+    \begin{enumerate}[leftmargin=3mm]
+      \item[5.] The polygon enclosed by the solid lines in the figure consists of 4 congruent squares joined edge-to-edge. One more congruent square is attached to an edge at one of the nine positions indicated. How many of the nine resulting polygons can be folded to form a cube with one face missing?
+    \end{enumerate}
+  \end{minipage}\qquad
+  \begin{minipage}{0.2\textwidth}
+    \begin{mplibcode}
+      u = 0.8cm;
+      fill (1u,1u)--(2u,1u)--(2u,2u)--(4u,2u)--(4u,3u)--(1u,3u)--cycle withcolor 0.5white; 
+      draw (1u,1u)--(2u,1u)--(2u,2u)--(4u,2u)--(4u,3u)--(1u,3u)--cycle;
+      draw (0u,1u)--(0u,3u)--(1u,3u)--(1u,4u)--(4u,4u)--(4u,3u)--(5u,3u)--(5u,2u)--(4u,2u)--(4u,1u)--(2u,1u)--(2u,0u)--(1u,0u)--(1u,1u)--cycle dashed evenly; 
+      draw (0u,2u)--(2u,2u)--(2u,4u) dashed evenly; 
+      draw (3u,1u)--(3u,4u) dashed evenly; 
+      label("$1$",(1.5u,0.5u)); 
+      draw circle((1.5u,0.5u),.25u); 
+      label("$2$",(2.5u,1.5u)); 
+      draw circle((2.5u,1.5u),.25u); 
+      label("$3$",(3.5u,1.5u)); 
+      draw circle((3.5u,1.5u),.25u); 
+      label("$4$",(4.5u,2.5u)); 
+      draw circle((4.5u,2.5u),.25u); 
+      label("$5$",(3.5u,3.5u)); 
+      draw circle((3.5u,3.5u),.25u); 
+      label("$6$",(2.5u,3.5u)); 
+      draw circle((2.5u,3.5u),.25u); 
+      label("$7$",(1.5u,3.5u)); 
+      draw circle((1.5u,3.5u),.25u); 
+      label("$8$",(0.5u,2.5u)); 
+      draw circle((0.5u,2.5u),.25u); 
+      label("$9$",(0.5u,1.5u)); 
+      draw circle((0.5u,1.5u),.25u);
+    \end{mplibcode}
+  \end{minipage}
+  \begin{enumerate}[leftmargin=3mm]
+    \item[6.] The sum of the two 5-digit numbers $AMC10$ and $AMC12$ is $123422$. What is $A+M+C$?
+    \item[7.] A point $(x,\ y)$ is randomly picked from inside the rectangle with vertices $(0,0)$, $(4,0)$, $(4,1)$, and $(0,1)$. What is the probability that $x<y$?
+  \end{enumerate}
+
+\end{document}

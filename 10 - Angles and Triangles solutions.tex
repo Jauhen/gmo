@@ -317,6 +317,133 @@ Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because 
   \end{columns}
 \end{frame}
 
+\begin{frame}{Title}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Team attack 4 solutions, problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA1.} It takes Mary $30$ minutes to walk uphill $1$ km from her home to school, but it takes her only $10$ minutes to walk from school to her home along the same route. What is her average speed, in km/hr, for the round trip?
+      \end{problem}
+      Since she walked $1$ km to school and $1$ km back home, her total distance is $1+1=2$ km.
+
+      Since she spent $30$ minutes walking to school and $10$ minutes walking back home, her total time is $30+10=40$ minutes = $\dfrac{40}{60}=\dfrac{2}{3}$ hours.
+
+      Therefore her average speed in km/hr is $\dfrac{2}{\frac{2}{3}}=\boxed{3}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA2.} Members of the Rockham Soccer League buy socks and T-shirts. Socks cost \$4 per pair and each T-shirt costs \$5 more than a pair of socks. Each member needs one pair of socks and a shirt for home games and another pair of socks and a shirt for away games. If the total cost is \$2366, how many members are in the League?
+      \end{problem}
+      Since T-shirts cost $5$ dollars more than a pair of socks, T-shirts cost $5+4=9$ dollars.
+
+      Since each member needs $2$ pairs of socks and $2$ T-shirts, the total cost for $1$ member is $2(4+9)=26$ dollars.
+
+      Since $2366$ dollars was the cost for the club, and $26$ was the cost per member, the number of members in the League is $2366\div 26=\boxed{91}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Team attack 4 solutions, problems 3-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA3.} How many non-congruent triangles with perimeter $7$ have integer side lengths?
+      \end{problem}
+      By the triangle inequality, no side may have a length greater than the semiperimeter, which is $\dfrac{1}{2}\cdot7=3{.}5$.
+
+      Since all sides must be integers, the largest possible length of a side is $3$. Therefore, all such triangles must have all sides of length $1$, $2$, or $3$. Since $2+2+2=6<7$, at least one side must have a length of $3$. Thus, the remaining two sides have a combined length of $7-3=4$. So, the remaining sides must be either $3$ and $1$ or $2$ and $2$. Therefore, the number of triangles is $\boxed{2}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA4.} What is the probability that a randomly drawn positive factor of $60$ is less than $7$?
+      \end{problem}
+      Notice that $1 \cdot 60=2 \cdot 30=3 \cdot 20=4 \cdot 15=5 \cdot 12=6 \cdot 10=60$. Hence, $60$ has $12$ factors, of which $6$ are less than $7$. Thus, the answer is $\dfrac{6}{12} = \boxed{\dfrac{1}{2}}$.
+
+      \begin{problem}
+        \textbf{TA6.} The sum of the two 5-digit numbers $AMC10$ and $AMC12$ is $123422$. What is $A+M+C$?
+      \end{problem}
+      We know that $AMC12$ is $2$ more than $AMC10$. We set up $AMC10=x$ and $AMC12=x+2$. We have $x+x+2=123422$. Solving for $x$, we get $x=61710$. Therefore, the sum $A+M+C= \boxed{14}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Team attack 4 solutions, problems 5-6}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA5.} The polygon enclosed by the solid lines in the figure consists of 4 congruent squares joined edge-to-edge. One more congruent square is attached to an edge at one of the nine positions indicated. How many of the nine resulting polygons can be folded to form a cube with one face missing?
+      \end{problem}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.6cm;
+          fill (1u,1u)--(2u,1u)--(2u,2u)--(4u,2u)--(4u,3u)--(1u,3u)--cycle withcolor 0.5white; 
+          draw (1u,1u)--(2u,1u)--(2u,2u)--(4u,2u)--(4u,3u)--(1u,3u)--cycle;
+          draw (0u,1u)--(0u,3u)--(1u,3u)--(1u,4u)--(4u,4u)--(4u,3u)--(5u,3u)--(5u,2u)--(4u,2u)--(4u,1u)--(2u,1u)--(2u,0u)--(1u,0u)--(1u,1u)--cycle dashed evenly; 
+          draw (0u,2u)--(2u,2u)--(2u,4u) dashed evenly; 
+          draw (3u,1u)--(3u,4u) dashed evenly; 
+          label("$1$",(1.5u,0.5u)); 
+          draw circle((1.5u,0.5u),.3u); 
+          label("$2$",(2.5u,1.5u)); 
+          draw circle((2.5u,1.5u),.3u); 
+          label("$3$",(3.5u,1.5u)); 
+          draw circle((3.5u,1.5u),.3u); 
+          label("$4$",(4.5u,2.5u)); 
+          draw circle((4.5u,2.5u),.3u); 
+          label("$5$",(3.5u,3.5u)); 
+          draw circle((3.5u,3.5u),.3u); 
+          label("$6$",(2.5u,3.5u)); 
+          draw circle((2.5u,3.5u),.3u); 
+          label("$7$",(1.5u,3.5u)); 
+          draw circle((1.5u,3.5u),.3u); 
+          label("$8$",(0.5u,2.5u)); 
+          draw circle((0.5u,2.5u),.3u); 
+          label("$9$",(0.5u,1.5u)); 
+          draw circle((0.5u,1.5u),.3u);
+        \end{mplibcode}
+        \vspace*{-0.5ex}
+      \end{center}
+      A cube missing one face has $5$ of its $6$ faces. Since the shape has $4$ faces already, we need another face. The only way to add another face is if the added square does not overlap any of the others. $1$, $2$, and $3$ overlap, while squares $4$ to $9$ do not. The answer is $\boxed{6}$
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA7.} A point $(x,\ y)$ is randomly picked from inside the rectangle with vertices $(0,\ 0)$, $(4,\ 0)$, $(4,\ 1)$, and $(0,\ 1)$. What is the probability that $x<y$?
+      \end{problem}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          fill (0u, 0u)--(4u, 0u)--(4u, 1u)--(1u, 1u)--cycle withcolor 0.6white;
+          draw  (0u, 0u)--(4u, 0u)--(4u, 1u)--(0u, 1u)--cycle;
+          drawarrow (-1u, 0u)--(5u, 0u);
+          drawarrow (0u, -0.5u)--(0u, 1.7u);
+          label.llft("$x$", (5u, 0u));
+          label.llft("$y$", (0u, 1.7u));
+          label.bot("$4$", (4u, 0u));
+          label.lft("$1$", (0u, 1u));
+          label.llft("$0$", (0u, 0u));
+        \end{mplibcode}
+      \end{center}
+      The area of this rectangle is $4\cdot1=4$.
+
+      The line $x=y$ intersects the rectangle at $(0,0)$ and $(1,1)$.
+
+      The area of this triangle is $\dfrac{1}{2}\cdot1^{2}=\dfrac{1}{2}$
+
+      Therefore, the probability that $x<y$ is $\dfrac{\frac{1}{2}}{4}=\boxed{\dfrac{1}{8}}$
+    \end{column}
+  \end{columns}
+\end{frame}
+
 % \begin{frame}{Title}
 %   \begin{columns}[T]
 %     \begin{column}{0.5\textwidth}
@@ -325,5 +452,7 @@ Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because 
 %     \end{column}
 %   \end{columns}
 % \end{frame}
+
+
 
 \end{document}

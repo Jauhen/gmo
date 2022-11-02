@@ -26,7 +26,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{E1.} Convert to the base $7$ the number $532_8$?
-      \end{problem}
+      \end{problem}\pause
       $532_8 = 5 \times 8^2 + 3 \times 8 + 2 = 320 + 24 + 2 = 346_{10}$.
       \[
         \setlength\arraycolsep{0.6ex}
@@ -38,23 +38,23 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
           $\Mydiv{7}{\ 3\;4\;6}$ &
         \end{array}
       \]
-      $532_8 = 346_{10} = \boxed{1003_{7}}$.
+      $532_8 = 346_{10} = \boxed{1003_{7}}$.\pause
       \begin{problem}
         \textbf{E2.} What is the last digit in $7^{149}$ ?
-      \end{problem}
-      $7^4 \equiv 1 \pmod{10}$, and $149 \equiv 1 \pmod{4}$, so $7^{149} \equiv 7^{1} \equiv \boxed{7} \pmod{10}$.  
+      \end{problem}\pause
+      $7^4 \equiv 1 \pmod{10}$, and $149 \equiv 1 \pmod{4}$, so $7^{149} \equiv 7^{1} \equiv \boxed{7} \pmod{10}$.  \pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{E3.} How many trailing zeros in $144!$?
-      \end{problem}
+      \end{problem}\pause
       There are $28$ multiples of $5$ less or equal than $144$, there are $5$ multiples of $5^2 = 25$ less or equal than $144$, and there is one multiple of $5^3 = 125$ less of equal than $144$. 
       
-      So $144!$ has $28 + 5 + 1 = \boxed{34}$ trailing zeros. 
+      So $144!$ has $28 + 5 + 1 = \boxed{34}$ trailing zeros. \pause
       \begin{problem}
         \textbf{E4.} $R + RR = BOW$. What is the last digit of $F \times A \times I \times N \times T \times I \times N \times G$?
-      \end{problem}
-      The only way for $R + RR$ to be bigger than $100$ is $R = 9$ and $BOW = 108$. So for $6$ other digits $F$, $A$, $I$, $N$, $T$, and $G$ we have only $6$ other digits, so $F \times A \times I \times N \times T \times G = 2 \cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7$, and it is ended up with $0$. So doesn't matter which digits are $N$ and $I$ the last digit of $F \times A \times I \times N \times T \times I \times N \times G$ is $\boxed{0}$.
+      \end{problem}\pause
+      The only way for $R + RR$ to be bigger than $100$ is $R = 9$ and $BOW = 108$.\pause So for $6$ other digits $F$, $A$, $I$, $N$, $T$, and $G$ we have only $6$ other digits, so $F \times A \times I \times N \times T \times G = 2 \cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7$, and it is ended up with $0$. So doesn't matter which digits are $N$ and $I$ the last digit of $F \times A \times I \times N \times T \times I \times N \times G$ is $\boxed{0}$.
     \end{column}
   \end{columns}
 \end{frame}
@@ -62,26 +62,30 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 \begin{frame}{Exercises 5-8}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
+      % \begin{problem}
+      %   \textbf{E5.} What is the largest power of $2$ that is a divisor of $13^4 - 11^4$?
+      % \end{problem}
+      % First, we need to factor $13^4 - 11^4$. We will use formula 
+      % \[a^2 - b^2 = (a - b)(a + b). \]
+      % $13^4 - 11^4 = (13^2)^2 - (11^2)^2 = (13^2 - 11^2)(13^2 + 11^2) = (13 - 11)(13 + 11)(13^2 + 11^2) = 2 \times 24 \times (169 + 121) = 2 \times 24 \times 290.$
+      % $2 = 2^1$, $24$ contains $2^3$, and $290$ contains $2^1$, so result is $1 + 3 + 1 = 5$.
       \begin{problem}
-        \textbf{E5.} What is the largest power of $2$ that is a divisor of $13^4 - 11^4$?
-      \end{problem}
-      First, we need to factor $13^4 - 11^4$. We will use formula 
-      \[a^2 - b^2 = (a - b)(a + b). \]
-      $13^4 - 11^4 = (13^2)^2 - (11^2)^2 = (13^2 - 11^2)(13^2 + 11^2) = (13 - 11)(13 + 11)(13^2 + 11^2) = 2 \times 24 \times (169 + 121) = 2 \times 24 \times 290.$
-      $2 = 2^1$, $24$ contains $2^3$, and $290$ contains $2^1$, so result is $1 + 3 + 1 = 5$.
+        \textbf{E5.} How many digits are in the product $4^5 \cdot 5^{10}$?
+      \end{problem}\pause
+      $4^5 = 2^{10}$, so $4^5 \cdot 5^{10} = 2^{10} \cdot 5^{10} = 10^{10}$ or $1\underbrace{00\ldots0}_{10 \text{ zeroes}}$. So total amount of digits is $10 + 1 = \boxed{11}$.\pause
       \begin{problem}
         \textbf{E6.} What is the smallest positive integer greater than $1$ that leaves a remainder of $1$ when divided by $4$, $5$, and $6$?
-      \end{problem}
-      If we subtract $1$ from this number, the resulting number should be divisible by $4$, $5$, and $6$. The smallest positive integer greater that $0$ is $\lcm(4, 5, 6) = 60$, so answer for our problem is $60 + 1 = \boxed{61}$.
+      \end{problem}\pause
+      If we subtract $1$ from this number, the resulting number should be divisible by $4$, $5$, and $6$. The smallest positive integer greater that $0$ is $\lcm(4, 5, 6) = 60$, so answer for our problem is $60 + 1 = \boxed{61}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{E7.} What is the largest integer $n$ for which $5^n$ is a factor of the sum $98!+99!+100!$ ?
-      \end{problem}
-      $98! + 99! + 100! = 98! \times (1 + 99 + 99 \cdot 100) = 98! \cdot 100 \cdot 100$. $98!$ contains $19$ multiples of $5$ and $3$ multiples of $25$. $100 = 2^2 \cdot 5^2$. So $n = 19 + 3 + 2 + 2 = \boxed{26}$. 
+      \end{problem}\pause
+      $98! + 99! + 100! = 98! \times (1 + 99 + 99 \cdot 100) = 98! \cdot 100 \cdot 100$. $98!$ contains $19$ multiples of $5$ and $3$ multiples of $25$. $100 = 2^2 \cdot 5^2$. So $n = 19 + 3 + 2 + 2 = \boxed{26}$. \pause
       \begin{problem}
         \textbf{E8.} Starting with some gold coins and some empty treasure chests, I tried to put $9$ gold coins in each treasure chest, but that left $2$ treasure chests empty. So instead I put $6$ gold coins in each treasure chest, but then I had $3$ gold coins left over. How many gold coins did I have?
-      \end{problem}
+      \end{problem}\pause
       We can represent the amount of gold with $g$ and the amount of chests with $c$. We can use the problem to make the following equations:
       \[9c-18 = g,\quad 6c+3 = g\]
       Therefore, $6c+3 = 9c-18.$ This implies that $c = 7.$ We therefore have $g = \boxed{45}.$
@@ -94,13 +98,13 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C1.} The digits $1$, $2$, $3$, $4$, and $5$ are each used once to write a five-digit number $PQRST$. The three-digit number $PQR$ is divisible by $4$, the three-digit number $QRS$ is divisible by $5$, and the three-digit number $RST$ is divisible by $3$. What is $P$?
-      \end{problem}
-      We see that since $QRS$ is divisible by $5$, $S$ must equal either $0$ or $5$, but it cannot equal $0$, so $S=5$. We notice that since $PQR$ must be even, $R$ must be either $2$ or $4$. However, when $R=2$, we see that $T \equiv 2 \pmod{3}$, which cannot happen because $2$ and $5$ are already used up; so $R=4$. This gives $T \equiv 3 \pmod{4}$, meaning $T=3$. Now, we see that $Q$ could be either $1$ or $2$, but $14$ is not divisible by $4$, but $24$ is. This means that $Q=2$ and $P=\boxed{1}$.
+      \end{problem}\pause
+      We see that since $QRS$ is divisible by $5$, $S$ must equal either $0$ or $5$, but it cannot equal $0$, so $S=5$. We notice that since $PQR$ must be even, $R$ must be either $2$ or $4$. However, when $R=2$, we see that $T \equiv 2 \pmod{3}$, which cannot happen because $2$ and $5$ are already used up; so $R=4$. This gives $T \equiv 3 \pmod{4}$, meaning $T=3$. Now, we see that $Q$ could be either $1$ or $2$, but $14$ is not divisible by $4$, but $24$ is. This means that $Q=2$ and $P=\boxed{1}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C2.} What is the greatest possible sum of the digits in the base-seven representation of a positive integer less than $2022$?
-      \end{problem}
+      \end{problem}\pause
       Observe that $2022_{10} = 5616_7$. To maximize the sum of the digits, we want as many $6$s as possible (since $6$ is the highest value in base $7$), and this will occur with either of the numbers $4666_7$ or $5566_7$. Thus, the answer is $4+6+6+6 = 5+5+6+6 = \boxed{22}$.
     \end{column}
   \end{columns}
@@ -111,10 +115,10 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C3.} The base-ten representation for $19!$ is $121{,}6T5{,}100{,}40M{,}832{,}H00$, where $T$, $M$, and $H$ denote digits that are not given. What is $T+M+H$?
-      \end{problem}
+      \end{problem}\pause
       We can figure out $H = 0$ by noticing that $19!$ will end with $3$ zeroes, as there are three factors of $5$ in its prime factorization, so there would be $3$ powers of $10$ meaning it will end in $3$ zeros. 
       
-      Next, we use the fact that $19!$ is a multiple of both $11$ and $9$. Their divisibility rules tell us that $T + M \equiv 3 \pmod{9}$ and that $T - M \equiv 7 \pmod{11}$. 
+      Next, we use the fact that $19!$ is a multiple of both $11$ and $9$. Their divisibility rules tell us that $T + M \equiv 3 \pmod{9}$ and that $T - M \equiv 7 \pmod{11}$. \pause
       
       Case 1: $T + M = 3$, $T - M = 7$ no solutions.
       
@@ -124,12 +128,12 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 
       Case 4: $T + M = 12$, $T - M = -4$ one solution.
 
-      We got that $T = 4,$ $M = 8$ is a valid solution. Therefore the answer is $4 + 8 + 0 = \boxed{12}$.
+      We got that $T = 4,$ $M = 8$ is a valid solution. Therefore the answer is $4 + 8 + 0 = \boxed{12}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C4.} There are $6$ boxes of apples in a store, weighting $15$, $16$, $18$, $19$, $20$, and $31$ pounds. Two customers purchased $5$ boxes, and one customer purchased twice as many apples as the second customer. Which box has been left?
-      \end{problem}
+      \end{problem}\pause
       The sum of purchased boxes should be divisible by $3$, since if first customer purchased $n$ pounds, they together purchased $3n$. Since remainder of sum of all $6$ boxes is $0 + 1 + 0 + 1 + 2 + 1 \equiv 2 \pmod{3}$, the box that left should weight $\boxed{20}$.
       
       The purchase should be split $33$ to $66$ pounds, so first customer purchased boxes $15$ and $18$ and the second purchased $16$, $19$, and $31$.

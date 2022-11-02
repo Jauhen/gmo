@@ -5,7 +5,7 @@
 \newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 \usepackage{luamplib}
-\everymplib{input mpcolornames; input repere; beginfig(1);}
+\everymplib{input mpcolornames; input repere; input macros;beginfig(1);}
 \everyendmplib{endfig;}
 
 \usetheme{graham}
@@ -480,74 +480,205 @@
   \end{columns}
 \end{frame}
 
+% \begin{frame}{Exercises}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \setlength{\leftmargini}{0.2cm}
+%       \begin{enumerate}
+%         \item The figure below is used for exercises 1-4. A~regular hexagon centered at point $O$.  We draw a rectangle around the hexagon by extending the top parallel edges such that the other sides of the rectangle pass through opposite vertices of the hexagon.  Each side of the hexagon has length $12$.  What is the measure of any interior angle in the hexagon such as $\angle ABC$?
+%         \item What are the measures of $\angle DBC$ and $\angle DCB$?
+%         \item What are the lengths of $BD$ and $DC$?
+%         \item What are the areas of the rectangle and the hexagon?
+%         \seti
+%       \end{enumerate}
+%       \begin{tabularx}{\textwidth}{YY}
+%         \begin{mplibcode}
+%           u = 0.65cm;
+%           repere(-5,5,u,-5,5,u);
+%             pair O, a[], b[];
+%             O := origin;
+%             for i=1 upto 6:
+%               a[i] := 2 * dir(60 * i);
+%             endfor;
+%             draw a1--a2--a3--a4--a5--a6--cycle;
+%             b1 := (xpart a3, ypart a1);
+%             b2 := (xpart a6, ypart a1);
+%             b3 := (xpart a6, ypart a5);
+%             b4 := (xpart a3, ypart a5);
+%             draw b1--b2--b3--b4--cycle;
+
+%             nomme.lrt(O, btex $O$ etex);
+%             nomme.top(a1, btex $B$ etex);
+%             nomme.top(a2, btex $A$ etex);
+%             nomme.rt(a6, btex $C$ etex);
+%             nomme.top(b2, btex $D$ etex);
+%             nomme.top(a3, btex $$ etex);
+%             nomme.top(a4, btex $$ etex);
+%             nomme.top(a5, btex $$ etex);
+%             nomme.top(b1, btex $$ etex);
+%             nomme.top(b3, btex $$ etex);
+%             nomme.top(b4, btex $$ etex);
+%             label.bot(btex $12$ etex, 0.5[a1, a2]);
+%             label.llft(btex $12$ etex, 0.5[a1, a6]);
+%           fin;
+%         \end{mplibcode}
+%         &
+%         \begin{mplibcode}
+%           u = 0.3cm;
+%           repere(-15,15,u,-15,15,u);
+%             pair A, B, C, D;
+%             B := (0, 0);
+%             A := (12, 0);
+%             D := (0, 5);
+%             C := (12/5, 16/5);
+%             draw A--B--C--D--cycle;
+%             label.top(btex $D$ etex, D);
+%             label.lrt(btex $A$ etex, A);
+%             label.llft(btex $B$ etex, B);
+%             label.lrt(btex $C$ etex, C);
+%           fin;
+%         \end{mplibcode}
+%       \end{tabularx}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item Line segment $AB$ intersects the coordinate axes at $(0,\ 8)$ and $(4,\ 0)$.  At what point $C$,  does a line segment passing through the origin intersect $AB$, if that segment is perpendicular to $AB$?
+%         \item Triangle $PYT$ is a right triangle in which $PY = 66$ and $YT = 77$.  If $PT$ is more than $50$, what is its value expressed in the simplest form as $x \sqrt{y}$
+%         \item The $2$ cm long hypotenuse of an isosceles right triangle is also the base of an equilateral triangle.  What is the sum of the areas of both triangles?
+%         \item In the non-convex quadrilateral $ABCD$ shown to the left, $\angle BCD$ is a right angle, $AB = 12$, $BC = 4$, $CD = 3$, and $AD = 13$.  What is the area of quadrilateral $ABCD$?
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item The figure below is a regular $12$-sided polygon (dodecagon) centered at point $O$.  We form a triangle by connecting $O$ to vertices $A$ and $C$.  If the distance $AC$ is $4$ cm, what is the area of triangle $AOC$?
+%         \begin{center}
+%           \leavevmode
+%           \begin{mplibcode}
+%             u = 0.5cm;
+%             repere(-5,5,u,-5,5,u);
+%               pair O, a[], b[];
+%               O := origin;
+%               for i=1 upto 12:
+%                 a[i] := 2 * dir(30 * i);
+%               endfor;
+%               draw a1--a2--a3--a4--a5--a6--a7--a8--a9--a10--a11--a12--cycle;
+%               draw O--a2--a4--O;
+%               nomme.lrt(O, btex $O$ etex);
+%               nomme.urt(a2, btex $C$ etex);
+%               nomme.ulft(a4, btex $A$ etex);
+%             fin;
+%           \end{mplibcode}
+%         \end{center}
+%         \item $\angle C$ is a right angle.  Point $B$ is placed on side $AC$ such that $\angle CDB$ is $45°$. If $\angle A$ is $30°$, what is the ratio length $BC$ to length $BA$?
+%         \begin{center}
+%           \leavevmode
+%           \begin{mplibcode}
+%             u = 0.85cm;
+%             repere(-5,5,u,-1,5,u);
+%               pair A, B, C, D;
+%               C := (0, 0);
+%               A := (1.71*2, 0);
+%               D := (0, 2);
+%               B := (2, 0);
+%               draw A--C--D--cycle;
+%               draw B--D;
+%               draw marqueangledroit(D,C,A);
+%               label.lrt(btex $A$ etex, A);
+%               label.bot(btex $B$ etex, B);
+%               label.llft(btex $C$ etex, C);
+%               label.llft(btex $D$ etex, D);
+%               taille_marque_a := 0.4cm;
+%               nomme(D, A, C, btex $\scriptstyle{30°}$ etex);
+%               nomme(C, D, B, btex $\scriptstyle{45°}$ etex);
+%             fin;
+%           \end{mplibcode}
+%         \end{center}
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item In a rectangular prism with side lengths $3$, $4$, and $12$, what are the lengths of all diagonals with integer lengths that can be found in the prism?
+%         \begin{center}
+%           \leavevmode
+%             \begin{mplibcode}
+%             u=0.45cm;
+%             pair a, b, c, d, e, f, g, h;
+%             a = (0u, 0u);
+%             b = (0u, 3u);
+%             c = (8u, 3u);
+%             d = (8u, 0u);
+%             e = (2.5u, 1.5u);
+%             f = (2.5u, 4.5u);
+%             g = (10.5u, 4.5u);
+%             h = (10.5u, 1.5u);
+%             draw a--e--f dashed evenly;
+%             draw e--h dashed evenly;
+%             draw a--b--c--d--cycle;
+%             draw b--f--g--c;
+%             draw g--h--d;    
+%             label.lft(btex $3$ etex, .5[a, b]);
+%             label.bot(btex $12$ etex, .5[a, d]);
+%             label.lrt(btex $4$ etex, .5[d, h]);
+%           \end{mplibcode}
+%         \end{center}
+%         \item Recall that the geometric mean of two numbers is equal to the square root of the product of those numbers.  Prove that the arithmetic mean of two numbers is always greater than or equal to the geometric mean of two numbers.  What is the only case in which the arithmetic and geometric means are equal?
+        
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
 \begin{frame}{Exercises}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \setlength{\leftmargini}{0.2cm}
       \begin{enumerate}
-        \item The figure below is used for exercises 1-4. A~regular hexagon centered at point $O$.  We draw a rectangle around the hexagon by extending the top parallel edges such that the other sides of the rectangle pass through opposite vertices of the hexagon.  Each side of the hexagon has length $12$.  What is the measure of any interior angle in the hexagon such as $\angle ABC$?
-        \item What are the measures of $\angle DBC$ and $\angle DCB$?
-        \item What are the lengths of $BD$ and $DC$?
-        \item What are the areas of the rectangle and the hexagon?
+        \item In $\triangle ABC$, $AB=BC=29$, and $AC=42$. What is the area of $\triangle ABC$? % AMC 8 2015 Problem 6
+        \item A square-shaped floor is covered with congruent square tiles. If the total number of tiles that lie on the two diagonals is $37$, how many tiles cover the floor? % AMC 8 2017 Problem 11
+        \item Triangle $ABC$ has sides of length $13$ inches, $14$ inches and $16$ inches. What is the length of the altitude to the side of length $15$ inches?
+        \item The altitude of an equilateral triangle is $\sqrt6$ units. What is the area of the triangle, in square units?
+        \item In pentagon $ABCDE$, $\angle E$ and $\angle C$ are right angles and $m\angle D = 120^\circ$. If $AB = 12$, $AE = BC = 18$ and $ED = DC$, what is $ED$? 
         \seti
       \end{enumerate}
-      \begin{tabularx}{\textwidth}{YY}
-        \begin{mplibcode}
-          u = 0.65cm;
-          repere(-5,5,u,-5,5,u);
-            pair O, a[], b[];
-            O := origin;
-            for i=1 upto 6:
-              a[i] := 2 * dir(60 * i);
-            endfor;
-            draw a1--a2--a3--a4--a5--a6--cycle;
-            b1 := (xpart a3, ypart a1);
-            b2 := (xpart a6, ypart a1);
-            b3 := (xpart a6, ypart a5);
-            b4 := (xpart a3, ypart a5);
-            draw b1--b2--b3--b4--cycle;
-
-            nomme.lrt(O, btex $O$ etex);
-            nomme.top(a1, btex $B$ etex);
-            nomme.top(a2, btex $A$ etex);
-            nomme.rt(a6, btex $C$ etex);
-            nomme.top(b2, btex $D$ etex);
-            nomme.top(a3, btex $$ etex);
-            nomme.top(a4, btex $$ etex);
-            nomme.top(a5, btex $$ etex);
-            nomme.top(b1, btex $$ etex);
-            nomme.top(b3, btex $$ etex);
-            nomme.top(b4, btex $$ etex);
-            label.bot(btex $12$ etex, 0.5[a1, a2]);
-            label.llft(btex $12$ etex, 0.5[a1, a6]);
-          fin;
-        \end{mplibcode}
-        &
-        \begin{mplibcode}
-          u = 0.3cm;
-          repere(-15,15,u,-15,15,u);
-            pair A, B, C, D;
-            B := (0, 0);
-            A := (12, 0);
-            D := (0, 5);
-            C := (12/5, 16/5);
-            draw A--B--C--D--cycle;
-            label.top(btex $D$ etex, D);
-            label.lrt(btex $A$ etex, A);
-            label.llft(btex $B$ etex, B);
-            label.lrt(btex $C$ etex, C);
-          fin;
-        \end{mplibcode}
-      \end{tabularx}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \conti
-        \item Line segment $AB$ intersects the coordinate axes at $(0,\ 8)$ and $(4,\ 0)$.  At what point $C$,  does a line segment passing through the origin intersect $AB$, if that segment is perpendicular to $AB$?
-        \item Triangle $PYT$ is a right triangle in which $PY = 66$ and $YT = 77$.  If $PT$ is more than $50$, what is its value expressed in the simplest form as $x \sqrt{y}$
-        \item The $2$ cm long hypotenuse of an isosceles right triangle is also the base of an equilateral triangle.  What is the sum of the areas of both triangles?
-        \item In the non-convex quadrilateral $ABCD$ shown to the left, $\angle BCD$ is a right angle, $AB = 12$, $BC = 4$, $CD = 3$, and $AD = 13$.  What is the area of quadrilateral $ABCD$?
+        \item In the diagram, $\triangle XYZ$ is right-angled at $X,$ with $YX=60$ and $XZ=80.$ The point $W$ is on $YZ$ so that $WX$ is perpendicular to $YZ.$ Determine the length of $WZ.$        
+        \item If point $Q$ lies on side $AB$ of square $ABCD$ such that $QC = \sqrt{10}$ units and $QD = \sqrt{13}$ units, what is the area of square $ABCD$?
+        \item A semicircle is inscribed in an isosceles triangle with base $16$ and height $15$ so that the diameter of the semicircle is contained in the base of the triangle as shown. What is the radius of the semicircle? 
+        % AMC 8 2016 Problem 25
       \end{enumerate}
+      \begin{tabular}{cc}
+        \begin{mplibcode}
+          u := 0.4cm;
+          pair X, Y, Z, W;
+          Y := origin;
+          X := (3u, 4u);
+          W := (3u, 0u);
+          Z := ((3+16/3)*u, 0u);
+          draw X--Y--Z--cycle;
+          draw X--W;
+          label.top(btex $X$ etex, X);
+          label.bot(btex $Y$ etex, Y);
+          label.bot(btex $Z$ etex, Z);
+          label.bot(btex $W$ etex, W);
+          label.ulft(btex $60$ etex, 0.5[Y, X]);
+          label.urt(btex $80$ etex, 0.5[X, Z]);
+        \end{mplibcode}&
+        \begin{mplibcode}
+          u := 0.15cm;
+          Draw (0u,0u)--(8u,15u)--(16u,0u)--(0u,0u), subpath(0, 2) of circle((8u, 0u), 7.0588u);
+        \end{mplibcode}\\  
+        Exercise 6 & Exercise 8
+      \end{tabular}
     \end{column}
   \end{columns}
 \end{frame}
@@ -556,82 +687,13 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item The figure below is a regular $12$-sided polygon (dodecagon) centered at point $O$.  We form a triangle by connecting $O$ to vertices $A$ and $C$.  If the distance $AC$ is $4$ cm, what is the area of triangle $AOC$?
-        \begin{center}
-          \leavevmode
-          \begin{mplibcode}
-            u = 0.5cm;
-            repere(-5,5,u,-5,5,u);
-              pair O, a[], b[];
-              O := origin;
-              for i=1 upto 12:
-                a[i] := 2 * dir(30 * i);
-              endfor;
-              draw a1--a2--a3--a4--a5--a6--a7--a8--a9--a10--a11--a12--cycle;
-              draw O--a2--a4--O;
-              nomme.lrt(O, btex $O$ etex);
-              nomme.urt(a2, btex $C$ etex);
-              nomme.ulft(a4, btex $A$ etex);
-            fin;
-          \end{mplibcode}
-        \end{center}
-        \item $\angle C$ is a right angle.  Point $B$ is placed on side $AC$ such that $\angle CDB$ is $45°$. If $\angle A$ is $30°$, what is the ratio length $BC$ to length $BA$?
-        \begin{center}
-          \leavevmode
-          \begin{mplibcode}
-            u = 0.85cm;
-            repere(-5,5,u,-1,5,u);
-              pair A, B, C, D;
-              C := (0, 0);
-              A := (1.71*2, 0);
-              D := (0, 2);
-              B := (2, 0);
-              draw A--C--D--cycle;
-              draw B--D;
-              draw marqueangledroit(D,C,A);
-              label.lrt(btex $A$ etex, A);
-              label.bot(btex $B$ etex, B);
-              label.llft(btex $C$ etex, C);
-              label.llft(btex $D$ etex, D);
-              taille_marque_a := 0.4cm;
-              nomme(D, A, C, btex $\scriptstyle{30°}$ etex);
-              nomme(C, D, B, btex $\scriptstyle{45°}$ etex);
-            fin;
-          \end{mplibcode}
-        \end{center}
-        \seti
+        \item Points $A(11, 9)$ and $B(2, -3)$ are vertices of $\triangle ABC$ with $AB=AC$. The altitude from $A$ meets the opposite side at $D(-1, 3)$. What are the coordinates of point $C$? % AMC 10b 2017, Problem 8
+        \item In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units? % 2019 AMC 10B Problems/Problem 10
+        \item Rectangle $ABCD$ has $AB=3$ and $BC=4$. Point $E$ is the foot of the perpendicular from $B$ to diagonal $\overline{AC}$. What is the area of $\triangle AED$? % 2017 AMC 10B Problems/Problem 15
+        \item In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\overline{PQ}$, points $C$ and $D$ lie on $\overline{QR}$, points $E$ and $F$ lie on $\overline{RS}$, and points $G$ and $H$ lie on $\overline{SP}$ so that $AP=BQ<4$ and the convex octagon $ABCDEFGH$ is equilateral. Find the length of a side of this octagon. % 2018 AMC 10B Problems/Problem 17
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
-      \begin{enumerate}
-        \conti
-        \item In a rectangular prism with side lengths $3$, $4$, and $12$, what are the lengths of all diagonals with integer lengths that can be found in the prism?
-        \begin{center}
-          \leavevmode
-            \begin{mplibcode}
-            u=0.45cm;
-            pair a, b, c, d, e, f, g, h;
-            a = (0u, 0u);
-            b = (0u, 3u);
-            c = (8u, 3u);
-            d = (8u, 0u);
-            e = (2.5u, 1.5u);
-            f = (2.5u, 4.5u);
-            g = (10.5u, 4.5u);
-            h = (10.5u, 1.5u);
-            draw a--e--f dashed evenly;
-            draw e--h dashed evenly;
-            draw a--b--c--d--cycle;
-            draw b--f--g--c;
-            draw g--h--d;    
-            label.lft(btex $3$ etex, .5[a, b]);
-            label.bot(btex $12$ etex, .5[a, d]);
-            label.lrt(btex $4$ etex, .5[d, h]);
-          \end{mplibcode}
-        \end{center}
-        \item Recall that the geometric mean of two numbers is equal to the square root of the product of those numbers.  Prove that the arithmetic mean of two numbers is always greater than or equal to the geometric mean of two numbers.  What is the only case in which the arithmetic and geometric means are equal?
-        
-      \end{enumerate}
     \end{column}
   \end{columns}
 \end{frame}

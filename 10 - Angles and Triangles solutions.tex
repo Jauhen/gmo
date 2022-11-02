@@ -31,8 +31,8 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{E1.} If the degree measures of the angles of a triangle are in the ratio $3:3:4$, what is the degree measure of the largest angle of the triangle?
-      \end{problem}
-      Let the angles are $3x$, $3x$, and $4x$, so $3x + 3x + 4x = 10x = 180°$. So $x = 18°$ and $4x = \boxed{72°}$.
+      \end{problem}\pause
+      Let the angles are $3x$, $3x$, and $4x$, so $3x + 3x + 4x = 10x = 180°$. So $x = 18°$ and $4x = \boxed{72°}$.\pause
 
       \begin{problem}
         \vspace*{1ex}
@@ -62,22 +62,27 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
             \end{mplibcode} %AMC 8 2014 Problem 9
           \end{column}
         \end{columns}
-      \end{problem}
-      $\angle ADB = \angle DCB + \angle DBC$, and since $\triangle BDC$ is isosceles, $\angle DBC = \angle DCB = 70°$, so $\angle ADB = 70° + 70° = \boxed{140°}$.
+      \end{problem}\pause
+      $\angle ADB = \angle DCB + \angle DBC$, and since $\triangle BDC$ is isosceles, $\angle DBC = \angle DCB = 70°$, so $\angle ADB = 70° + 70° = \boxed{140°}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{E3.} How many scalene triangles have all sides of integral lengths and perimeter less than $15$?
-      \end{problem}
-      Let's take a look at the longest side: its minimal length is $5$ (otherwise other side will be longer) and maximal lenght is $7$ (otherwise it is longer than sum of two other sides).
+      \end{problem}\pause
+      Let's look at the longest side of a triangle. Then iterate on the length of 
+      the middle side. 
 
-      Case 1: the longest side is $5$. In this case we have $5-5-5$ triangle, and it isn't scalene.
+      Case 0: $3$ or smaller. The only option $3-2-1$ is degenerated triangle.
 
-      Case 2: the longest side is $6$. The sum of two other sides is $9$ and the only case when they both shorter than $6$ is $6-5-4$ triangle.
+      Case 1: $4$, the only one scalene triangle possible: $4-3-2$.
 
-      Case 3: the longest side is $7$. The sum of two other sides is $8$ and it can be split in $4$ ways: $7-7-1$, $7-6-2$, $7-5-3$, and $7-4-4$. The first and the last cases are isosceles triangles.
+      Case 2: $5$: $5-4-2$ and $5-4-3$.
 
-      As a result we have $\boxed{3}$ scalene triangles: $6-5-4$, $7-6-2$, and $7-5-3$.
+      Case 3: $6$: $6-4-3$, $6-5-2$, and $6-5-3$.
+
+      Case 4: $7$: the sum two other sides will be at least $8$.
+
+      As a result we have $\boxed{6}$ scalene triangles.
     \end{column}
   \end{columns}
 \end{frame}
@@ -88,7 +93,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
       \begin{problem}
         \textbf{E4.} On sides $AB$ and $AC$ of $\triangle ABC$, we pick points $D$ and $E$, respectively, so that
         $DE \parallel BC$. If $AB = 3AD$ and $DE = 6$, find $BC$.
-      \end{problem}
+      \end{problem}\pause
 
       \begin{wrapfigure}{l}{10.00mm}
         \vspace*{-\intextsep}
@@ -108,27 +113,27 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
           label.bot("$C$", C);
           label.bot("$E$", E);
         \end{mplibcode}
-      \end{wrapfigure}
-      Since $\triangle ADE \sim \triangle ABC$ via \textbf{AA} similarity, $DE : BC = AD : AB$, so $BC = DE \times AB / AD = 6 \times 3 = \boxed{18}$.
+      \end{wrapfigure}\pause
+      Since $\triangle ADE \sim \triangle ABC$ via \textbf{AA} similarity, $DE : BC = AD : AB$, so $BC = DE \times AB / AD = 6 \times 3 = \boxed{18}$.\pause
       \begin{problem}
         \textbf{E5.} Let $\angle ABC = 24°$ and $\angle ABD = 20°$. What is the smallest possible degree measure for $\angle CBD$?
-      \end{problem}
+      \end{problem}\pause
 
-      $\angle ABD$ and $\angle ABC$ share ray $AB$. In order to minimize the value of $\angle CBD$, $D$ should be located between $A$ and $C$.$\angle ABC = \angle ABD + \angle CBD$, so $\angle CBD = 4$. The answer is $\boxed{4}$
+      $\angle ABD$ and $\angle ABC$ share ray $AB$. In order to minimize the value of $\angle CBD$, $D$ should be located between $A$ and $C$.$\angle ABC = \angle ABD + \angle CBD$, so $\angle CBD = 4$. The answer is $\boxed{4}$.\pause
 
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{E6.} A polygon has $N$ sides and $q$ obtuse interior angles. Each of its obtuse interior angles has a measure $150°$ and each of its acute interior angles has measure $80°$. How many sides does the polygon have?
-      \end{problem}
-      The total sum of angles in the polygon is $180 \cdot (N - 2)$ and from other side the sum of angles is $150 \cdot q + 80 \cdot (N - q)$.
+      \end{problem}\pause
+      The total sum of angles in the polygon is $180 \cdot (N - 2)$ and from another side, the sum of angles is $150 \cdot q + 80 \cdot (N - q)$.
       \begin{gather*}
         180 (N - 2) = 150 q + 80 (N - q),\\
         180 N - 360 = 150 q + 80 N - 80 q,\\
         100 N - 360 = 70 q, \\
         100 N = 360 + 70 q, \\
         10 N = 36 + 7q.
-      \end{gather*}
+      \end{gather*}\pause
       So $7q$ should be ended up with $4$. This is possible when $q = 2, 12, 22$ etc. For $q = 2$, $\boxed{N = 5}$, for $q = 12$, $\boxed{N = 12}$, but for each $q> 12$, $N < q$, so the there are no more solutions. 
     \end{column}
   \end{columns}
@@ -140,21 +145,21 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
       \begin{problem}
         \textbf{E7.} In how many ways can we form a nondegenerate triangle by choosing three distinct
         numbers from the set $\{1,\ 2,\ 3,\ 4,\ 5\}$ as the sides?
-      \end{problem}
+      \end{problem}\pause
       Let's look at the longest side: 
 
-      Case 1: The longest side is $5$. The sum of two other sides should be at least $6$, so the only option is $3-4-5$.
+      Case 1: The longest side is $5$. The sum of two other sides should be at least $6$, so the only options are $2-4-5$ and $3-4-5$.
 
       Case 2: The longest side is $4$. The sum of two other sides should be at least $5$, so the only option is $2-3-4$.
 
       Case 3: The longest side is $3$. The rest two sides are $1$ and $2$ and we can got only degenerated triangle.
 
-      So we have only two cases $3-4-5$ and $2-3-4$.
+      So we have only three cases $2-4-5$, $3-4-5$, and $2-3-4$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{E8.} The ratio of the measures of two acute angles is $5:4$, and the complement of one of these two angles is twice as large as the complement of the other. What is the sum of the degree measures of the two angles?
-      \end{problem}
+      \end{problem}\pause
       We let the measures be $5x$ and $4x$ giving us the ratio of $5:4$. We know $90-4x>90-5x$ since this inequality gives $x>0$, which is true since the measures of angles are never negative. We also know the bigger complement is twice the smaller, so
       \begin{gather*}
         90-4x=2(90-5x),\\
@@ -172,14 +177,14 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C1.} Joy has $30$ thin rods, one each of every integer length from $1$ cm through $30$ cm. She places the rods with lengths $3$ cm, $7$ cm, and $15$ cm on a table. She then wants to choose a fourth rod that she can put with these three to form a quadrilateral with positive area. How many of the remaining rods can she choose as the fourth rod?
-      \end{problem}
-      The triangle inequality generalizes to all polygons, so $x < 3+7+15$ and $15<x+3+7$ yields $5<x<25$. Now, we know that there are $19$ numbers between $5$ and $25$ exclusive, but we must subtract $2$ to account for the 2 lengths already used that are between those numbers, which gives $19-2=\boxed{17}$
+      \end{problem}\pause
+      The triangle inequality generalizes to all polygons, so $x < 3+7+15$ and $15<x+3+7$ yields $5<x<25$. Now, we know that there are $19$ numbers between $5$ and $25$ exclusive, but we must subtract $2$ to account for the 2 lengths already used that are between those numbers, which gives $19-2=\boxed{17}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C2.} Right triangle $ABC$ has leg lengths $AB=20$ and $BC=21$. Including $\overline{AB}$ and $\overline{BC}$, how many line segments with integer length can be drawn from vertex $B$ to a point on hypotenuse $\overline{AC}$? 
-      \end{problem}
-      $AC = \sqrt{20^2 + 21^2} = 29$ and $\triangle ABC \sim \triangle APB$, so $BP = BC \times AB / AC = 21 \times 20 / 29 \approx 14.5$
+      \end{problem}\pause
+      $AC = \sqrt{20^2 + 21^2} = 29$ and $\triangle ABC \sim \triangle APB$, so $BP = BC \times AB / AC = 21 \times 20 / 29 \approx 14.5$.\pause
       \begin{wrapfigure}{l}{20.00mm}
         \vspace*{-\intextsep}
         \begin{mplibcode}
@@ -204,7 +209,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
           draw subpath (1, 2) of circle(B, 16u);
           draw subpath (1, 2) of circle(B, 15u);
         \end{mplibcode}          
-      \end{wrapfigure}
+      \end{wrapfigure}\pause
       It follows that we can draw circles of radii $15, 16, 17, 18, 19,$ and $20,$ that each contribute two integer lengths (since these circles intersect the hypotenuse twice) from $B$ to $\overline{AC}$ and one circle of radius $21$ that contributes only one such segment. Our answer is then $6 \cdot 2 + 1 = \boxed{13}$.
     \end{column}
   \end{columns}
@@ -215,7 +220,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C3.} A square with side length $x$ is inscribed in a right triangle with sides of length $3$, $4$, and $5$ so that one vertex of the square coincides with the right-angle vertex of the triangle. A square with side length $y$ is inscribed in another right triangle with sides of length $3$, $4$, and $5$ so that one side of the square lies on the hypotenuse of the triangle. What is $\dfrac{x}{y}$?
-      \end{problem}
+      \end{problem}\pause
       \begin{columns}
         \begin{column}[T]{0.5\textwidth}          
           \begin{mplibcode}
@@ -236,7 +241,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
             label.lft("$D$", D); 
             label.urt("$E$", e); 
             label.bot("$F$", F);
-          \end{mplibcode}
+          \end{mplibcode}\pause
         \end{column}
         \begin{column}[T]{0.5\textwidth}
           \begin{mplibcode}
@@ -265,7 +270,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \end{column}
     \begin{column}{0.5\textwidth}
       Analyze the first right triangle.
-      Note that $\triangle ABC$ and $\triangle FBE$ are similar, so $\frac{BF}{FE} = \dfrac{AB}{AC}$. This can be written as $\dfrac{4-x}{x}=\dfrac{4}{3}$. Solving, $x = \dfrac{12}{7}$.
+      Note that $\triangle ABC$ and $\triangle FBE$ are similar, so $\frac{BF}{FE} = \dfrac{AB}{AC}$. This can be written as $\dfrac{4-x}{x}=\dfrac{4}{3}$. Solving, $x = \dfrac{12}{7}$.\pause
       
       Now we analyze the second triangle.
 
@@ -279,7 +284,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{C4.} Quadrilateral $ABCD$ has $AB = BC = CD$, angle $ABC = 70°$ and angle $BCD = 170°$. What is the measure of angle $BAD$?
-      \end{problem}
+      \end{problem}\pause
       \begin{wrapfigure}{l}{20.00mm}
         \begin{mplibcode}
           u = 0.5cm; 
@@ -305,7 +310,7 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
           label("$5°$",B + 2.5u*dir(180-65-2.5));
         \end{mplibcode}
         \vspace*{-\intextsep}
-      \end{wrapfigure}
+      \end{wrapfigure}\pause
       First, connect the diagonal $DB$, then, draw line $DE$ such that it is congruent to $DC$ and is parallel to $AB$. Because triangle $DCB$ is isosceles and angle $DCB$ is $170°$, the angles $CDB$ and $CBD$ are both $\dfrac{180-170}{2} = 5°$. Because angle $ABC$ is $70°$, we get angle $ABD$ is $65°$. Next, noticing parallel lines $AB$ and $DE$ and transversal $DB$, we see that angle $BDE$ is also $65°$, and subtracting off angle $CDB$ gives that angle $EDC$ is $60°$.
     \end{column}
     \begin{column}{0.5\textwidth}
@@ -331,17 +336,17 @@ Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because 
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{TA1.} It takes Mary $30$ minutes to walk uphill $1$ km from her home to school, but it takes her only $10$ minutes to walk from school to her home along the same route. What is her average speed, in km/hr, for the round trip?
-      \end{problem}
+      \end{problem}\pause
       Since she walked $1$ km to school and $1$ km back home, her total distance is $1+1=2$ km.
 
       Since she spent $30$ minutes walking to school and $10$ minutes walking back home, her total time is $30+10=40$ minutes = $\dfrac{40}{60}=\dfrac{2}{3}$ hours.
 
-      Therefore her average speed in km/hr is $\dfrac{2}{\frac{2}{3}}=\boxed{3}$.
+      Therefore her average speed in km/hr is $\dfrac{2}{\frac{2}{3}}=\boxed{3}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{TA2.} Members of the Rockham Soccer League buy socks and T-shirts. Socks cost \$4 per pair and each T-shirt costs \$5 more than a pair of socks. Each member needs one pair of socks and a shirt for home games and another pair of socks and a shirt for away games. If the total cost is \$2366, how many members are in the League?
-      \end{problem}
+      \end{problem}\pause
       Since T-shirts cost $5$ dollars more than a pair of socks, T-shirts cost $5+4=9$ dollars.
 
       Since each member needs $2$ pairs of socks and $2$ T-shirts, the total cost for $1$ member is $2(4+9)=26$ dollars.
@@ -356,20 +361,20 @@ Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because 
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{TA3.} How many non-congruent triangles with perimeter $7$ have integer side lengths?
-      \end{problem}
+      \end{problem}\pause
       By the triangle inequality, no side may have a length greater than the semiperimeter, which is $\dfrac{1}{2}\cdot7=3{.}5$.
 
-      Since all sides must be integers, the largest possible length of a side is $3$. Therefore, all such triangles must have all sides of length $1$, $2$, or $3$. Since $2+2+2=6<7$, at least one side must have a length of $3$. Thus, the remaining two sides have a combined length of $7-3=4$. So, the remaining sides must be either $3$ and $1$ or $2$ and $2$. Therefore, the number of triangles is $\boxed{2}$.
+      Since all sides must be integers, the largest possible length of a side is $3$. Therefore, all such triangles must have all sides of length $1$, $2$, or $3$. Since $2+2+2=6<7$, at least one side must have a length of $3$. Thus, the remaining two sides have a combined length of $7-3=4$. So, the remaining sides must be either $3$ and $1$ or $2$ and $2$. Therefore, the number of triangles is $\boxed{2}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{TA4.} What is the probability that a randomly drawn positive factor of $60$ is less than $7$?
-      \end{problem}
-      Notice that $1 \cdot 60=2 \cdot 30=3 \cdot 20=4 \cdot 15=5 \cdot 12=6 \cdot 10=60$. Hence, $60$ has $12$ factors, of which $6$ are less than $7$. Thus, the answer is $\dfrac{6}{12} = \boxed{\dfrac{1}{2}}$.
+      \end{problem}\pause
+      Notice that $1 \cdot 60=2 \cdot 30=3 \cdot 20=4 \cdot 15=5 \cdot 12=6 \cdot 10=60$. Hence, $60$ has $12$ factors, of which $6$ are less than $7$. Thus, the answer is $\dfrac{6}{12} = \boxed{\dfrac{1}{2}}$.\pause
 
       \begin{problem}
         \textbf{TA6.} The sum of the two 5-digit numbers $AMC10$ and $AMC12$ is $123422$. What is $A+M+C$?
-      \end{problem}
+      \end{problem}\pause
       We know that $AMC12$ is $2$ more than $AMC10$. We set up $AMC10=x$ and $AMC12=x+2$. We have $x+x+2=123422$. Solving for $x$, we get $x=61710$. Therefore, the sum $A+M+C= \boxed{14}$.
     \end{column}
   \end{columns}
@@ -381,7 +386,7 @@ Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because 
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{TA5.} The polygon enclosed by the solid lines in the figure consists of 4 congruent squares joined edge-to-edge. One more congruent square is attached to an edge at one of the nine positions indicated. How many of the nine resulting polygons can be folded to form a cube with one face missing?
-      \end{problem}
+      \end{problem}\pause
       \begin{center}
         \leavevmode
         \begin{mplibcode}
@@ -412,12 +417,12 @@ Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because 
         \end{mplibcode}
         \vspace*{-0.5ex}
       \end{center}
-      A cube missing one face has $5$ of its $6$ faces. Since the shape has $4$ faces already, we need another face. The only way to add another face is if the added square does not overlap any of the others. $1$, $2$, and $3$ overlap, while squares $4$ to $9$ do not. The answer is $\boxed{6}$
+      A cube missing one face has $5$ of its $6$ faces. Since the shape has $4$ faces already, we need another face. The only way to add another face is if the added square does not overlap any of the others. $1$, $2$, and $3$ overlap, while squares $4$ to $9$ do not. The answer is $\boxed{6}$.\pause
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{problem}
         \textbf{TA7.} A point $(x,\ y)$ is randomly picked from inside the rectangle with vertices $(0,\ 0)$, $(4,\ 0)$, $(4,\ 1)$, and $(0,\ 1)$. What is the probability that $x<y$?
-      \end{problem}
+      \end{problem}\pause
       \begin{center}
         \leavevmode
         \begin{mplibcode}
@@ -439,7 +444,7 @@ Finally, we can set up our equation. Denote angle $BAD$ as $x°$. Then, because 
 
       The area of this triangle is $\dfrac{1}{2}\cdot1^{2}=\dfrac{1}{2}$
 
-      Therefore, the probability that $x<y$ is $\dfrac{\frac{1}{2}}{4}=\boxed{\dfrac{1}{8}}$
+      Therefore, the probability that $x<y$ is $\dfrac{\frac{1}{2}}{4}=\boxed{\dfrac{1}{8}}$.
     \end{column}
   \end{columns}
 \end{frame}

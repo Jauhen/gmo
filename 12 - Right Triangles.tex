@@ -480,6 +480,47 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Aria of a triangle}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{definition}
+        For a triangle with base $b$ and height $h$, the area $A$ is given by $A = \dfrac{bh}{2}$.
+      \end{definition}
+      \begin{wrapfigure}[8]{l}{20.00mm}
+        \begin{mplibcode}
+          u := 1cm;
+          fill (0u, 0u)--(1u, 2u)--(3u, 0u)--cycle withcolor 0.7white;
+          Draw (0u, 0u)--(3u, 0u)--(3u, 2u)--(0u, 2u)--cycle, (0u, 0u)--(1u, 2u)--(3u, 0u), (1u, 0u)--(1u, 2u);
+          label.bot(btex $b$ etex, (1.5u, 0u));
+          label.rt(btex $h$ etex, (1u, 1u));
+        \end{mplibcode}
+      \end{wrapfigure}
+      Observe that this is exactly half the area of a rectangle which has the same base and height. A logical reasoning for this is that you can make two triangles by dropping an altitude for which both halves are each rotated $180$ degrees about their hypotenuse's mid-point to form two rectangles. Thus it is clear that the triangles are one half the area of their respective rectangles which have a total area of $bh$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \vspace*{-2\baselineskip}
+      Knowing sides of triangle allows us to calculate area using the \emph{Heron's formula}.
+      \begin{definition}
+        \textbf{Heron's formula} states that the area is 
+        \[A = \sqrt{p(p-a)(p-b)(p-c)},\] 
+        where $a$, $b$, $c$ are the lengths of sides, and $p$ is the triangle's semi-perimeter $\dfrac{a+b+c}{2}$.
+      \end{definition}
+
+      And we also calculate area of triangle knowing coordinates of points using the \emph{Shoelace formula}
+      \begin{definition}
+        \textbf{Shoelace formula} 
+        \[A = \frac{x_1 y_2 + x_2 y_3 + x_3 y_1 - x_1 y_3 - x_2 y_1 - x_3 y_2}{2}. \] Where $(x_1,\ y_1)$, $(x_2,\ y_2)$, and $(x_3,\ y_3)$ are coordinates of vertices of a triangle.
+      \end{definition}
+      \begin{wrapfigure}{l}{25.00mm}
+        \vspace*{-\intextsep}
+        \includegraphics[width=2.5cm]{12 - Right Triangles/Shoelace3.png}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      The picture on the left show the way to remember this formula. The generalization of this formula allows to calculate area of a polygon with may sides.
+    \end{column}
+  \end{columns}
+\end{frame}
+
 % \begin{frame}{Exercises}
 %   \begin{columns}[T]
 %     \begin{column}{0.5\textwidth}
@@ -642,7 +683,7 @@
       \begin{enumerate}
         \item In $\triangle ABC$, $AB=BC=29$, and $AC=42$. What is the area of $\triangle ABC$? % AMC 8 2015 Problem 6
         \item A square-shaped floor is covered with congruent square tiles. If the total number of tiles that lie on the two diagonals is $37$, how many tiles cover the floor? % AMC 8 2017 Problem 11
-        \item Triangle $ABC$ has sides of length $13$ inches, $14$ inches and $16$ inches. What is the length of the altitude to the side of length $15$ inches?
+        \item Triangle $ABC$ has sides of length $13$ inches, $14$ inches and $15$ inches. What is the length of the altitude to the side of length $14$ inches?
         \item The altitude of an equilateral triangle is $\sqrt6$ units. What is the area of the triangle, in square units?
         \item In pentagon $ABCDE$, $\angle E$ and $\angle C$ are right angles and $m\angle D = 120^\circ$. If $AB = 12$, $AE = BC = 18$ and $ED = DC$, what is $ED$? 
         \seti
@@ -690,7 +731,7 @@
         \item Points $A(11, 9)$ and $B(2, -3)$ are vertices of $\triangle ABC$ with $AB=AC$. The altitude from $A$ meets the opposite side at $D(-1, 3)$. What are the coordinates of point $C$? % AMC 10b 2017, Problem 8
         \item In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units? % 2019 AMC 10B Problems/Problem 10
         \item Rectangle $ABCD$ has $AB=3$ and $BC=4$. Point $E$ is the foot of the perpendicular from $B$ to diagonal $\overline{AC}$. What is the area of $\triangle AED$? % 2017 AMC 10B Problems/Problem 15
-        \item In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\overline{PQ}$, points $C$ and $D$ lie on $\overline{QR}$, points $E$ and $F$ lie on $\overline{RS}$, and points $G$ and $H$ lie on $\overline{SP}$ so that $AP=BQ<4$ and the convex octagon $ABCDEFGH$ is equilateral. Find the length of a side of this octagon. % 2018 AMC 10B Problems/Problem 17
+        \item In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\overline{PQ}$, points $C$ and $D$ lie on $\overline{QR}$, points $E$ and $F$ lie on $\overline{RS}$, and points $G$ and $H$ lie on $\overline{SP}$ so that $AP=BQ<4$ and the convex octagon $ABCDEFGH$ is equilateral. Find the length of a side of this octagon. % AMC 
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}

@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{luamplib}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usepackage[landscape,twocolumn, margin=0.75in, top=0.5in]{geometry}
+\setlength{\columnsep}{1.5in}
+\usepackage{enumitem}
+
+\begin{document}
+  \pagestyle{empty}
+  \section*{Team attack 11/09/2022}
+  \begin{enumerate}[leftmargin=3mm]
+    \item $\dfrac{9}{37}$ is changed to a decimal. What digit lies in the 2022\textsuperscript{th} place to the right of the decimal point? %Set 9, 1D
+    \item Emily has 21 dimes. She placed then in three piles, with an odd number of dimes in each pile. In how many different ways can she accomplish this? [\emph{Consider piles of 1, 1, 19 dimes, for example, to be equivalent to piles 1, 19, and 1 dimes.}] % Set 9, 2B
+    \item Suppose $\dfrac{2}{N}$, $\dfrac{3}{N}$, and $\dfrac{5}{N}$ are three fractions in lowest terms. What are all the possible composite whole number values for $N$ between $20$ and $80$? % Set 9, 2D
+    \item The Mathematical Olympiad began in the prime year 1979. Find the product of the fractions below in a simplest form:
+    \[ 
+      \left(1 - \frac{1}{1980}\right) \times \left(1 - \frac{1}{1981}\right) \times \ldots \times \left(1 - \frac{1}{2022}\right). 
+    \] % Set 9, 2E
+    \item In this street map, all traffic enters at A and exits at either B or C. All traffic flows either south or east. At each intersection where there is a choice of direction, 70\% of the traffic goes east and 30\% goes south. What percent of the traffic exists at C? % Set 9, 3D
+    \item Rectangle $ABCD$ is partitioned into five squares as shown. The length, in centimeters, of $\overline{AM}$ is a whole number. The area of rectangle $ABCD$ is greater than 100 sq cm. Find the smallest possible area of rectangle $ABCD$, in sq cm. % Set 11, 2D
+    \item Two semicircles are inscribed in a square with side $8$ meters as shown. Approximate the area of the shaded region to the nearest tenth of a square meter. Use the approximation $3.14$ for $\pi$. % Set 9, 5D.
+  \end{enumerate}
+  \begin{tabular}{ccccc}
+    \begin{mplibcode}
+      u := 0.6cm;
+        drawarrow (-1u, 2u)--(-.1u, 2u) penbold;
+        drawarrow (0u, 2u)--(1.9u, 2u) penbold;
+        drawarrow (2u, 2u)--(3u, 2u) penbold;
+        drawarrow (0u, 1u)--(1.9u, 1u) penbold;
+        drawarrow (0u, 0u)--(1.9u, 0u) penbold;
+        drawarrow (2u, 0u)--(3u, 0u) penbold;
+        drawarrow (0u, 2u)--(0u, 1.1u) penbold;
+        drawarrow (2u, 2u)--(2u, 1.1u) penbold;
+        drawarrow (0u, 1u)--(0u, 0.1u) penbold;
+        drawarrow (2u, 1u)--(2u, 0.1u) penbold;
+        label.lft("$A$", (-1u, 2u));
+        label.rt("$B$", (3u, 2u));
+        label.rt("$C$", (3u, 0u));
+    \end{mplibcode}&\quad&
+    \begin{mplibcode}
+      u := 0.25cm;
+      Draw (0u, 0u)--(7u, 0u)--(7u, 4u)--(0u, 4u)--cycle, (3u, 0u)--(3u, 4u), (0u, 3u)--(3u, 3u), (1u, 3u)--(1u, 4u), (2u, 3u)--(2u, 4u);
+      label.ulft("$A$", (0u, 4u));
+      label.lft("$M$", (0u, 3u));
+      label.llft("$D$", (0u, 0u));
+      label.urt("$B$", (7u, 4u));
+      label.lrt("$C$", (7u, 0u));
+    \end{mplibcode}&\quad&
+    \begin{mplibcode}
+      u := 0.7cm;
+      fill (0u, 0u)--(2u, 0u)--(2u, 2u)--(0u, 2u)--cycle withcolor 0.7white;
+      fill subpath (2, 4) of circle((1u, 2u), 1u)--cycle withcolor white;
+      fill subpath (3, 5) of circle((0u, 1u), 1u)--cycle withcolor white;
+      draw (0u, 0u)--(2u, 0u)--(2u, 2u)--(0u, 2u)--cycle;
+      draw subpath (2, 4) of circle((1u, 2u), 1u);
+      draw subpath (3, 5) of circle((0u, 1u), 1u);
+    \end{mplibcode}\\
+    Problem 5&\quad&Problem 6&\quad&Problem 7        
+  \end{tabular}
+
+  \newpage
+  \section*{Team attack 11/09/2022}
+  \begin{enumerate}[leftmargin=3mm]
+    \item $\dfrac{9}{37}$ is changed to a decimal. What digit lies in the 2022\textsuperscript{th} place to the right of the decimal point? %Set 9, 1D
+    \item Emily has 21 dimes. She placed then in three piles, with an odd number of dimes in each pile. In how many different ways can she accomplish this? [\emph{Consider piles of 1, 1, 19 dimes, for example, to be equivalent to piles 1, 19, and 1 dimes.}] % Set 9, 2B
+    \item Suppose $\dfrac{2}{N}$, $\dfrac{3}{N}$, and $\dfrac{5}{N}$ are three fractions in lowest terms. What are all the possible composite whole number values for $N$ between $20$ and $80$? % Set 9, 2D
+    \item The Mathematical Olympiad began in the prime year 1979. Find the product of the fractions below in a simplest form:
+    \[ 
+      \left(1 - \frac{1}{1980}\right) \times \left(1 - \frac{1}{1981}\right) \times \ldots \times \left(1 - \frac{1}{2022}\right). 
+    \] % Set 9, 2E
+    \item In this street map, all traffic enters at A and exits at either B or C. All traffic flows either south or east. At each intersection where there is a choice of direction, 70\% of the traffic goes east and 30\% goes south. What percent of the traffic exists at C? % Set 9, 3D
+    \item Rectangle $ABCD$ is partitioned into five squares as shown. The length, in centimeters, of $\overline{AM}$ is a whole number. The area of rectangle $ABCD$ is greater than 100 sq cm. Find the smallest possible area of rectangle $ABCD$, in sq cm. % Set 11, 2D
+    \item Two semicircles are inscribed in a square with side $8$ meters as shown. Approximate the area of the shaded region to the nearest tenth of a square meter. Use the approximation $3.14$ for $\pi$. % Set 9, 5D.
+  \end{enumerate}
+  \begin{tabular}{ccccc}
+    \begin{mplibcode}
+      u := 0.6cm;
+        drawarrow (-1u, 2u)--(-.1u, 2u) penbold;
+        drawarrow (0u, 2u)--(1.9u, 2u) penbold;
+        drawarrow (2u, 2u)--(3u, 2u) penbold;
+        drawarrow (0u, 1u)--(1.9u, 1u) penbold;
+        drawarrow (0u, 0u)--(1.9u, 0u) penbold;
+        drawarrow (2u, 0u)--(3u, 0u) penbold;
+        drawarrow (0u, 2u)--(0u, 1.1u) penbold;
+        drawarrow (2u, 2u)--(2u, 1.1u) penbold;
+        drawarrow (0u, 1u)--(0u, 0.1u) penbold;
+        drawarrow (2u, 1u)--(2u, 0.1u) penbold;
+        label.lft("$A$", (-1u, 2u));
+        label.rt("$B$", (3u, 2u));
+        label.rt("$C$", (3u, 0u));
+    \end{mplibcode}&\quad&
+    \begin{mplibcode}
+      u := 0.25cm;
+      Draw (0u, 0u)--(7u, 0u)--(7u, 4u)--(0u, 4u)--cycle, (3u, 0u)--(3u, 4u), (0u, 3u)--(3u, 3u), (1u, 3u)--(1u, 4u), (2u, 3u)--(2u, 4u);
+      label.ulft("$A$", (0u, 4u));
+      label.lft("$M$", (0u, 3u));
+      label.llft("$D$", (0u, 0u));
+      label.urt("$B$", (7u, 4u));
+      label.lrt("$C$", (7u, 0u));
+    \end{mplibcode}&\quad&
+    \begin{mplibcode}
+      u := 0.7cm;
+      fill (0u, 0u)--(2u, 0u)--(2u, 2u)--(0u, 2u)--cycle withcolor 0.7white;
+      fill subpath (2, 4) of circle((1u, 2u), 1u)--cycle withcolor white;
+      fill subpath (3, 5) of circle((0u, 1u), 1u)--cycle withcolor white;
+      draw (0u, 0u)--(2u, 0u)--(2u, 2u)--(0u, 2u)--cycle;
+      draw subpath (2, 4) of circle((1u, 2u), 1u);
+      draw subpath (3, 5) of circle((0u, 1u), 1u);
+    \end{mplibcode}\\
+    Problem 5&\quad&Problem 6&\quad&Problem 7             
+  \end{tabular}
+
+\end{document}

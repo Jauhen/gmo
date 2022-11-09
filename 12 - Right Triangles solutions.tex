@@ -1,0 +1,502 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{scalerel}
+
+\usetheme{graham}
+
+\title{Right Triangles solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\newcommand\Mydiv[2]{%
+$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+        \overline{\enspace\strut#2}$}
+
+\setcounter{MaxMatrixCols}{20}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\usepackage{luamplib}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item In $\triangle ABC$, $AB=BC=29$, and $AC=42$. What is the area of $\triangle ABC$? % AMC 8 2015 Problem 6
+        \item A square-shaped floor is covered with congruent square tiles. If the total number of tiles that lie on the two diagonals is $37$, how many tiles cover the floor? % AMC 8 2017 Problem 11
+        \item Triangle $ABC$ has sides of length $13$ inches, $14$ inches and $15$ inches. What is the length of the altitude to the side of length $14$ inches?
+        \item The altitude of an equilateral triangle is $\sqrt6$ units. What is the area of the triangle, in square units?
+        \item In pentagon $ABCDE$, $\angle E$ and $\angle C$ are right angles and $m\angle D = 120^\circ$. If $AB = 12$, $AE = BC = 18$ and $ED = DC$, what is $ED$? 
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item In the diagram, $\triangle XYZ$ is right-angled at $X,$ with $YX=60$ and $XZ=80.$ The point $W$ is on $YZ$ so that $WX$ is perpendicular to $YZ.$ Determine the length of $WZ.$        
+        \item If point $Q$ lies on side $AB$ of square $ABCD$ such that $QC = \sqrt{10}$ units and $QD = \sqrt{13}$ units, what is the area of square $ABCD$?
+        \item A semicircle is inscribed in an isosceles triangle with base $16$ and height $15$ so that the diameter of the semicircle is contained in the base of the triangle as shown. What is the radius of the semicircle? 
+        % AMC 8 2016 Problem 25
+      \end{enumerate}
+      \begin{tabular}{cc}
+        \begin{mplibcode}
+          u := 0.4cm;
+          pair X, Y, Z, W;
+          Y := origin;
+          X := (3u, 4u);
+          W := (3u, 0u);
+          Z := ((3+16/3)*u, 0u);
+          draw X--Y--Z--cycle;
+          draw X--W;
+          label.top(btex $X$ etex, X);
+          label.bot(btex $Y$ etex, Y);
+          label.bot(btex $Z$ etex, Z);
+          label.bot(btex $W$ etex, W);
+          label.ulft(btex $60$ etex, 0.5[Y, X]);
+          label.urt(btex $80$ etex, 0.5[X, Z]);
+        \end{mplibcode}&
+        \begin{mplibcode}
+          u := 0.15cm;
+          Draw (0u,0u)--(8u,15u)--(16u,0u)--(0u,0u), subpath(0, 2) of circle((8u, 0u), 7.0588u);
+        \end{mplibcode}\\  
+        Exercise 6 & Exercise 8
+      \end{tabular}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Points $A(11, 9)$ and $B(2, -3)$ are vertices of $\triangle ABC$ with $AB=AC$. The altitude from $A$ meets the opposite side at $D(-1, 3)$. What are the coordinates of point $C$? % AMC 10b 2017, Problem 8
+        \item In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units? % 2019 AMC 10B Problems/Problem 10
+        \item Rectangle $ABCD$ has $AB=3$ and $BC=4$. Point $E$ is the foot of the perpendicular from $B$ to diagonal $\overline{AC}$. What is the area of $\triangle AED$? % 2017 AMC 10B Problems/Problem 15
+        \item In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\overline{PQ}$, points $C$ and $D$ lie on $\overline{QR}$, points $E$ and $F$ lie on $\overline{RS}$, and points $G$ and $H$ lie on $\overline{SP}$ so that $AP=BQ<4$ and the convex octagon $ABCDEFGH$ is equilateral. Find the length of a side of this octagon. % AMC 
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E1.} In $\triangle ABC$, $AB=BC=29$, and $AC=42$. What is the area of $\triangle ABC$?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 0.5cm;
+          pair A, B, C, D;
+          A := origin;
+          B := (2u, 2u);
+          C := (4u, 0u);
+          D := 0.5[A, C];
+          Draw A--B--C--cycle, B--D;
+          label.bot("$A$", A);
+          label.top("$B$", B);
+          label.bot("$C$", C);
+          label.bot("$D$", D);
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      Since $\triangle ABC$ is isosceles, $BD$ is a median and a height. By the Pythagorean theorem $BD = \sqrt{29^2 - 21^2} = 20$, and $S(\triangle ABC) = \dfrac{42 \cdot 20}{20} = \boxed{420}$.
+
+      \begin{problem}
+        \textbf{E2.} A square-shaped floor is covered with congruent square tiles. If the total number of tiles that lie on the two diagonals is $37$, how many tiles cover the floor?
+      \end{problem}
+      Since $37$ is an odd number, the central square is shared with both diagonals, so there are $(37+1)/2 = 19$ squares on each of the diagonals. So we have $19 \times 19$ square, and it has $19 \cdot 19 = \boxed{361}$ tiles.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E3.} Triangle $ABC$ has sides of length $13$ inches, $14$ inches and $15$ inches. What is the length of the altitude to the side of length $14$ inches?
+      \end{problem}
+      By Heron's formula the area of the triangle is $S = \sqrt{21 \cdot (21 - 13)\cdot (21 - 14)\cdot (21 - 15)} = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$. From other side $S = \dfrac{14 \cdot h_{14}}{2} = 84$. So $h_{14} = \boxed{12}$.
+
+      \begin{problem}
+        \textbf{E4.} The altitude of an equilateral triangle is $\sqrt6$ units. What is the area of the triangle, in square units?
+      \end{problem}
+      Let the side of the triangle is $a$, so $a^2 = \dfrac{a^2}{4} + 6$, and $\dfrac{3}{4}a^2 = 6$. $a^2 = 8$, so $a = 2\sqrt{2}$. $S = \dfrac{2\sqrt{2} \cdot \sqrt{6}}{2} = \boxed{2\sqrt{3}}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 5-6}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E5.} In pentagon $ABCDE$, $\angle E$ and $\angle C$ are right angles and $m\angle D = 120^\circ$. If $AB = 12$, $AE = BC = 18$ and $ED = DC$, what is $ED$? 
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 1cm;
+          pair A, B, C, D, E, T, L;
+          A := origin;
+          B := 1u*dir(0);
+          E := 1.5u*dir(120);
+          C := B + 1.5u*dir(60);
+          D := whatever[E, E + u*dir(30)]=whatever[C, C + u*dir(150)];
+          T := whatever[E, A]=whatever[C, B];
+          L := 0.5[E, C];
+          Draw A--B--C--D--E--cycle;
+          draw A--T--B dashed evenly;
+          draw E--C dashed evenly;
+          draw D--L dashed evenly;
+          label.llft("$A$", A);
+          label.lrt("$B$", B);
+          label.rt("$C$", C);
+          label.top("$D$", D);
+          label.lft("$E$", E);
+          label.bot("$K$", T);
+          label.bot("$L$", L);
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure} 
+      When we continue $EA$ and $CB$ until the intersection in $K$, we will get equilateral $\triangle ABK$ with the side $12$, so equilateral $\triangle ECK$ has a side $30$. $ED$ is hypotenuse in the $30-60-90$ triangle with the long side $15$. So $ED = 15 \cdot \dfrac{2}{\sqrt{3}} = \boxed{10\sqrt{3}}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E6.} In the diagram, $\triangle XYZ$ is right-angled at $X,$ with $YX=60$ and $XZ=80.$ The point $W$ is on $YZ$ so that $WX$ is perpendicular to $YZ.$ Determine the length of $WZ.$
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u := 0.4cm;
+          pair X, Y, Z, W;
+          Y := origin;
+          X := (3u, 4u);
+          W := (3u, 0u);
+          Z := ((3+16/3)*u, 0u);
+          draw X--Y--Z--cycle;
+          draw X--W;
+          label.top(btex $X$ etex, X);
+          label.bot(btex $Y$ etex, Y);
+          label.bot(btex $Z$ etex, Z);
+          label.bot(btex $W$ etex, W);
+          label.ulft(btex $60$ etex, 0.5[Y, X]);
+          label.urt(btex $80$ etex, 0.5[X, Z]);
+        \end{mplibcode}
+        % \vspace*{-\intextsep}
+      \end{wrapfigure}
+      $\triangle XYZ$ is similar to $3-4-5$ triangle, so $\triangle XWZ$ is similar to $3-4-5$ triangle. So $WZ:XZ = 4:5$ and $WZ = XZ \cdot 4 / 5 = 80 \cdot 4 / 5 = \boxed{64}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 7-8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E7.} If point $Q$ lies on side $AB$ of square $ABCD$ such that $QC = \sqrt{10}$ units and $QD = \sqrt{13}$ units, what is the area of square $ABCD$?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 1cm;
+          pair A, B, C, D, Q;
+          A := origin;
+          B := (2u, 0u);
+          C := (2u, 2u);
+          D := (0u, 2u);
+          Q := (0.85u, 0u);
+          Draw A--B--C--D--cycle, C--Q--D;
+          label.bot("$A$", A);
+          label.bot("$B$", B);
+          label.top("$C$", C);
+          label.top("$D$", D);
+          label.bot("$Q$", Q);
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure} 
+      Let the side of the square is $a$ and $AQ = b$. So $a^2 + b^2 = 10$ and $a^2 + (a-b)^2 = 13$.
+      $(a - b)^2 - b^2 = a^2 - 2ab = 3$, $b = \frac{a^2 - 3}{2a}$. 
+      
+      Plugin back into the first equation, we got:
+      \begin{gather*} 
+        a^2 + \left(\tfrac{a^2 - 3}{2a}\right)^2 = 10,\\
+        a^2 + \dfrac{a^4 - 6a^2 + 9}{4a^2} = 10,\\
+        4a^4 + a^4 - 6a^2 + 9 = 40a^2,\\
+        5a^4 - 46a^2 + 9 = 0,\\
+        (a^2 - 9)(5a^2 - 1) = 0, \quad \Rightarrow \quad a^2 = \boxed{9}.
+      \end{gather*}
+      Another root is too small.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E8.} A semicircle is inscribed in an isosceles triangle with base $16$ and height $15$ so that the diameter of the semicircle is contained in the base of the triangle as shown. What is the radius of the semicircle? 
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \begin{mplibcode}
+          u := 0.15cm;
+          Draw (0u,0u)--(8u,15u)--(16u,0u)--(0u,0u), subpath(0, 2) of circle((8u, 0u), 7.0588u);
+          draw (8u,0u)--altitude((0u,0u), (8u,0u), (8u,15u)) dashed evenly;
+          draw (8u,0u)--(8u,15u) dashed evenly;
+        \end{mplibcode}
+      \end{wrapfigure}
+      The radius of the semicircle is an altitude in the half of the triangle. The area of the half of the triangle is $\dfrac{8 \cdot 15}{2} = \boxed{60}$. The hypotenuse of the half of the triangle is $\sqrt{8^2 + 15^2} = 17$. Since $\dfrac{17 \cdot r}{2} = 60$, $r = 60 \cdot 2 / 17 = \boxed{120/17}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP1.} Points $A(11, 9)$ and $B(2, -3)$ are vertices of $\triangle ABC$ with $AB=AC$. The altitude from $A$ meets the opposite side at $D(-1, 3)$. What are the coordinates of point $C$?
+      \end{problem}
+      Since $\triangle ABC$ is isosceles, $D$ is a median of $BC$. So $x_D = \dfrac{x_B + x_C}{2}$ and $y_D = \dfrac{y_B + y_C}{2}$. So $C(x_C, y_C) = \boxed{(-4, 9)}$
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP2.} In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units?
+      \end{problem}
+
+      Without loss of generality, let $AB$ be a horizontal segment of length $10$. Now realize that $C$ has to lie on one of the lines parallel to $AB$ and vertically $20$ units away from it. But $10+20+20$ is already $50,$ and this doesn't form a triangle. So there are no such points, the answer is $\boxed{0}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 3-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP3.} Rectangle $ABCD$ has $AB=3$ and $BC=4$. Point $E$ is the foot of the perpendicular from $B$ to diagonal $\overline{AC}$. What is the area of $\triangle AED$?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \begin{mplibcode}
+          u = 0.8cm;
+          pair A, B, C, D, E;
+          A := (0u, 4u);
+          B := (3u, 4u);
+          C := (3u, 0u);
+          D := (0u, 0u);
+          E := altitude(A, B, C);
+          Draw A--B--C--D--cycle, A--C, D--E--B;
+          label.top("$A$", A);
+          label.top("$B$", B);
+          label.bot("$C$", C);
+          label.bot("$D$", D);
+          label.top("$E$", E shifted (0, 2));
+        \end{mplibcode}
+      \end{wrapfigure}
+      $S(\triangle AED) = S(\triangle AEB)$ since they share the base and altitudes have the same length because of symmetry. $\triangle ABE$ similar to $3-4-5$ triangle, so $AE:AB = 3:5$ and $AE = 9/5$, $EB:AB = 4:5$, so $EB = 12/5$. $S(\triangle AED) = S(\triangle AEB) = \dfrac{\frac{9}{5} \cdot \frac{12}{5}}{2} = \dfrac{12 \cdot 9}{2 \cdot 5 \cdot 5} = \boxed{\dfrac{54}{25}}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP4.} In rectangle $PQRS$, $PQ=8$ and $QR=6$. Points $A$ and $B$ lie on $\overline{PQ}$, points $C$ and $D$ lie on $\overline{QR}$, points $E$ and $F$ lie on $\overline{RS}$, and points $G$ and $H$ lie on $\overline{SP}$ so that $AP=BQ<4$ and the convex octagon $ABCDEFGH$ is equilateral. Find the length of a side of this octagon. 
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 0.6cm;
+          pair A, B, C, D, E[];
+          A := (0u, 4u);
+          B := (3u, 4u);
+          C := (3u, 0u);
+          D := (0u, 0u);
+          numeric a;
+          a := u*((3*sqrt(11) - 7)/4);
+          E1 := (0u, 2u-a);
+          E2 := (0u, 2u+a);
+          E3 := (1.5u-a, 4u);
+          E4 := (1.5u+a, 4u);
+          E5 := (3u, 2u+a);
+          E6 := (3u, 2u-a);
+          E7 := (1.5u+a, 0u);
+          E8 := (1.5u-a, 0u);
+          Draw A--B--C--D--cycle, E2--E3, E4--E5, E6--E7, E8--E1;
+          label.top("$Q$", A shifted (0, -1));
+          label.top("$R$", B);
+          label.bot("$S$", C);
+          label.bot("$P$", D);
+          label.lft("$A$", E1);
+          label.lft("$B$", E2);
+          label.top("$C$", E3);
+          label.top("$D$", E4);
+          label.rt("$E$", E5);
+          label.rt("$F$", E6);
+          label.bot("$G$", E7);
+          label.bot("$H$", E8);
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      Let $AP=BQ=x$. Then $AB=8-2x$.
+
+      Now notice that since $CD=8-2x$ we have $QC=DR=x-1$.
+
+      Thus by the Pythagorean Theorem we have $x^2+(x-1)^2=(8-2x)^2$ which becomes $2x^2-30x+63=0\implies x=\dfrac{15-3\sqrt{11}}{2}$.
+
+      Our answer is $8-(15-3\sqrt{11})=\boxed{3\sqrt{11}-7}$. 
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Empty}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Team attack problems 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \vspace*{-0.5\intextsep}
+      \begin{problem}
+        \textbf{TA1.} $\dfrac{9}{37}$ is changed to a decimal. What digit lies in the 2022\textsuperscript{th} place to the right of the decimal point?
+      \end{problem}
+      $\dfrac{9}{37} = 0.243\,243\,243\ldots = 0.\overline{243}$ so every position divisible by $3$ has digit $3$. So on 2022\textsuperscript{th} there is the digit $\boxed{3}$.
+
+      \begin{problem}
+        \textbf{TA2.} Emily has $21$ dimes. She placed then in three piles, with an odd number of dimes in each pile. In how many different ways can she accomplish this? [\emph{Consider piles of 1, 1, 19 dimes, for example, to be equivalent to piles 1, 19, and 1 dimes.}]
+      \end{problem}
+      Start with the bigest pile and count down:
+      
+      Case $19$: $19-1-1$;
+      Case $17$: $17-3-1$;
+
+      Case $15$: $15-5-1$ and $15-3-3$;
+
+      Case $13$: $13-7-1$, $13-5-3$;
+
+      Case $11$: $11-9-1$, $11-7-3$, and $11-5-5$;
+
+      Case $9$: $9-9-3$, $9-7-5$.
+
+      Case $7$: $7-7-7$.
+      Total: $\boxed{12}$ cases.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \vspace*{-0.5\intextsep}
+      \begin{problem}
+        \textbf{TA3.} Suppose $\dfrac{2}{N}$, $\dfrac{3}{N}$, and $\dfrac{5}{N}$ are three fractions in lowest terms. Find a sum of all the possible composite whole number values for $N$ between $20$ and~$80$?
+      \end{problem}
+      $N$ should not have prime factors of $2$, $3$ or $5$. The only options for composite numbers is $7 \cdot 7=49$ and $7 \cdot 11=77$. $7 \cdot 13 > 80$ and $11 \cdot 11 > 80$. So answer is $49 + 77 = \boxed{126}$.
+
+      \begin{problem}
+        \textbf{TA4.} The Mathematical Olympiad began in the prime year 1979. Find the product of the fractions below in a simplest form:
+        \[ 
+          \left(1 - \frac{1}{1980}\right) \times \left(1 - \frac{1}{1981}\right) \times \ldots \times \left(1 - \frac{1}{2022}\right). 
+        \]\vspace*{-0.5\intextsep}
+      \end{problem}
+      \vspace*{-\intextsep}
+      \begin{multline*}        
+        \left(1 - \frac{1}{1980}\right) \times \left(1 - \frac{1}{1981}\right) \times \ldots \times \left(1 - \frac{1}{2022}\right) =\\
+        =\frac{1979}{1980}\cdot\frac{1980}{1981}\cdot \ldots \cdot\frac{2020}{2021}\cdot\frac{2021}{2022} =\boxed{\frac{1979}{2022}}. 
+      \end{multline*}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Team attack problems 5-6}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA5.} In this street map, all traffic enters at $A$ and exits at either $B$ or $C$. All traffic flows either south or east. At each intersection where there is a choice of direction, $70\%$ of the traffic goes east and $30\%$ goes south. What percent of the traffic exists at~$C$?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u := 0.6cm;
+          drawarrow (-1u, 2u)--(-.1u, 2u) penbold;
+          drawarrow (0u, 2u)--(1.9u, 2u) penbold;
+          drawarrow (2u, 2u)--(3u, 2u) penbold;
+          drawarrow (0u, 1u)--(1.9u, 1u) penbold;
+          drawarrow (0u, 0u)--(1.9u, 0u) penbold;
+          drawarrow (2u, 0u)--(3u, 0u) penbold;
+          drawarrow (0u, 2u)--(0u, 1.1u) penbold;
+          drawarrow (2u, 2u)--(2u, 1.1u) penbold;
+          drawarrow (0u, 1u)--(0u, 0.1u) penbold;
+          drawarrow (2u, 1u)--(2u, 0.1u) penbold;
+          label.lft("$A$", (-1u, 2u));
+          label.rt("$B$", (3u, 2u));
+          label.rt("$C$", (3u, 0u));
+        \end{mplibcode}
+        \vspace*{-0.5\intextsep}
+      \end{wrapfigure}
+      The probability to get point $B$ is $0.7 \cdot 0.7 = 0.49$. So $1-0.49 = 0.51 = \boxed{51\%}$ of traffic will exists at $C$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA6.} Rectangle $ABCD$ is partitioned into five squares as shown. The length, in centimeters, of $\overline{AM}$ is a whole number. The area of rectangle $ABCD$ is greater than $100$ sq cm. Find the smallest possible area of rectangle $ABCD$, in sq cm.
+      \end{problem}
+      \begin{wrapfigure}{l}{10.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u := 0.25cm;
+          Draw (0u, 0u)--(7u, 0u)--(7u, 4u)--(0u, 4u)--cycle, (3u, 0u)--(3u, 4u), (0u, 3u)--(3u, 3u), (1u, 3u)--(1u, 4u), (2u, 3u)--(2u, 4u);
+          label.ulft("$A$", (0u, 4u));
+          label.lft("$M$", (0u, 3u));
+          label.llft("$D$", (0u, 0u));
+          label.urt("$B$", (7u, 4u));
+          label.lrt("$C$", (7u, 0u));
+          label.rt("$N$", (3u, 3u));
+        \end{mplibcode}
+        \vspace*{-0.5\intextsep}
+      \end{wrapfigure}
+      Let $AM = n$ cm, then $AN = 3n$ cm, $AD = 4n$ cm and $AB = 7n$ cm, so $S(ABCD) = 4n \cdot 7n = 28 n^2$ sq cm. If $n = 1$, $28 < 100$, if $n = 2$, $28\cdot 4 = \boxed{112}$ sq cm. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Title}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{TA7.} Two semicircles are inscribed in a square with side $8$ meters as shown. Approximate the area of the shaded region to the nearest tenth of a~square meter. Use the approximation $3.14$ for~$\pi$.
+      \end{problem}
+      \begin{wrapfigure}{l}{10.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u := 1.2cm;
+          fill (0u, 0u)--(2u, 0u)--(2u, 2u)--(0u, 2u)--cycle withcolor 0.7white;
+          fill subpath (2, 4) of circle((1u, 2u), 1u)--cycle withcolor white;
+          fill subpath (3, 5) of circle((0u, 1u), 1u)--cycle withcolor red;
+          fill (0u, 2u)--(0u, 1u)--(1u, 1u)--(2u, 2u)--cycle withcolor white;
+          fill (0u, 1u)--(1u, 1u)--(0u, 0u)--cycle withcolor 0.6[blue, white];
+          draw (0u, 0u)--(2u, 0u)--(2u, 2u)--(0u, 2u)--cycle;
+          draw (0u, 0u)--(2u, 2u);
+          draw subpath (2, 4) of circle((1u, 2u), 1u);
+          draw subpath (3, 5) of circle((0u, 1u), 1u);
+        \end{mplibcode}
+        \vspace*{-0.5\intextsep}
+      \end{wrapfigure}
+      The gray area is a half of the big square minus two red sections. To calculate area of the red section, we need to get area of quarter of the circle minus area of the blue triangle.
+      $S(\text{quarter of the circle}) = \dfrac{\pi r^2}{4} = \dfrac{\pi 4^2}{4} = 4 \pi \approx 4 \cdot 3{.}14 = 12.56$.
+
+      $S(\text{blue triangle}) = \dfrac{4\cdot 4}{2} = 8$.
+      
+      $S(\text{red area}) = 12.56 - 8 = 4.56$.
+
+      $S(\text{grey area}) = \dfrac{8 \cdot 8}{2} - 2 \cdot 4.56 = 32 - 9.12 = 22.88 \approx \boxed{22.9}$ sq meters.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

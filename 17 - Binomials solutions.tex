@@ -23,16 +23,158 @@ $\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
 \everymplib{input repere; input macros; beginfig(1);}
 \everyendmplib{endfig;}
 
+\usepackage{cancel}
+
 \begin{document}
 \maketitle
 
-% \begin{frame}{Title}
+% \begin{frame}{Exercises}
 %   \begin{columns}[T]
 %     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item The \emph{harmonic mean} of a set of non-zero numbers is the reciprocal of the average of the reciprocals of the numbers. What is the harmonic mean of $1$, $2$, and $4$? %AMC 8 2018, Problem 10
+%         \item If $\dfrac{x+1}{x} = 2$, what is the value of $\dfrac{x^2 + 1}{x^2}$?
+%         \item What is the greatest integer value of $x$ such that $\dfrac{x^2 + 2x + 5}{x-3}$ is an integer?
+%         \item What is the value of the product\[\left(\frac{1\cdot3}{2\cdot2}\right)\left(\frac{2\cdot4}{3\cdot3}\right)\left(\frac{3\cdot5}{4\cdot4}\right)\cdots\left(\frac{97\cdot99}{98\cdot98}\right)\left(\frac{98\cdot100}{99\cdot99}\right)?\] %AMC 8 2019, Problem 17
+%         \item What is the value of \[\frac{2022^3 - 2 \cdot 2022^2 \cdot 2023 + 3 \cdot 2022 \cdot 2023^2 - 2023^3 + 1}{2022 \cdot 2023}?\]
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item If $\left(\dfrac1{x+y}\right)\left(\dfrac1x+\dfrac1y\right)=\dfrac1{13}$, what is the value of the product of $x$ and $y$?
+%         \item If $a\clubsuit b=\dfrac{ab}{a+b}$ and $a\clubsuit 4=3,$ what is the value of $a$?
+%         \item Compute the sum of the distinct prime factors of
+%         $2^{15} + 2^8 − 2^7 − 1$. % PI Fermat, 2022, Problem 17
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item How many perfect cubes lie between $2^8+1$ and $2^{18}+1$, inclusive? %AMC 8, 2018, Problem 25
+%         \item Let $a$, $b$, and $c$ be three distinct one-digit numbers. What is the maximum value of the sum of the roots of the equation $(x-a)(x-b)+(x-b)(x-c)=0$? %AMC 10b 2015, Problem 14
+%         \item If $y+4 = (x-2)^2,$ $x+4 = (y-2)^2$, and $x \neq y$, what is the value of $x^2+y^2$? %AMC 10a 2015, Problem 16
+%         \item For some particular value of $N$, when $(a+b+c+d+1)^N$ is expanded and like terms are combined, the resulting expression contains exactly $1001$ terms that include all four variables $a, b,c,$ and $d$, each to some positive power. What is $N$? %AMC 10a 2016, Problem 20
+%       \end{enumerate}
 %     \end{column}
 %     \begin{column}{0.5\textwidth}
 %     \end{column}
 %   \end{columns}
 % \end{frame}
+
+\begin{frame}{Exercises 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E1.} The \emph{harmonic mean} of a set of non-zero numbers is the reciprocal of the average of the reciprocals of the numbers. What is the harmonic mean of $1$, $2$, and $4$?
+      \end{problem}
+      The sum of the reciprocals is $\dfrac{1}{1} + \dfrac{1}{2} + \dfrac{1}{4}= \dfrac{7}{4}$. Their average is $\dfrac{7}{12}$. Taking the reciprocal of this gives $\boxed{\frac{12}{7}}$
+      \begin{problem}
+        \textbf{E2.} If $\dfrac{x+1}{x} = 2$, what is the value of $\dfrac{x^2 + 1}{x^2}$?
+      \end{problem}
+      $\dfrac{x+1}{x} = 1 + \dfrac{1}{x} = 2$, so $\dfrac{1}{x} = 1$ or $x = 1$.
+      $\dfrac{x^2 + 1}{x^2} = \dfrac{1^2 + 1}{1^2} = \boxed{2}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E3.}  What is the greatest integer value of $x$ such that $\dfrac{x^2 + 2x + 5}{x-3}$ is an integer?
+      \end{problem}
+      $\dfrac{x^2 + 2x + 5}{x-3} = \dfrac{(x-3)x +5x +5}{x-3}=\dfrac{(x-3)x + 5(x-3)+20}{x-3} = x + 5 + \dfrac{20}{x-3}$. Since $x+5$ is an integer for any integer $x$, $\dfrac{20}{x-3}$ should be integer. So $x = \boxed{23}$ is the greatest possible integer, for all $x>23$ the nominator is smaller than the denominator.
+      \begin{problem}
+        \textbf{E4.} What is the value of the product\[\left(\frac{1\cdot3}{2\cdot2}\right)\left(\frac{2\cdot4}{3\cdot3}\right)\left(\frac{3\cdot5}{4\cdot4}\right)\cdots\left(\frac{97\cdot99}{98\cdot98}\right)\left(\frac{98\cdot100}{99\cdot99}\right)?\] 
+      \end{problem}
+      \vspace*{-1em}
+      \[\hspace*{-2em}\left(\frac{1\cdot\cancel{3}}{2\cdot\cancel{2}}\right)\left(\frac{\cancel{2}\cdot\cancel{4}}{\cancel{3}\cdot\cancel{3}}\right)\left(\frac{\cancel{3}\cdot\cancel{5}}{\cancel{4}\cdot\cancel{4}}\right)\cdots\left(\frac{\cancel{98}\cdot100}{\cancel{99}\cdot99}\right) = \frac{1\cdot 100}{2 \cdot 99}=\boxed{\frac{50}{99}}\] 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 5-8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E5.} What is the value of \[\tfrac{2022^3 - 2 \cdot 2022^2 \cdot 2023 + 3 \cdot 2022 \cdot 2023^2 - 2023^3 + 1}{2022 \cdot 2023}?\]
+      \end{problem}
+      The first four terms in nominator are very close to $(a-b)^3$.
+      \begin{gather*}
+        \tfrac{2022^3 - 2 \cdot 2022^2 \cdot 2023 + 3 \cdot 2022 \cdot 2023^2 - 2023^3 + 1}{2022 \cdot 2023} =\\
+        = \frac{[2022 - (2023)]^3 + 2022^2 \cdot 2023 + 1}{2022 \cdot 2023} = \\
+        = \frac{-1 + 2022^2 \cdot 2023 +1}{2022 \cdot 2023} = \boxed{2022}.
+      \end{gather*}
+      \begin{problem}
+        \textbf{E6.} If $\left(\dfrac1{x+y}\right)\left(\dfrac1x+\dfrac1y\right)=\dfrac1{13}$, what is the value of the product of $x$ and $y$?
+      \end{problem}
+      $\left(\dfrac1{x+y}\right)\left(\dfrac1x+\dfrac1y\right) = \left(\dfrac1{x+y}\right)\left(\dfrac{y + x}{xy}\right) = \dfrac{1}{xy} = \dfrac{1}{13}$, so $xy = \boxed{13}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E7.} If $a\clubsuit b=\dfrac{ab}{a+b}$ and $a\clubsuit 4=3,$ what is the value of $a$?
+      \end{problem}
+      $\dfrac{a\cdot 4}{a + 4} = 3$, so $4a = 3a + 12$ or $a = \boxed{12}$.
+
+      \begin{problem}
+        \textbf{E8.} Compute the sum of the distinct prime factors of
+        $2^{15} + 2^8 − 2^7 − 1$.
+      \end{problem}
+      \begin{gather*}
+        2^{15} + 2^8 − 2^7 − 1 = (2^7 + 1)(2^8 - 1) =\\
+        = (2^7+1)(2^4+1)(2^4-1) =\\
+        = (2^7+1)(2^4 + 1)(2^2+1)(2^2 -1) = \\ 
+        = (2^7+1)(2^4 + 1)(2^2+1)(2^1 + 1)(2^1 - 1) = \\
+        = 129 \cdot 17 \cdot 5 \cdot 3 \cdot 1 = \\
+        = 43 \cdot 3 \cdot 17 \cdot 5 \cdot 3 \cdot 1.
+      \end{gather*}
+      So answer is $43 + 17 + 5 + 3 = \boxed{68}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP1.} How many perfect cubes lie between $2^8+1$ and $2^{18}+1$, inclusive?
+      \end{problem}
+      We compute $2^8+1=257$. We're all familiar with what $6^3$ is, namely $216$, which is too small. The smallest cube greater than it is $7^3=343$. 
+      
+      $2^{18}+1$ is too large to calculate, but we notice that $2^{18}=(2^6)^3=64^3$, which therefore clearly will be the largest cube less than $2^{18}+1$. 
+      
+      So, the required number of cubes is $64-7+1= \boxed{58}$
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP2.} Let $a$, $b$, and $c$ be three distinct one-digit numbers. What is the maximum value of the sum of the roots of the equation $(x-a)(x-b)+(x-b)(x-c)=0$? 
+      \end{problem}
+      Factoring out $(x-b)$ from the equation yields 
+      \[(x-b)(2x-(a+c))=0 \Rightarrow (x-b)\left(x-\frac{a+c}{2}\right)=0.\] Therefore the roots are $b$ and $\dfrac{a+c}{2}$. Because $b$ must be the larger root to maximize the sum of the roots, letting $a,b,$ and $c$ be $8,9,$ and $7$ respectively yields the sum $9+\dfrac{8+7}{2} = 9+7.5 = \boxed{16.5}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 3-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP3.} If $y+4 = (x-2)^2,$ $x+4 = (y-2)^2$, and $x \neq y$, what is the value of $x^2+y^2$?
+      \end{problem}
+      Subtract the two equations to get 
+      \[(x-y)= (x+y-4)(y-x) \iff x+y=3.\] 
+      Plugging back into any of the original equations yields 
+      \[ (3-x)+4 = (x-2)^2 \iff x^2-3x=3.\] 
+      However, we know $x^2+y^2= x^2+(3-x)^2= 2x^2-6x+9 = 2(x^2-3x)+9 = 2\cdot 3 + 9 = \boxed{15}$
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP4.} For some particular value of $N$, when $(a+b+c+d+1)^N$ is expanded and like terms are combined, the resulting expression contains exactly $1001$ terms that include all four variables $a, b,c,$ and $d$, each to some positive power. What is $N$?
+      \end{problem}
+      All the desired terms are in the form $a^xb^yc^zd^w1^t$, where $x + y + z + w + t = N$ (the $1^t$ part is necessary to make stars and bars work better.) Since $x$, $y$, $z$, and $w$ must be at least $1$ ($t$ can be $0$), let $x' = x - 1$, $y' = y - 1$, $z' = z - 1$, and $w' = w - 1$, so $x' + y' + z' + w' + t = N - 4$. Now, we use stars and bars to see that there are $\dbinom{(N-4)+4}{4}$ or $\dbinom{N}{4}$ solutions to this equation. We notice that $1001=7\cdot11\cdot13$, which leads us to guess that $N$ is around these numbers. This suspicion proves to be correct, as we see that $\dbinom{14}{4} = 1001$, giving us our answer of $\boxed{14}$.
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \end{document}

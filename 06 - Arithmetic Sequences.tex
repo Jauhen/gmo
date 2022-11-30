@@ -304,56 +304,107 @@
   \end{columns}
 \end{frame}
 
+% \begin{frame}{Exercises}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item What is the average value of the terms in the arithmetic series $5$, $13$, $21$, $\ldots$ $93$, $101$?
+%         \item Find the first term of the arithmetic sequence which 12\textsuperscript{th} term is equal to $43$ and the difference is equal to $4$.
+%         \item In an arithmetic sequence the 6\textsuperscript{th} term is equal to $26$ and 7\textsuperscript{th} term is equal to $30$. Find the common difference and the initial term of the sequence.
+%         \item How many terms in the arithmetic sequence $2$, $7$, $12$, $17$, $\ldots$ are three-digit numbers?
+%         \item What is the sum of all the integers between $−20$ and $50$ inclusive?
+%         \item If we subtract the arithmetic series $1 + 5 + 9 + \ldots + 97 + 101$ from the arithmetic series $1 + 3 + 5 + \ldots + 99 + 101$, what is the sum of the remaining terms?
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item Each row and each column in this $5 \times 5$ array is an arithmetic sequence with five terms. What is the value of $X$?
+        
+%         \begin{center}
+%           \vspace*{0.3em}
+%           \hspace*{-2em}
+%           \begin{mplibcode}
+%             u=0.45cm;
+%             for i=0 upto 5:
+%               draw (i*u, 0)--(i*u, 5u) withcolor Gray; 
+%               draw (0, i*u)--(5u, i*u) withcolor Gray; 
+%             endfor
+%             label.(btex $1$ etex, (0.5u, 4.5u));
+%             label.(btex $25$ etex, (4.5u, 4.5u));
+%             label.(btex $X$ etex, (2.5u, 2.5u));
+%             label.(btex $17$ etex, (0.5u, 0.5u));
+%             label.(btex $81$ etex, (4.5u, 0.5u));
+%           \end{mplibcode}            
+%         \end{center}
+%         \item Figures $0$, $1$, $2$, and $3$ consist of $1$, $5$, $13$, and $25$ non-overlapping unit squares, respectively. If the pattern were continued, how many non-overlapping unit squares would there be in figure $100$?
+%         \begin{mplibcode}
+%           input latexmp;
+%           u=0.1cm;
+%           s=0.5cm;
+%           numeric shift;
+%           numeric index;
+%           for i = 1 upto 4:
+%             for j = 0 upto i-1:
+%               shift:=s*i + i*i*2u;
+%               draw (u + j*2*u  + shift, u + (i-j-1)*2*u + s)--(u + j*2*u + shift, -u - (i-j-1)*2*u + s)--(-u - j*2*u + shift, -u - (i-j-1)*2*u + s)--(-u - j*2*u + shift, u + (i-j-1)*2*u + s)--(u + j*2*u + shift, u + (i-j-1)*2*u + s) withcolor Gray;
+%             endfor
+%             index:=i-1;
+%             label.(textext("\scriptsize{$\text{Figure}\ " & decimal index & "$}"), (shift, -0.4cm));
+%           endfor
+%         \end{mplibcode}
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item Sum of 3\textsuperscript{rd} and 7\textsuperscript{th} terms of the arithmetic sequence is equal to $12$. Second term is two times smaller than 5\textsuperscript{th} term. Find the initial term and the common difference of the sequence.
+%         \item Find the sum of the first 15\textsuperscript{th} terms of the arithmetic series, if the sum of 4\textsuperscript{th}, 5\textsuperscript{th}, 7\textsuperscript{th}, and 16\textsuperscript{th} is equal to $32$.
+%         \item The pages of a book are numbered from $1$ through $n$. When the page numbers of the book are added, one of the page numbers was mistakenly added twice, resulting in the incorrect sum of $2021$. What was the page that was added twice?
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item In an attempt to copy down a sequence of six positive integers in arithmetic progression, a~student wrote down the five numbers $113$, $137$, $149$, $155$, $173$, accidentally omitting one. He later discovered that he also miscopied one of them. What is the original sequence? 
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
 \begin{frame}{Exercises}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item What is the average value of the terms in the arithmetic series $5$, $13$, $21$, $\ldots$ $93$, $101$?
-        \item Find the first term of the arithmetic sequence which 12\textsuperscript{th} term is equal to $43$ and the difference is equal to $4$.
-        \item In an arithmetic sequence the 6\textsuperscript{th} term is equal to $26$ and 7\textsuperscript{th} term is equal to $30$. Find the common difference and the initial term of the sequence.
-        \item How many terms in the arithmetic sequence $2$, $7$, $12$, $17$, $\ldots$ are three-digit numbers?
-        \item What is the sum of all the integers between $−20$ and $50$ inclusive?
-        \item If we subtract the arithmetic series $1 + 5 + 9 + \ldots + 97 + 101$ from the arithmetic series $1 + 3 + 5 + \ldots + 99 + 101$, what is the sum of the remaining terms?
+        \item What is the greatest number of consecutive integers whose sum is $45$? % AMC 10a 2019 Problem 5
+        \item Find the value of the expression
+        
+        $100-98+96-94+92-90+\cdots+8-6+4-2.$ %AMC8 2016, Problem 8
+        \item The sum of $25$ consecutive even integers is $10,000$. What is the largest of these $25$ consecutive integers? % AMC 8 2016, Problem 19
+        \item If the 7th term of an arithmetic sequence is $24$ and the 12th term is $48$, then what is
+        the 57th term? % https://www.mathcounts.org/sites/default/files/u50/MCMini3S.pdf
+        \item The first two terms of an arithmetic sequence are $4$, $10$. What is the first term greater
+        than $1000$? % https://www.mathcounts.org/sites/default/files/u50/MCMini12S.pdf
+        \item The sequence an has the property that $a_{n} = a_{n – 1} + 2a_{n-2}$ for $n \geq 2$. It is also
+        true that $a_0 = 4$ and $a_4 = 26$. What is the value of $a_{5}$? % Mathcounts 2022, chapter, problem 29
         \seti
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
         \conti
-        \item Each row and each column in this $5 \times 5$ array is an arithmetic sequence with five terms. What is the value of $X$?
-        
-        \begin{center}
-          \vspace*{0.3em}
-          \hspace*{-2em}
-          \begin{mplibcode}
-            u=0.45cm;
-            for i=0 upto 5:
-              draw (i*u, 0)--(i*u, 5u) withcolor Gray; 
-              draw (0, i*u)--(5u, i*u) withcolor Gray; 
-            endfor
-            label.(btex $1$ etex, (0.5u, 4.5u));
-            label.(btex $25$ etex, (4.5u, 4.5u));
-            label.(btex $X$ etex, (2.5u, 2.5u));
-            label.(btex $17$ etex, (0.5u, 0.5u));
-            label.(btex $81$ etex, (4.5u, 0.5u));
-          \end{mplibcode}            
-        \end{center}
-        \item Figures $0$, $1$, $2$, and $3$ consist of $1$, $5$, $13$, and $25$ non-overlapping unit squares, respectively. If the pattern were continued, how many non-overlapping unit squares would there be in figure $100$?
-        \begin{mplibcode}
-          input latexmp;
-          u=0.1cm;
-          s=0.5cm;
-          numeric shift;
-          numeric index;
-          for i = 1 upto 4:
-            for j = 0 upto i-1:
-              shift:=s*i + i*i*2u;
-              draw (u + j*2*u  + shift, u + (i-j-1)*2*u + s)--(u + j*2*u + shift, -u - (i-j-1)*2*u + s)--(-u - j*2*u + shift, -u - (i-j-1)*2*u + s)--(-u - j*2*u + shift, u + (i-j-1)*2*u + s)--(u + j*2*u + shift, u + (i-j-1)*2*u + s) withcolor Gray;
-            endfor
-            index:=i-1;
-            label.(textext("\scriptsize{$\text{Figure}\ " & decimal index & "$}"), (shift, -0.4cm));
-          endfor
-        \end{mplibcode}
+        \item The 2020th term of an arithmetic sequence is $\dfrac{21}
+        {19}$ times the 2022nd term of the arithmetic sequence.
+        What is the value of the 2024th term of this sequence divided by the first term of this sequence? %Mathleague 12111, Problem 10
+        \item What is the value of
+
+        $1+2+3-4+5+6+7-8+\cdots+197+198+199-200$? % AMC 10a 2020 Problem 8
       \end{enumerate}
     \end{column}
   \end{columns}
@@ -363,17 +414,18 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item Sum of 3\textsuperscript{rd} and 7\textsuperscript{th} terms of the arithmetic sequence is equal to $12$. Second term is two times smaller than 5\textsuperscript{th} term. Find the initial term and the common difference of the sequence.
-        \item Find the sum of the first 15\textsuperscript{th} terms of the arithmetic series, if the sum of 4\textsuperscript{th}, 5\textsuperscript{th}, 7\textsuperscript{th}, and 16\textsuperscript{th} is equal to $32$.
-        \item The pages of a book are numbered from $1$ through $n$. When the page numbers of the book are added, one of the page numbers was mistakenly added twice, resulting in the incorrect sum of $2021$. What was the page that was added twice?
-        \seti
+        \item In how many ways can $345$ be written as the sum of an increasing sequence of two or more consecutive positive integers? % AMC10b, 2016, Problem 18
+        \item $852$ digits are used to number the pages of a book consecutively from page $1$. How many pages
+        are there in the book? %AOPS,1, Problem 453.
+        \item For every $n$ the sum of $n$ terms of an arithmetic progression is $2n + 3n^2$. What is the $r$th term of
+        the sequence in terms of $r$?
+        \item A sequence of natural numbers is constructed by listing the first
+        $4$, then skipping one, listing the next $5$, skipping $2$, listing $6$, skipping $3$, and on the nth
+        iteration, listing $n + 3$ and skipping $n$. The sequence begins $1$, $2$, $3$, $4$, $6$, $7$, $8$, $9$, $10$, $13$.
+        What is the $1000$th number in the sequence? % AMC10-2014-A24
       \end{enumerate}
     \end{column}
     \begin{column}{0.5\textwidth}
-      \begin{enumerate}
-        \conti
-        \item In an attempt to copy down a sequence of six positive integers in arithmetic progression, a~student wrote down the five numbers $113$, $137$, $149$, $155$, $173$, accidentally omitting one. He later discovered that he also miscopied one of them. What is the original sequence? 
-      \end{enumerate}
     \end{column}
   \end{columns}
 \end{frame}

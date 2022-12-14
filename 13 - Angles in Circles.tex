@@ -8,7 +8,7 @@
 \usepackage{luamplib}
   \mplibsetformat{metafun}
   \mplibtextextlabel{enable}
-\everymplib{input mpcolornames; input repere; beginfig(1);}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
 \everyendmplib{endfig;}
 
 \usetheme{graham}
@@ -507,81 +507,263 @@
   \end{columns}
 \end{frame}
 
+% \begin{frame}{Exercises}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item What is the angle (less than $180°$) formed by the hands of a clock when the time is $10{:}16$?
+
+%         \item At noon, the minute and hour hands are both pointing directly up to $12$.  If the hour hand moves continuously, at what time will the minute and hour hands next form a $181.5°$ angle?
+
+%         \item A triangle inscribed inside of a circle divides the circle into $3$ arcs whose lengths are in a $3{:}4{:}5$ ratio.  What is the measure of the largest angle of the triangle in degrees?
+
+%         \item At some military bases (and the majority of the World), the time is measured on clocks with $24$ hours on the face of a clock rather than $12$ hours.  So $10$~pm is $22$.  What angle less than $180°$ is formed by the hour and minute hands at $22{:}30$ hours (half past $22$.)
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{columns}[T, totalwidth=\textwidth]
+%         \begin{column}{0.6\linewidth}
+%           \setlength{\leftmargini}{0.2cm}
+%           \begin{enumerate}
+%             \conti
+%             \item In the figure, if the exact length of radius $PB$ is $15$, what is arc length $AB$ in terms of $\pi$?\vspace*{2\baselineskip}
+    
+%             \item In the figure, quadrilateral $ABCD$ is inscribed in circle $P$ with radius $5$.  What is the arc length $BCD$ in terms of~$\pi$? 
+%             \seti
+%           \end{enumerate}
+%         \end{column}
+%         \begin{column}{0.4\linewidth}
+%           \vspace*{-1em}
+%           \leavevmode
+%           \begin{mplibcode}
+%             u = 0.55cm;
+%             repere(-5,5,u,-5,5,u);
+%               pair P, A, B;
+%               P := origin;
+%               A := 2 * dir(185);
+%               B := 2 * dir(-80);
+%               draw cercle(P, B);
+%               draw A--B--P--cycle withpen pencircle scaled 1.25;
+%               nomme.urt(P);
+%               nomme.lft(A);
+%               nomme.lrt(B);
+%               label.rt(btex $\scriptstyle15$ etex, 0.5[P, B]);
+%               draw marqueangle(B, A, P, 1);
+%               nomme[0](B, A, P, "$\scriptstyle 38°$");
+%             fin;
+%           \end{mplibcode}
+%           \vspace*{0.7em}
+
+%           \begin{mplibcode}
+%             u = 0.55cm;
+%             repere(-5,5,u,-5,5,u);
+%               pair P, A, B, C, D;
+%               P := origin;
+%               A := 2 * dir(175);
+%               B := 2 * dir(150);
+%               C := 2 * dir(5);
+%               D := 2 * dir(-100);
+%               draw cercle(P, B);
+%               draw A--B--C--D--cycle withpen pencircle scaled 1.25;
+%               nomme.llft(P);
+%               nomme.ulft(B);
+%               nomme.rt(C);
+%               nomme.bot(D);
+%               nomme.lft(A);
+%               label.(btex $\scriptstyle 51°$ etex, C shifted 0.7dir(195));
+%             fin;
+%           \end{mplibcode}
+%         \end{column}
+%       \end{columns}
+%       \setlength{\leftmargini}{0.2cm}
+%       \begin{enumerate}
+%         \conti
+%         \item Point $A$ is drawn outside circle $O$ so that $AP$ is tangent to the circle.  We extend chord $CB$ outside to point $A$, so that $CB = AB$, and $AP = 3 \sqrt{2}$.  What is the length of $AC$?
+
+%         \item Diameter $AB$ of a circle has length $25$.  Point $C$ is chosen along the circumference such that $AC$ has length $7$.  What is the length of $BC$?
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item In the figure at the right, the small circle has its center at $P$, while the big circle has its center at $C$.  If $PA = 3$, $BC = 4$ and $PC = 6$, what is the length of $AB$?  Figure is not necessary drawn to scale.
+
+%         \item $\angle CBD$ and $\angle BCA$ are inscribed in circle $P$ whose radius is $5$.  The arc lengths $BA$ and $CD$ are $\pi$ and $3\pi$ as shown in the figure.  What is the measure of $\angle AED$ in degrees?  Recall that the ratio of arc length to circumference equals the ratio of the central angle associated with that arc to $360°$. 
+%         \seti
+%       \end{enumerate}
+%       \begin{center}
+%         \vspace*{-0.5ex}
+%         \leavevmode
+%         \begin{mplibcode}
+%           u = 0.65cm;
+%           repere(-5,10,u,-5,5,u);
+%             pair A, B, C, P, D, E;
+%             P := origin;
+%             A := 2 * dir(190);
+%             B := 2 * dir(154);
+%             C := 2 * dir(38);
+%             D := 2 * dir(-70);
+%             draw cercle(P, A);
+%             E := whatever[A, C]=whatever[B, D];
+%             nomme.lft(A);
+%             nomme.lft(B);
+%             nomme.urt(C);
+%             nomme.lrt(D);
+%             nomme.lrt(P);
+%             nomme.bot(E);
+%             draw A--C--B--D withpen pencircle scaled 1.25;
+%             label.lft(btex $\pi$ etex, 0.5[A, B] shifted (-0.07, 0));
+%             label.rt(btex $3\pi$ etex, 0.5[C, D] shifted (0.75, 0));
+%           fin;
+%         \end{mplibcode}
+%       \end{center}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+
+%       \begin{center}
+%         \vspace*{-\intextsep}
+%         \leavevmode
+%         \begin{mplibcode}
+%           u = 0.35cm;
+%           repere(-5,10,u,-5,5,u);
+%             pair A, B, C, P, Q;
+%             C := (4, 0);
+%             P := (-2, 0);
+%             path a, b, c;
+%             a := cercle(P, 3);
+%             b := cercle(C, 4);
+%             A := a intersectionpoint b;
+%             Q := P - 3* (P - A);
+%             c := A--Q;
+%             B := b intersectionpoint c;
+%             nomme.lft(A);
+%             nomme.top(B);
+%             nomme.lrt(C);
+%             nomme.lft(P);
+%             draw a;
+%             draw b;
+%             draw P--B--C--cycle withpen pencircle scaled 1.25;
+%           fin;
+%         \end{mplibcode}
+%       \end{center}
+
+%       \begin{enumerate}
+%         \conti
+%         \item Prove the Inscribed Angle Theorem for Case~B as shown on slide \#5 (Inscribed angle theorem).  Hint, use the proven result for Case~A as a starting point in your proof.
+
+%         \item Prove the Power of the Point Theorem for Case~2 as shown on Slide \#7 (The Power of a Point theorem).
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
 \begin{frame}{Exercises}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \begin{enumerate}
-        \item What is the angle (less than $180°$) formed by the hands of a clock when the time is $10{:}16$?
-
-        \item At noon, the minute and hour hands are both pointing directly up to $12$.  If the hour hand moves continuously, at what time will the minute and hour hands next form a $181.5°$ angle?
-
-        \item A triangle inscribed inside of a circle divides the circle into $3$ arcs whose lengths are in a $3{:}4{:}5$ ratio.  What is the measure of the largest angle of the triangle in degrees?
-
-        \item At some military bases (and the majority of the World), the time is measured on clocks with $24$ hours on the face of a clock rather than $12$ hours.  So $10$~pm is $22$.  What angle less than $180°$ is formed by the hour and minute hands at $22{:}30$ hours (half past $22$.)
-        \seti
-      \end{enumerate}
-    \end{column}
-    \begin{column}{0.5\textwidth}
       \begin{columns}[T, totalwidth=\textwidth]
         \begin{column}{0.6\linewidth}
-          \setlength{\leftmargini}{0.2cm}
+          % \setlength{\leftmargini}{0.2cm}
           \begin{enumerate}
-            \conti
-            \item In the figure, if the exact length of radius $PB$ is $15$, what is arc length $AB$ in terms of $\pi$?\vspace*{2\baselineskip}
-    
-            \item In the figure, quadrilateral $ABCD$ is inscribed in circle $P$ with radius $5$.  What is the arc length $BCD$ in terms of~$\pi$? 
+            % \conti
+            \item Point $O$ is the center of the regular octagon $ABCDEFGH$, and $X$ is the midpoint of the side $\overline{AB}.$ What fraction of the area of the octagon is shaded? % AMC 8 2015, Problem 2
+            \item The circumference of the circle with center $O$ is divided into 12 equal arcs, marked the letters $A$ through $L$ as seen below. What is the number of degrees in the sum of the angles $x$ and $y$? %AMC 8 2014, Problem 15
             \seti
           \end{enumerate}
         \end{column}
         \begin{column}{0.4\linewidth}
-          \vspace*{-1em}
+          % \vspace*{-1em}
           \leavevmode
           \begin{mplibcode}
-            u = 0.55cm;
-            repere(-5,5,u,-5,5,u);
-              pair P, A, B;
-              P := origin;
-              A := 2 * dir(185);
-              B := 2 * dir(-80);
-              draw cercle(P, B);
-              draw A--B--P--cycle withpen pencircle scaled 1.25;
-              nomme.urt(P);
-              nomme.lft(A);
-              nomme.lrt(B);
-              label.rt(btex $\scriptstyle15$ etex, 0.5[P, B]);
-              draw marqueangle(B, A, P, 1);
-              nomme[0](B, A, P, "$\scriptstyle 38°$");
-            fin;
+            u = 1cm;
+            path c;
+            pair A, B, C, D, E, F, G, H, X, O;
+            O := origin;
+            c := circle(origin, 1u);
+            A := point 0.5 of c;
+            B := point 1 of c;
+            C := point 1.5 of c;
+            D := point 2 of c;
+            E := point 2.5 of c;
+            F := point 3 of c;
+            G := point 3.5 of c;
+            H := point 0 of c;
+            X := 0.5[A, B];
+            fill X--B--C--D--O--cycle withcolor 0.7white;
+            Draw A--B--C--D--E--F--G--H--cycle, D--O--X;
+            Dot A, B, C, D, E, F, G, H, X, O;
+            label.urt("$A$", A);
+            label.top("$B$", B);
+            label.ulft("$C$", C);
+            label.lft("$D$", D);
+            label.llft("$E$", E);
+            label.bot("$F$", F);
+            label.lrt("$G$", G);
+            label.rt("$H$", H);
+            label.urt("$X$", X);
+            label.lrt("$O$", O);
           \end{mplibcode}
-          \vspace*{0.7em}
 
+          \vspace{10pt}
           \begin{mplibcode}
-            u = 0.55cm;
-            repere(-5,5,u,-5,5,u);
-              pair P, A, B, C, D;
-              P := origin;
-              A := 2 * dir(175);
-              B := 2 * dir(150);
-              C := 2 * dir(5);
-              D := 2 * dir(-100);
-              draw cercle(P, B);
-              draw A--B--C--D--cycle withpen pencircle scaled 1.25;
-              nomme.llft(P);
-              nomme.ulft(B);
-              nomme.rt(C);
-              nomme.bot(D);
-              nomme.lft(A);
-              label.(btex $\scriptstyle 51°$ etex, C shifted 0.7dir(195));
-            fin;
+            u = 1cm;
+            path c;
+            pair A, B, C, D, E, F, G, H, I, J, K, L, O;
+            O := origin;
+            c := circle(origin, 1u);
+            A := point 4/3 of c;
+            B := point 3/3 of c;
+            C := point 2/3 of c;
+            D := point 1/3 of c;
+            E := point 0 of c;
+            F := point 11/3 of c;
+            G := point 10/3 of c;
+            H := point 9/3 of c;
+            I := point 8/3 of c;
+            J := point 7/3 of c;
+            K := point 6/3 of c;
+            L := point 5/3 of c;
+            Draw c, A--D--O--cycle, O--G--I--cycle;
+            Dot A, B, C, D, E, F, G, H, I, J, K, L, O;
+            labelarcsprof(O, A, D, 10, 8, "$x$");
+            labelarcsprof2(O, G, I, 10, 7, "$y$");
+            label.ulft("$A$", A);
+            label.top("$B$", B);
+            label.urt("$C$", C);
+            label.urt("$D$", D);
+            label.rt("$E$", E);
+            label.lrt("$F$", F);
+            label.lrt("$G$", G);
+            label.bot("$H$", H);
+            label.llft("$I$", I);
+            label.llft("$J$", J);
+            label.lft("$K$", K);
+            label.ulft("$L$", L);
+            label.lft("$O$", O);
           \end{mplibcode}
         \end{column}
       \end{columns}
+      \begin{enumerate}
+        \conti
+        \item What is the angle (less than $180°$) formed by the hands of a clock when the time is $3{:}15$?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
       \setlength{\leftmargini}{0.2cm}
       \begin{enumerate}
         \conti
-        \item Point $A$ is drawn outside circle $O$ so that $AP$ is tangent to the circle.  We extend chord $CB$ outside to point $A$, so that $CB = AB$, and $AP = 3 \sqrt{2}$.  What is the length of $AC$?
-
-        \item Diameter $AB$ of a circle has length $25$.  Point $C$ is chosen along the circumference such that $AC$ has length $7$.  What is the length of $BC$?
+        \item Points $A$, $B$, $C$, and $D$ are on a circle with center $O$ in that order, and $AC$ and $BD$ meet at $E$. Given that $\angle AOB = 34°$,
+        $\angle COD = 102°$, $\angle DOA =109°$, find $\angle BEC$.
+        \item Points $A$, $B$, $C$, and $D$ are on a circle with center $O$ in that order, and $DA$ and $CB$ meet at $E$. Given that $\angle AOB = 34°$,
+        $\angle COD = 102°$, $\angle DOA =109°$, find $\angle AEB$.
+        \item Chords $\overline{TY}$ and $\overline{OP}$ meet at point $K$ such that $TK = 2$, $KY = 16$, and $KP = 2\cdot KO$. Find $OP$.
+        \item Points $A$, $B$, $C$, and $D$ are on a circle in that order and $AB$ intersects $DC$ in point $P$ outside the circle. We have $BP = 8$, $AB = 10$, $CD = 7$, and $\angle APC = 60°$. Find the radius of the circle.
+        \item Diameter $AB$ of a circle has length $25$.  Point $C$ is chosen along the circumference such that $AC$ has length $24$.  What is the length of $BC$?     
       \end{enumerate}
     \end{column}
   \end{columns}
@@ -591,73 +773,15 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{enumerate}
-        \item In the figure at the right, the small circle has its center at $P$, while the big circle has its center at $C$.  If $PA = 3$, $BC = 4$ and $PC = 6$, what is the length of $AB$?  Figure is not necessary drawn to scale.
-
-        \item $\angle CBD$ and $\angle BCA$ are inscribed in circle $P$ whose radius is $5$.  The arc lengths $BA$ and $CD$ are $\pi$ and $3\pi$ as shown in the figure.  What is the measure of $\angle AED$ in degrees?  Recall that the ratio of arc length to circumference equals the ratio of the central angle associated with that arc to $360°$. 
-        \seti
+        \item Let the incircle of triangle $ABC$ be tangent to sides $BC$, $AC$, and $AB$ at points $D$, $E$, and $F$, respectively. Given that $\angle A = 32°$, find $\angle EDF$.
+        \item The areas of two adjacent squares are $256$ square inches and $16$ square inches,
+        respectively, and their bases lie on the same line. What is the number of inches in
+        the length of the segment that joins the centers of the two inscribed circles? 
+        \item We are given points $A$, $B$, $C$, and $D$ in the plane such that $AD = 13$ while $AB = BC = AC= CD = 10$. Find $\angle ADB$.
+        \item In $\triangle ABC$, $AB = 86$, and $AC=97$. A circle with center $A$ and radius $AB$ intersects $\overline{BC}$ at points $B$ and $X$. Moreover $\overline{BX}$ and $\overline{CX}$ have integer lengths. What is $BC$?
       \end{enumerate}
-      \begin{center}
-        \vspace*{-0.5ex}
-        \leavevmode
-        \begin{mplibcode}
-          u = 0.65cm;
-          repere(-5,10,u,-5,5,u);
-            pair A, B, C, P, D, E;
-            P := origin;
-            A := 2 * dir(190);
-            B := 2 * dir(154);
-            C := 2 * dir(38);
-            D := 2 * dir(-70);
-            draw cercle(P, A);
-            E := whatever[A, C]=whatever[B, D];
-            nomme.lft(A);
-            nomme.lft(B);
-            nomme.urt(C);
-            nomme.lrt(D);
-            nomme.lrt(P);
-            nomme.bot(E);
-            draw A--C--B--D withpen pencircle scaled 1.25;
-            label.lft(btex $\pi$ etex, 0.5[A, B] shifted (-0.07, 0));
-            label.rt(btex $3\pi$ etex, 0.5[C, D] shifted (0.75, 0));
-          fin;
-        \end{mplibcode}
-      \end{center}
     \end{column}
     \begin{column}{0.5\textwidth}
-
-      \begin{center}
-        \vspace*{-\intextsep}
-        \leavevmode
-        \begin{mplibcode}
-          u = 0.35cm;
-          repere(-5,10,u,-5,5,u);
-            pair A, B, C, P, Q;
-            C := (4, 0);
-            P := (-2, 0);
-            path a, b, c;
-            a := cercle(P, 3);
-            b := cercle(C, 4);
-            A := a intersectionpoint b;
-            Q := P - 3* (P - A);
-            c := A--Q;
-            B := b intersectionpoint c;
-            nomme.lft(A);
-            nomme.top(B);
-            nomme.lrt(C);
-            nomme.lft(P);
-            draw a;
-            draw b;
-            draw P--B--C--cycle withpen pencircle scaled 1.25;
-          fin;
-        \end{mplibcode}
-      \end{center}
-
-      \begin{enumerate}
-        \conti
-        \item Prove the Inscribed Angle Theorem for Case~B as shown on slide \#5 (Inscribed angle theorem).  Hint, use the proven result for Case~A as a starting point in your proof.
-
-        \item Prove the Power of the Point Theorem for Case~2 as shown on Slide \#7 (The Power of a Point theorem).
-      \end{enumerate}
     \end{column}
   \end{columns}
 \end{frame}

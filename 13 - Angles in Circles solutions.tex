@@ -1,0 +1,548 @@
+\documentclass[9pt,aspectratio=169,handout]{beamer}
+
+\usepackage{scalerel}
+
+\usetheme{graham}
+
+\title{Angles in Circles solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\newcommand\Mydiv[2]{%
+$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+        \overline{\enspace\strut#2}$}
+
+\setcounter{MaxMatrixCols}{20}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\usepackage{luamplib}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{columns}[T, totalwidth=\textwidth]
+        \begin{column}{0.6\linewidth}
+          % \setlength{\leftmargini}{0.2cm}
+          \begin{enumerate}
+            % \conti
+            \item Point $O$ is the center of the regular octagon $ABCDEFGH$, and $X$ is the midpoint of the side $\overline{AB}.$ What fraction of the area of the octagon is shaded? % AMC 8 2015, Problem 2
+            \item The circumference of the circle with center $O$ is divided into 12 equal arcs, marked the letters $A$ through $L$ as seen below. What is the number of degrees in the sum of the angles $x$ and $y$? %AMC 8 2014, Problem 15
+            \seti
+          \end{enumerate}
+        \end{column}
+        \begin{column}{0.4\linewidth}
+          % \vspace*{-1em}
+          \leavevmode
+          \begin{mplibcode}
+            u = 1cm;
+            path c;
+            pair A, B, C, D, E, F, G, H, X, O;
+            O := origin;
+            c := circle(origin, 1u);
+            A := point 0.5 of c;
+            B := point 1 of c;
+            C := point 1.5 of c;
+            D := point 2 of c;
+            E := point 2.5 of c;
+            F := point 3 of c;
+            G := point 3.5 of c;
+            H := point 0 of c;
+            X := 0.5[A, B];
+            fill X--B--C--D--O--cycle withcolor 0.7white;
+            Draw A--B--C--D--E--F--G--H--cycle, D--O--X;
+            Dot A, B, C, D, E, F, G, H, X, O;
+            label.urt("$A$", A);
+            label.top("$B$", B);
+            label.ulft("$C$", C);
+            label.lft("$D$", D);
+            label.llft("$E$", E);
+            label.bot("$F$", F);
+            label.lrt("$G$", G);
+            label.rt("$H$", H);
+            label.urt("$X$", X);
+            label.lrt("$O$", O);
+          \end{mplibcode}
+
+          \vspace{10pt}
+          \begin{mplibcode}
+            u = 1cm;
+            path c;
+            pair A, B, C, D, E, F, G, H, I, J, K, L, O;
+            O := origin;
+            c := circle(origin, 1u);
+            A := point 4/3 of c;
+            B := point 3/3 of c;
+            C := point 2/3 of c;
+            D := point 1/3 of c;
+            E := point 0 of c;
+            F := point 11/3 of c;
+            G := point 10/3 of c;
+            H := point 9/3 of c;
+            I := point 8/3 of c;
+            J := point 7/3 of c;
+            K := point 6/3 of c;
+            L := point 5/3 of c;
+            Draw c, A--D--O--cycle, O--G--I--cycle;
+            Dot A, B, C, D, E, F, G, H, I, J, K, L, O;
+            labelarcsprof(O, A, D, 10, 8, "$x$");
+            labelarcsprof2(O, G, I, 10, 7, "$y$");
+            label.ulft("$A$", A);
+            label.top("$B$", B);
+            label.urt("$C$", C);
+            label.urt("$D$", D);
+            label.rt("$E$", E);
+            label.lrt("$F$", F);
+            label.lrt("$G$", G);
+            label.bot("$H$", H);
+            label.llft("$I$", I);
+            label.llft("$J$", J);
+            label.lft("$K$", K);
+            label.ulft("$L$", L);
+            label.lft("$O$", O);
+          \end{mplibcode}
+        \end{column}
+      \end{columns}
+      \begin{enumerate}
+        \conti
+        \item What is the angle (less than $180°$) formed by the hands of a clock when the time is $3{:}15$?
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \setlength{\leftmargini}{0.2cm}
+      \begin{enumerate}
+        \conti
+        \item Points $A$, $B$, $C$, and $D$ are on a circle with center $O$ in that order, and $AC$ and $BD$ meet at $E$. Given that $\angle AOB = 34°$,
+        $\angle COD = 102°$, $\angle DOA =109°$, find $\angle BEC$.
+        \item Points $A$, $B$, $C$, and $D$ are on a circle with center $O$ in that order, and $DA$ and $CB$ meet at $E$. Given that $\angle AOB = 34°$,
+        $\angle COD = 102°$, $\angle DOA =109°$, find $\angle AEB$.
+        \item Chords $\overline{TY}$ and $\overline{OP}$ meet at point $K$ such that $TK = 2$, $KY = 16$, and $KP = 2\cdot KO$. Find $OP$.
+        \item Points $A$, $B$, $C$, and $D$ are on a circle in that order and $AB$ intersects $DC$ in point $P$ outside the circle. We have $BP = 8$, $AB = 10$, $CD = 7$, and $\angle APC = 60°$. Find the radius of the circle.
+        \item Diameter $AB$ of a circle has length $25$.  Point $C$ is chosen along the circumference such that $AC$ has length $24$.  What is the length of $BC$?     
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Let the incircle of triangle $ABC$ be tangent to sides $BC$, $AC$, and $AB$ at points $D$, $E$, and $F$, respectively. Given that $\angle A = 32°$, find $\angle EDF$.
+        \item The areas of two adjacent squares are $256$ square inches and $16$ square inches,
+        respectively, and their bases lie on the same line. What is the number of inches in
+        the length of the segment that joins the centers of the two inscribed circles? 
+        \item We are given points $A$, $B$, $C$, and $D$ in the plane such that $AD = 13$ while $AB = BC = AC= CD = 10$. Find $\angle ADB$.
+        \item In $\triangle ABC$, $AB = 86$, and $AC=97$. A circle with center $A$ and radius $AB$ intersects $\overline{BC}$ at points $B$ and $X$. Moreover $\overline{BX}$ and $\overline{CX}$ have integer lengths. What is $BC$?
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E1.} Point $O$ is the center of the regular octagon $ABCDEFGH$, and $X$ is the midpoint of the side $\overline{AB}.$ What fraction of the area of the octagon is shaded?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \begin{mplibcode}
+          u = 1cm;
+            path c;
+            pair A, B, C, D, E, F, G, H, X, O;
+            O := origin;
+            c := circle(origin, 1u);
+            A := point 0.5 of c;
+            B := point 1 of c;
+            C := point 1.5 of c;
+            D := point 2 of c;
+            E := point 2.5 of c;
+            F := point 3 of c;
+            G := point 3.5 of c;
+            H := point 0 of c;
+            X := 0.5[A, B];
+            fill X--B--C--D--O--cycle withcolor 0.7white;
+            Draw A--B--C--D--E--F--G--H--cycle, D--O--X;
+            draw A--O--B dashed evenly;
+            draw C--O dashed evenly;
+            Dot A, B, C, D, E, F, G, H, X, O;
+            label.urt("$A$", A);
+            label.top("$B$", B);
+            label.ulft("$C$", C);
+            label.lft("$D$", D);
+            label.llft("$E$", E);
+            label.bot("$F$", F);
+            label.lrt("$G$", G);
+            label.rt("$H$", H);
+            label.urt("$X$", X);
+            label.lrt("$O$", O);
+        \end{mplibcode}
+      \end{wrapfigure}
+      Area of each triangle $YOZ$ where $Y$ and $Z$ are neighbor points from $A$ to $H$ is $1/8$ of the area of the octagon. Since $DCBXO$ contains $2.5$ of such triangles, so the total fraction is $2.5 \cdot \dfrac{1}{8} = \dfrac{5}{2} \cdot \dfrac{1}{8} = \boxed{\dfrac{5}{16}}$. 
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E2.} The circumference of the circle with center $O$ is divided into 12 equal arcs, marked the letters $A$ through $L$ as seen below. What is the number of degrees in the sum of the angles $x$ and $y$?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \begin{mplibcode}
+          u = 1cm;
+          path c;
+          pair A, B, C, D, E, F, G, H, I, J, K, L, O;
+          O := origin;
+          c := circle(origin, 1u);
+          A := point 4/3 of c;
+          B := point 3/3 of c;
+          C := point 2/3 of c;
+          D := point 1/3 of c;
+          E := point 0 of c;
+          F := point 11/3 of c;
+          G := point 10/3 of c;
+          H := point 9/3 of c;
+          I := point 8/3 of c;
+          J := point 7/3 of c;
+          K := point 6/3 of c;
+          L := point 5/3 of c;
+          Draw c, A--D--O--cycle, O--G--I--cycle;
+          Dot A, B, C, D, E, F, G, H, I, J, K, L, O;
+          labelarcsprof(O, A, D, 10, 8, "$x$");
+          labelarcsprof2(O, G, I, 10, 7, "$y$");
+          label.ulft("$A$", A);
+          label.top("$B$", B);
+          label.urt("$C$", C);
+          label.urt("$D$", D);
+          label.rt("$E$", E);
+          label.lrt("$F$", F);
+          label.lrt("$G$", G);
+          label.bot("$H$", H);
+          label.llft("$I$", I);
+          label.llft("$J$", J);
+          label.lft("$K$", K);
+          label.ulft("$L$", L);
+          label.lft("$O$", O);
+        \end{mplibcode}
+      \end{wrapfigure} 
+      $\angle AOD = \cfrac{360°}{12}\cdot 3 = 90°$, and since $AO = OD$, $\angle OAD = \angle ADO = x$. So $2x + 90° = 180°$ and $x = 45°$. In similar way we got $\angle IOG = \cfrac{360°}{12} \cdot 2 = 60°$ and $2y + 60° = 180°$, so $y = 60°$. $x + y = 45° + 60° = \boxed{105°}$. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 3-5}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E3.} What is the angle (less than $180°$) formed by the hands of a clock when the time is $3{:}15$?
+      \end{problem}
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          r := 1.25cm; len := 3bp; min_thickness := 1bp; hour_thickness := 2bp;
+          path cadran; cadran = fullcircle scaled (2r); 
+          fill cadran scaled 1.04; fill cadran withcolor .75[rgb_orange, white]; 
+          % Graduation marks and labels
+          for i = 1 upto 60:
+            if i mod 5 = 0: 
+              j := i div 5; angl := 90-30j; 
+              freelabel("\sffamily\bfseries" & decimal j, (r-len)*dir angl, r*dir angl);
+              draw ((r, 0) -- (r - len, 0)) rotated angl withpen pencircle scaled min_thickness;
+            else:
+              angl := 90 - 6i;
+              draw ((r, 0) -- (r - .5len, 0)) rotated angl;
+            fi
+          endfor
+          % Needles
+          minute := 15;
+          hour := 3;
+          pickup pencircle scaled min_thickness;
+          drawarrow origin -- r*dir(90-minute*6) cutends (0, 4len);
+          pickup pencircle scaled hour_thickness;
+          drawarrow origin -- r*dir (90-(hour+minute/60)*30) cutends(0, 6len);
+          fill fullcircle scaled 2len;
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      The minute hand moved $15 \cdot \cfrac{360°}{60} = 90°$ from the top. 
+      \begin{wrapfigure}{r}{20.00mm}
+        \vspace*{-2\intextsep}
+      \end{wrapfigure}
+      The hours hand moved $3.25 \cdot \cfrac{360°}{12} = \cfrac{13}{4} \cdot 30° = 97.5°$. So the angle is $97.5° - 90° = \boxed{7.5°}$.
+
+      \begin{problem}
+        \textbf{E4.} Points $A$, $B$, $C$, and $D$ are on a circle with center $O$ in that order, and $AC$ and $BD$ meet at $E$. Given that $\angle AOB = 34°$,
+        $\angle COD = 102°$, $\angle DOA =109°$, find $\angle BEC$.
+      \end{problem}
+
+      \begin{problem}
+        \textbf{E5.} Points $A$, $B$, $C$, and $D$ are on a circle with center $O$ in that order, and $DA$ and $CB$ meet at $E'$. Given that $\angle AOB = 34°$,
+        $\angle COD = 102°$, $\angle DOA =109°$, find $\angle AE'B$.
+      \end{problem}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \begin{center}
+        \vspace*{-2em}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          path c;
+          pair A, B, C, D, E, Ei;
+          c := circle(origin, 1u);
+          A := point 0 of c;
+          B := point 34/90 of c;
+          D := point -109/90 of c;
+          C := point -211/90 of c;
+          E := whatever[A, C]=whatever[B, D];
+          Ei := whatever[D, A]=whatever[C, B];
+          Draw c, A--C, B--D;
+          draw D--Ei--C dashed evenly;
+          Dot A, B, C, D, E, Ei;
+          label.lrt("$A$", A);
+          label.urt("$B$", B);
+          label.ulft("$C$", C);
+          label.llft("$D$", D);
+          label.bot("$E$", E shifted (1, -1));
+          label.top("$E'$", Ei);
+        \end{mplibcode}
+      \end{center}
+      Problem 4:
+  
+      $\angle ACB = \frac{1}{2} \angle AOB = 17°$ and $\angle DBC = \frac{1}{2} \angle COD = 51°$. So $\angle BEC = 180° - \angle ECB - \angle EBC = 180° - 17° - 51° = \boxed{112°}$. In general $\angle BEC = \dfrac{\angle CEB + \angle DEA}{2}$.
+
+      Problem 5:
+  
+      $\angle CAD = \frac{1}{2} \angle COB = 51°$ and $\angle ACB = \frac{1}{2} \angle AOB = 17°$. So $\angle CAE' = 180° - \angle CAD = 129°$, and $\angle AE'B = 180° - 17° - 129° = \boxed{34°}$. 
+      
+      In general $\angle AE'B = \dfrac{\angle COD - \angle AOB}{2}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 6-8}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \begin{problem}
+        \textbf{E6.} Chords $\overline{TY}$ and $\overline{OP}$ meet at point $K$ such that $TK = 2$, $KY = 16$, and $KP = 2\cdot KO$. Find $OP$.
+      \end{problem}
+      \begin{wrapfigure}{r}{20.00mm}
+        \vspace*{-1.2\intextsep}
+        \begin{mplibcode}
+          u = 0.7cm;
+          path c;
+          pair T, Y, O, P, K;
+          c := circle(origin, 1u);
+          T := point 0 of c;
+          Y := point 1.5 of c;
+          P := point 0.5 of c;
+          O := point 2.5 of c;
+          K := whatever[O, P]=whatever[T, Y];
+          Draw c, T--Y, O--P;
+          Dot T, Y, O, P, K;
+          label.rt("$T$", T);
+          label.ulft("$Y$", Y);
+          label.urt("$P$", P);
+          label.top("$O$", O shifted (0, 1));
+          label.bot("$K$", K);
+        \end{mplibcode}
+        \vspace*{-3\intextsep}
+      \end{wrapfigure}
+      Let $KO = x$, than $KP = 2x$ and $OP = 3x$. Since $KP \cdot KO = TK \cdot KY$, $2x^2 = 32$ and $x = 4$. So $OP = \boxed{12}$.
+      \begin{problem}
+        \textbf{E7.} Points $A$, $B$, $C$, and $D$ are on a circle in that order and $AB$ intersects $DC$ in point $P$ outside the circle. We have $BP = 8$, $AB = 10$, $CD = 7$, and $\angle APC = 60°$. Find the radius of the circle.
+      \end{problem}
+
+      \begin{wrapfigure}{l}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 0.7cm;
+          path c;
+          pair A, B, C, D, P, O;
+          c := circle(origin, 1u);
+          A := point 0.2 of c;
+          B := point 1 of c;
+          C := point 1.6 of c;
+          D := point 2.3 of c;
+          P := whatever[A, B]=whatever[C, D];
+          Draw c, A--P--D;
+          draw D--A--C dashed evenly;
+          Dot A, B, C, D, P;
+          label.rt("$A$", A);
+          label.urt("$B$", B);
+          label.ulft("$C$", C);
+          label.llft("$D$", D);
+          label.top("$P$", P);
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      $PC \cdot PD = PA \cdot PB$, so if $PC = x$, $x (x + 7) = 8 \cdot 18$ and $x = 9$ or $-16$. The later root doesn't make sense, so $PC = 9$. 
+      So $\triangle PCA$ is $30-60-90$ triangle and $\angle ACD = 90°$. So $DA$ is the diameter of the circle and $DA = \sqrt{DC^2 + CA^2} = \sqrt{DC^2 + (\sqrt{3} PC)^2}=\sqrt{49 + 3\cdot 81} = \sqrt{292} = 2\cdot\sqrt{73}$. So radius is $\boxed{\sqrt{73}}$.
+      
+   \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{problem}
+        \textbf{E8.} Diameter $AB$ of a circle has length $25$.  Point $C$ is chosen along the circumference such that $AC$ has length $24$.  What is the length of $BC$? 
+      \end{problem}
+      \begin{wrapfigure}{r}{20.00mm}
+        \begin{mplibcode}
+          u = 1cm;
+          path c;
+          pair A, B, C;
+          c := circle(origin, 1u);
+          A := point 0 of c;
+          B := point 2 of c;
+          C := point 1.4 of c;
+          Draw c, A--B--C--cycle;
+          mark_rt_angle(B, C, A);
+          Dot A, B, C;
+          label.rt("$A$", A);
+          label.lft("$B$", B);
+          label.ulft("$C$", C);
+        \end{mplibcode}
+      \end{wrapfigure}
+      Since $AB$ is diameter, $\angle C = 90°$. And using the Pythagorean theorem $BC^2 = AB^2 - AC^2$. So $BC = \sqrt{25^2 - 24^2} = \sqrt{(25 + 24) (25- 24)} = \sqrt{49} = \boxed{7}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP1.} Let the incircle of triangle $ABC$ be tangent to sides $BC$, $AC$, and $AB$ at points $D$, $E$, and $F$, respectively. Given that $\angle A = 32°$, find $\angle EDF$.
+      \end{problem}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1.3cm;
+          pair A, B, C, D, E, F, I;
+          path c;
+          A := origin;
+          B := 3u*dir(0);
+          C := 2.5u*dir(32);
+          I := incenter(A, B, C);
+          c := incircle(A, B, C);
+          D := altitude(B, I, C);
+          E := altitude(A, I, C);
+          F := altitude(B, I, A);
+          Draw A--B--C--cycle, c;
+          draw E--D--F--I--cycle dashed evenly;
+          Dot A, B, C, D, E, F, I;
+          label.bot("$A$", A);
+          label.bot("$B$", B);
+          label.top("$C$", C);
+          label.urt("$D$", D);
+          label.ulft("$E$", E);
+          label.bot("$F$", F);
+          label.lft("$I$", I shifted (-1, -2));
+        \end{mplibcode}
+      \end{center}
+      $\angle IEA = \angle IFA = 90°$, so $\angle EIF = 360° - 90° - 90° - 32° = 148°$. And $\angle EDF = \frac{1}{2} \angle EIF = \boxed{74°}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP2.} The areas of two adjacent squares are $256$ square inches and $16$ square inches,
+        respectively, and their bases lie on the same line. What is the number of inches in
+        the length of the segment that joins the centers of the two inscribed circles? 
+      \end{problem}
+      \begin{wrapfigure}{r}{20.00mm}
+        \begin{mplibcode}
+          u = 1cm;
+          Draw (1u, 0u)--(0u, 0u)--(0u, 1u)--(1u, 1u), (1u, 0u)--(4u, 0u)--(4u, 3u)--(1u, 3u)--cycle, (0.5u, 0.5u)--(2.5u, 1.5u);
+          draw (0.5u, 0.5u)--(2.5u, 0.5u)--(2.5u, 1.5u) dashed evenly;
+          Dot (0.5u, 0.5u), (2.5u, 1.5u);
+          mark_rt_angle((0.5u, 0.5u), (2.5u, 0.5u), (2.5u, 1.5u));
+        \end{mplibcode}
+      \end{wrapfigure}
+      The sides of both squares are $\sqrt{16} = 4$ and $\sqrt{256} = 16$. So horizontal distance between centers is $4/2 + 16/2 = 10$ inches, and vertical distance is $16/2 - 4/2 = 6$ inches. So distance between the points is $\sqrt{10^2 + 6^2} = \sqrt{136} = \boxed{2 \sqrt{34}}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 3-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP3.} We are given points $A$, $B$, $C$, and $D$ in the plane such that $AD = 13$ while $AB = BC = AC= CD = 10$. Find $\angle ADB$.
+      \end{problem}
+      \begin{wrapfigure}{r}{20.00mm}
+        \begin{mplibcode}
+          u = 1cm;
+          pair A, B, C, D;
+          path c;
+          c := circle(origin, 1.5u);
+          C := origin;
+          A := point 0 of c;
+          B := point 2/3 of c;
+          D := point -0.9 of c;
+          Draw c, A--B--D--cycle, A--C--D, B--C;
+          Dot A, B, C, D;
+          label.rt("$A$", A);
+          label.urt("$B$", B);
+          label.lft("$C$", C);
+          label.bot("$D$", D);
+        \end{mplibcode}
+      \end{wrapfigure}
+      Since $A$, $B$, and $C$ all equidistance from $C$, points $A$, $B$, and $D$ are all on the circle with the center $C$. Moreover, $\triangle ABC$ is equilateral. So $\angle ADB = \frac{1}{2} \angle BCA = \boxed{30°}$. 
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP4.} In $\triangle ABC$, $AB = 86$, and $AC=97$. A circle with center $A$ and radius $AB$ intersects $\overline{BC}$ at points $B$ and $X$. Moreover $\overline{BX}$ and $\overline{CX}$ have integer lengths. What is $BC$?
+      \end{problem}
+      \begin{wrapfigure}{r}{20.00mm}
+        \vspace*{-\intextsep}
+        \begin{mplibcode}
+          u = 1.6cm;
+          pair A, B, C, X, Y, Z;
+          path c;
+          c := circle(origin, 1u);
+          A := origin;
+          B := point 0 of c;
+          C := cross.top(circle(A, 1u*97/86), circle(B, 1u*61/86));
+          X := cross.top(c, B--C);
+          Y := cross.top(c, C--A);
+          Z := Y rotatedaround (A, 180);
+          Draw c, A--B--C--cycle;
+          draw A--Z dashed evenly;
+          Dot A, B, C, X, Y, Z;
+          label.ulft("$A$", A);
+          label.rt("$B$", B);
+          label.urt("$C$", C);
+          label.rt("$X$", X);
+          label.lft("$Y$", Y shifted (-3, 0));
+          label.llft("$Z$", Z);
+        \end{mplibcode}
+        \vspace*{-\intextsep}
+      \end{wrapfigure}
+      Let $BX = q$, $CX = p$, and $AC$ meets the circle at $Y$ and $Z$, with $Y$ on $AC$. Then $AZ = AY = 86$. Using the Power of a Point, we get that $p(p+q) = 11(183) = 11 \cdot 3 \cdot 61$. We know that $p+q>p$, so $p$ is either $3$, $11$, or $33$. We also know that $p>11$ by the triangle inequality on $\triangle ACX$. Thus, $p$ is $33$ so we get that $BC = p+q = \boxed{61}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

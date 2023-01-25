@@ -1,0 +1,185 @@
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{scalerel}
+
+\usetheme{graham}
+
+\title{Geometric Sequences solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\newcommand\Mydiv[2]{%
+$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+        \overline{\enspace\strut#2}$}
+
+\setcounter{MaxMatrixCols}{20}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\begin{document}
+\maketitle
+
+% \begin{frame}{Exercises}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item Find the third term of the geometric sequence $3$, $4$, $\ldots$
+%         \item The first term of a geometric sequence is $1$, the third term is $9$. Find the second term. Is your answer the only possible one?
+%         \item Express the repeating decimal $0.3636363\ldots$ as a fraction.
+%         \item Express the repeating decimal $0.428571428571428\ldots$ as a fraction.
+%         \item For what value of $x$ does the infinite geometric series $1 + x + x^2 + x^3 + \ldots = 5$?
+%         \item If we subtract the geometric series $1 + \dfrac{1}{9} + \dfrac{1}{81} + \ldots$ from the infinite geometric series $1 + \dfrac{1}{3} + \dfrac{1}{9} + \ldots$, what is the sum of the resulting infinite geometric series?
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item Find a digit $d$, so $0.d25d25d25\ldots = \dfrac{n}{810}$ for some positive integer $n$.
+%         \item Find a geometric sequence in which $8$, $18$, and $27$ are terms (not necessary adjacent).
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Challenge problems}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \item The fraction
+%         \[
+%         \frac{1}{99^2} = 0.\overline{b_{n−1}b_{n−2} \ldots b_2b_1b_0},
+%         \]
+%         where $n$ is the length of the period of the repeating decimal expansion. What is the sum $b_0 + b_1 + \ldots + b_{n−1}$? %2014 AMC 12A #23
+%         \item Give the base ten, common fraction representation for $0.\overline{123}_4$ (base $4$). % NC Math League
+%         \item Two geometric sequences $a_1,\ a_2,\ a_3,\ \ldots$ and $b_1,\ b_2,\ b_3,\ \ldots$ have the same common ratio, with $a_1 = 27$, $b_1=99$, and $a_{15}=b_{11}$. Find $a_5$. % AIME-2012-II-2
+%         \seti
+%       \end{enumerate}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \begin{enumerate}
+%         \conti
+%         \item The very hungry caterpillar lives on the number line. For each non-zero integer $i$, a fruit sits on the
+%         point with coordinate $i$. The caterpillar moves back and forth; whenever he reaches a point with food,
+%         he eats the food, increasing his weight by one pound, and turns around. The caterpillar moves at a
+%         speed of $2^{−w}$ units per day, where $w$ is his weight. If the caterpillar starts off at the origin, weighing
+%         zero pounds, and initially moves in the positive $x$ direction, after how many days will he weigh $10$ pounds? %HMMT Nov-2016-Guts-14
+%       \end{enumerate}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\begin{frame}{Exercises 1 - 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E1.} Find the third term of the geometric sequence $3$, $4$, $\ldots$
+      \end{problem}
+      The ratio is $r = \dfrac{a_2}{a_1} = \dfrac{4}{3}$, so the third term is $a_3 = a_2 \times r = 4 \cdot \dfrac{4}{3} = \boxed{\dfrac{16}{3}}$.
+      \begin{problem}
+        \textbf{E2.} The first term of a geometric sequence is $1$, the third term is $9$. Find the second term. Is your answer the only possible one?
+      \end{problem}
+      $a_3 = a_2 \times r = a_1 \times r^2$, so $r^2 = 9$ and $r = \pm 3$. That means $a_2 = a_1 \times r = \boxed{\pm 3}$, and there are \emph{two possible solutions}.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E3.} Express the repeating decimal $0.3636363\ldots$ as a fraction.
+      \end{problem}
+      $0.36363636\ldots = 0.36 + 0.0036 + 0.000036 + \ldots = \dfrac{0.36}{1 - 0.01} = \dfrac{36}{99} = \boxed{\dfrac{4}{11}}$.
+      \begin{problem}
+        \textbf{E4.} Express the repeating decimal $0.428571428571428\ldots$ as a fraction.
+      \end{problem}
+      $\dfrac{1}{7} = 0.\overline{142857}$ and this sequence of digit is good to know, since every decimal representation of a fraction $\dfrac{n}{7}$ has the same sequence of digits but starts from different one. In this case it is $\boxed{\dfrac{3}{7}}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Exercises 5-8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E5.} For what value of $x$ does the infinite geometric series $1 + x + x^2 + x^3 + \ldots = 5$?
+      \end{problem}
+      Using formula for geometric sequence $1 + x + x^2 + \ldots = \dfrac{1}{1-x} = 5$, so $1 = 5 - 5x$ or $5x = 4$ and $x = \boxed{\dfrac{4}{5}}$.
+      \begin{problem}
+        \textbf{E6.} If we subtract the geometric series $1 + \dfrac{1}{9} + \dfrac{1}{81} + \ldots$ from the infinite geometric series $1 + \dfrac{1}{3} + \dfrac{1}{9} + \ldots$, what is the sum of the resulting infinite geometric series?
+      \end{problem}
+      The remaining terms will be:
+      $\dfrac{1}{3} + \dfrac{1}{27} + \dfrac{1}{243} + \ldots = \dfrac{\frac{1}{3}}{1 - \frac{1}{9}} = \dfrac{\frac{1}{3}}{\frac{8}{9}} = \dfrac{9}{8\cdot 3} = \boxed{\dfrac{3}{8}}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E7.} Find a digit $d$, so $0.d25d25d25\ldots = \dfrac{n}{810}$ for some positive integer $n$.
+      \end{problem}
+      $\dfrac{\overline{d25}}{999} = \dfrac{n}{810},$ $(100\times d + 25)\times 810 = n \times 999$ and $(100d + 25)\cdot 30 = n\cdot 37$, that means that $(100d + 25)$ must be divisible by $37$ and since it is ended by $25$ also must by divisible by $25$. So $(100d + 25) = k\cdot 925$. The only possible $k$ is $1$ and $d = \boxed{9}$.
+
+      \begin{problem}
+        \textbf{E8.} Find a geometric sequence in which $8$, $18$, and $27$ are terms (not necessary adjacent).
+      \end{problem}
+      $r^a = 18/8 = 3^2 / 2^2$ and $r^b = 27/8 = 3^3/2^3$. Just by looking to the numbers we can find out that $a = 2$ and $b = 3$, so $r = 3/2$ and our geometric sequence is $8$, $12$, $18$, $27$, $81/2$ and so on.
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1-2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP1.} The fraction
+        \[
+        \frac{1}{99^2} = 0.\overline{b_{n−1}b_{n−2} \ldots b_2b_1b_0},
+        \]
+        where $n$ is the length of the period of the repeating decimal expansion. What is the sum $b_0 + b_1 + \ldots + b_{n−1}$?
+      \end{problem}
+      $\dfrac{1}{99^2} =\dfrac{1}{99} \cdot \dfrac{1}{99}=\dfrac{0.\overline{01}}{99}=0.\overline{00\,01\,02\,03\ldots 97\,99}$.
+
+      It is basically all numbers from $1$ til $99$ except $98$.
+      So, the answer is $0+0+0+1+0+2+0+3+...+9+7+9+9=2\cdot10\cdot\dfrac{9\cdot10}{2}-(9+8)$ or $\boxed{883}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP2.} Give the base ten, common fraction representation for $0.\overline{123}_4$ (base $4$).
+      \end{problem}
+      $0.\overline{123}_{4} = \dfrac{1}{4} + \dfrac{2}{4^2} + \dfrac{3}{4^3} + \dfrac{1}{4^4} + \dfrac{2}{4^5} + \dfrac{3}{4^6} + \dfrac{1}{4^6} + \ldots$. Groping them into three series we will get
+      $\dfrac{\frac{1}{4}}{1 - \frac{1}{64}} + \dfrac{\frac{2}{16}}{1 - \frac{1}{64}} + \dfrac{\frac{3}{64}}{1 - \frac{1}{64}} = \dfrac{16}{63} + \dfrac{8}{63} + \dfrac{3}{63} = \boxed{\dfrac{3}{7}}$.  
+      \begin{problem}
+        \textbf{CP3.} Two geometric sequences $a_1,\ a_2,\ a_3,\ \ldots$ and $b_1,\ b_2,\ b_3,\ \ldots$ have the same common ratio, with $a_1 = 27$, $b_1=99$, and $a_{15}=b_{11}$. Find $a_5$.
+      \end{problem}
+
+      Let the common ratio $r.$ Now since the $n$\textsuperscript{th} term of a geometric sequence with first term $x$ and common ratio $y$ is $xy^{n-1},$ we see that $a_1 \cdot r^{14} = b_1 \cdot r^{10}$ so $r^4 = \dfrac{99}{27} = \dfrac{11}{3}.$ But $a_5$ equals $a_1 \cdot r^4 = 27\cdot \dfrac{11}{3} = \boxed{99}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 3-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP4.} The very hungry caterpillar lives on the number line. For each non-zero integer $i$, a fruit sits on the
+        point with coordinate $i$. The caterpillar moves back and forth; whenever he reaches a point with food,
+        he eats the food, increasing his weight by one pound, and turns around. The caterpillar moves at a
+        speed of $2^{-w}$ units per day, where $w$ is his weight. If the caterpillar starts off at the origin, weighing
+        zero pounds, and initially moves in the positive $x$ direction, after how many days will he weigh $10$ pounds?
+      \end{problem}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      On the $n$\textsuperscript{th} straight path, the caterpillar travels $n$ units before hitting food and his weight is $n - 1$.
+      Then his speed is $2^{1-n}$. Then right before he turns around for the $n$\textsuperscript{th} time, he has traveled a total time of $\sum\limits_{i=1}^{n} \dfrac{1}{2^{1-i}} = \dfrac{1}{2} \sum\limits_{i=1}^{n} i \cdot 2^i$. 
+      We want to know how many days the catepillar moves before his weight is $10$, so we want to take $n = 10$ so that his last straight path was taken at weight $9$. Hence we want to evaluate $S = \dfrac{1}{2} \sum\limits_{i=1}^{10} i \cdot 2^i$. Note that $2S = \dfrac{1}{2} \sum\limits_{i=2}^{11} (i-1) \cdot 2^i$, so $S = 2S - S = \dfrac{1}{2} \left(11 \cdot 2^{11} - \sum\limits_{i=1}^{10} 2^i\right) = \dfrac{1}{2} (10 \cdot 2^{11} - 2^{11} + 2) = \boxed{9217}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

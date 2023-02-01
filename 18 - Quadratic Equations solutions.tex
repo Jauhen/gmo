@@ -1,0 +1,191 @@
+\documentclass[9pt,aspectratio=169,handout]{beamer}
+
+\usepackage{scalerel}
+
+\usetheme{graham}
+
+\title{Quadratic Equations solutions}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\newcommand\Mydiv[2]{%
+$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+        \overline{\enspace\strut#2}$}
+
+\setcounter{MaxMatrixCols}{20}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\longdiv}{\smash{\mkern-0.43mu\vstretch{1.31}{\hstretch{.7}{)}}\mkern-5.2mu\vstretch{1.31}{\hstretch{.7}{)}}}}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\usepackage{luamplib}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Exercises}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Use factoring to find the roots of $x^2 – 22x – 48 = 0$.
+        \item Complete the square to find the possible values of $x$ for which $x^2 + 4x + 3 = 0$?
+        \item What is the value of $i^3$?
+        \item For what value(s) of $x$ does the fraction of $3$ raised to the power $x^2$ over $3$ raised to the power $3x$ equal one-ninth?  
+        
+        (\emph{Hint}: If all exponents have the same base, then we can solve the problem by equating the exponents.
+        \item Find the roots of $x = \dfrac{28}{x - 3}$.
+        \item If $b$ and $c$ are both rational numbers and one of the roots of $x^2 + bx + c = 0$ is $3 + \sqrt{2}$, find $b$ and $c$.
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item For how many different integer values of $b$ are both roots of $x^2 + bx - 16 = 0$ integers?
+        \item Let $m$ and $n$ be roots of: $x^2 − 60x + 864 = 0$.  Find a polynomial with roots $m + 1$ and $n + 1$.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Find the minimum possible value of the absolute value of $(m - n)$, where $m$ and $n$ are integers satisfying $m + n = mn – 2021$. 
+        
+        (\emph{Hint}: could completing the square be useful here if the variables were all grouped on one side of the equation?)
+        \item (For fun) In the novel, “The Curious Incident of the Dog in the Nighttime,” a student in England taking his A-level college entrance exam in maths was given the following question: 
+        
+        Prove that a triangle with sides that can written in the form $n^2 +1$, $n^2 -1$ and $2n$ (where $n > 1$) is right-angled.  
+        \seti
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \conti
+        \item Let $m$ and $n$ be roots of the polynomial $x^2 − 60x + 899 = 0.$  What is $m^2 + n^2$? 
+        
+        (\emph{Hint}: think about how $m^2 + n^2$ can be rewritten in terms of the sum and product of the roots $m$ and $n$).
+        \item Find all real values of $n$ such that $2^{2n} + 2^n + 1 = 73$.  
+        
+        (\emph{Hint}:  What substitution would turn this into a quadratic?)
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 1-4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E1.} Use factoring to find the roots of 
+        
+        $x^2 – 22x – 48 = 0$.
+      \end{problem}
+      Let $x^2 - 22x - 48 = (x - a)(x - b)$, so $a + b = -22$ and $ab = -48$. Looking into divisors of $-48$ we may find that $-24$ and $2$ has a sum of $-22$, so the root of the equation are $\boxed{-22}$ and $\boxed{2}$. 
+
+      \begin{problem}
+        \textbf{E2.} Complete the square to find the possible values of $x$ for which $x^2 + 4x + 3 = 0$?
+      \end{problem}
+      To complete square for $x^2 + 4x$ we need to add $4$, since $(x+2)^2 = x^2 + 4x + 4$. So, in our equation we have $x^2 + 4x + 3 + 1 = 1$ or $(x+2)^2 = 1$. This gives us $x + 2 = \pm 1$ and $x = \boxed{-3}$ or $\boxed{-1}$.
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E3.} What is the value of $i^3$?
+      \end{problem}
+      $i^3 = (i)^2 \times i = -1 \times i = -i$.
+      \begin{problem}
+        \textbf{E4.} For what value(s) of $x$ does the fraction of $3$ raised to the power $x^2$ over $3$ raised to the power $3x$ equal one-ninth?  
+        
+        (\emph{Hint}: If all exponents have the same base, then we can solve the problem by equating the exponents.
+      \end{problem}
+      We need to solve this equation:
+      \[ \frac{3^{x^2}}{3^{3x}} = \frac{1}{9} = \frac{1}{3^2}.\]
+      Which can be rewritten as $3^{x^2} \times 3^{-3x} = 3^{-2}$, or, using our hint, $x^2 - 3x = -2$, $x^2 - 3x + 2 = (x - 1)(x - 2) = 0$ and our equation has two roots $x = \boxed{1}$ and $\boxed{2}$. Plugging them back into our original equation we can check that they are works.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exercises 5-8}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E5.} Find the roots of $x = \dfrac{28}{x - 3}$.
+      \end{problem}
+      $x(x - 3) = 28$ or $x^2 - 3x - 28 = (x - 7)(x + 4) = 0$ and two roots $x = \boxed{-4}$ and $\boxed{7}$. Plugging them back into our original equation we can check that they are works.
+      \begin{problem}
+        \textbf{E6.} If $b$ and $c$ are both rational numbers and one of the roots of $x^2 + bx + c = 0$ is $3 + \sqrt{2}$, find $b$ and~$c$.
+      \end{problem}
+      The roots are $\dfrac{-b}{2} \pm \sqrt{\dfrac{b^2 - 4c}{4}}$, so we may see that rational and irrational parts of both roots should be the same and the second root is $3 - \sqrt{2}$. $x^2 + bx + c = (x - (3 +\sqrt{2}))(x - (3 - \sqrt{2})) = x^2 - 6x + 7 = 0$. So $b = -6$ and $c = 7$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E7.} For how many different integer values of $b$ are both roots of $x^2 + bx - 16 = 0$ integers?
+      \end{problem}
+      Let $x^2 + bx - 16 = (x + p)(x + q) = 0$, so $pq = -16$ and $b = p + q$. Since $-16 = 1\cdot -16 = 2\cdot -8 = 4\cdot -4 = 8\cdot -2 = 16\cdot -1 = -1\cdot 16= -2\cdot 8= -4\cdot 4= -8\cdot 2= -16\cdot 1$. We got $\boxed{5}$ different values for $b$: $-15$, $-6$, $0$, $6$, and $15$.
+      \begin{problem}
+        \textbf{E8.} Let $m$ and $n$ be roots of: $x^2 - 60x + 864 = 0$.  Find a polynomial with roots $m + 1$ and $n + 1$.
+      \end{problem}
+      $(x - (m + 1))(x - (n +1)) = x^2 - (m + n + 2)x + (mn + m + n + 1) = 0$ has roots $m +1$ and $n +1$, since $m + n = 60$ and $mn = 864$, we got $\boxed{x^2 - 62x + 925 = 0}$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 1 - 2}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP1.} Find the minimum possible value of the absolute value of $(m - n)$, where $m$ and $n$ are integers satisfying $m + n = mn - 2021$. 
+        
+        (\emph{Hint}: could completing the square be useful here if the variables were all grouped on one side of the equation?)
+      \end{problem}
+      $mn - m - n - 2021 = (m - 1)(n - 1) - 2022$ or $(m - 1)(n - 1) = 2022$, for $|m - n|$ to be as minimal as possible we need $m$ and $n$ as close as possible. The closest factors of $2022$ are $6$ and $337$, so answer is $337 - 6 = \boxed{331}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP2.} (For fun) In the novel, “The Curious Incident of the Dog in the Nighttime,” a student in England taking his A-level college entrance exam in maths was given the following question: 
+        
+        Prove that a triangle with sides that can written in the form $n^2 +1$, $n^2 -1$ and $2n$ (where $n > 1$) is right-angled.
+      \end{problem}
+      Since $(n^2 + 1)^2 = n^4 + 2n^2 + 1 = n^4 - 2n^2 + 1 + 4n^2 = (n^2 - 1)^2 + (2n)^2$, and using \emph{Converse of Pythagoras Theorem} we got that triangle with sides  $n^2 +1$, $n^2 -1$ and $2n$ (where $n > 1$) is right-angled.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Challenge problems 3 - 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP3.} Let $m$ and $n$ be roots of the polynomial $x^2 - 60x + 899 = 0.$  What is $m^2 + n^2$? 
+        
+        (\emph{Hint}: think about how $m^2 + n^2$ can be rewritten in terms of the sum and product of the roots $m$ and $n$).
+      \end{problem}
+
+      $m^2 + n^2 = m^2 + 2mn + n^2 - 2mn = (m + n)^2 - 2mn = (60)^2 - 2\cdot 899 = 3600 - 1798 = \boxed{1802}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{CP4.} Find all real values of $n$ such that $2^{2n} + 2^n + 1 = 73$.  
+        
+        (\emph{Hint}:  What substitution would turn this into a quadratic?)
+      \end{problem}
+      Let $y = 2^n$, then our equation turns into $y^2 + y + 1 = 73$ or $y^2 + y - 72 = (y - 8)(y + 9) = 0$. So $y = 8$ or $-9$. If $2^n = 8$, $n = \boxed{3}$, if $2^n = -9$ we don't have solutions since $2^n > 0$ for any real $n$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

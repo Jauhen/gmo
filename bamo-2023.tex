@@ -304,6 +304,71 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Problem 4}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{4.} Zaineb makes a large necklace from beads labeled $290,$ $291,$ $\ldots,$ $2023$. She uses each bead exactly once, arranging the beads in the necklace any order she likes. Prove that no matter how the beads are arranged, there must be three beads in a row whose labels are the side lengths of a triangle.
+      \end{problem}
+      \pause
+
+      Suppose not. So for any three beads in a row they can't be lengths of the side of a triangle. That means that the largest number in each group is more that the sum of the other two numbers.
+      \pause
+
+      Partition the necklace into $578$ disjoint groups each of $3$ consecutive beads.
+      \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+
+      Call the largest numbers in each group $a_1, a_2, \ldots, a_{578}$ and the rest as $b_1, b_2, \ldots, b_{1156}$. 
+      \pause
+
+      Notice that 
+      \[ \sum_{i=1}^{578} a_i \ge \sum_{b=1}^{1156} b_i. \] 
+      \pause
+      The first sum is less than $578$ the largest numbers
+      \[ \sum_{i=1}^{578} a_i \leq 1446 + 1447 + \ldots + 2023 = 1{,}002{,}541. \]
+      \pause
+      The second sum is larger than the sum of $1156$ smallest numbers
+      \[ \sum_{b=1}^{1156} b_i \geq 290 + 291 + \ldots + 1445 = 1{,}002{,}830. \]
+      \pause
+      So we have \[1{,}002{,}541 \ge \sum_{i=1}^{578} a_i \ge \sum_{b=1}^{1156} b_i \ge 1{,}002{,}830.\]
+      \pause
+      Contradiction! So there are three beads in a row whose labels are the side lengths of a triangle.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem 5}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{5.} A \emph{lattice point} in the plane is a point with integer coordinates. Let $T$ be a triangle in the plane whose vertice are lattice points, but with no other lattice points on its sides. Furthermore, suppose $T$ contains exactly four lattice points in its interior. Prove that these four points lie on a straight line.
+      \end{problem}
+      \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.7cm;
+          for i := 0 upto 10:
+            draw (0u, i*u)--(10u, i*u) withcolor 0.7white;
+            draw (i*u, 0u)--(i*u, 10u) withcolor 0.7white;
+          endfor;
+          draw (1u, 2u)--(3u, 1u)--(2u, 6u)--cycle pensemibold;
+          dOOt (1u, 2u), (3u, 1u), (2u, 6u);
+          Bigdot (2u, 2u), (2u, 3u), (2u, 4u), (2u, 5u);
+
+          draw (4u, 1u)--(5u, 1u)--(9u, 10u)--cycle pensemibold;
+          dOOt (4u, 1u), (5u, 1u), (9u, 10u);
+          Bigdot (5u, 2u), (6u, 4u), (7u, 6u), (8u, 8u);
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 % \begin{frame}{Title}
 %   \begin{columns}[T]
 %     \begin{column}{0.5\textwidth}

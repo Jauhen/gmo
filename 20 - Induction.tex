@@ -1,0 +1,633 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage[all]{xy}
+\newcolumntype{Y}{>{\centering\arraybackslash\leavevmode}X}
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\usepackage{luamplib}
+  \mplibsetformat{metafun}
+  \mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input repere; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{Induction}
+\subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Arithmetic sequense}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Prove:
+        \[
+          1 + 2 + 3 + \dots + n = \frac{n (n+1)}{2}.
+        \]
+      \end{problem}\pause
+
+      We can do something like this:
+      \[ \xymatrix@C=-2pt@R=0pt{
+        1\ar@/_/[dddrrrrr] & + & 2\ar@/_/[ddrrr] & + & 3\ar@/_/[dr] & +\ \ldots\ + & (n-2)\ar@/^/[dl] & + & (n-1)\ar@/^/[ddlll] & + & n\ar@/^/[dddlllll] \\
+        & & & & & n+1 & & & & & \\
+        & & & & & n+1 & & & & & \\
+        & & & & & n+1 & & & & & 
+      } \]
+      And we have $n/2$ total pairs, so the sum is
+      \[
+        \sum = (n+1) \times \frac{n}{2} = \frac{n(n+1)}{2}.
+      \]
+      \hfill Q.E.D.\pause
+
+      This is a very clever idea, but can we apply it for 
+      \[ 1^2 + 2^2 + \cdot + n^2? \]\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      But we can do a proof differently:
+      
+      Let's observe:
+      \begin{align*}
+        1 &= \frac{1 \cdot ( 1 + 1)}{2} = 1.
+      \end{align*}\pause
+      So let's suppose for some $k$ we have our identity correct:
+      \[ 1 + 2 + \cdot + k = \frac{k (k + 1)}{2} \]\pause
+      and will look at what happened for $k+1$:
+      \begin{multline*} 
+        1 + 2 + \cdot + k + (k+1) = \frac{k (k+1)}{2} + (k+1) =\\
+        = (k+1) \left(\frac{k}{2} + 1\right) = \frac{(k+1)(k+2)}{2}. 
+      \end{multline*}\pause
+      So we can say that our formula stays for $k+1$ if it stays for $k$. And since it stays for $1$, it also stays for $2$, and so stays for $3$, then for $4$ and so on. 
+
+      That means we proved it for all possible $n$. 
+
+      \hfill Q.E.D.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Quadratic sequence}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Prove:
+        \[
+          1^2 + 2^2 + 3^2 + \dots + n^2 = \frac{n (n+1)(2n+1)}{6}.
+        \]
+      \end{problem}\pause
+      It is easy to check it for $1$:
+      \[ 1^2 = \frac{1 \cdot (1 + 1) \cdot (2 \cdot 1 + 1)}{6} = \frac{1 \cdot 2 \cdot 3}{6} = 1. \]\pause
+
+      Suppose it is true for some $k$:
+      \[
+        1^2 + 2^2 + \dots + k^2 = \frac{k (k+1)(2k+1)}{6}.
+      \]\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Let's take a look at $k+1$:
+      \begin{multline*}
+        1^2 + 2^2 + \cdot + k^2 + (k+1)^2 = \\
+        = \frac{k (k+1)(2k+1)}{6} + (k + 1)^2 = \\
+        = \frac{k (k + 1) (2k + 1) + 6(k + 1)^2}{6} = \\
+        = \frac{(k+1)( k(2k + 1) + 6(k + 1))}{6} = \\
+        = \frac{(k+1) ( 2k^2 + k + 6k + 6)}{6} = \\
+        = \frac{(k+1) ( 2k^2 + 7k + 6)}{6} = \\
+        = \frac{(k+1) [ (k + 2) (2k + 3) ]}{6} = \\
+        = \frac{(k+1) [(k + 1) + 1] [2(k + 1) + 1]}{6}.
+      \end{multline*}\pause
+      So our formula holds for $k+1$ and that means for all counting numbers $n$. \hfill Q.E.D.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Proof by Induction}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Prove by induction has $4$ steps:
+
+      \begin{enumerate}
+        \item Check a statement for starting values.
+
+        It is called an "\textbf{Induction Base}".
+
+        \item Assume the statement is correct for some value $k$.
+        
+        It is called an "\textbf{Induction Assumption}" or an "\textbf{Induction Hypothesis}".
+
+        \item Based on the assumption prove the statement for a value $k+1$.
+        
+        It is called an "\textbf{Induction Step}".
+
+        \item Since the statement is true for starting value and all consecutive values, it is true for all values.
+      \end{enumerate}\pause
+
+      Usually, items 2 and 3 are combined into one "Induction Step" and step 4 is assumed. So general schema of the proof: 
+
+      \begin{enumerate}
+        \item Prove an Induction Base;
+        \item Prove an Induction Step.
+      \end{enumerate}\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{center}
+        \vspace*{-\intextsep}
+        \includegraphics[width=0.8\textwidth]{20 - Induction/Dominoeffect.png}
+        % \vspace*{-\intextsep}
+      \end{center}
+      You may think about proof by induction as failing dominoes: for the whole set to be failed all you need is to push the first domino and make sure that each failing domino will cause the failure of the next domino. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Plain coloring}
+  \begin{columns}[T]
+    \begin{column}{0.33\textwidth}
+      \begin{problem}
+        Several \textbf{straight lines} split a plane into regions. Is it possible to color each region in one of \textbf{two colors}, so no two connecting by side regions are of the same color?
+      \end{problem}\pause
+
+      It is easy to color a plane if we have one line: blue color on one side and red on another:
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          fill (-2u, -1.5u)--(-1u, -1.5u)--(1u, 1.5u)--(-2u, 1.5u)--cycle withcolor 0.7[blue, white];
+          fill (2u, 1.5u)--(1u, 1.5u)--(-1u, -1.5u)--(2u, -1.5u)--cycle withcolor 0.7[red, white];
+          draw ddline((-1u, -1.5u), (1u, 1.5u))(0.05, 0.05) penextrabold;
+        \end{mplibcode}
+      \end{center}\pause
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      Now let's suppose we draw $k$ lines and managed to color a plane properly, but what will we do when we draw one more line?
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          pair A[], B[];
+          A1 := (-1u, -1.5u);
+          A2 := (1u, 1.5u);
+          A3 := (-2u, 1u);
+          A4 := (1.5u, -1.5u);
+          A5 := (-2u, -0.3u);
+          A6 := (2u, 0.8u);
+          A7 := (-1.5u, 1.5u);
+          A8 := (-0.4u, -1.5u);
+          A9 := (-2u, 0.8u);
+          B1 := crosspoint(A1, A2)(A3, A4);
+          B2 := crosspoint(A1, A2)(A5, A6);
+          A10 := whatever[A9, B2]=whatever[(2u, -1.5u), (2u, 1.5u)];
+          B3 := crosspoint(A1, A2)(A7, A8);
+          B4 := crosspoint(A1, A2)(A9, A10);
+          B5 := crosspoint(A3, A4)(A5, A6);
+          B6 := crosspoint(A3, A4)(A7, A8);
+          B7 := crosspoint(A3, A4)(A9, A10);
+          B8 := crosspoint(A5, A6)(A7, A8);
+          B9 := crosspoint(A5, A6)(A9, A10);
+          B10 := crosspoint(A7, A8)(A9, A10);
+          fill (-2u, -1.5u)--A1--B3--B8--A5--cycle withcolor 0.7[blue, white];
+          fill (-2u, 1.5u)--A3--B6--A7--cycle withcolor 0.7[blue, white];
+          fill B6--B5--B8--cycle withcolor 0.7[blue, white];
+          fill (2u, 1.5u)--A2--B2--A6--cycle withcolor 0.7[blue, white];
+          fill A8--A4--B1--B3--cycle withcolor 0.7[blue, white];
+          fill B5--B1--B2--cycle withcolor 0.7[blue, white];
+          fill A1--B3--A8--cycle withcolor 0.7[red, white];
+          fill B3--B1--B5--B8--cycle withcolor 0.7[red, white];
+          fill A5--B8--B6--A3--cycle withcolor 0.7[red, white];
+          fill A7--B6--B5--B2--A2--cycle withcolor 0.7[red, white];
+          fill A6--B2--B1--A4--(2u, -1.5u)--cycle withcolor 0.7[red, white];
+
+          % fill (-2u, -1.5u)--(-1u, -1.5u)--(1u, 1.5u)--(-2u, 1.5u)--cycle withcolor 0.7[blue, white];
+          % fill (2u, 1.5u)--(1u, 1.5u)--(-1u, -1.5u)--(2u, -1.5u)--cycle withcolor 0.7[red, white];
+          draw ddline(A1, A2)(0.05, 0.05) pensemibold;
+          draw ddline(A3, A4)(0.05, 0.05) pensemibold;
+          draw ddline(A5, A6)(0.05, 0.05) pensemibold;
+          draw ddline(A7, A8)(0.05, 0.05) pensemibold;
+          draw ddline(A9, A10)(0.05, 0.05) penbold dashed evenly;
+          % label.("$A_1$", A1);
+          % label.("$A_2$", A2);
+          % label.("$A_3$", A3);
+          % label.("$A_4$", A4);
+          % label.("$A_5$", A5);
+          % label.("$A_6$", A6);
+          % label.("$A_7$", A7);
+          % label.("$A_8$", A8);
+          % label.("$A_9$", A9);
+          % label.("$A_{10}$", A10);
+          % label.("$B_1$", B1);
+          % label.("$B_2$", B2);
+          % label.("$B_3$", B3);
+          % label.("$B_4$", B4);
+          % label.("$B_5$", B5);
+          % label.("$B_6$", B6);
+          % label.("$B_7$", B7);
+          % label.("$B_8$", B8);
+          % label.("$B_9$", B9);
+          % label.("$B_{10}$", B10);
+        \end{mplibcode}
+      \end{center}\pause
+      We will reverse the color of each region on one side of the line:
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          pair A[], B[];
+          A1 := (-1u, -1.5u);
+          A2 := (1u, 1.5u);
+          A3 := (-2u, 1u);
+          A4 := (1.5u, -1.5u);
+          A5 := (-2u, -0.3u);
+          A6 := (2u, 0.8u);
+          A7 := (-1.5u, 1.5u);
+          A8 := (-0.4u, -1.5u);
+          A9 := (-2u, 0.8u);
+          B1 := crosspoint(A1, A2)(A3, A4);
+          B2 := crosspoint(A1, A2)(A5, A6);
+          A10 := whatever[A9, B2]=whatever[(2u, -1.5u), (2u, 1.5u)];
+          B3 := crosspoint(A1, A2)(A7, A8);
+          B4 := crosspoint(A1, A2)(A9, A10);
+          B5 := crosspoint(A3, A4)(A5, A6);
+          B6 := crosspoint(A3, A4)(A7, A8);
+          B7 := crosspoint(A3, A4)(A9, A10);
+          B8 := crosspoint(A5, A6)(A7, A8);
+          B9 := crosspoint(A5, A6)(A9, A10);
+          B10 := crosspoint(A7, A8)(A9, A10);
+          fill (-2u, -1.5u)--A1--B3--B8--A5--cycle withcolor 0.7[blue, white];
+          fill B7--B6--B10--cycle withcolor 0.7[blue, white];
+          fill B6--B5--B8--cycle withcolor 0.7[blue, white];
+          fill A8--A4--B1--B3--cycle withcolor 0.7[blue, white];
+          fill B5--B1--B2--cycle withcolor 0.7[blue, white];
+
+          fill A3--B7--A9--cycle withcolor 0.1[blue, white];
+          fill A7--B10--B2--A2--cycle withcolor 0.1[blue, white];
+          fill A6--B2--A10--cycle withcolor 0.1[blue, white];
+
+          fill A1--B3--A8--cycle withcolor 0.7[red, white];
+          fill B3--B1--B5--B8--cycle withcolor 0.7[red, white];
+          fill A5--B8--B6--B7--A9--cycle withcolor 0.7[red, white];
+          fill B10--B6--B5--B2--cycle withcolor 0.7[red, white];
+          fill A10--B2--B1--A4--(2u, -1.5u)--cycle withcolor 0.7[red, white];
+
+          fill (-2u, 1.5u)--A3--B7--B10--A7--cycle withcolor 0.1[red, white];
+          fill (2u, 1.5u)--A2--B2--A6--cycle withcolor 0.1[red, white];
+
+          % fill (-2u, -1.5u)--(-1u, -1.5u)--(1u, 1.5u)--(-2u, 1.5u)--cycle withcolor 0.7[blue, white];
+          % fill (2u, 1.5u)--(1u, 1.5u)--(-1u, -1.5u)--(2u, -1.5u)--cycle withcolor 0.7[red, white];
+          draw ddline(A1, A2)(0.05, 0.05) pensemibold;
+          draw ddline(A3, A4)(0.05, 0.05) pensemibold;
+          draw ddline(A5, A6)(0.05, 0.05) pensemibold;
+          draw ddline(A7, A8)(0.05, 0.05) pensemibold;
+          draw ddline(A9, A10)(0.05, 0.05) penbold dashed evenly;
+          % label.("$A_1$", A1);
+          % label.("$A_2$", A2);
+          % label.("$A_3$", A3);
+          % label.("$A_4$", A4);
+          % label.("$A_5$", A5);
+          % label.("$A_6$", A6);
+          % label.("$A_7$", A7);
+          % label.("$A_8$", A8);
+          % label.("$A_9$", A9);
+          % label.("$A_{10}$", A10);
+          % label.("$B_1$", B1);
+          % label.("$B_2$", B2);
+          % label.("$B_3$", B3);
+          % label.("$B_4$", B4);
+          % label.("$B_5$", B5);
+          % label.("$B_6$", B6);
+          % label.("$B_7$", B7);
+          % label.("$B_8$", B8);
+          % label.("$B_9$", B9);
+          % label.("$B_{10}$", B10);
+        \end{mplibcode}
+      \end{center}
+      That means that if regions were connected by a previous line remain to be of different colors. And new region connections via the new line will also be of different colors, so it is possible to color a plane in two colors, it doesn't matter how many straight lines are drawn.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{A number and its reprocical}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        It is known that $x + \dfrac{1}{x}$ is an integer. Prove that $x^{n} + \dfrac{1}{x^{n}}$ is also an integer (for any natural $n$).
+      \end{problem}\pause
+      It is true for $n=1$ by the problem statement. Let's check for $n=2$:
+      \[
+        \left(x + \dfrac{1}{x}\right) \left(x + \dfrac{1}{x}\right) = x^2 + 2 + \frac{1}{x^2},
+      \] so
+      \[ 
+        x^2 + \frac{1}{x^2} = \left(x + \dfrac{1}{x}\right) \left(x + \dfrac{1}{x}\right) - 2.
+      \]
+      And since on the right side we have only integers, on the left side we also should have an integer.\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      For an induction step we have a similar approach:
+
+      We have 
+      \[
+        \left(x^k + \dfrac{1}{x^k}\right) \left(x + \dfrac{1}{x}\right) = x^{k-l} + \frac{1}{x^{k-l}} + x^{k+l} + \frac{1}{x^{k+1}}
+      \] 
+      and hence \pause
+      \[
+        x^{k+1} + \frac{1}{x^{k+1}} = \left(x^k + \frac{1}{x^k}\right)\left(x + \frac{1}{x}\right) - \left(x^{k-1} + \frac{1}{x^{k-1}}\right).
+      \]\pause
+      Here we can assume that the statement is true for $k$, but this isn't enough, because we also have $\left(x^{k-1} + \dfrac{1}{x^{k-1}}\right)$ term. So we can do our induction step this way: \pause
+
+      \begin{definition}
+        \textbf{Suppose the statement is true for all positive integers less or equal $k$ and then we will prove for $k+1$.}
+
+        This approach is called \textbf{complete (strong) Induction}.
+      \end{definition}
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Horses!}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Prove that all horses have the same color.
+      \end{problem}\pause
+      \textbf{Base:} Let $n$ be the number of horses. When $n = 1$, the statement is clearly true; that is, one horse has the same color, whatever color it is. \pause
+      
+      \textbf{Step:} Assume that any group of $k$ horses has the same color. Now consider a group of $k + 1$ horses. Taking any $k$ of them, the induction hypothesis states that they all have the same color, say, brown. The only issue is the color of the remaining “uncolored” horse. Consider, therefore, any other group of $k$ of the $k+1$ horses that contains the uncolored horse. Again, by the induction hypothesis, all of the horses in the new group have the same color. Then, because all of the colored horses in this group are brown, the uncolored horse must also be brown.\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      The mistake occurs in the last sentence, where it states that, “Then, because all the colored horses in this (second) group are brown, the uncolored horse must also be brown.” How do you know that there is a colored horse in the second group? In fact, when the original group of $k + 1$ horses consists of exactly $2$ horses, the second group of $k$ horses does not contain a colored horse. The entire difficulty is caused by the fact that the statement should have been verified for the initial integer $k = 2$, not $k = 1$. This, of course, you will not be able to do.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Line}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Prove that, in a line of at least two people, if the first person is a woman and the last person is a man, then somewhere in the line there is a man standing immediately behind a woman.
+      \end{problem}\pause
+
+      \textbf{Base:} Let $n \geq 2$ be the number of people in line. If $n = 2$, then the line consists of only two people, the first of which is a woman and the last of which is a man. Thus, there is a man standing behind a woman and so the statement is true for $n = 2$.\pause
+
+      \textbf{Step:} Assume now that the statement is true for $k$, that is, \smallskip
+
+      $P(k)$: \emph{In a line of $k$ people in which the first is a woman and the last is a man, there is a man standing directly behind a woman somewhere in the line.}\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+
+      For $k + 1$, it must be shown that
+      \smallskip
+
+      $P(k+1)$: \emph{In a line of $k + 1$ people in which the first is a woman and the last is a man, there is a man standing directly behind a woman somewhere in the line.}
+      \smallskip\pause
+
+      Consider, therefore, a line of $k + 1$ people in which the first is a woman and the last is a man. To relate $P(k + 1)$ to $P(k)$, consider the second person in line. If that person is a man, then that man is standing behind the woman in the front of the line and so $P(k + 1)$ is true. If, however, the second person in line is a woman, then consider the line from that second woman to the end. This line then consists of $k$ people, the first of which is a woman and the last of which is a man. In this case, the induction hypothesis applies and so somewhere there is a man standing behind a woman and so $P(k + 1)$ is true, thus completing the proof. \hfill Q.E.D.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Tournament}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        In a tournament, everybody plays with everyone one game (round-robin tournament). Each game finished with a win for one team and a loss for another. Prove that we order teams that way, that the first wins the second, the second wins the third and so on.
+      \end{problem}\pause
+
+      \textbf{Base:} For two teams only one game is played and we put a winner in the first place and a loser in the second.\pause
+
+      \textbf{Step:} Suppose such ordering exists for a tournament with $k$ teams. 
+
+      Get the tournament of $k+1$ teams and temporarily exclude a team with the number $(k+1)$, call it $v$. There is an order for $k$ teams:
+      \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+          \node at (0, 0) (v1) {$v_1$};
+          \node at (1, 0) (v2) {$v_2$};
+          \node at (2, 0) (v3) {$v_3$};
+          \node at (3, 0) (v4) {$\dots$};
+          \node at (4, 0) (v5) {$v_k$};
+          % \node at (5.25, 0) (v6) {$v_{k+1}$};
+          % \node at (6.5, 0) (v7) {$\dots$};
+          % \node at (7.5, 0) (v8) {$v_k$};
+          % \node at (3.75, -1.25) (v) {$v$};
+      
+          \draw[->] (v1) -- (v2);
+          \draw[->] (v2) -- (v3);
+          \draw[->] (v3) -- (v4);
+          \draw[->] (v4) -- (v5);
+          % \draw[->] (v5) -- (v6);
+          % \draw[->] (v6) -- (v7);
+          % \draw[->] (v7) -- (v8);
+          % \draw[->] (v1) -- ([shift={(0, -0.1)}]v.west);
+          % \draw[->] (v2) -- (v.west);
+          % \draw[->] (v3) -- ([shift={(0, 0.1)}]v.west);
+          % \draw[->,very thick] (v5) -- (v);
+          % \draw[->,very thick] (v) -- (v6);
+          % \draw[->] (v) -- (v8);
+        \end{tikzpicture}
+      \end{center}\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      If $v$ won $v_{1}$ we are done, we just use path:
+      \[ v \to v_1 \to \dots . \]\pause
+
+      If $v$ lost to $v_{k}$ we are done, we just use path:
+      \[ \dots \to v_k \to v . \]\pause
+
+      So the remaining case is when $v$ is lost to $v_1$ and won $v_k$. But, by the previous problem, there are two teams $v_m$ and $v_{m+1}$ that are next to each other in the order, but $v_m$ won $v$ and $v_{m+1}$ lost to~$v$. We just put $v$ between them and we are done.
+
+      \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+          \node at (0, 0) (v1) {$v_1$};
+          \node at (1, 0) (v2) {$v_2$};
+          \node at (2, 0) (v3) {$v_3$};
+          \node at (3, 0) (v4) {$\dots$};
+          \node at (4, 0) (v5) {$v_m$};
+          \node at (5.25, 0) (v6) {$v_{m+1}$};
+          \node at (6.5, 0) (v7) {$\dots$};
+          \node at (7.5, 0) (v8) {$v_k$};
+          \node at (3.75, -1.25) (v) {$v$};
+      
+          \draw[->] (v1) -- (v2);
+          \draw[->] (v2) -- (v3);
+          \draw[->] (v3) -- (v4);
+          \draw[->] (v4) -- (v5);
+          \draw[->] (v5) -- (v6);
+          \draw[->] (v6) -- (v7);
+          \draw[->] (v7) -- (v8);
+          \draw[->] (v1) -- ([shift={(0, -0.1)}]v.west);
+          \draw[->] (v2) -- (v.west);
+          \draw[->] (v3) -- ([shift={(0, 0.1)}]v.west);
+          \draw[->,very thick] (v5) -- (v);
+          \draw[->,very thick] (v) -- (v6);
+          \draw[->] (v) -- (v8);
+        \end{tikzpicture}
+      \end{center}
+
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Candies}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        A machine is filled with an odd number of chocolate candies and an odd number of caramel candies. For $25$ cents, the machine dispenses two candies. Prove that, before being empty, the machine will dispense at least one pair that consists of one chocolate candy and one caramel candy.
+      \end{problem}\pause
+
+      The key is to reword the problem so that induction is appropriate. Specifically, you want to prove that for every integer $n \geq 1$,\pause
+
+      \smallskip
+      $P(n)$: A machine that has $2n$ candies consisting of an odd number of caramel candies and an odd number of chocolate candies eventually dispenses a pair consisting of one of each type of candy.
+      \smallskip\pause
+
+      Proceeding by induction, when $n = 1$, it must be that the machine only has $1$ caramel candy and $1$ chocolate candy. Thus, the machine can only dispense one pair which, of necessity, consists of one type of each.\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Assume now that $P(n)$ is true. Then, for $n + 1$, it must be shown that
+      \smallskip
+
+      $P(n+1)$: A machine that has $2n + 2$ candies consisting of an odd number of caramel candies and an odd number of chocolate candies eventually dispenses a pair consisting of one of each type of candy.
+      \smallskip\pause
+    
+      To relate $P(n + 1)$ to $P(n)$, consider the first pair of candies dispensed. If this pair consists of one of each type, then $P(n + 1)$ is true. Otherwise, this pair consists of two candies of the same type. In this case, the machine has $2n$ remaining candies still consisting of an odd number of caramel candies and an odd number of chocolate candies. Hence, the induction hypothesis applies and so the machine eventually dispenses a pair consisting of one of each type of candy. Thus, $P(n + 1)$ is true and the proof is complete.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Cauchy induction}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Prove for positive numbers:
+        \[ \frac{x_1 + x_2 + \cdots + x_n}{n} \geq \sqrt[n]{x_1 x_2 \cdots x_n}
+        \vspace*{-5px}
+        \]
+      \end{problem}\pause
+
+      \textbf{Base:} For $n=2$: $(x_1 + x_2)/2 \geq \sqrt{x_1 x_2} \Rightarrow (x_1 + x_2)^2 \geq 4 x_1 x_2 \Rightarrow x_1^2 - 2x_1 x_2 + x_2^2 \geq 0 \Rightarrow (x_1 - x_2)^2 \geq 0$.\pause
+
+      \smallskip
+      \textbf{Step 1, Up:} Assume is true for $k$:
+      \[ \frac{x_1 + \cdots + x_k}{k} \geq \sqrt[k]{x_1 \cdots x_k}.
+      \vspace*{-5px}
+      \]\pause
+      Then:
+      \begin{multline*}
+        \frac{x_1 + \cdots + x_k + x_{k+1} + \cdots + x_{2k}}{2k} = \\
+        \frac{\dfrac{x_1 + \cdots + x_k}{k} + \dfrac{x_{k+1} + \cdots + x_{2k}}{k}}{2} \geq \\
+        \frac{\sqrt[k]{x_1 \cdots x_k} + \sqrt[k]{x_{k+1} \cdots x_{2k}}}{2} \geq \\
+        \sqrt{\sqrt[k]{x_1 \cdots x_k} \cdot \sqrt[k]{x_{k+1} \cdots x_{2k}}} = 
+        \sqrt[2k] {x_1 \cdots x_{2k}}
+      \end{multline*}\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      So we proved for all $n = 2^k$.\pause
+      
+      \textbf{Step 2, Down:} Assume is true for $k = 2^m$:
+      \[ \frac{x_1 + \cdots + x_k}{k} \geq \sqrt[k]{x_1 \cdots x_k}.
+      \]\pause
+      Let $x_k=\frac{x_1+x_2+\cdots+x_{k-1}}{k-1}$. \pause
+      Then we have
+      \[
+        \frac{x_1+\cdots+x_{k-1}+\frac{x_1+\cdots+x_{k-1}}{k-1}}{k}=
+        \frac{x_1+\cdots+x_{k-1}}{k-1}
+      \]\pause
+      So,
+      \[
+        \frac{x_1+\cdots+x_{k-1}}{k-1}\ge \sqrt[n]{x_1\cdots x_{k-1}\cdot \frac{x_1+\cdots+x_{k-1}}{k-1}}
+      \]
+      \[\Rightarrow\left(\frac{x_1+\cdots+x_{k-1}}{k-1}\right)^k\ge x_1\cdots x_{k-1}\cdot \frac{x_1+\cdots+x_{k-1}}{k-1}\]
+      \[\Rightarrow\left(\frac{x_1\cdots+x_{k-1}}{k-1}\right)^{k-1}\ge x_1\cdots x_{k-1}\]
+      \[\Rightarrow \frac{x_1+\cdots+x_{k-1}}{k-1}\ge\sqrt[k-1]{x_1\cdots x_{k-1}}\]\pause
+      \hfill Q.E.D.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Induction in inequalities}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        There are two sequences of non-negative numbers $a_1, a_2, \dots, a_n$ and $b_1, b_2, \dots, b_n$ for which the following inequalities are true:
+        \begin{align*}
+          a_{1}&\leq1,\\ 
+          a_{2}&\leq1+a_{1}b_{1},\\ 
+          &\ldots,\\
+          a_{n+1}&\leq1+a_{1}b_{1}+a_{2}b_{2}+\ldots +a_{n}b_{n}
+        \end{align*}
+        and so on.
+        
+        Prove that for any positive integer $n$:
+        \[
+          a_{n+1}\leq(1+b_{1})(1+b_{2})\ldots (1+b_{n}).
+        \]
+      \end{problem}\pause
+
+      \textbf{Base:} if $n=1$, we got: 
+      \[
+        a_{2}\leq1+a_{1}b_{1}\leq1+b_{1}
+      \] because $a_{1}\leq1$ and $0\leq b_{1}$.\pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Step:} Assume that the statement is true for all $k \leq n$:
+      \begin{align*}
+        a_{2}&\leq1+b_{1},\\ 
+        a_{3}&\leq(1+b_{1})(1+b_{2}),\\
+         &\ldots,\\ 
+        a_{k+1}&\leq(1+b_{1})(1+b_{2})\ldots (1+b_{k}).
+      \end{align*}\pause
+      Then for $n = k+1$:
+      \begin{multline*}
+        a_{k+2}\leq1+a_{1}b_{1}+a_{2}b_{2}+\ldots +a_{k+1}b_{k+1}\leq\\
+        \leq(1+b_{1})+(1+b_{1})b_{2}+\ldots\\ 
+        \ldots +(1+b_{1})(1+b_{2})\ldots (1+b_{k})b_{k+1}=\\
+        = (1 + b_1)\bigl(1 + b_2 + \ldots + (1+b_{2})\ldots (1+b_{k})b_{k+1}\bigr) =\\
+        =(1+b_{1})(1+b_{2})\ldots (1+b_{k+1}).
+      \end{multline*}
+      \hfill Q.E.D.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Divisors in a circle}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Prove that for any positive integer, all of its positive divisors can be arranged in a circle in such a way that any two adjacent divisors have one dividing the other.
+      \end{problem}\pause
+      Let our number will be $n$, number of its divisors $d(n)$ and divisors in a circle in counterclockwise order to be $a_1, a_2, \dots, a_{d(n)}$ where $a_1 = 1$.\pause
+
+      We will do our induction by number of distinct prime divisors of $n$.\pause
+
+      \textbf{Base:} If $n$ has only one distinct prime divisor $p$, so $n = p^k$, we can write $a_1 = 1$, $a_2 = p$, $a_3 = p^2$, \dots, $a_{k+1} = p^k$, which is works. \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Step:} Assume our statement works for $m$ that has $s$ distinct prime factors, we will prove that it will stay for $n$ that has $s+1$ distinct prime factors. So~$n = q^l m$, where $q$ is a prime number which is not a divisor of $m$.\pause
+
+      If $T$ is a sequence in of number written in a circle in some order, $T^*$ will be the same sequence in reverse order. Moreover $qT$ will be the sequence $T$ where each item is multiplied by $q$.\pause
+
+      By induction assumption we have sequence $T$: $a_1, a_2, \dots, a_{d(m)}$ that satisfy the statement. Then the following sequences\pause
+
+      $l$ is even: $T$, $(qT)^*$, $q^2T$, \dots, $(q^{l-1}T)^*$, $q^lT$,\pause
+
+      $l$ is odd:  $T$, $(qT)^*$, $q^2T$, \dots, $q^{l-1}T$, $(q^lT)^*$,\pause
+
+      will works.\pause \hfill Q.E.D.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

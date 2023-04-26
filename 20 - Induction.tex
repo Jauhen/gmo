@@ -498,6 +498,70 @@
   \end{columns}
 \end{frame}
 
+
+\begin{frame}{$3x+1$ and $x/2$}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Any positive integer $x$ written on the board can be replaced with either $3x+1$ or $\lfloor x/2 \rfloor$. Prove that if the number $1$ is written initially, then by using these operations any natural number can be obtained.
+      \end{problem}\pause
+      
+      \textbf{Base:} $1$ is already given.\pause
+
+      \textbf{Step:} Assume we already knows how to get any number less then $k$, then:
+
+      If $k = 3m$, $2m \to 6m + 1 \to 3m$;\pause
+      
+      If $k = 3m + 1$, $m \to 3m + 1$;\pause
+
+      If $k = 3m - 1$, $2k - 1 \to 6k - 2 \to 3k - 1$.\pause
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Diagonals in polygon}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        Let us draw some diagonals in a convex polygon in such a way that no two of them intersect (several diagonals may start from one vertex). Prove that there are at least two vertices of the polygon from which no diagonals are drawn.
+      \end{problem}\pause
+
+      We prove by induction, that there are two no neighbors "diagonal free" vertices.
+
+      \textbf{Base:} Problem is trivial for a quadrilateral, because only diagonals can be drawn and two vertices are "diagonal free" and separated by this diagonal.\pause
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Step:} Assume the statement is hold for any convex polygon with number of vertices less then $n$.\pause
+
+      Let $n$ is the number of vertices. Let's draw a diagonal with vertices $M$ and $N$. This diagonal split a polygon into two polygons with lower number of vertices and they have two non-neighbor "diagonal free" vertices, so each of polygon has a "diagonal free" vertex that is not $M$ or $N$.\pause
+
+      If one of the smaller polygon is a triangle, we take a vertex that is not $M$ and $N$. \hfill Q.E.D. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Loot!}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        $n$ bandits are dividing the loot. Each of them has their own opinion on the value of a particular share of the loot, and each of them wants to get no less than $1/n$ of the loot (from their point of view). Come up with a way to divide the loot among the bandits.
+      \end{problem}\pause
+      \textbf{Base:} For two bandits we can do this way: let the first one to divide the loot into two parts that he believe are equal and let the second bandit to choose his part.\pause
+
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      
+      \textbf{Step:} Assume we know how to divide the loot between $k$ bandits, each has $\dfrac{1}{k}$ part of the loot.\pause
+
+      Let each of $k$ bandits divide his part into $k+1$ pieces and allow the new bandit to select one piece from each of $k$ bandits, in this case he will get $k \times \dfrac{1}{k (k + 1)} = \dfrac{1}{k+1}$ part of the loot, and each of $k$ bandits will remain with $\dfrac{k}{k+1}  \times \dfrac{1}{k} = \dfrac{1}{k+1}$ part of the loot. 
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Cauchy induction}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
@@ -548,78 +612,78 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Induction in inequalities}
-  \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-      \begin{problem}
-        There are two sequences of non-negative numbers $a_1, a_2, \dots, a_n$ and $b_1, b_2, \dots, b_n$ for which the following inequalities are true:
-        \begin{align*}
-          a_{1}&\leq1,\\ 
-          a_{2}&\leq1+a_{1}b_{1},\\ 
-          &\ldots,\\
-          a_{n+1}&\leq1+a_{1}b_{1}+a_{2}b_{2}+\ldots +a_{n}b_{n}
-        \end{align*}
-        and so on.
+% \begin{frame}{Induction in inequalities}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{problem}
+%         There are two sequences of non-negative numbers $a_1, a_2, \dots, a_n$ and $b_1, b_2, \dots, b_n$ for which the following inequalities are true:
+%         \begin{align*}
+%           a_{1}&\leq1,\\ 
+%           a_{2}&\leq1+a_{1}b_{1},\\ 
+%           &\ldots,\\
+%           a_{n+1}&\leq1+a_{1}b_{1}+a_{2}b_{2}+\ldots +a_{n}b_{n}
+%         \end{align*}
+%         and so on.
         
-        Prove that for any positive integer $n$:
-        \[
-          a_{n+1}\leq(1+b_{1})(1+b_{2})\ldots (1+b_{n}).
-        \]
-      \end{problem}\pause
+%         Prove that for any positive integer $n$:
+%         \[
+%           a_{n+1}\leq(1+b_{1})(1+b_{2})\ldots (1+b_{n}).
+%         \]
+%       \end{problem}\pause
 
-      \textbf{Base:} if $n=1$, we got: 
-      \[
-        a_{2}\leq1+a_{1}b_{1}\leq1+b_{1}
-      \] because $a_{1}\leq1$ and $0\leq b_{1}$.\pause
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \textbf{Step:} Assume that the statement is true for all $k \leq n$:
-      \begin{align*}
-        a_{2}&\leq1+b_{1},\\ 
-        a_{3}&\leq(1+b_{1})(1+b_{2}),\\
-         &\ldots,\\ 
-        a_{k+1}&\leq(1+b_{1})(1+b_{2})\ldots (1+b_{k}).
-      \end{align*}\pause
-      Then for $n = k+1$:
-      \begin{multline*}
-        a_{k+2}\leq1+a_{1}b_{1}+a_{2}b_{2}+\ldots +a_{k+1}b_{k+1}\leq\\
-        \leq(1+b_{1})+(1+b_{1})b_{2}+\ldots\\ 
-        \ldots +(1+b_{1})(1+b_{2})\ldots (1+b_{k})b_{k+1}=\\
-        = (1 + b_1)\bigl(1 + b_2 + \ldots + (1+b_{2})\ldots (1+b_{k})b_{k+1}\bigr) =\\
-        =(1+b_{1})(1+b_{2})\ldots (1+b_{k+1}).
-      \end{multline*}
-      \hfill Q.E.D.
-    \end{column}
-  \end{columns}
-\end{frame}
+%       \textbf{Base:} if $n=1$, we got: 
+%       \[
+%         a_{2}\leq1+a_{1}b_{1}\leq1+b_{1}
+%       \] because $a_{1}\leq1$ and $0\leq b_{1}$.\pause
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \textbf{Step:} Assume that the statement is true for all $k \leq n$:
+%       \begin{align*}
+%         a_{2}&\leq1+b_{1},\\ 
+%         a_{3}&\leq(1+b_{1})(1+b_{2}),\\
+%          &\ldots,\\ 
+%         a_{k+1}&\leq(1+b_{1})(1+b_{2})\ldots (1+b_{k}).
+%       \end{align*}\pause
+%       Then for $n = k+1$:
+%       \begin{multline*}
+%         a_{k+2}\leq1+a_{1}b_{1}+a_{2}b_{2}+\ldots +a_{k+1}b_{k+1}\leq\\
+%         \leq(1+b_{1})+(1+b_{1})b_{2}+\ldots\\ 
+%         \ldots +(1+b_{1})(1+b_{2})\ldots (1+b_{k})b_{k+1}=\\
+%         = (1 + b_1)\bigl(1 + b_2 + \ldots + (1+b_{2})\ldots (1+b_{k})b_{k+1}\bigr) =\\
+%         =(1+b_{1})(1+b_{2})\ldots (1+b_{k+1}).
+%       \end{multline*}
+%       \hfill Q.E.D.
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
-\begin{frame}{Divisors in a circle}
-  \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-      \begin{problem}
-        Prove that for any positive integer, all of its positive divisors can be arranged in a circle in such a way that any two adjacent divisors have one dividing the other.
-      \end{problem}\pause
-      Let our number will be $n$, number of its divisors $d(n)$ and divisors in a circle in counterclockwise order to be $a_1, a_2, \dots, a_{d(n)}$ where $a_1 = 1$.\pause
+% \begin{frame}{Divisors in a circle}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%       \begin{problem}
+%         Prove that for any positive integer, all of its positive divisors can be arranged in a circle in such a way that any two adjacent divisors have one dividing the other.
+%       \end{problem}\pause
+%       Let our number will be $n$, number of its divisors $d(n)$ and divisors in a circle in counterclockwise order to be $a_1, a_2, \dots, a_{d(n)}$ where $a_1 = 1$.\pause
 
-      We will do our induction by number of distinct prime divisors of $n$.\pause
+%       We will do our induction by number of distinct prime divisors of $n$.\pause
 
-      \textbf{Base:} If $n$ has only one distinct prime divisor $p$, so $n = p^k$, we can write $a_1 = 1$, $a_2 = p$, $a_3 = p^2$, \dots, $a_{k+1} = p^k$, which is works. \pause
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \textbf{Step:} Assume our statement works for $m$ that has $s$ distinct prime factors, we will prove that it will stay for $n$ that has $s+1$ distinct prime factors. So~$n = q^l m$, where $q$ is a prime number which is not a divisor of $m$.\pause
+%       \textbf{Base:} If $n$ has only one distinct prime divisor $p$, so $n = p^k$, we can write $a_1 = 1$, $a_2 = p$, $a_3 = p^2$, \dots, $a_{k+1} = p^k$, which is works. \pause
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%       \textbf{Step:} Assume our statement works for $m$ that has $s$ distinct prime factors, we will prove that it will stay for $n$ that has $s+1$ distinct prime factors. So~$n = q^l m$, where $q$ is a prime number which is not a divisor of $m$.\pause
 
-      If $T$ is a sequence in of number written in a circle in some order, $T^*$ will be the same sequence in reverse order. Moreover $qT$ will be the sequence $T$ where each item is multiplied by $q$.\pause
+%       If $T$ is a sequence in of number written in a circle in some order, $T^*$ will be the same sequence in reverse order. Moreover $qT$ will be the sequence $T$ where each item is multiplied by $q$.\pause
 
-      By induction assumption we have sequence $T$: $a_1, a_2, \dots, a_{d(m)}$ that satisfy the statement. Then the following sequences\pause
+%       By induction assumption we have sequence $T$: $a_1, a_2, \dots, a_{d(m)}$ that satisfy the statement. Then the following sequences\pause
 
-      $l$ is even: $T$, $(qT)^*$, $q^2T$, \dots, $(q^{l-1}T)^*$, $q^lT$,\pause
+%       $l$ is even: $T$, $(qT)^*$, $q^2T$, \dots, $(q^{l-1}T)^*$, $q^lT$,\pause
 
-      $l$ is odd:  $T$, $(qT)^*$, $q^2T$, \dots, $q^{l-1}T$, $(q^lT)^*$,\pause
+%       $l$ is odd:  $T$, $(qT)^*$, $q^2T$, \dots, $q^{l-1}T$, $(q^lT)^*$,\pause
 
-      will works.\pause \hfill Q.E.D.
-    \end{column}
-  \end{columns}
-\end{frame}
+%       will works.\pause \hfill Q.E.D.
+%     \end{column}
+%   \end{columns}
+% \end{frame}
 
 % \begin{frame}{Title}
 %   \begin{columns}[T]

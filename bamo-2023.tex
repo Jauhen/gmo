@@ -1,0 +1,316 @@
+\RequirePackage{luatex85}
+\documentclass[9pt,aspectratio=169]{beamer}
+
+\usepackage[all]{xy}
+\usepackage{luamplib}
+\mplibsetformat{metafun}
+\mplibtextextlabel{enable}
+\everymplib{input mpcolornames; input macros; beginfig(1);}
+\everyendmplib{endfig;}
+
+\usetheme{graham}
+
+\title{BAMO-8 2023, Solutions}
+% \subtitle[Graham Middle School]{Graham Middle School Math Olympiad Team}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Problem A}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{A.} A \emph{tangent line} to a circle is a line that intersects the circle in exactly one point. A \emph{common tangent line} to two circles is a line that is tangent to both circles.
+        
+        Given two distinct circles in the plane, let $n$ be the number of common tangent lines that can be drawn to these two circles. What are all possible values of $n$? Your answer should include drawings with explanations.
+      \end{problem}
+      \pause
+      Case 1: two circles outside each other and not touching.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.75cm;
+          path c[];
+          c0 := circle(origin, 1u);
+          c1 := circle((3u, 0u), 1.25u);
+          Draw c0, c1;
+          draw ddrealline(dbltangent1(c0, c1))(0.5, 0.5) pensemibold;
+          draw ddrealline(dbltangent2(c0, c1))(0.5, 0.5) pensemibold;
+          draw ddrealline(dblintangent1(c0, c1))(0.5, 0.5) pensemibold;
+          draw ddrealline(dblintangent2(c0, c1))(0.5, 0.5) pensemibold;
+        \end{mplibcode}
+      \end{center}
+      In this case we have $n = 4$.
+      \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Case 2: two circles outside each other and touching.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.75cm;
+          path c[];
+          c0 := circle(origin, 1u);
+          c1 := circle((2.25u, 0u), 1.25u);
+          Draw c0, c1;
+          draw ddrealline(dbltangent1(c0, c1))(0.7, 0.7) pensemibold;
+          draw ddrealline(dbltangent2(c0, c1))(0.7, 0.7) pensemibold;
+          draw (1u, -1.7u)--(1u, 1.7u) pensemibold;
+        \end{mplibcode}
+      \end{center}
+      In this case we have $n = 3$.
+      \pause
+
+      Case 3: two circles intersect.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.75cm;
+          path c[];
+          c0 := circle(origin, 1u);
+          c1 := circle((1.75u, 0u), 1.25u);
+          Draw c0, c1;
+          draw ddrealline(dbltangent1(c0, c1))(0.9, 0.9) pensemibold;
+          draw ddrealline(dbltangent2(c0, c1))(0.9, 0.9) pensemibold;
+        \end{mplibcode}
+      \end{center}
+      In this case we have $n = 2$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem A, continued}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      Case 4: one circle is inside another and they are touching.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.75cm;
+          path c[];
+          c0 := circle(origin, 1u);
+          c1 := circle((-0.25u, 0u), 1.25u);
+          Draw c0, c1;
+          draw (1u, -1.7u)--(1u, 1.7u) pensemibold;
+        \end{mplibcode}
+      \end{center}
+      In this case we have $n = 1$.
+      \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Case 5: one circle is inside another and they aren't touching.
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.75cm;
+          path c[];
+          c0 := circle(origin, 1u);
+          c1 := circle((0u, 0u), 1.25u);
+          Draw c0, c1;
+        \end{mplibcode}
+      \end{center}
+      In this case we have $n = 0$.
+      \pause
+      \vspace{1em}
+      So $n$ can has $5$ values: $0$, $1$, $2$, $3$, and $4$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem B}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{B.} Ara and Bea play a game where they take turns putting numbers from $1$ to $5$ into the cells of the X-shaped diagram below. Each number can be played only once, and a cell cannot have more than one number placed in it. Ara's goal is for the two diagonals of the X diagram to have the same sum when the game is over; Bea's goal is for these two sums to be unequal.
+
+        (a) Show that Ara can always win if he goes first.
+
+        (b) Show that Bea can always win if she goes first.
+      \end{problem}
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 0.5cm;
+          Draw circle(origin, 1u), circle((-2u,-2u), 1u),  circle((2u,-2u), 1u),  circle((-2u,2u), 1u),  circle((2u,2u), 1u);
+        \end{mplibcode}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \pause
+      Ara can win, if he put an odd number in the center cell. In this case the remaining numbers may be split into two groups with the same sum. 
+      \pause
+
+      If Ara played $1$ first, two groups are $2$, $5$ and $3$, $4$.
+      \pause
+
+      If Ara played $3$ first, two groups are $1$, $5$ and $2$, $4$.
+      \pause
+
+      If Ara played $5$ first, two groups are $1$, $4$ and $2$, $3$.
+      \pause
+
+      For the second move, Bea has to place one number from one of these groups into a corner cell, so Ara places the remaining number from the group into the cell in the same diagonal. 
+      \pause
+      
+      \begin{tabular}{ccc}
+        \begin{mplibcode}
+          u = 0.3cm;
+          Draw circle(origin, 1u), circle((-2u,-2u), 1u),  circle((2u,-2u), 1u),  circle((-2u,2u), 1u),  circle((2u,2u), 1u);
+          label.("$1$", origin);
+        \end{mplibcode}&
+        \begin{mplibcode}
+          u = 0.3cm;
+          Draw circle(origin, 1u), circle((-2u,-2u), 1u),  circle((2u,-2u), 1u),  circle((-2u,2u), 1u),  circle((2u,2u), 1u);
+          label.("$1$", origin);
+          label.("$2$", (-2u, 2u));
+        \end{mplibcode}&
+        \begin{mplibcode}
+          u = 0.3cm;
+          Draw circle(origin, 1u), circle((-2u,-2u), 1u),  circle((2u,-2u), 1u),  circle((-2u,2u), 1u),  circle((2u,2u), 1u);
+          label.("$1$", origin);
+          label.("$2$", (-2u, 2u));
+          label.("$5$", (2u, -2u));
+        \end{mplibcode}
+      \end{tabular}
+      \pause
+
+      With this strategy, both diagonals will have the same sums. For example, when we start with $1$ in the center, the diagonal sums will be $2+1+5 = 8 = 3 + 1 + 4$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem B, continued}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      For Bea to win, she may start with an even number in the central cell. In this case, the remaining numbers have an odd sum and can't be split into two pairs with an equal sum. 
+      \pause
+
+      If Bea starts with $2$, the remaining numbers are $1 + 3 + 4 + 5 = 13$, so it doesn't matter how they are distributed, one of the sums on the diagonals will be odd and one will be even.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem C}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{C.} Mr. Murgatroyd decides to throw his class a pizza party, but he's going to make them hunt for it first. He chooses eleven locations in the school, which we'll call $1, 2, \ldots, 11$. His plan is to tell students to start at location $1$, and at each location $n$ from $1$ to $10$, they will find a message directing them to go to location $n+1$; at location $11$, there's pizza!
+
+        Mr. Murgatroyd sends his teaching assistant to post the ten messages in locations $1$ to $10$. Unfortunately, the assistant jumbles up the message cards at random before posting them. If the students begin at location $1$ as planned and follow the directions at each location, show that they will still get to the pizza.
+      \end{problem}
+      \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      The key observation here is that only one number leads to every location. \pause So we can't get into the same location from two different places. \pause So, if students can't visit the same location twice, since that means, that for \textbf{the first location visited twice}, there are two cards with the same number. \pause If this location is visited from one location, that means that this is not the first location visited twice.
+      \pause
+
+      Since students can leave only at the location $11$, if they don't get to the pizza, they have to do the infinite number of steps.\pause But the total number of possible steps is no bigger than $10$, so they have to reach pizza at some point.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem D}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{D.} Given a positive integer $N$ (written in base $10$), define its integer substrings to be integers that are equal to strings of one or more consecutive digits from $N$, including $N$ itself. For example, the integer substrings of $3208$ are $3$, $2$, $0$, $8$, $32$, $20$, $320$, $208$, $3208$. (The substring $08$ is omitted from this list because it is the same integer as the substring $8$, which is already listed.)
+
+        What is the greatest integer $N$ such that no integer substring of $N$ is a multiple of $9$? (Note: $0$ is a multiple of $9$.)
+      \end{problem}
+      Let our number is $\overline{a_1 a_2 \ldots a_n}$, where $a_i$ are some digits. 
+      
+      By division by $9$, no sum $a_i + a_{i+1} + \ldots + a_{i + k}$ is divisible by $9$.
+      \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Let's consider sums: 
+      \begin{align*}
+        &a_1,\\ 
+        &a_1 + a_2,\\ 
+        &a_1 + a_2 + a_3,\\ 
+        &\ldots,\\ 
+        &a_1 + a_2 + \ldots + a_n.
+      \end{align*}
+      \pause
+       If any of these sums have the same reminder when divisible by $9$, that means that their difference is divisible by $9$, so we have some sequence $a_i + a_{i+1} + \ldots + a_{i + k}$ divisible by $9$, which contradicts.
+       \pause
+
+       Since we can have only $8$ different reminders when divide by $9$ (except $0$), the maximal length of the $N$ is $8$.
+      \pause
+
+       The largest possible digit of the $N$ is $8$, since $9$ is divisible by $9$, so we got $\boxed{N = 88,888,888}$.
+       \pause
+       It is easy to check that it doesn't have any substring divisible by $9$.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Problem E}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{problem}
+        \textbf{E.} In the following figure---not drawn to scale!---$E$ is the midpoint of $BC$, triangle $FEC$ has area $7$, and quadrilateral $DBEG$ has area $27$. Triangles $ADG$ and $GEF$ have the same area, $x$. Find $x$.
+      \end{problem}
+      \pause
+      \begin{center}
+        \leavevmode
+        \begin{mplibcode}
+          u = 1cm;
+          pair A, B, C, D, E, F, G;
+          A := 4.5u*dir(80);
+          B := origin;
+          C := 5u*dir(0);
+          D := 0.6[B, A];
+          E := 0.5[B, C];
+          G := whatever[D, C]=whatever[A, E];
+          Draw A--B--E--cycle, E--C--D;
+          draw A--C pensemibold withcolor red;
+          draw B--G pensemibold withcolor red;
+          rimmark(B--E, E--C);
+          label.top("$A$", A);
+          label.bot("$B$", B);
+          label.bot("$C$", C);
+          label.lft("$D$", D);
+          label.bot("$E$", E);
+          label.bot("$G$", G shifted (-2, -3));
+          label.("$x$", incenter(A, D, G));
+          label.("$x+7$", incenter(G, E, C));
+          label.("$x+7$", incenter(B, G, E));
+          label.("$20-x$", incenter(B, D, G));
+          label.("$a$", incenter(A, C, G));
+        \end{mplibcode}
+      \end{center}
+      \pause
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Since $\triangle BGE$ and $\triangle GEC$ have the same height and equal base, their areas are equal $x+7$. So $[BDG] = 27 - (x+7) = 20 - x$.\pause
+
+      $[ABE] = [AEC]$ for the same reason, so $x + 20 - x + x+ 7 = a + x + 7$ and we got $a = 20$.
+      \pause
+
+      Now look at $DG/GC$. \pause From one point of view, 
+      \[ \frac{DG}{GC} = \frac{[DAG]}{[GAC]} = \frac{x}{20}, \] 
+      \pause
+      from the other 
+      \[ \frac{DG}{GC} = \frac{[DBG]}{[GBC]} = \frac{20-x}{2x + 14}. \]
+      \pause
+      So we got 
+      \[ \frac{x}{20} = \frac{20-x}{2x + 14}. \]
+      \pause
+      Or $2x^2 + 14x = 400 - 20x$ or $x^2 + 17x - 200 = 0$ or $(x - 8)(x + 25) = 0$. \pause So $\boxed{x= 8}$, since other root is negative.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \begin{frame}{Title}
+%   \begin{columns}[T]
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%     \begin{column}{0.5\textwidth}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\end{document}

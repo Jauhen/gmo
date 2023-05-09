@@ -1,5 +1,5 @@
 \RequirePackage{luatex85}
-\documentclass[9pt,aspectratio=169]{beamer}
+\documentclass[9pt,aspectratio=169,handout]{beamer}
 
 \usepackage{nicefrac}
 \usepackage{tabularx}
@@ -475,7 +475,7 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{problem}
-        A machine is filled with an odd number of chocolate candies and an odd number of caramel candies. For $25$ cents, the machine dispenses two candies. Prove that, before being empty, the machine will dispense at least one pair that consists of one chocolate candy and one caramel candy.
+        A machine is filled with an odd number of chocolate candies and an odd number of caramel candies. For $25$ cents, the machine dispenses two candies. Prove that, before being emptied, the machine will dispense at least one pair that consists of one chocolate candy and one caramel candy.
       \end{problem}\pause
 
       The key is to reword the problem so that induction is appropriate. Specifically, you want to prove that for every integer $n \geq 1$,\pause
@@ -508,7 +508,7 @@
       
       \textbf{Base:} $1$ is already given.\pause
 
-      \textbf{Step:} Assume we already knows how to get any number less then $k$, then:
+      \textbf{Step:} Assume we already know how to get any number less than $k$, then:
 
       If $k = 3m$, $2m \to 6m + 1 \to 3m$;\pause
       
@@ -531,15 +531,15 @@
 
       We prove by induction, that there are two no neighbors "diagonal free" vertices.
 
-      \textbf{Base:} Problem is trivial for a quadrilateral, because only diagonals can be drawn and two vertices are "diagonal free" and separated by this diagonal.\pause
+      \textbf{Base:} Problem is trivial for a quadrilateral because only diagonals can be drawn and two vertices are "diagonal free" and separated by this diagonal.\pause
 
     \end{column}
     \begin{column}{0.5\textwidth}
-      \textbf{Step:} Assume the statement is hold for any convex polygon with number of vertices less then $n$.\pause
+      \textbf{Step:} Assume the statement holds for any convex polygon with a number of vertices less than $n$.\pause
 
-      Let $n$ is the number of vertices. Let's draw a diagonal with vertices $M$ and $N$. This diagonal split a polygon into two polygons with lower number of vertices and they have two non-neighbor "diagonal free" vertices, so each of polygon has a "diagonal free" vertex that is not $M$ or $N$.\pause
+      Let $n$ be the number of vertices. Let's draw a diagonal with vertices $M$ and $N$. This diagonal split a polygon into two polygons with a lower number of vertices and they have two non-neighbor "diagonal free" vertices, so each polygon has a "diagonal free" vertex that is not $M$ or $N$.\pause
 
-      If one of the smaller polygon is a triangle, we take a vertex that is not $M$ and $N$. \hfill Q.E.D. 
+      If one of the smaller polygons is a triangle, we take a vertex that is not $M$ and $N$. \hfill Q.E.D. 
     \end{column}
   \end{columns}
 \end{frame}
@@ -548,16 +548,16 @@
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{problem}
-        $n$ bandits are dividing the loot. Each of them has their own opinion on the value of a particular share of the loot, and each of them wants to get no less than $1/n$ of the loot (from their point of view). Come up with a way to divide the loot among the bandits.
+        $n$ pirates are dividing the loot. Each of them has their own opinion on the value of a particular share of the loot, and each of them wants to get no less than $1/n$ of the loot (from their point of view). Come up with a way to divide the loot among the pirates.
       \end{problem}\pause
-      \textbf{Base:} For two bandits we can do this way: let the first one to divide the loot into two parts that he believe are equal and let the second bandit to choose his part.\pause
+      \textbf{Base:} For two pirates we can do this way: let the first one divides the loot into two parts that he believes are equal and let the second pirate choose his part.\pause
 
     \end{column}
     \begin{column}{0.5\textwidth}
       
-      \textbf{Step:} Assume we know how to divide the loot between $k$ bandits, each has $\dfrac{1}{k}$ part of the loot.\pause
+      \textbf{Step:} Assume we know how to divide the loot between $k$ pirates, each has $\dfrac{1}{k}$ part of the loot.\pause
 
-      Let each of $k$ bandits divide his part into $k+1$ pieces and allow the new bandit to select one piece from each of $k$ bandits, in this case he will get $k \times \dfrac{1}{k (k + 1)} = \dfrac{1}{k+1}$ part of the loot, and each of $k$ bandits will remain with $\dfrac{k}{k+1}  \times \dfrac{1}{k} = \dfrac{1}{k+1}$ part of the loot. 
+      Let each of $k$ pirates divide his part into $k+1$ pieces and allow the new pirate to select one piece from each of $k$ pirates, in this case, he will get $k \times \dfrac{1}{k (k + 1)} = \dfrac{1}{k+1}$ part of the loot, and each of $k$ bandits will remain with $\dfrac{k}{k+1}  \times \dfrac{1}{k} = \dfrac{1}{k+1}$ part of the loot. 
     \end{column}
   \end{columns}
 \end{frame}

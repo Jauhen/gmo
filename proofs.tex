@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\geometry{margin=0.75in}
+\newtheorem{theorem}{Example}
+
+\begin{document}
+
+\section{Proof tactics}
+
+\subsection{Counterexample}
+
+Show that there is an object that doesn't satisfy a given statement.
+
+\begin{theorem}
+  Are all primes odd?
+\end{theorem}
+\begin{proof}
+  2 is a prime and it is even.
+\end{proof}
+
+\subsection{Invariant}
+
+A \emph{invariant} is a quantity that does not change.
+
+\begin{theorem}
+  There are 1 to 1000 numbers written on a board. At each step, we select any two numbers and replace them with their difference. Is it possible to have 243 in the end as the only remaining number?
+\end{theorem}
+\begin{proof}
+  Parity of the sum is all the numbers remains after each step. We started from even sum. So 243 is impossible.
+\end{proof}
+
+\subsection{Monovariant}
+
+A \emph{monovariant} is a quantity that changes only in one direction---either always up or always down.
+If the monovariant is bounded (for example, if it is decreasing, but has to be above 0), then the process has to stop.
+
+\begin{theorem}
+  A finite number of stones placed on infinite (both ways) strip of squares. At any step, we pick two stones at one square and move one left and one right. Can we return to the initial configuration in finite number of steps?
+\end{theorem}
+\begin{proof}
+  Set one square as 0 and other squares are have positive or negative coordinates.
+  Sum of squares of stone's coordinates is a monovariant.
+  \[ (n + 1)^2 + (n - 1)^2 = n^2 + 2 > n^2,\]
+  so the monovariant is always increasing and it is impossible to return to the initial configuration.
+\end{proof}
+
+\subsection{Pigeonhole principle}
+
+If we have $k \cdot n+1$ items in $n$ containers so there must be at least one container with $k+1$ items.
+
+\begin{theorem}
+  If you have 3 socks (items) and only 2 colors (containers), at least 2 socks must be the same color. 
+\end{theorem}
+
+\subsection{Extremal principle} 
+
+Take a look at the smallest and the largest possible value, and then show that there is an other value even more extreme.
+
+\begin{theorem}
+  $n$ students are standing in a field such that the distance between each pair is distinct. Each student is holding a ball, and when the teacher blows a whistle, each student throws their ball to the nearest student. Prove that there is a pair of students that throw their balls to each other.
+\end{theorem}
+\begin{proof}
+  Consider the smallest distance between any pair of students. Since this is the smallest distance, the closest student to each of these is the other, so these students throw their ball to each other. 
+\end{proof}
+
+\section{Proof strategies}
+
+\subsection{Direct proof}
+
+Also named \emph{proof by direct argument}. From a given statement, derive a new statement, and so on until a final statement (what is needed to be proven) is reached.
+
+\begin{theorem}
+  If $x$ and $y$ are odd integers, then $x \cdot y$ is an odd integer.
+\end{theorem}
+\begin{proof}
+  $x = 2m + 1$ and $y = 2n + 1$, so $x \cdot y = (2m + 1)(2n +1) = 4mn + 2m + 2n + 1 = 2(2mn + m + n) + 1$.
+\end{proof}
+
+\subsection{Proof by contradiction}
+
+Start by assuming the opposite of a problem statement. Then show that the consequences of this premise are impossible. This means that your original statement must be true.
+
+\begin{theorem}
+  Prove that there is no largest number.  
+\end{theorem}
+\begin{proof}
+  Assume that $n$ is the largest number, then since $n + 1 > n$ we have a contradiction.
+\end{proof}
+
+\subsection{Proof by induction}
+
+Show that a statement is true for a starting value, and then show that it is true for all consecutive values assuming that it is true for the previous value. This way you show that the statement is true for all values.
+
+\begin{theorem}
+  Prove that $\sum_{i=1}^n i = \frac{n(n+1)}{2}$.
+\end{theorem}
+\begin{proof}\ 
+
+  \emph{Base case}: $n = 1$ so $\sum_{i=1}^1 i = \frac{1(1+1)}{2} = \frac{2}{2} = 1$.
+
+  \emph{Induction step}: assume that $\sum_{i=1}^n i = \frac{n(n+1)}{2}$ and show that $\sum_{i=1}^{n+1} i = \frac{(n+1)(n+2)}{2}$.
+  
+  $\sum_{i=1}^{n+1} i = \sum_{i=1}^n i + n + 1 = \frac{n(n+1)}{2} + n + 1 = \frac{n(n+1) + n + 1}{2} = \frac{(n+1)(n+2)}{2}.$  
+\end{proof}
+
+\emph{A complete (strong) induction} makes the induction step assume that the statement is true for \emph{all} previous values.
+
+\section{Finding Proofs}
+
+\subsection{Problem about maximum (minimum) value}
+
+If problem ask about maximal (minimal) value, it has two parts: show that maximum (minimum) exists (usually by providing an example) and proof that larger (smaller) value doesn't exist.
+
+\subsection{Forward reasoning}
+
+Check what statements you can get from the problem assumptions.
+
+\begin{theorem}
+  If need to proof $P \to Q$, try to find $P \to R$, and then $R \to Q$.
+\end{theorem}
+
+\subsection{Backward reasoning}
+
+Check what statements help you derive the problem statement.
+
+\begin{theorem}
+  If need to proof $P \to Q$, try to find $R \to Q$, and then $P \to R$.
+\end{theorem}
+
+When writing a proof, show a only forward ways $P \to R \to Q$, it is easier to follow.
+
+\end{document}
